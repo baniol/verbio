@@ -96,6 +96,7 @@
   let requiredStreak = 2; // how many correct answers in a row to mark as learned
   let recognition = null;
   let isListening = false; // Flag to prevent multiple recognition starts
+  let currentAudio = null; // Current playing audio element
 
   // Cached DOM Elements (populated on init)
   let el = {};
@@ -169,6 +170,7 @@
       resetConfirmButton: document.getElementById("reset-confirm-button"),
       clearCacheButton: document.getElementById("clear-cache-button"),
       backButton: document.getElementById("back-button"),
+      answerAudioButton: document.getElementById("answer-audio-button"),
     };
   }
 
@@ -222,6 +224,7 @@
     el.themeToggle?.addEventListener("change", saveThemeSetting);
     el.clearCacheButton?.addEventListener("click", clearCache);
     el.backButton?.addEventListener("click", () => Router.back());
+    el.answerAudioButton?.addEventListener("click", playAnswerAudio);
   }
 
   // Initialize
@@ -619,6 +622,7 @@
 
   // Load next phrase
   function loadNextPhrase() {
+    stopAudio();
     showLoading();
 
     const unlearnedPhrases = getUnlearnedPhrases();
@@ -669,6 +673,9 @@
     updateNoteIcon();
     updateReviewIcon();
 
+    // Check if audio exists for this phrase (async)
+    updateAudioButton();
+
     if (speechEnabled) {
       UI.show(el.speechMode);
       UI.hide(el.showAnswerMode);
@@ -683,6 +690,52 @@
       UI.hide(el.speechMode);
       UI.show(el.showAnswerMode);
     }
+  }
+
+  // Audio playback
+  function getAudioPath(setId, phraseId) {
+    return `/audio/${setId}/${phraseId}.mp3`;
+  }
+
+  function checkAudioExists(setId, phraseId) {
+    return new Promise((resolve) => {
+      const audio = new Audio();
+      audio.oncanplaythrough = () => resolve(true);
+      audio.onerror = () => resolve(false);
+      audio.src = getAudioPath(setId, phraseId);
+    });
+  }
+
+  function playAnswerAudio() {
+    if (!currentPhrase || !currentSet) return;
+
+    // Stop any currently playing audio
+    stopAudio();
+
+    const setId = currentPhrase._sourceSetId || currentSet.id;
+    const audioPath = getAudioPath(setId, currentPhrase.id);
+
+    currentAudio = new Audio(audioPath);
+    currentAudio.play().catch((err) => {
+      console.error("Failed to play audio:", err);
+    });
+  }
+
+  function stopAudio() {
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+      currentAudio = null;
+    }
+  }
+
+  async function updateAudioButton() {
+    if (!currentPhrase || !el.answerAudioButton) return;
+
+    const setId = currentPhrase._sourceSetId || currentSet.id;
+    const hasAudio = await checkAudioExists(setId, currentPhrase.id);
+
+    UI.toggle(el.answerAudioButton, hasAudio);
   }
 
   // Speech recognition

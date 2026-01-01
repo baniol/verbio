@@ -117,6 +117,9 @@ const I18N = {
       review: "Review",
       addToReview: "Add to review",
       removeFromReview: "Remove from review",
+
+      // Audio
+      playAudio: "Play audio",
     },
 
     pl: {
@@ -221,6 +224,9 @@ const I18N = {
       review: "Powtórka",
       addToReview: "Dodaj do powtórki",
       removeFromReview: "Usuń z powtórki",
+
+      // Audio
+      playAudio: "Odtwórz audio",
     },
 
     de: {
@@ -326,6 +332,9 @@ const I18N = {
       review: "Wiederholung",
       addToReview: "Zur Wiederholung hinzufügen",
       removeFromReview: "Aus Wiederholung entfernen",
+
+      // Audio
+      playAudio: "Audio abspielen",
     },
 
     es: {
@@ -431,6 +440,9 @@ const I18N = {
       review: "Repaso",
       addToReview: "Añadir al repaso",
       removeFromReview: "Quitar del repaso",
+
+      // Audio
+      playAudio: "Reproducir audio",
     },
 
     fr: {
@@ -536,6 +548,9 @@ const I18N = {
       review: "Révision",
       addToReview: "Ajouter à la révision",
       removeFromReview: "Retirer de la révision",
+
+      // Audio
+      playAudio: "Lire l'audio",
     },
   },
 
