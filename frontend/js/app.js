@@ -267,7 +267,7 @@
       speechEnabled = savedSpeech === null ? true : savedSpeech === "true";
 
       const savedManual = localStorage.getItem(STORAGE_KEYS.manualNext);
-      manualNext = savedManual === "true";
+      manualNext = savedManual === null ? true : savedManual === "true";
 
       const savedAutoListen = localStorage.getItem(STORAGE_KEYS.autoListen);
       autoListen = savedAutoListen === "true";
