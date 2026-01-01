@@ -1,6 +1,24 @@
 # Verbio
 
-Simple phrase repetition app with speech recognition.
+Learn languages by speaking. Verbio is a phrase learning app that checks your answers using speech recognition.
+
+## How it works
+
+1. **See a phrase** in your native language
+2. **Speak the answer** in the language you're learning
+3. **Get instant feedback** - the app checks if you said it correctly
+4. **Repeat until mastered** - phrases you know disappear from the pool
+
+## Why Verbio?
+
+- **Speak, don't type** - practice pronunciation and natural communication
+- **Works offline** - all data stays in your browser, no internet needed
+- **No account required** - just open and start learning, progress saves automatically
+- **Smart repetition** - difficult phrases appear more often
+
+## Review Set
+
+Struggling to remember a phrase? Click the star icon next to it, and it goes to your review set. All starred phrases for a language can be practiced separately - find them in the set dropdown as "Review: [language]".
 
 ---
 

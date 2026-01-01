@@ -11,6 +11,7 @@
     AUTO_ADVANCE_DELAY: 2000,
     AUTO_LISTEN_DELAY: 300,
     NEW_PHRASE_PRIORITY: 1000,
+    MAX_PHRASE_PRIORITY: 3, // Cap to prevent difficult phrases from dominating
     DEBOUNCE_DELAY: 300,
   };
 
@@ -538,7 +539,9 @@
       (Date.now() - (prog.lastSeen || 0)) / (1000 * 60 * 60);
 
     // Higher priority = lower success rate + not seen recently
-    return (1 - successRate) * Math.log(hoursSinceLastSeen + 1);
+    // Cap priority to prevent difficult phrases from dominating the session
+    const rawPriority = (1 - successRate) * Math.log(hoursSinceLastSeen + 1);
+    return Math.min(rawPriority, CONFIG.MAX_PHRASE_PRIORITY);
   }
 
   function selectNextPhrase(phrases) {
