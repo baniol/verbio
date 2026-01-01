@@ -83,6 +83,7 @@
     requiredStreak: "langlearn_required_streak",
     progress: (setId) => `langlearn_progress_${setId}`,
     notes: "langlearn_notes",
+    reviewSet: (language) => `langlearn_review_set_${language}`,
   };
 
   // State
@@ -137,6 +138,9 @@
       notePhraseInfo: document.getElementById("note-phrase-info"),
       noteIconEmpty: document.getElementById("note-icon-empty"),
       noteIconFilled: document.getElementById("note-icon-filled"),
+      reviewButton: document.getElementById("review-button"),
+      reviewIconEmpty: document.getElementById("review-icon-empty"),
+      reviewIconFilled: document.getElementById("review-icon-filled"),
       setMenu: document.getElementById("set-menu"),
       setSelect: document.getElementById("set-select"),
       currentSetName: document.getElementById("current-set-name"),
@@ -198,6 +202,9 @@
     el.noteButton?.addEventListener("click", openNoteModal);
     el.noteCancelButton?.addEventListener("click", closeNoteModal);
     el.noteSaveButton?.addEventListener("click", saveNote);
+
+    // Review
+    el.reviewButton?.addEventListener("click", toggleReview);
 
     // Reset modal
     el.resetCancelButton?.addEventListener("click", closeResetModal);
@@ -414,11 +421,32 @@
     const select = el.setSelect;
     select.innerHTML = "";
 
+    // Regular sets
     for (const [id, set] of Object.entries(SETS)) {
       const option = document.createElement("option");
       option.value = id;
       option.textContent = set.metadata.name;
       select.appendChild(option);
+    }
+
+    // Review sets
+    const reviewLanguages = getReviewSetLanguages();
+    if (reviewLanguages.length > 0) {
+      // Add separator
+      const separator = document.createElement("option");
+      separator.disabled = true;
+      separator.textContent = "──────────";
+      select.appendChild(separator);
+
+      for (const lang of reviewLanguages) {
+        const reviewData = buildReviewSetData(lang);
+        if (reviewData) {
+          const option = document.createElement("option");
+          option.value = `review_${lang}`;
+          option.textContent = `${reviewData.metadata.name} (${reviewData.phrases.length})`;
+          select.appendChild(option);
+        }
+      }
     }
   }
 
@@ -447,8 +475,25 @@
   }
 
   function loadSet(setId) {
-    const baseSet = SETS[setId];
-    currentSet = { id: setId, ...baseSet };
+    // Check if it's a review set
+    if (setId.startsWith("review_")) {
+      const language = setId.replace("review_", "");
+      const reviewData = buildReviewSetData(language);
+
+      if (!reviewData) {
+        // Review set is empty, load first regular set
+        const firstSetId = Object.keys(SETS)[0];
+        if (firstSetId) {
+          loadSet(firstSetId);
+        }
+        return;
+      }
+
+      currentSet = { id: setId, ...reviewData };
+    } else {
+      const baseSet = SETS[setId];
+      currentSet = { id: setId, ...baseSet };
+    }
 
     localStorage.setItem(STORAGE_KEYS.lastSet, setId);
     el.setSelect.value = setId;
@@ -623,8 +668,9 @@
     UI.hide(el.reviewButtons);
     UI.hide(el.resultFeedback);
 
-    // Update note icon
+    // Update note and review icons
     updateNoteIcon();
+    updateReviewIcon();
 
     if (speechEnabled) {
       UI.show(el.speechMode);
@@ -892,6 +938,164 @@
       // Open menu
       UI.show(el.menuOverlay);
       el.menuPanel.classList.remove("translate-x-full");
+    }
+  }
+
+  // Review Set management
+  function getReviewSet(language) {
+    return Storage.get(STORAGE_KEYS.reviewSet(language), []);
+  }
+
+  function saveReviewSet(language, reviewSet) {
+    Storage.set(STORAGE_KEYS.reviewSet(language), reviewSet);
+  }
+
+  function addToReviewSet(setId, phraseId, language) {
+    const reviewSet = getReviewSet(language);
+    const exists = reviewSet.some(
+      (r) => r.setId === setId && r.phraseId === phraseId,
+    );
+    if (!exists) {
+      reviewSet.push({ setId, phraseId });
+      saveReviewSet(language, reviewSet);
+    }
+  }
+
+  function removeFromReviewSet(setId, phraseId, language) {
+    const reviewSet = getReviewSet(language);
+    const filtered = reviewSet.filter(
+      (r) => !(r.setId === setId && r.phraseId === phraseId),
+    );
+    saveReviewSet(language, filtered);
+  }
+
+  function isInReviewSet(setId, phraseId, language) {
+    const reviewSet = getReviewSet(language);
+    return reviewSet.some((r) => r.setId === setId && r.phraseId === phraseId);
+  }
+
+  function getReviewSetLanguages() {
+    const languages = [];
+    for (const key of Object.keys(localStorage)) {
+      if (key.startsWith("langlearn_review_set_")) {
+        const lang = key.replace("langlearn_review_set_", "");
+        const reviewSet = getReviewSet(lang);
+        if (reviewSet.length > 0) {
+          languages.push(lang);
+        }
+      }
+    }
+    return languages;
+  }
+
+  function buildReviewSetData(language) {
+    const reviewSet = getReviewSet(language);
+    if (reviewSet.length === 0) return null;
+
+    const phrases = [];
+    let metadata = null;
+
+    for (const ref of reviewSet) {
+      const sourceSet = SETS[ref.setId];
+      if (!sourceSet) continue;
+
+      const phrase = sourceSet.phrases.find((p) => p.id === ref.phraseId);
+      if (phrase) {
+        // Add source set ID to phrase for tracking
+        phrases.push({ ...phrase, _sourceSetId: ref.setId });
+        // Use first valid set's metadata
+        if (!metadata) {
+          metadata = { ...sourceSet.metadata };
+        }
+      }
+    }
+
+    if (phrases.length === 0 || !metadata) return null;
+
+    return {
+      metadata: {
+        ...metadata,
+        id: `review_${language}`,
+        name: `⭐ ${I18N.t("review")}: ${getLanguageDisplayName(language)}`,
+        isReviewSet: true,
+        reviewLanguage: language,
+      },
+      phrases,
+    };
+  }
+
+  function getLanguageDisplayName(langCode) {
+    const names = {
+      de: "German",
+      en: "English",
+      es: "Spanish",
+      fr: "French",
+      pl: "Polish",
+      it: "Italian",
+      pt: "Portuguese",
+      nl: "Dutch",
+      ru: "Russian",
+      ja: "Japanese",
+      zh: "Chinese",
+      ko: "Korean",
+    };
+    return names[langCode] || langCode.toUpperCase();
+  }
+
+  function toggleReview() {
+    if (!currentPhrase || !currentSet) return;
+
+    // For review sets, remove from review; otherwise add/toggle
+    if (currentSet.metadata.isReviewSet) {
+      const sourceSetId = currentPhrase._sourceSetId;
+      const language = currentSet.metadata.reviewLanguage;
+      removeFromReviewSet(sourceSetId, currentPhrase.id, language);
+      updateReviewIcon();
+      populateSetMenu();
+      // Rebuild current set data to reflect removal
+      const reviewData = buildReviewSetData(language);
+      if (reviewData) {
+        currentSet = { id: currentSet.id, ...reviewData };
+      }
+      // Load next phrase since this one is removed
+      loadNextPhrase();
+    } else {
+      const language = currentSet.metadata.language;
+      const inReview = isInReviewSet(currentSet.id, currentPhrase.id, language);
+
+      if (inReview) {
+        removeFromReviewSet(currentSet.id, currentPhrase.id, language);
+      } else {
+        addToReviewSet(currentSet.id, currentPhrase.id, language);
+      }
+      updateReviewIcon();
+      populateSetMenu();
+      // Restore selection after repopulating
+      el.setSelect.value = currentSet.id;
+    }
+  }
+
+  function updateReviewIcon() {
+    if (!currentPhrase || !el.reviewIconEmpty || !el.reviewIconFilled) return;
+
+    let inReview = false;
+
+    if (currentSet.metadata.isReviewSet) {
+      // Always show filled in review set mode
+      inReview = true;
+    } else {
+      const language = currentSet.metadata.language;
+      inReview = isInReviewSet(currentSet.id, currentPhrase.id, language);
+    }
+
+    UI.toggle(el.reviewIconEmpty, !inReview);
+    UI.toggle(el.reviewIconFilled, inReview);
+
+    // Update tooltip
+    if (el.reviewButton) {
+      el.reviewButton.title = inReview
+        ? I18N.t("removeFromReview")
+        : I18N.t("addToReview");
     }
   }
 
