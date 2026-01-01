@@ -58,8 +58,9 @@ frontend/
     └── sets.js              # Auto-generated from lang_data/
 
 deployment/
+├── config.sh                # Build configuration (feature flags)
 └── cloudflare_pages/
-    ├── build.sh             # Generates sets.js from lang_data/
+    ├── build.sh             # Generates sets.js, config.js, version.js
     └── deploy.sh            # Deploy via Wrangler CLI
 ```
 
