@@ -47,8 +47,8 @@ Source language codes:
 ## Step 2: Read curriculum and progress
 
 Read files:
-- `docs/curriculum-german-b2.md` - learning program (topics, grammar, situations)
-- `docs/curriculum-german-b2-progress.md` - progress checklist
+- `docs/curriculum/curriculum-german-b2.md` - learning program (topics, grammar, situations)
+- `docs/curriculum/curriculum-german-b2-progress.md` - progress checklist
 
 ## Step 3: Select topic
 
@@ -124,7 +124,7 @@ Filename: `lang_data/german_b2_{topic_snake_case}[_{lang_code}].json`
 
 ### Grammar integration with topic
 
-**IMPORTANT:** Before generating, check `docs/curriculum-german-b2.md` section "Grammar mapping to topics" and find constructions assigned to this topic.
+**IMPORTANT:** Before generating, check `docs/curriculum/curriculum-german-b2.md` section "Grammar mapping to topics" and find constructions assigned to this topic.
 
 Each set MUST contain phrases using assigned grammar constructions. Example:
 
@@ -175,7 +175,7 @@ Phrases should naturally contain these constructions, e.g.:
 
 ## Step 6: Update checklist
 
-After saving all 3 sets, edit `docs/curriculum-german-b2-progress.md`:
+After saving all 3 sets, edit `docs/curriculum/curriculum-german-b2-progress.md`:
 
 1. Find the topic row
 2. Change `[ ]` to `[x]`

@@ -110,7 +110,7 @@ Checklist to track phrase set creation according to B1 curriculum.
 ## Communication Situations
 
 > **Note:** Grammar is integrated with topics - each set contains phrases with specific grammar constructions. 
-> Mapping details: see `docs/curriculum-german-b1.md` → section "Grammar Mapping to Topics"
+> Mapping details: see `docs/curriculum/curriculum-german-b1.md` → section "Grammar Mapping to Topics"
 
 | Situation | Status | Sets | Date |
 |-----------|--------|------|------|
