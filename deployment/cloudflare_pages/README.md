@@ -1,8 +1,8 @@
 # Cloudflare Pages Deployment
 
-## Architektura
+## Architecture
 
-DNS zarządzany w AWS Route53, hosting na Cloudflare Pages.
+DNS managed in AWS Route53, hosting on Cloudflare Pages.
 
 ```
 ┌─────────────────┐      ┌─────────────────────────────────────────┐
@@ -27,63 +27,63 @@ DNS zarządzany w AWS Route53, hosting na Cloudflare Pages.
                                                 Auto Deploy
 ```
 
-## Komponenty
+## Components
 
-| Komponent | Rola |
+| Component | Role |
 |-----------|------|
-| **AWS Route53** | DNS - CNAME wskazujący na `*.pages.dev` |
-| **Cloudflare CDN** | Cache statycznych plików na edge nodes |
-| **Cloudflare Pages** | Hosting statycznego frontendu |
-| **GitHub Integration** | Auto-deploy przy push do `main` |
+| **AWS Route53** | DNS - CNAME pointing to `*.pages.dev` |
+| **Cloudflare CDN** | Static file caching on edge nodes |
+| **Cloudflare Pages** | Static frontend hosting |
+| **GitHub Integration** | Auto-deploy on push to `main` |
 
-## Flow deploymentu
+## Deployment Flow
 
-1. Developer pushuje zmiany do `main` branch
-2. Cloudflare Pages wykrywa push (webhook)
-3. Uruchamia build command (generowanie `sets.js`)
-4. Deployuje `frontend/` na globalny CDN
-5. Automatyczna invalidacja cache
+1. Developer pushes changes to `main` branch
+2. Cloudflare Pages detects push (webhook)
+3. Runs build command (generates `sets.js`)
+4. Deploys `frontend/` to global CDN
+5. Automatic cache invalidation
 
-## Konfiguracja projektu
+## Project Configuration
 
 ### Build settings
 
-| Ustawienie | Wartość |
-|------------|---------|
+| Setting | Value |
+|---------|-------|
 | **Build command** | `./build.sh` |
 | **Build output directory** | `frontend` |
 | **Root directory** | `/` |
 
-### Zmienne środowiskowe
+### Environment variables
 
-Brak - projekt nie wymaga zmiennych środowiskowych.
+None - project doesn't require environment variables.
 
-## Struktura plików
+## File Structure
 
 ```
 deployment/cloudflare_pages/
-├── README.md          # Ten plik
-├── build.sh           # Skrypt budujący sets.js
-└── deploy.sh          # Ręczny deploy przez Wrangler CLI
+├── README.md          # This file
+├── build.sh           # Script that builds sets.js
+└── deploy.sh          # Manual deploy via Wrangler CLI
 
-frontend/              # <- to jest deployowane
+frontend/              # <- this is deployed
 ├── index.html
 ├── manifest.json
 ├── sw.js
 └── js/
     ├── app.js
-    └── sets.js        # Generowany podczas buildu
+    └── sets.js        # Generated during build
 ```
 
-## Setup (jednorazowy)
+## Setup (one-time)
 
 ### 1. Cloudflare Dashboard
 
-1. Wejdź na [Workers & Pages](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. Go to [Workers & Pages](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. **Create application**
-3. Na dole strony kliknij **"Looking to deploy Pages? Get started"**
-4. **Connect to Git** → wybierz swoje repo
-5. Ustaw:
+3. At the bottom of the page click **"Looking to deploy Pages? Get started"**
+4. **Connect to Git** → select your repo
+5. Configure:
    - Production branch: `main`
    - Build command: `deployment/cloudflare_pages/build.sh`
    - Build output directory: `frontend`
@@ -91,39 +91,39 @@ frontend/              # <- to jest deployowane
 
 ### 2. AWS Route53
 
-1. Wejdź do Route53 → Hosted zones → twoja domena
-2. Dodaj rekord:
-   - **Name:** subdomena (np. `verbio`)
+1. Go to Route53 → Hosted zones → your domain
+2. Add record:
+   - **Name:** subdomain (e.g., `verbio`)
    - **Type:** `CNAME`
-   - **Value:** `<your-project>.pages.dev` (z Cloudflare deployments)
+   - **Value:** `<your-project>.pages.dev` (from Cloudflare deployments)
    - **TTL:** 300
 
 ### 3. Custom domain (Cloudflare)
 
-**WAŻNE:** Ten krok jest wymagany dla SSL - bez niego dostaniesz `ERR_SSL_VERSION_OR_CIPHER_MISMATCH`.
+**IMPORTANT:** This step is required for SSL - without it you'll get `ERR_SSL_VERSION_OR_CIPHER_MISMATCH`.
 
-1. W Cloudflare Dashboard → Twój projekt → **Custom domains**
-2. Kliknij **Set up a custom domain**
-3. Wpisz domenę (np. `app.yourdomain.com`)
-4. Cloudflare pokaże "configure DNS" - **kliknij dalej** (DNS już masz w Route53)
-5. CF zweryfikuje CNAME i wygeneruje certyfikat SSL (1-2 minuty)
+1. In Cloudflare Dashboard → Your project → **Custom domains**
+2. Click **Set up a custom domain**
+3. Enter domain (e.g., `app.yourdomain.com`)
+4. Cloudflare will show "configure DNS" - **click next** (DNS is already in Route53)
+5. CF will verify CNAME and generate SSL certificate (1-2 minutes)
 
-**Uwaga:** Przy Route53 + Cloudflare Pages nie masz pełnego Cloudflare proxy (brak WAF, DDoS protection na poziomie CF). Masz tylko CDN i hosting.
+**Note:** With Route53 + Cloudflare Pages you don't have full Cloudflare proxy (no WAF, DDoS protection at CF level). You only get CDN and hosting.
 
 ## Deploy
 
-### Opcja 1: Git push (automatyczny)
+### Option 1: Git push (automatic)
 
 ```bash
 git push origin main
 ```
 
-Cloudflare Pages automatycznie wykryje push i zdeployuje.
+Cloudflare Pages will automatically detect the push and deploy.
 
-### Opcja 2: Wrangler CLI (ręczny)
+### Option 2: Wrangler CLI (manual)
 
 ```bash
-# Jednorazowy setup
+# One-time setup
 npm install -g wrangler
 wrangler login
 
@@ -131,36 +131,36 @@ wrangler login
 ./deployment/cloudflare_pages/deploy.sh
 ```
 
-Skrypt:
-1. Generuje `sets.js` z `lang_data/*.json`
-2. Deployuje `frontend/` na Cloudflare Pages
+The script:
+1. Generates `sets.js` from `lang_data/*.json`
+2. Deploys `frontend/` to Cloudflare Pages
 
-## Porównanie z poprzednim setupem (nginx)
+## Comparison with previous setup (nginx)
 
-| Aspekt | Nginx (VPS) | Cloudflare Pages |
+| Aspect | Nginx (VPS) | Cloudflare Pages |
 |--------|-------------|------------------|
-| **Koszt** | ~$5/mies (Droplet) | $0 |
-| **SSL** | Let's Encrypt (manual) | Automatyczny |
-| **CDN** | Brak | Globalny edge |
+| **Cost** | ~$5/month (Droplet) | $0 |
+| **SSL** | Let's Encrypt (manual) | Automatic |
+| **CDN** | None | Global edge |
 | **Deploy** | rsync + SSH | git push |
 | **Maintenance** | OS updates, nginx config | Zero |
-| **Skalowalność** | Ręczna | Automatyczna |
+| **Scalability** | Manual | Automatic |
 
 ## Troubleshooting
 
 ### Build failed
 
-Sprawdź logi w Cloudflare Dashboard → Deployments → wybierz deploy → View logs
+Check logs in Cloudflare Dashboard → Deployments → select deploy → View logs
 
-### Stara wersja się wyświetla
+### Old version is displayed
 
-1. Sprawdź czy deploy się zakończył (Dashboard → Deployments)
-2. Hard refresh w przeglądarce (Cmd+Shift+R)
-3. Sprawdź czy nie ma cache w Service Worker (DevTools → Application → Service Workers → Unregister)
+1. Check if deploy completed (Dashboard → Deployments)
+2. Hard refresh in browser (Cmd+Shift+R)
+3. Check for Service Worker cache (DevTools → Application → Service Workers → Unregister)
 
-### Custom domain nie działa
+### Custom domain doesn't work
 
-1. Sprawdź CNAME w Route53 (czy wskazuje na prawidłowy `*.pages.dev`)
-2. Sprawdź status domeny w Cloudflare Pages → Custom domains
-3. Poczekaj do 5 minut na propagację DNS
-4. Sprawdź za pomocą: `dig app.yourdomain.com`
+1. Check CNAME in Route53 (does it point to correct `*.pages.dev`)
+2. Check domain status in Cloudflare Pages → Custom domains
+3. Wait up to 5 minutes for DNS propagation
+4. Verify with: `dig app.yourdomain.com`

@@ -175,6 +175,8 @@ wrangler login
 ./deployment/cloudflare_pages/deploy.sh
 ```
 
+For detailed deployment setup (Cloudflare Pages, custom domains, troubleshooting), see [deployment/cloudflare_pages/README.md](deployment/cloudflare_pages/README.md).
+
 ---
 
 ## Tech Stack
