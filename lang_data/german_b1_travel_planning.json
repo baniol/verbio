@@ -4,129 +4,129 @@
     "name": "German B1 - Travel: Planning & Reservations",
     "language": "de",
     "speechLang": "de-DE",
-    "sourceLanguage": "en",
-    "sourceSpeechLang": "en-US"
+    "sourceLanguage": "pl",
+    "sourceSpeechLang": "pl-PL"
   },
   "phrases": [
     {
       "id": 1,
-      "prompt": "I would like to book a double room",
-      "answer": "Ich möchte ein Doppelzimmer buchen",
-      "accepted": ["ich möchte ein doppelzimmer buchen", "ich würde gerne ein doppelzimmer buchen", "ich möchte ein doppelzimmer reservieren"]
+      "prompt": "Chciałbym zarezerwować pokój dwuosobowy",
+      "answer": "Ich möchte ein Doppelzimmer reservieren",
+      "accepted": ["ich möchte ein doppelzimmer reservieren", "ich würde gerne ein doppelzimmer reservieren"]
     },
     {
       "id": 2,
-      "prompt": "Could you help me with the reservation?",
+      "prompt": "Czy mógłby Pan mi pomóc z rezerwacją?",
       "answer": "Könnten Sie mir bei der Reservierung helfen?",
       "accepted": ["könnten sie mir bei der reservierung helfen", "können sie mir bei der reservierung helfen"]
     },
     {
       "id": 3,
-      "prompt": "We will arrive on Friday evening",
-      "answer": "Wir werden am Freitagabend ankommen",
-      "accepted": ["wir werden am freitagabend ankommen", "wir kommen am freitagabend an", "wir werden freitagabend ankommen"]
+      "prompt": "Będziemy potrzebować pokoju na trzy noce",
+      "answer": "Wir werden ein Zimmer für drei Nächte brauchen",
+      "accepted": ["wir werden ein zimmer für drei nächte brauchen", "wir brauchen ein zimmer für drei nächte"]
     },
     {
       "id": 4,
-      "prompt": "How much does a single room cost per night?",
-      "answer": "Wie viel kostet ein Einzelzimmer pro Nacht?",
-      "accepted": ["wie viel kostet ein einzelzimmer pro nacht", "was kostet ein einzelzimmer pro nacht"]
+      "prompt": "Jeśli będzie wolny pokój, chętnie go wezmę",
+      "answer": "Wenn ein Zimmer frei ist, nehme ich es gerne",
+      "accepted": ["wenn ein zimmer frei ist nehme ich es gerne", "wenn ein zimmer frei ist würde ich es gerne nehmen"]
     },
     {
       "id": 5,
-      "prompt": "Is breakfast included in the price?",
-      "answer": "Ist das Frühstück im Preis inbegriffen?",
-      "accepted": ["ist das frühstück im preis inbegriffen", "ist frühstück inklusive", "ist das frühstück im preis enthalten"]
+      "prompt": "Chciałbym anulować moją rezerwację",
+      "answer": "Ich möchte meine Reservierung stornieren",
+      "accepted": ["ich möchte meine reservierung stornieren", "ich würde gerne meine reservierung stornieren"]
     },
     {
       "id": 6,
-      "prompt": "I would like to cancel my reservation",
-      "answer": "Ich möchte meine Reservierung stornieren",
-      "accepted": ["ich möchte meine reservierung stornieren", "ich würde gerne meine reservierung stornieren", "ich möchte meine buchung stornieren"]
+      "prompt": "Czy mógłbym zmienić datę przyjazdu?",
+      "answer": "Könnte ich das Anreisedatum ändern?",
+      "accepted": ["könnte ich das anreisedatum ändern", "kann ich das anreisedatum ändern"]
     },
     {
       "id": 7,
-      "prompt": "We will stay for three nights",
-      "answer": "Wir werden drei Nächte bleiben",
-      "accepted": ["wir werden drei nächte bleiben", "wir bleiben drei nächte", "wir werden für drei nächte bleiben"]
+      "prompt": "Przyjedziemy w piątek wieczorem",
+      "answer": "Wir werden am Freitagabend ankommen",
+      "accepted": ["wir werden am freitagabend ankommen", "wir kommen am freitagabend an"]
     },
     {
       "id": 8,
-      "prompt": "If the weather is nice, we will go hiking",
-      "answer": "Wenn das Wetter schön ist, werden wir wandern gehen",
-      "accepted": ["wenn das wetter schön ist, werden wir wandern gehen", "wenn das wetter schön ist werden wir wandern gehen", "wenn das wetter schön ist, gehen wir wandern"]
+      "prompt": "Czy śniadanie jest wliczone w cenę?",
+      "answer": "Ist das Frühstück im Preis inbegriffen?",
+      "accepted": ["ist das frühstück im preis inbegriffen", "ist frühstück im preis inbegriffen", "ist das frühstück inklusive"]
     },
     {
       "id": 9,
-      "prompt": "Could I get a room with a sea view?",
-      "answer": "Könnte ich ein Zimmer mit Meerblick bekommen?",
-      "accepted": ["könnte ich ein zimmer mit meerblick bekommen", "kann ich ein zimmer mit meerblick bekommen", "könnte ich ein zimmer mit blick aufs meer bekommen"]
+      "prompt": "Chciałbym pokój z widokiem na morze",
+      "answer": "Ich möchte ein Zimmer mit Meerblick",
+      "accepted": ["ich möchte ein zimmer mit meerblick", "ich würde gerne ein zimmer mit meerblick haben"]
     },
     {
       "id": 10,
-      "prompt": "When do I have to check out?",
-      "answer": "Wann muss ich auschecken?",
-      "accepted": ["wann muss ich auschecken", "bis wann muss ich auschecken", "um wie viel uhr muss ich auschecken"]
+      "prompt": "Jeśli cena będzie za wysoka, poszukam innego hotelu",
+      "answer": "Wenn der Preis zu hoch ist, suche ich ein anderes Hotel",
+      "accepted": ["wenn der preis zu hoch ist suche ich ein anderes hotel", "wenn der preis zu hoch ist werde ich ein anderes hotel suchen"]
     },
     {
       "id": 11,
-      "prompt": "I would like to change the booking date",
-      "answer": "Ich möchte das Buchungsdatum ändern",
-      "accepted": ["ich möchte das buchungsdatum ändern", "ich würde gerne das buchungsdatum ändern", "ich möchte das datum der buchung ändern"]
+      "prompt": "Czy mogłaby Pani wysłać mi potwierdzenie mailem?",
+      "answer": "Könnten Sie mir die Bestätigung per E-Mail schicken?",
+      "accepted": ["könnten sie mir die bestätigung per e-mail schicken", "können sie mir die bestätigung per email schicken"]
     },
     {
       "id": 12,
-      "prompt": "If there is a free room, I will take it",
-      "answer": "Wenn ein Zimmer frei ist, nehme ich es",
-      "accepted": ["wenn ein zimmer frei ist, nehme ich es", "wenn ein zimmer frei ist nehme ich es", "falls ein zimmer frei ist, nehme ich es"]
+      "prompt": "Planujemy zostać do niedzieli",
+      "answer": "Wir planen, bis Sonntag zu bleiben",
+      "accepted": ["wir planen bis sonntag zu bleiben", "wir werden bis sonntag bleiben"]
     },
     {
       "id": 13,
-      "prompt": "Can I pay by card?",
-      "answer": "Kann ich mit Karte bezahlen?",
-      "accepted": ["kann ich mit karte bezahlen", "kann ich mit karte zahlen", "könnte ich mit karte bezahlen"]
+      "prompt": "Czy jest możliwy późny wymeldowanie?",
+      "answer": "Ist ein später Check-out möglich?",
+      "accepted": ["ist ein später check-out möglich", "ist spätes auschecken möglich", "ist ein spätes auschecken möglich"]
     },
     {
       "id": 14,
-      "prompt": "We will fly to Italy next week",
-      "answer": "Wir werden nächste Woche nach Italien fliegen",
-      "accepted": ["wir werden nächste woche nach italien fliegen", "nächste woche werden wir nach italien fliegen", "wir fliegen nächste woche nach italien"]
+      "prompt": "Chciałbym zarezerwować stolik na dwoje na godzinę 19",
+      "answer": "Ich möchte einen Tisch für zwei Personen um 19 Uhr reservieren",
+      "accepted": ["ich möchte einen tisch für zwei personen um 19 uhr reservieren", "ich würde gerne einen tisch für zwei um 19 uhr reservieren"]
     },
     {
       "id": 15,
-      "prompt": "I would like a quiet room",
-      "answer": "Ich hätte gerne ein ruhiges Zimmer",
-      "accepted": ["ich hätte gerne ein ruhiges zimmer", "ich möchte ein ruhiges zimmer", "ich würde gerne ein ruhiges zimmer haben"]
+      "prompt": "Jeśli będzie padać, zostaniemy w hotelu",
+      "answer": "Wenn es regnet, bleiben wir im Hotel",
+      "accepted": ["wenn es regnet bleiben wir im hotel", "wenn es regnen wird bleiben wir im hotel"]
     },
     {
       "id": 16,
-      "prompt": "Is there a parking space available?",
-      "answer": "Gibt es einen Parkplatz?",
-      "accepted": ["gibt es einen parkplatz", "ist ein parkplatz verfügbar", "haben sie einen parkplatz"]
+      "prompt": "Czy mógłbym prosić o pokój dla niepalących?",
+      "answer": "Könnte ich ein Nichtraucherzimmer bekommen?",
+      "accepted": ["könnte ich ein nichtraucherzimmer bekommen", "kann ich ein nichtraucherzimmer bekommen", "ich möchte ein nichtraucherzimmer"]
     },
     {
       "id": 17,
-      "prompt": "Could you send me a confirmation by email?",
-      "answer": "Könnten Sie mir eine Bestätigung per E-Mail schicken?",
-      "accepted": ["könnten sie mir eine bestätigung per e-mail schicken", "können sie mir eine bestätigung per e-mail schicken", "könnten sie mir eine bestätigung per email senden"]
+      "prompt": "Będziemy potrzebować transferu z lotniska",
+      "answer": "Wir werden einen Flughafentransfer brauchen",
+      "accepted": ["wir werden einen flughafentransfer brauchen", "wir brauchen einen transfer vom flughafen"]
     },
     {
       "id": 18,
-      "prompt": "If the flight is delayed, I will call you",
-      "answer": "Wenn der Flug Verspätung hat, werde ich Sie anrufen",
-      "accepted": ["wenn der flug verspätung hat, werde ich sie anrufen", "wenn der flug verspätung hat werde ich sie anrufen", "falls der flug verspätung hat, rufe ich sie an"]
+      "prompt": "Chciałabym dowiedzieć się o dostępnych wycieczkach",
+      "answer": "Ich möchte mich über verfügbare Ausflüge informieren",
+      "accepted": ["ich möchte mich über verfügbare ausflüge informieren", "ich würde gerne etwas über die verfügbaren ausflüge erfahren"]
     },
     {
       "id": 19,
-      "prompt": "Do you have any rooms available for this weekend?",
-      "answer": "Haben Sie Zimmer für dieses Wochenende frei?",
-      "accepted": ["haben sie zimmer für dieses wochenende frei", "sind zimmer für dieses wochenende frei", "gibt es freie zimmer für dieses wochenende"]
+      "prompt": "Jeśli hotel będzie pełny, czy możecie polecić inny?",
+      "answer": "Wenn das Hotel voll ist, können Sie ein anderes empfehlen?",
+      "accepted": ["wenn das hotel voll ist können sie ein anderes empfehlen", "wenn das hotel ausgebucht ist können sie mir ein anderes empfehlen"]
     },
     {
       "id": 20,
-      "prompt": "I would like to extend my stay by two days",
-      "answer": "Ich möchte meinen Aufenthalt um zwei Tage verlängern",
-      "accepted": ["ich möchte meinen aufenthalt um zwei tage verlängern", "ich würde gerne meinen aufenthalt um zwei tage verlängern"]
+      "prompt": "Czy mógłby Pan sprawdzić moją rezerwację?",
+      "answer": "Könnten Sie meine Reservierung überprüfen?",
+      "accepted": ["könnten sie meine reservierung überprüfen", "können sie meine reservierung prüfen"]
     }
   ]
 }

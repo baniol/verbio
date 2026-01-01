@@ -1,132 +1,132 @@
 {
   "metadata": {
     "id": "german_b1_travel_directions",
-    "name": "German B1 - Travel: Directions & Information",
+    "name": "German B1 - Travel: Asking Directions",
     "language": "de",
     "speechLang": "de-DE",
-    "sourceLanguage": "en",
-    "sourceSpeechLang": "en-US"
+    "sourceLanguage": "pl",
+    "sourceSpeechLang": "pl-PL"
   },
   "phrases": [
     {
       "id": 1,
-      "prompt": "Excuse me, how do I get to the train station?",
-      "answer": "Entschuldigung, wie komme ich zum Bahnhof?",
-      "accepted": ["entschuldigung, wie komme ich zum bahnhof", "entschuldigung wie komme ich zum bahnhof", "wie komme ich zum bahnhof"]
+      "prompt": "Przepraszam, czy mógłby mi Pan powiedzieć, jak dojść do dworca?",
+      "answer": "Entschuldigung, könnten Sie mir sagen, wie ich zum Bahnhof komme?",
+      "accepted": ["entschuldigung könnten sie mir sagen wie ich zum bahnhof komme", "entschuldigung können sie mir sagen wie ich zum bahnhof komme"]
     },
     {
       "id": 2,
-      "prompt": "Could you tell me where the tourist information is?",
-      "answer": "Könnten Sie mir sagen, wo die Touristeninformation ist?",
-      "accepted": ["könnten sie mir sagen, wo die touristeninformation ist", "könnten sie mir sagen wo die touristeninformation ist", "können sie mir sagen, wo die touristeninformation ist"]
+      "prompt": "Chciałbym wiedzieć, gdzie jest najbliższy przystanek autobusowy",
+      "answer": "Ich möchte wissen, wo die nächste Bushaltestelle ist",
+      "accepted": ["ich möchte wissen wo die nächste bushaltestelle ist", "ich würde gerne wissen wo die nächste bushaltestelle ist"]
     },
     {
       "id": 3,
-      "prompt": "Go straight ahead and then turn left",
-      "answer": "Gehen Sie geradeaus und dann links",
-      "accepted": ["gehen sie geradeaus und dann links", "gehen sie geradeaus und biegen sie dann links ab", "geradeaus und dann links"]
+      "prompt": "Jeśli pójdę prosto, dojdę do centrum?",
+      "answer": "Wenn ich geradeaus gehe, komme ich ins Zentrum?",
+      "accepted": ["wenn ich geradeaus gehe komme ich ins zentrum", "komme ich ins zentrum wenn ich geradeaus gehe"]
     },
     {
       "id": 4,
-      "prompt": "Is it far from here?",
-      "answer": "Ist es weit von hier?",
-      "accepted": ["ist es weit von hier", "ist das weit von hier", "ist es weit entfernt"]
+      "prompt": "Czy mógłby Pan pokazać mi to na mapie?",
+      "answer": "Könnten Sie mir das auf der Karte zeigen?",
+      "accepted": ["könnten sie mir das auf der karte zeigen", "können sie mir das auf der karte zeigen"]
     },
     {
       "id": 5,
-      "prompt": "If you go straight, you will see the museum on your right",
-      "answer": "Wenn Sie geradeaus gehen, sehen Sie das Museum auf der rechten Seite",
-      "accepted": ["wenn sie geradeaus gehen, sehen Sie das museum auf der rechten seite", "wenn sie geradeaus gehen sehen sie das museum auf der rechten seite", "wenn sie geradeaus gehen, werden sie das museum rechts sehen"]
+      "prompt": "Ile czasu zajmie dojście pieszo?",
+      "answer": "Wie lange wird es zu Fuß dauern?",
+      "accepted": ["wie lange wird es zu fuß dauern", "wie lange dauert es zu fuß"]
     },
     {
       "id": 6,
-      "prompt": "How long does it take on foot?",
-      "answer": "Wie lange dauert es zu Fuß?",
-      "accepted": ["wie lange dauert es zu fuß", "wie lange braucht man zu fuß", "wie weit ist es zu fuß"]
+      "prompt": "Chciałbym dojść do muzeum bez korzystania z komunikacji miejskiej",
+      "answer": "Ich möchte zum Museum kommen, ohne öffentliche Verkehrsmittel zu benutzen",
+      "accepted": ["ich möchte zum museum kommen ohne öffentliche verkehrsmittel zu benutzen", "ich würde gerne zum museum zu fuß gehen"]
     },
     {
       "id": 7,
-      "prompt": "It is about ten minutes from here",
-      "answer": "Es ist ungefähr zehn Minuten von hier",
-      "accepted": ["es ist ungefähr zehn minuten von hier", "es sind etwa zehn minuten von hier", "es dauert ungefähr zehn minuten"]
+      "prompt": "Jeśli skręcę w lewo, gdzie wyjdę?",
+      "answer": "Wenn ich links abbiege, wo komme ich dann hin?",
+      "accepted": ["wenn ich links abbiege wo komme ich dann hin", "wenn ich nach links gehe wo komme ich hin"]
     },
     {
       "id": 8,
-      "prompt": "Could you show me on the map?",
-      "answer": "Könnten Sie es mir auf der Karte zeigen?",
-      "accepted": ["könnten sie es mir auf der karte zeigen", "können sie es mir auf der karte zeigen", "könnten sie mir das auf der karte zeigen"]
+      "prompt": "Czy ta droga prowadzi do plaży?",
+      "answer": "Führt dieser Weg zum Strand?",
+      "accepted": ["führt dieser weg zum strand", "geht dieser weg zum strand"]
     },
     {
       "id": 9,
-      "prompt": "I am looking for the nearest pharmacy",
-      "answer": "Ich suche die nächste Apotheke",
-      "accepted": ["ich suche die nächste apotheke", "ich suche nach der nächsten apotheke", "wo ist die nächste apotheke"]
+      "prompt": "Czy mógłbym prosić o wskazówki do najbliższej apteki?",
+      "answer": "Könnte ich Sie um den Weg zur nächsten Apotheke bitten?",
+      "accepted": ["könnte ich sie um den weg zur nächsten apotheke bitten", "könnten sie mir den weg zur nächsten apotheke zeigen"]
     },
     {
       "id": 10,
-      "prompt": "Turn right at the traffic lights",
-      "answer": "Biegen Sie an der Ampel rechts ab",
-      "accepted": ["biegen sie an der ampel rechts ab", "an der ampel rechts abbiegen", "bei der ampel rechts abbiegen"]
+      "prompt": "Będę szedł wzdłuż rzeki",
+      "answer": "Ich werde am Fluss entlanggehen",
+      "accepted": ["ich werde am fluss entlanggehen", "ich gehe am fluss entlang"]
     },
     {
       "id": 11,
-      "prompt": "Where can I find a supermarket?",
-      "answer": "Wo finde ich einen Supermarkt?",
-      "accepted": ["wo finde ich einen supermarkt", "wo ist ein supermarkt", "wo gibt es hier einen supermarkt"]
+      "prompt": "Chciałabym znaleźć dobre miejsce na obiad w okolicy",
+      "answer": "Ich möchte ein gutes Restaurant in der Nähe finden",
+      "accepted": ["ich möchte ein gutes restaurant in der nähe finden", "ich würde gerne ein gutes restaurant in der nähe finden"]
     },
     {
       "id": 12,
-      "prompt": "Cross the bridge and then go left",
-      "answer": "Überqueren Sie die Brücke und gehen Sie dann links",
-      "accepted": ["überqueren sie die brücke und gehen sie dann links", "gehen sie über die brücke und dann links", "überqueren sie die brücke und biegen sie dann links ab"]
+      "prompt": "Jeśli to daleko, wezmę taksówkę",
+      "answer": "Wenn es weit ist, nehme ich ein Taxi",
+      "accepted": ["wenn es weit ist nehme ich ein taxi", "wenn es weit ist werde ich ein taxi nehmen"]
     },
     {
       "id": 13,
-      "prompt": "The cathedral is in the city center",
-      "answer": "Der Dom ist im Stadtzentrum",
-      "accepted": ["der dom ist im stadtzentrum", "der dom befindet sich im stadtzentrum", "die kathedrale ist im stadtzentrum"]
+      "prompt": "Czy mógłby Pan powtórzyć? Nie zrozumiałem",
+      "answer": "Könnten Sie das wiederholen? Ich habe es nicht verstanden",
+      "accepted": ["könnten sie das wiederholen ich habe es nicht verstanden", "können sie das bitte wiederholen"]
     },
     {
       "id": 14,
-      "prompt": "If you take the bus, you will arrive faster",
-      "answer": "Wenn Sie den Bus nehmen, kommen Sie schneller an",
-      "accepted": ["wenn sie den bus nehmen, kommen sie schneller an", "wenn sie den bus nehmen kommen sie schneller an", "wenn sie den bus nehmen, werden sie schneller ankommen"]
+      "prompt": "Proszę iść prosto, a potem skręcić w prawo",
+      "answer": "Gehen Sie geradeaus und biegen Sie dann rechts ab",
+      "accepted": ["gehen sie geradeaus und biegen sie dann rechts ab", "gehen sie geradeaus und dann rechts"]
     },
     {
       "id": 15,
-      "prompt": "I would like a city map please",
-      "answer": "Ich hätte gerne einen Stadtplan bitte",
-      "accepted": ["ich hätte gerne einen stadtplan bitte", "ich möchte einen stadtplan bitte", "einen stadtplan bitte"]
+      "prompt": "Chciałbym wiedzieć, czy jest tu w pobliżu bankomat",
+      "answer": "Ich möchte wissen, ob es hier in der Nähe einen Geldautomaten gibt",
+      "accepted": ["ich möchte wissen ob es hier in der nähe einen geldautomaten gibt", "gibt es hier in der nähe einen geldautomaten"]
     },
     {
       "id": 16,
-      "prompt": "What are the opening hours of the museum?",
-      "answer": "Was sind die Öffnungszeiten des Museums?",
-      "accepted": ["was sind die öffnungszeiten des museums", "wie sind die öffnungszeiten des museums", "wann hat das museum geöffnet"]
+      "prompt": "Jeśli się zgubię, zadzwonię do Ciebie",
+      "answer": "Wenn ich mich verlaufe, rufe ich dich an",
+      "accepted": ["wenn ich mich verlaufe rufe ich dich an", "wenn ich mich verirre werde ich dich anrufen"]
     },
     {
       "id": 17,
-      "prompt": "Could you recommend a good restaurant nearby?",
-      "answer": "Könnten Sie ein gutes Restaurant in der Nähe empfehlen?",
-      "accepted": ["könnten sie ein gutes restaurant in der nähe empfehlen", "können sie ein gutes restaurant in der nähe empfehlen", "könnten sie mir ein gutes restaurant in der nähe empfehlen"]
+      "prompt": "Czy to jest właściwy kierunek do ratusza?",
+      "answer": "Ist das die richtige Richtung zum Rathaus?",
+      "accepted": ["ist das die richtige richtung zum rathaus", "gehe ich richtig zum rathaus"]
     },
     {
       "id": 18,
-      "prompt": "You will see the hotel on the corner",
-      "answer": "Sie werden das Hotel an der Ecke sehen",
-      "accepted": ["sie werden das hotel an der ecke sehen", "das hotel ist an der ecke", "sie sehen das hotel an der ecke"]
+      "prompt": "Czy mógłaby Pani napisać mi adres?",
+      "answer": "Könnten Sie mir die Adresse aufschreiben?",
+      "accepted": ["könnten sie mir die adresse aufschreiben", "können sie mir bitte die adresse aufschreiben"]
     },
     {
       "id": 19,
-      "prompt": "Is there a bus stop near here?",
-      "answer": "Gibt es eine Bushaltestelle in der Nähe?",
-      "accepted": ["gibt es eine bushaltestelle in der nähe", "ist eine bushaltestelle in der nähe", "wo ist die nächste bushaltestelle"]
+      "prompt": "Będziemy jechać metrem do centrum miasta",
+      "answer": "Wir werden mit der U-Bahn ins Stadtzentrum fahren",
+      "accepted": ["wir werden mit der u-bahn ins stadtzentrum fahren", "wir fahren mit der u-bahn ins zentrum"]
     },
     {
       "id": 20,
-      "prompt": "If you need help, ask at the reception",
-      "answer": "Wenn Sie Hilfe brauchen, fragen Sie an der Rezeption",
-      "accepted": ["wenn sie hilfe brauchen, fragen sie an der rezeption", "wenn sie hilfe brauchen fragen sie an der rezeption", "falls sie hilfe brauchen, fragen sie an der rezeption"]
+      "prompt": "Chciałbym kupić mapę miasta",
+      "answer": "Ich möchte einen Stadtplan kaufen",
+      "accepted": ["ich möchte einen stadtplan kaufen", "ich würde gerne einen stadtplan kaufen", "ich möchte eine stadtkarte kaufen"]
     }
   ]
 }
