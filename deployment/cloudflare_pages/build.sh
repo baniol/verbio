@@ -36,6 +36,10 @@ echo "==> Generated sets.js with $SET_COUNT set(s)"
 
 # Generate version.js from latest git tag
 echo "==> Generating version.js from git tag..."
+
+# Fetch tags (Cloudflare Pages does shallow clone without tags)
+git fetch --tags --unshallow 2>/dev/null || git fetch --tags 2>/dev/null || true
+
 VERSION_JS="$PROJECT_ROOT/frontend/js/version.js"
 VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
 echo "// Auto-generated from git tag - do not edit manually" > "$VERSION_JS"
