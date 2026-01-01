@@ -1,0 +1,132 @@
+{
+  "metadata": {
+    "id": "german_b1_travel_tickets",
+    "name": "German B1 - Travel: Tickets & Schedules",
+    "language": "de",
+    "speechLang": "de-DE",
+    "sourceLanguage": "en",
+    "sourceSpeechLang": "en-US"
+  },
+  "phrases": [
+    {
+      "id": 1,
+      "prompt": "I would like to buy a ticket to Berlin",
+      "answer": "Ich möchte eine Fahrkarte nach Berlin kaufen",
+      "accepted": ["ich möchte eine fahrkarte nach berlin kaufen", "ich würde gerne eine fahrkarte nach berlin kaufen", "ich hätte gerne eine fahrkarte nach berlin"]
+    },
+    {
+      "id": 2,
+      "prompt": "When does the next train leave?",
+      "answer": "Wann fährt der nächste Zug ab?",
+      "accepted": ["wann fährt der nächste zug ab", "wann fährt der nächste zug", "wann geht der nächste zug"]
+    },
+    {
+      "id": 3,
+      "prompt": "I would like a return ticket please",
+      "answer": "Ich hätte gerne eine Hin- und Rückfahrkarte bitte",
+      "accepted": ["ich hätte gerne eine hin- und rückfahrkarte bitte", "ich möchte eine hin- und rückfahrkarte bitte", "eine hin- und rückfahrkarte bitte"]
+    },
+    {
+      "id": 4,
+      "prompt": "A one-way ticket please",
+      "answer": "Eine einfache Fahrkarte bitte",
+      "accepted": ["eine einfache fahrkarte bitte", "eine einzelfahrkarte bitte", "ein einzelticket bitte"]
+    },
+    {
+      "id": 5,
+      "prompt": "From which platform does the train depart?",
+      "answer": "Von welchem Gleis fährt der Zug ab?",
+      "accepted": ["von welchem gleis fährt der zug ab", "von welchem gleis fährt der zug", "an welchem gleis fährt der zug ab"]
+    },
+    {
+      "id": 6,
+      "prompt": "If the train is full, I will take the next one",
+      "answer": "Wenn der Zug voll ist, nehme ich den nächsten",
+      "accepted": ["wenn der zug voll ist, nehme ich den nächsten", "wenn der zug voll ist nehme ich den nächsten", "falls der zug voll ist, nehme ich den nächsten"]
+    },
+    {
+      "id": 7,
+      "prompt": "Do I need to change trains?",
+      "answer": "Muss ich umsteigen?",
+      "accepted": ["muss ich umsteigen", "muss man umsteigen", "muss ich den zug wechseln"]
+    },
+    {
+      "id": 8,
+      "prompt": "The train will arrive at three fifteen",
+      "answer": "Der Zug wird um fünfzehn Uhr fünfzehn ankommen",
+      "accepted": ["der zug wird um fünfzehn uhr fünfzehn ankommen", "der zug kommt um fünfzehn uhr fünfzehn an", "der zug wird um 15:15 ankommen"]
+    },
+    {
+      "id": 9,
+      "prompt": "Could you tell me where I can buy tickets?",
+      "answer": "Könnten Sie mir sagen, wo ich Fahrkarten kaufen kann?",
+      "accepted": ["könnten sie mir sagen, wo ich fahrkarten kaufen kann", "könnten sie mir sagen wo ich fahrkarten kaufen kann", "können sie mir sagen, wo ich tickets kaufen kann"]
+    },
+    {
+      "id": 10,
+      "prompt": "Is there a discount for students?",
+      "answer": "Gibt es eine Ermäßigung für Studenten?",
+      "accepted": ["gibt es eine ermäßigung für studenten", "gibt es einen studentenrabatt", "gibt es rabatt für studenten"]
+    },
+    {
+      "id": 11,
+      "prompt": "I would like to reserve a seat",
+      "answer": "Ich möchte einen Platz reservieren",
+      "accepted": ["ich möchte einen platz reservieren", "ich würde gerne einen platz reservieren", "ich hätte gerne eine platzreservierung"]
+    },
+    {
+      "id": 12,
+      "prompt": "How long does the journey take?",
+      "answer": "Wie lange dauert die Fahrt?",
+      "accepted": ["wie lange dauert die fahrt", "wie lange dauert die reise", "wie lange braucht man"]
+    },
+    {
+      "id": 13,
+      "prompt": "The bus leaves every twenty minutes",
+      "answer": "Der Bus fährt alle zwanzig Minuten",
+      "accepted": ["der bus fährt alle zwanzig minuten", "der bus kommt alle zwanzig minuten", "der bus fährt alle 20 minuten"]
+    },
+    {
+      "id": 14,
+      "prompt": "If I miss the train, when will the next one be?",
+      "answer": "Wenn ich den Zug verpasse, wann fährt der nächste?",
+      "accepted": ["wenn ich den zug verpasse, wann fährt der nächste", "wenn ich den zug verpasse wann fährt der nächste", "falls ich den zug verpasse, wann kommt der nächste"]
+    },
+    {
+      "id": 15,
+      "prompt": "Is this seat free?",
+      "answer": "Ist dieser Platz frei?",
+      "accepted": ["ist dieser platz frei", "ist hier frei", "ist der platz frei"]
+    },
+    {
+      "id": 16,
+      "prompt": "I need a ticket for two adults and one child",
+      "answer": "Ich brauche eine Fahrkarte für zwei Erwachsene und ein Kind",
+      "accepted": ["ich brauche eine fahrkarte für zwei erwachsene und ein kind", "ich brauche tickets für zwei erwachsene und ein kind", "ich möchte fahrkarten für zwei erwachsene und ein kind"]
+    },
+    {
+      "id": 17,
+      "prompt": "Where can I validate my ticket?",
+      "answer": "Wo kann ich meine Fahrkarte entwerten?",
+      "accepted": ["wo kann ich meine fahrkarte entwerten", "wo kann ich mein ticket abstempeln", "wo muss ich meine fahrkarte entwerten"]
+    },
+    {
+      "id": 18,
+      "prompt": "The flight will depart at seven in the morning",
+      "answer": "Der Flug wird um sieben Uhr morgens abfliegen",
+      "accepted": ["der flug wird um sieben uhr morgens abfliegen", "der flug startet um sieben uhr morgens", "der flug geht um sieben uhr morgens"]
+    },
+    {
+      "id": 19,
+      "prompt": "Could I have a window seat please?",
+      "answer": "Könnte ich einen Fensterplatz haben bitte?",
+      "accepted": ["könnte ich einen fensterplatz haben bitte", "könnte ich bitte einen fensterplatz haben", "kann ich einen fensterplatz bekommen"]
+    },
+    {
+      "id": 20,
+      "prompt": "If I book online, will it be cheaper?",
+      "answer": "Wenn ich online buche, wird es billiger sein?",
+      "accepted": ["wenn ich online buche, wird es billiger sein", "wenn ich online buche wird es billiger sein", "ist es billiger, wenn ich online buche"]
+    }
+  ]
+}

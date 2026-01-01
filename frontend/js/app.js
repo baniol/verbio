@@ -1,0 +1,989 @@
+/**
+ * Language Learning App
+ * Frontend-only with multiple sets support
+ */
+
+(function () {
+  "use strict";
+
+  // Configuration constants
+  const CONFIG = {
+    AUTO_ADVANCE_DELAY: 2000,
+    AUTO_LISTEN_DELAY: 300,
+    NEW_PHRASE_PRIORITY: 1000,
+    DEBOUNCE_DELAY: 300,
+  };
+
+  // UI Helper - toggle visibility
+  const UI = {
+    show: (el) => el?.classList.remove("hidden"),
+    hide: (el) => el?.classList.add("hidden"),
+    toggle: (el, visible) => el?.classList.toggle("hidden", !visible),
+  };
+
+  // Storage Helper - unified localStorage access
+  const Storage = {
+    get: (key, defaultValue = null) => {
+      try {
+        const value = localStorage.getItem(key);
+        if (value === null) return defaultValue;
+        // Try to parse JSON, fallback to raw value
+        try {
+          return JSON.parse(value);
+        } catch {
+          return value;
+        }
+      } catch {
+        return defaultValue;
+      }
+    },
+    set: (key, value) => {
+      try {
+        const toStore =
+          typeof value === "string" ? value : JSON.stringify(value);
+        localStorage.setItem(key, toStore);
+        return true;
+      } catch (e) {
+        console.error("Storage error:", e);
+        return false;
+      }
+    },
+    remove: (key) => {
+      try {
+        localStorage.removeItem(key);
+        return true;
+      } catch {
+        return false;
+      }
+    },
+  };
+
+  // Debounce helper
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+
+  // LocalStorage keys
+  const STORAGE_KEYS = {
+    lastSet: "langlearn_last_set",
+    speechEnabled: "langlearn_speech_enabled",
+    manualNext: "langlearn_manual_next",
+    autoListen: "langlearn_auto_listen",
+    devMode: "langlearn_dev_mode",
+    theme: "langlearn_theme",
+    requiredStreak: "langlearn_required_streak",
+    progress: (setId) => `langlearn_progress_${setId}`,
+    notes: "langlearn_notes",
+  };
+
+  // State
+  let currentSet = null;
+  let currentPhrase = null;
+  let speechEnabled = true;
+  let manualNext = false;
+  let autoListen = false;
+  let devMode = false;
+  let theme = "system"; // "light", "dark", or "system"
+  let requiredStreak = 2; // how many correct answers in a row to mark as learned
+  let recognition = null;
+  let isListening = false; // Flag to prevent multiple recognition starts
+
+  // Cached DOM Elements (populated on init)
+  let el = {};
+
+  function cacheElements() {
+    el = {
+      languageSelect: document.getElementById("language-select"),
+      loading: document.getElementById("loading"),
+      allLearned: document.getElementById("all-learned"),
+      flashcard: document.getElementById("flashcard"),
+      prompt: document.getElementById("prompt"),
+      answer: document.getElementById("answer"),
+      speechMode: document.getElementById("speech-mode"),
+      showAnswerMode: document.getElementById("show-answer-mode"),
+      answerSection: document.getElementById("answer-section"),
+      reviewButtons: document.getElementById("review-buttons"),
+      resultFeedback: document.getElementById("result-feedback"),
+      resultIcon: document.getElementById("result-icon"),
+      resultText: document.getElementById("result-text"),
+      transcript: document.getElementById("transcript"),
+      micButton: document.getElementById("mic-button"),
+      progressBar: document.getElementById("progress-bar"),
+      progressText: document.getElementById("progress-text"),
+      speechToggle: document.getElementById("speech-toggle"),
+      manualNextToggle: document.getElementById("manual-next-toggle"),
+      autoListenToggle: document.getElementById("auto-listen-toggle"),
+      devModeToggle: document.getElementById("dev-mode-toggle"),
+      devTools: document.getElementById("dev-tools"),
+      cacheStatus: document.getElementById("cache-status"),
+      requiredStreakSelect: document.getElementById("required-streak-select"),
+      themeToggle: document.getElementById("theme-toggle"),
+      themeIcon: document.getElementById("theme-icon"),
+      themeLabel: document.getElementById("theme-label"),
+      resetModal: document.getElementById("reset-modal"),
+      resetModalTitle: document.getElementById("reset-modal-title"),
+      resetModalText: document.getElementById("reset-modal-text"),
+      noteModal: document.getElementById("note-modal"),
+      noteTextarea: document.getElementById("note-textarea"),
+      notePhraseInfo: document.getElementById("note-phrase-info"),
+      noteIconEmpty: document.getElementById("note-icon-empty"),
+      noteIconFilled: document.getElementById("note-icon-filled"),
+      setMenu: document.getElementById("set-menu"),
+      setSelect: document.getElementById("set-select"),
+      currentSetName: document.getElementById("current-set-name"),
+      acceptedVariants: document.getElementById("accepted-variants"),
+      userSaid: document.getElementById("user-said"),
+      nextButton: document.getElementById("next-button"),
+      // Buttons for event binding
+      resetButton: document.getElementById("reset-button"),
+      menuButton: document.getElementById("menu-button"),
+      menuCloseButton: document.getElementById("menu-close-button"),
+      menuOverlay: document.getElementById("menu-overlay"),
+      menuPanel: document.getElementById("menu-panel"),
+      settingsLink: document.getElementById("settings-link"),
+      exportNotesButton: document.getElementById("export-notes-button"),
+      themeToggleMenu: document.getElementById("theme-toggle-menu"),
+      showAnswerButton: document.getElementById("show-answer-button"),
+      peekAnswerButton: document.getElementById("peek-answer-button"),
+      startOverButton: document.getElementById("start-over-button"),
+      didntKnowButton: document.getElementById("didnt-know-button"),
+      knewButton: document.getElementById("knew-button"),
+      noteButton: document.getElementById("note-button"),
+      noteCancelButton: document.getElementById("note-cancel-button"),
+      noteSaveButton: document.getElementById("note-save-button"),
+      resetCancelButton: document.getElementById("reset-cancel-button"),
+      resetConfirmButton: document.getElementById("reset-confirm-button"),
+      clearCacheButton: document.getElementById("clear-cache-button"),
+      backButton: document.getElementById("back-button"),
+    };
+  }
+
+  // Bind all event listeners (replaces inline onclick handlers)
+  function bindEventListeners() {
+    // Header buttons
+    el.resetButton?.addEventListener("click", confirmReset);
+    el.currentSetName?.addEventListener("click", toggleSetMenu);
+    el.menuButton?.addEventListener("click", toggleMenu);
+
+    // Set selection
+    el.setSelect?.addEventListener("change", changeSet);
+
+    // Menu
+    el.menuOverlay?.addEventListener("click", toggleMenu);
+    el.menuCloseButton?.addEventListener("click", toggleMenu);
+    el.settingsLink?.addEventListener("click", toggleMenu);
+    el.exportNotesButton?.addEventListener("click", exportNotes);
+    el.themeToggleMenu?.addEventListener("click", toggleTheme);
+
+    // Flashcard actions
+    el.micButton?.addEventListener("click", startListening);
+    el.showAnswerButton?.addEventListener("click", showAnswer);
+    el.peekAnswerButton?.addEventListener("click", peekAnswer);
+    el.startOverButton?.addEventListener("click", resetProgress);
+    el.didntKnowButton?.addEventListener("click", () => submitAnswer(false));
+    el.knewButton?.addEventListener("click", () => submitAnswer(true));
+
+    // Notes
+    el.noteButton?.addEventListener("click", openNoteModal);
+    el.noteCancelButton?.addEventListener("click", closeNoteModal);
+    el.noteSaveButton?.addEventListener("click", saveNote);
+
+    // Reset modal
+    el.resetCancelButton?.addEventListener("click", closeResetModal);
+    el.resetConfirmButton?.addEventListener("click", resetProgress);
+
+    // Settings
+    el.languageSelect?.addEventListener("change", changeLanguage);
+    el.speechToggle?.addEventListener("change", saveSpeechSetting);
+    el.manualNextToggle?.addEventListener("change", saveManualNextSetting);
+    el.autoListenToggle?.addEventListener("change", saveAutoListenSetting);
+    el.devModeToggle?.addEventListener("change", saveDevModeSetting);
+    el.requiredStreakSelect?.addEventListener(
+      "change",
+      saveRequiredStreakSetting,
+    );
+    el.themeToggle?.addEventListener("change", saveThemeSetting);
+    el.clearCacheButton?.addEventListener("click", clearCache);
+    el.backButton?.addEventListener("click", () => Router.back());
+  }
+
+  // Initialize
+  document.addEventListener("DOMContentLoaded", () => {
+    I18N.init();
+    initTheme();
+    cacheElements();
+    bindEventListeners();
+    loadSettings();
+    populateSetMenu();
+    loadLastSet();
+    initSpeechRecognition();
+    initRouter();
+  });
+
+  // Router integration
+  function initRouter() {
+    Router.register("/", onFlashcardView);
+    Router.register("/settings", onSettingsView);
+    Router.init();
+  }
+
+  function onFlashcardView() {
+    // Re-cache elements and refresh settings UI when returning to flashcard
+    if (currentPhrase) {
+      showPhrase(currentPhrase);
+    }
+  }
+
+  function onSettingsView() {
+    // Refresh settings toggles when entering settings view
+    refreshSettingsUI();
+  }
+
+  function refreshSettingsUI() {
+    if (el.speechToggle) el.speechToggle.checked = speechEnabled;
+    if (el.manualNextToggle) el.manualNextToggle.checked = manualNext;
+    if (el.autoListenToggle) el.autoListenToggle.checked = autoListen;
+    if (el.devModeToggle) el.devModeToggle.checked = devMode;
+    if (el.requiredStreakSelect)
+      el.requiredStreakSelect.value = requiredStreak.toString();
+    if (el.themeToggle) el.themeToggle.checked = isDarkMode();
+    if (el.languageSelect) el.languageSelect.value = I18N.currentLang;
+    updateDevToolsVisibility();
+    updateThemeUI();
+  }
+
+  // Settings
+  function loadSettings() {
+    try {
+      const savedSpeech = localStorage.getItem(STORAGE_KEYS.speechEnabled);
+      speechEnabled = savedSpeech === null ? true : savedSpeech === "true";
+
+      const savedManual = localStorage.getItem(STORAGE_KEYS.manualNext);
+      manualNext = savedManual === "true";
+
+      const savedAutoListen = localStorage.getItem(STORAGE_KEYS.autoListen);
+      autoListen = savedAutoListen === "true";
+
+      const savedDevMode = localStorage.getItem(STORAGE_KEYS.devMode);
+      devMode = savedDevMode === "true";
+
+      const savedRequiredStreak = localStorage.getItem(
+        STORAGE_KEYS.requiredStreak,
+      );
+      requiredStreak = savedRequiredStreak
+        ? parseInt(savedRequiredStreak, 10)
+        : 2;
+
+      // Apply to UI if elements exist
+      refreshSettingsUI();
+    } catch (e) {
+      console.error("Failed to load settings:", e);
+      // Use defaults
+      speechEnabled = true;
+      manualNext = false;
+      autoListen = false;
+      devMode = false;
+      requiredStreak = 2;
+    }
+  }
+
+  function saveSpeechSetting() {
+    speechEnabled = el.speechToggle.checked;
+    localStorage.setItem(STORAGE_KEYS.speechEnabled, speechEnabled);
+    if (currentPhrase) {
+      showPhrase(currentPhrase);
+    }
+  }
+
+  function saveManualNextSetting() {
+    manualNext = el.manualNextToggle.checked;
+    localStorage.setItem(STORAGE_KEYS.manualNext, manualNext);
+  }
+
+  function saveAutoListenSetting() {
+    autoListen = el.autoListenToggle.checked;
+    localStorage.setItem(STORAGE_KEYS.autoListen, autoListen);
+  }
+
+  function saveDevModeSetting() {
+    devMode = el.devModeToggle.checked;
+    localStorage.setItem(STORAGE_KEYS.devMode, devMode);
+    updateDevToolsVisibility();
+  }
+
+  function saveRequiredStreakSetting() {
+    requiredStreak = parseInt(el.requiredStreakSelect.value, 10);
+    localStorage.setItem(STORAGE_KEYS.requiredStreak, requiredStreak);
+  }
+
+  function updateDevToolsVisibility() {
+    UI.toggle(el.devTools, devMode);
+  }
+
+  function changeLanguage() {
+    const lang = el.languageSelect.value;
+    I18N.setLanguage(lang);
+  }
+
+  function clearCache() {
+    if (!navigator.serviceWorker.controller) {
+      el.cacheStatus.textContent = I18N.t("noActiveServiceWorker");
+      return;
+    }
+
+    const messageChannel = new MessageChannel();
+    messageChannel.port1.onmessage = (event) => {
+      if (event.data === "CACHE_CLEARED") {
+        el.cacheStatus.textContent = I18N.t("cacheCleared");
+      }
+    };
+
+    navigator.serviceWorker.controller.postMessage("CLEAR_CACHE", [
+      messageChannel.port2,
+    ]);
+  }
+
+  // Theme management
+  function initTheme() {
+    const savedTheme = localStorage.getItem(STORAGE_KEYS.theme);
+    theme = savedTheme || "system";
+    applyTheme();
+
+    // Listen for system theme changes
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", () => {
+        if (theme === "system") {
+          applyTheme();
+        }
+      });
+  }
+
+  function isDarkMode() {
+    if (theme === "dark") return true;
+    if (theme === "light") return false;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+
+  function applyTheme() {
+    if (isDarkMode()) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    updateThemeUI();
+  }
+
+  function updateThemeUI() {
+    const dark = isDarkMode();
+    if (el.themeToggle) el.themeToggle.checked = dark;
+    if (el.themeIcon) el.themeIcon.textContent = dark ? "☀️" : "🌙";
+    if (el.themeLabel)
+      el.themeLabel.textContent = dark
+        ? I18N.t("lightMode")
+        : I18N.t("darkMode");
+  }
+
+  function saveThemeSetting() {
+    const wantsDark = el.themeToggle.checked;
+    theme = wantsDark ? "dark" : "light";
+    localStorage.setItem(STORAGE_KEYS.theme, theme);
+    applyTheme();
+  }
+
+  function toggleTheme() {
+    const currentlyDark = isDarkMode();
+    theme = currentlyDark ? "light" : "dark";
+    localStorage.setItem(STORAGE_KEYS.theme, theme);
+    applyTheme();
+  }
+
+  // Set menu
+  function populateSetMenu() {
+    const select = el.setSelect;
+    select.innerHTML = "";
+
+    for (const [id, set] of Object.entries(SETS)) {
+      const option = document.createElement("option");
+      option.value = id;
+      option.textContent = set.metadata.name;
+      select.appendChild(option);
+    }
+  }
+
+  function toggleSetMenu() {
+    el.setMenu.classList.toggle("hidden");
+  }
+
+  function loadLastSet() {
+    const lastSetId = localStorage.getItem(STORAGE_KEYS.lastSet);
+    const setIds = Object.keys(SETS);
+
+    if (lastSetId && SETS[lastSetId]) {
+      loadSet(lastSetId);
+      return;
+    }
+
+    if (setIds.length > 0) {
+      loadSet(setIds[0]);
+    }
+  }
+
+  function changeSet() {
+    const setId = el.setSelect.value;
+    loadSet(setId);
+    toggleSetMenu();
+  }
+
+  function loadSet(setId) {
+    const baseSet = SETS[setId];
+    currentSet = { id: setId, ...baseSet };
+
+    localStorage.setItem(STORAGE_KEYS.lastSet, setId);
+    el.setSelect.value = setId;
+    el.currentSetName.textContent = currentSet.metadata.name;
+
+    // Update speech recognition language
+    if (recognition) {
+      recognition.lang = currentSet.metadata.speechLang;
+    }
+
+    loadNextPhrase();
+  }
+
+  // Progress management
+  function getProgress(setId) {
+    const id = setId || currentSet.id;
+    try {
+      const saved = localStorage.getItem(STORAGE_KEYS.progress(id));
+      if (!saved) return {};
+      const parsed = JSON.parse(saved);
+      // Check if old format (phraseId: true) - if so, start fresh
+      const firstValue = Object.values(parsed)[0];
+      if (firstValue === true || firstValue === false) {
+        return {};
+      }
+      // Migrate old progress format to include totalAttempts and successCount
+      let needsSave = false;
+      for (const phraseId of Object.keys(parsed)) {
+        const prog = parsed[phraseId];
+        if (prog && prog.totalAttempts === undefined) {
+          prog.totalAttempts =
+            (prog.correctStreak || 0) + (prog.wrongCount || 0);
+          prog.successCount = prog.correctStreak || 0;
+          needsSave = true;
+        }
+      }
+      if (needsSave) {
+        localStorage.setItem(STORAGE_KEYS.progress(id), JSON.stringify(parsed));
+      }
+      return parsed;
+    } catch (e) {
+      console.error("Failed to parse progress:", e);
+      return {};
+    }
+  }
+
+  function saveProgress(progress, setId) {
+    const id = setId || currentSet.id;
+    try {
+      localStorage.setItem(STORAGE_KEYS.progress(id), JSON.stringify(progress));
+    } catch (e) {
+      console.error("Failed to save progress:", e);
+    }
+  }
+
+  function getStats() {
+    const total = currentSet.phrases.length;
+    const progress = getProgress();
+    let learned = 0;
+
+    for (const phrase of currentSet.phrases) {
+      const prog = progress[phrase.id];
+      if (prog && prog.correctStreak >= requiredStreak) {
+        learned++;
+      }
+    }
+
+    return { total, learned, remaining: total - learned };
+  }
+
+  function getUnlearnedPhrases() {
+    const progress = getProgress();
+    return currentSet.phrases.filter((phrase) => {
+      const prog = progress[phrase.id];
+      return !prog || prog.correctStreak < requiredStreak;
+    });
+  }
+
+  // Priority algorithm for phrase selection
+  function calculatePriority(phrase, progress) {
+    const prog = progress[phrase.id];
+    if (!prog || !prog.totalAttempts) {
+      return CONFIG.NEW_PHRASE_PRIORITY; // New phrases get highest priority
+    }
+
+    const successRate = prog.successCount / prog.totalAttempts;
+    const hoursSinceLastSeen =
+      (Date.now() - (prog.lastSeen || 0)) / (1000 * 60 * 60);
+
+    // Higher priority = lower success rate + not seen recently
+    return (1 - successRate) * Math.log(hoursSinceLastSeen + 1);
+  }
+
+  function selectNextPhrase(phrases) {
+    if (phrases.length === 0) return null;
+
+    const progress = getProgress();
+
+    // Calculate priorities
+    const withPriority = phrases.map((p) => {
+      return { phrase: p, priority: calculatePriority(p, progress) };
+    });
+
+    // Weighted random - higher priority = higher chance
+    const totalPriority = withPriority.reduce(
+      (sum, item) => sum + item.priority,
+      0,
+    );
+
+    // Fallback if all priorities are 0
+    if (totalPriority === 0) {
+      return phrases[Math.floor(Math.random() * phrases.length)];
+    }
+
+    let random = Math.random() * totalPriority;
+
+    for (const item of withPriority) {
+      random -= item.priority;
+      if (random <= 0) return item.phrase;
+    }
+
+    return withPriority[0].phrase;
+  }
+
+  // Load next phrase
+  function loadNextPhrase() {
+    showLoading();
+
+    const unlearnedPhrases = getUnlearnedPhrases();
+    updateProgress(getStats());
+
+    if (unlearnedPhrases.length === 0) {
+      showAllLearned();
+    } else {
+      // Use priority-based selection
+      currentPhrase = selectNextPhrase(unlearnedPhrases);
+      showPhrase(currentPhrase);
+    }
+  }
+
+  // Show phrase
+  function showPhrase(phrase) {
+    hideAll();
+    UI.show(el.flashcard);
+    el.prompt.textContent = phrase.prompt;
+    el.answer.textContent = phrase.answer;
+    el.transcript.textContent = "";
+
+    // Show accepted variants as list
+    const variants = phrase.accepted.filter(
+      (v) => v.toLowerCase() !== phrase.answer.toLowerCase(),
+    );
+    if (variants.length > 0) {
+      el.acceptedVariants.innerHTML =
+        '<p class="text-slate-400 dark:text-slate-500 mb-1 text-left">' +
+        I18N.t("also") +
+        "</p>" +
+        '<ul class="list-disc list-inside space-y-1 text-left">' +
+        variants.map((v) => `<li>${v}</li>`).join("") +
+        "</ul>";
+    } else {
+      el.acceptedVariants.innerHTML = "";
+    }
+    el.userSaid.textContent = "";
+
+    // Reset state
+    UI.hide(el.answerSection);
+    UI.hide(el.reviewButtons);
+    UI.hide(el.resultFeedback);
+
+    // Update note icon
+    updateNoteIcon();
+
+    if (speechEnabled) {
+      UI.show(el.speechMode);
+      UI.hide(el.showAnswerMode);
+
+      // Auto-start listening if enabled
+      if (autoListen && recognition) {
+        setTimeout(() => {
+          startListening();
+        }, CONFIG.AUTO_LISTEN_DELAY);
+      }
+    } else {
+      UI.hide(el.speechMode);
+      UI.show(el.showAnswerMode);
+    }
+  }
+
+  // Speech recognition
+  function initSpeechRecognition() {
+    if (
+      !("webkitSpeechRecognition" in window) &&
+      !("SpeechRecognition" in window)
+    ) {
+      console.warn("Speech recognition not supported");
+      speechEnabled = false;
+      if (el.speechToggle) {
+        el.speechToggle.checked = false;
+        el.speechToggle.disabled = true;
+      }
+      return;
+    }
+
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+    recognition.continuous = false;
+    recognition.interimResults = true;
+
+    // Set language from current set
+    if (currentSet) {
+      recognition.lang = currentSet.metadata.speechLang;
+    }
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      el.transcript.textContent = transcript;
+
+      if (event.results[0].isFinal) {
+        validateSpeech(transcript);
+      }
+    };
+
+    recognition.onerror = (event) => {
+      console.error("Speech error:", event.error);
+      resetMicButton();
+
+      if (event.error === "no-speech") {
+        el.transcript.textContent = I18N.t("noSpeech");
+      }
+    };
+
+    recognition.onend = () => {
+      isListening = false;
+      resetMicButton();
+    };
+  }
+
+  function resetMicButton() {
+    el.micButton.textContent = "🎤";
+    el.micButton.classList.remove("mic-recording", "bg-red-500");
+    el.micButton.classList.add("mic-glow");
+  }
+
+  function startListening() {
+    if (!recognition) {
+      alert(I18N.t("speechNotAvailable"));
+      return;
+    }
+
+    // Prevent multiple starts
+    if (isListening) {
+      return;
+    }
+
+    // Ensure correct language
+    recognition.lang = currentSet.metadata.speechLang;
+
+    el.transcript.textContent = I18N.t("listening");
+    el.micButton.textContent = "🔴";
+    el.micButton.classList.remove("mic-glow");
+    el.micButton.classList.add("mic-recording", "bg-red-500");
+
+    try {
+      isListening = true;
+      recognition.start();
+    } catch (e) {
+      console.error("Failed to start recognition:", e);
+      isListening = false;
+      resetMicButton();
+    }
+  }
+
+  // Validate speech
+  function validateSpeech(transcript) {
+    const normalized = transcript.toLowerCase().trim();
+    const phrase = currentPhrase;
+
+    // Check against answer and accepted alternatives
+    const correct =
+      phrase.answer.toLowerCase() === normalized ||
+      phrase.accepted.some((a) => a.toLowerCase() === normalized);
+
+    showSpeechResult(correct, transcript);
+  }
+
+  function showSpeechResult(isCorrect, transcript) {
+    UI.hide(el.speechMode);
+    UI.show(el.answerSection);
+    UI.show(el.resultFeedback);
+
+    // Show what user said
+    el.userSaid.textContent = transcript
+      ? I18N.t("youSaid") + " " + transcript
+      : "";
+
+    if (isCorrect) {
+      el.resultIcon.textContent = "✅";
+      el.resultText.textContent = I18N.t("great");
+      el.resultText.className = "text-xl font-bold text-green-600";
+    } else {
+      el.resultIcon.textContent = "❌";
+      el.resultText.textContent = I18N.t("notThisTime");
+      el.resultText.className = "text-xl font-bold text-red-600";
+    }
+
+    if (manualNext) {
+      // Show next button
+      showNextButton(isCorrect);
+    } else {
+      // Auto-submit and move to next
+      setTimeout(() => {
+        submitAnswer(isCorrect);
+      }, CONFIG.AUTO_ADVANCE_DELAY);
+    }
+  }
+
+  function showNextButton(isCorrect) {
+    UI.show(el.nextButton);
+    el.nextButton.onclick = () => {
+      UI.hide(el.nextButton);
+      submitAnswer(isCorrect);
+    };
+  }
+
+  // Show answer (non-speech mode)
+  function showAnswer() {
+    UI.hide(el.showAnswerMode);
+    UI.hide(el.speechMode);
+    UI.show(el.answerSection);
+    UI.show(el.reviewButtons);
+  }
+
+  // Peek answer (speech mode) - shows answer and moves on without marking as learned
+  function peekAnswer() {
+    UI.hide(el.speechMode);
+    UI.show(el.answerSection);
+
+    if (manualNext) {
+      showNextButton(false);
+    } else {
+      setTimeout(() => {
+        loadNextPhrase();
+      }, CONFIG.AUTO_ADVANCE_DELAY);
+    }
+  }
+
+  // Submit answer (with debounce protection)
+  let isSubmitting = false;
+  function submitAnswer(correct) {
+    // Prevent double submissions
+    if (isSubmitting) return;
+    isSubmitting = true;
+
+    const progress = getProgress();
+    const current = progress[currentPhrase.id] || {
+      correctStreak: 0,
+      totalAttempts: 0,
+      successCount: 0,
+    };
+
+    current.totalAttempts = (current.totalAttempts || 0) + 1;
+    if (correct) {
+      current.correctStreak++;
+      current.successCount = (current.successCount || 0) + 1;
+    } else {
+      current.correctStreak = 0;
+    }
+    current.lastSeen = Date.now();
+    progress[currentPhrase.id] = current;
+    saveProgress(progress);
+
+    loadNextPhrase();
+
+    // Reset submission flag after a short delay
+    setTimeout(() => {
+      isSubmitting = false;
+    }, CONFIG.DEBOUNCE_DELAY);
+  }
+
+  // Progress bar
+  function updateProgress(stats) {
+    const percent = stats.total > 0 ? (stats.learned / stats.total) * 100 : 0;
+    el.progressBar.style.width = `${percent}%`;
+    el.progressText.textContent = `${stats.learned} / ${stats.total}`;
+  }
+
+  // UI helpers
+  function hideAll() {
+    UI.hide(el.loading);
+    UI.hide(el.allLearned);
+    UI.hide(el.flashcard);
+  }
+
+  function showLoading() {
+    hideAll();
+    UI.show(el.loading);
+  }
+
+  function showAllLearned() {
+    hideAll();
+    UI.show(el.allLearned);
+  }
+
+  // Reset
+  function confirmReset() {
+    UI.show(el.resetModal);
+  }
+
+  function closeResetModal() {
+    UI.hide(el.resetModal);
+  }
+
+  function resetProgress() {
+    closeResetModal();
+    localStorage.removeItem(STORAGE_KEYS.progress(currentSet.id));
+    loadNextPhrase();
+  }
+
+  // Menu
+  function toggleMenu() {
+    const isOpen = !el.menuOverlay.classList.contains("hidden");
+
+    if (isOpen) {
+      // Close menu
+      UI.hide(el.menuOverlay);
+      el.menuPanel.classList.add("translate-x-full");
+    } else {
+      // Open menu
+      UI.show(el.menuOverlay);
+      el.menuPanel.classList.remove("translate-x-full");
+    }
+  }
+
+  // Notes management
+  function getAllNotes() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEYS.notes);
+      return saved ? JSON.parse(saved) : {};
+    } catch (e) {
+      console.error("Failed to load notes:", e);
+      return {};
+    }
+  }
+
+  function saveAllNotes(notes) {
+    try {
+      localStorage.setItem(STORAGE_KEYS.notes, JSON.stringify(notes));
+    } catch (e) {
+      console.error("Failed to save notes:", e);
+    }
+  }
+
+  function getNoteKey(phrase) {
+    const setId = phrase._sourceSetId || currentSet.id;
+    return `${setId}__${phrase.id}`;
+  }
+
+  function getNote(phrase) {
+    const notes = getAllNotes();
+    return notes[getNoteKey(phrase)] || null;
+  }
+
+  function updateNoteIcon() {
+    if (!currentPhrase || !el.noteIconEmpty || !el.noteIconFilled) return;
+    const note = getNote(currentPhrase);
+    const hasNote = note && note.text;
+    UI.toggle(el.noteIconEmpty, !hasNote);
+    UI.toggle(el.noteIconFilled, hasNote);
+  }
+
+  function openNoteModal() {
+    if (!currentPhrase) return;
+    const note = getNote(currentPhrase);
+    el.notePhraseInfo.textContent = `${currentPhrase.prompt} → ${currentPhrase.answer}`;
+    el.noteTextarea.value = note ? note.text : "";
+    UI.show(el.noteModal);
+    el.noteTextarea.focus();
+  }
+
+  function closeNoteModal() {
+    UI.hide(el.noteModal);
+  }
+
+  function saveNote() {
+    if (!currentPhrase) return;
+    const text = el.noteTextarea.value.trim();
+    const notes = getAllNotes();
+    const key = getNoteKey(currentPhrase);
+
+    if (text) {
+      notes[key] = {
+        text: text,
+        prompt: currentPhrase.prompt,
+        answer: currentPhrase.answer,
+        setId: currentPhrase._sourceSetId || currentSet.id,
+        updatedAt: Date.now(),
+      };
+    } else {
+      delete notes[key];
+    }
+
+    saveAllNotes(notes);
+    updateNoteIcon();
+    closeNoteModal();
+  }
+
+  function exportNotes() {
+    const notes = getAllNotes();
+    const entries = Object.values(notes);
+
+    if (entries.length === 0) {
+      alert(I18N.t("noNotesToExport"));
+      return;
+    }
+
+    // Sort by update time (newest first)
+    entries.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+
+    // Format notes
+    const formatted = entries
+      .map((n) => `${n.prompt} → ${n.answer}\n${n.text}`)
+      .join("\n\n---\n\n");
+
+    // Copy to clipboard
+    navigator.clipboard
+      .writeText(formatted)
+      .then(() => {
+        alert(I18N.t("notesCopied", { count: entries.length }));
+      })
+      .catch((err) => {
+        console.error("Failed to copy:", err);
+        alert(I18N.t("failedToCopy"));
+      });
+
+    toggleMenu();
+  }
+
+  // No longer exposing functions to global scope - all handlers are bound via addEventListener
+})();

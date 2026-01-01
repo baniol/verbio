@@ -1,0 +1,45 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# Generated files
+frontend/js/sets.js
+
+# Node (if used for tooling)
+node_modules/
+npm-debug.log*
+
+# Python (if used for local server)
+__pycache__/
+*.py[cod]
+.Python
+venv/
+.env
+
+# Deployment secrets
+deployment/**/*.pem
+deployment/**/*.key
+deployment/**/secrets.*
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+lang_data_arch/

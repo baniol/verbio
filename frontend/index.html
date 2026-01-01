@@ -1,0 +1,917 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
+        <meta name="description" content="Language learning - flashcards" />
+        <meta name="theme-color" content="#0f172a" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
+        <meta name="apple-mobile-web-app-title" content="Verbio" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="96x96"
+            href="/favicon-96x96.png"
+        />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="/apple-touch-icon.png"
+        />
+        <link rel="manifest" href="/manifest.json" />
+        <title>Language Learning</title>
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        animation: {
+                            "pulse-slow":
+                                "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+                            glow: "glow 2s ease-in-out infinite alternate",
+                        },
+                        keyframes: {
+                            glow: {
+                                "0%": {
+                                    boxShadow:
+                                        "0 0 20px rgba(99, 102, 241, 0.3)",
+                                },
+                                "100%": {
+                                    boxShadow:
+                                        "0 0 30px rgba(99, 102, 241, 0.6)",
+                                },
+                            },
+                        },
+                    },
+                },
+            };
+        </script>
+
+        <style>
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            @keyframes slideUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            .fade-in {
+                animation: fadeIn 0.3s ease-out;
+            }
+            .slide-up {
+                animation: slideUp 0.4s ease-out;
+            }
+            .no-select {
+                user-select: none;
+            }
+
+            /* Glassmorphism */
+            .glass {
+                background: rgba(255, 255, 255, 0.8);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+            }
+            .dark .glass {
+                background: rgba(30, 41, 59, 0.8);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            /* Mic button glow */
+            .mic-glow {
+                box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+            }
+            .mic-glow:hover {
+                box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+            }
+            .dark .mic-glow {
+                box-shadow: 0 0 30px rgba(129, 140, 248, 0.4);
+            }
+            .dark .mic-glow:hover {
+                box-shadow: 0 0 40px rgba(129, 140, 248, 0.6);
+            }
+
+            /* Recording state */
+            .mic-recording {
+                box-shadow: 0 0 40px rgba(239, 68, 68, 0.6);
+                animation: pulse 1.5s infinite;
+            }
+
+            /* Smooth transitions */
+            * {
+                transition-property:
+                    background-color, border-color, color, fill, stroke;
+                transition-duration: 200ms;
+            }
+        </style>
+    </head>
+    <body
+        class="bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 h-[100dvh] overflow-hidden transition-colors duration-300"
+    >
+        <div class="container mx-auto px-4 py-4 max-w-lg h-full flex flex-col">
+            <!-- ========== FLASHCARD VIEW ========== -->
+            <div data-view="flashcard" class="flex-1 flex flex-col">
+                <!-- Header -->
+                <header class="mb-4 fade-in flex-shrink-0">
+                    <div class="flex items-center justify-between mb-3">
+                        <button
+                            id="reset-button"
+                            class="w-12 h-12 rounded-xl glass flex items-center justify-center text-xl hover:scale-105 active:scale-95 transition-transform text-slate-600 dark:text-slate-300"
+                            data-i18n-title="resetProgress"
+                        >
+                            <svg
+                                class="w-5 h-5"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                                />
+                            </svg>
+                        </button>
+                        <button
+                            id="current-set-name"
+                            class="text-lg font-semibold text-slate-700 dark:text-slate-200 no-select hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors px-4 py-2 rounded-xl"
+                            data-i18n="selectSet"
+                        >
+                            Select set
+                        </button>
+                        <button
+                            id="menu-button"
+                            class="w-12 h-12 rounded-xl bg-indigo-500 dark:bg-indigo-600 text-white flex items-center justify-center hover:bg-indigo-600 dark:hover:bg-indigo-500 hover:scale-105 active:scale-95 transition-all"
+                        >
+                            <svg
+                                class="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Set Selection Menu -->
+                    <div
+                        id="set-menu"
+                        class="hidden glass rounded-2xl p-4 mb-4 slide-up"
+                    >
+                        <label
+                            class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-2"
+                            data-i18n="selectSetLabel"
+                        >
+                            Select set:
+                        </label>
+                        <select
+                            id="set-select"
+                            class="w-full p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-lg text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+                        ></select>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="glass rounded-xl p-3">
+                        <div class="flex justify-between items-center mb-1.5">
+                            <span
+                                class="text-xs font-medium text-slate-600 dark:text-slate-400"
+                                data-i18n="progress"
+                                >Progress</span
+                            >
+                            <span
+                                class="text-xs font-semibold text-indigo-600 dark:text-indigo-400"
+                                id="progress-text"
+                                >0 / 0</span
+                            >
+                        </div>
+                        <div
+                            class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden"
+                        >
+                            <div
+                                id="progress-bar"
+                                class="bg-gradient-to-r from-indigo-500 to-purple-500 h-1.5 rounded-full transition-all duration-500"
+                                style="width: 0%"
+                            ></div>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Main Content -->
+                <main
+                    id="main-content"
+                    class="flex-1 flex items-center justify-center"
+                >
+                    <!-- Loading State -->
+                    <div id="loading" class="text-center">
+                        <div
+                            class="w-16 h-16 border-4 border-indigo-200 dark:border-indigo-800 border-t-indigo-500 rounded-full animate-spin mx-auto mb-4"
+                        ></div>
+                        <p
+                            class="text-slate-500 dark:text-slate-400"
+                            data-i18n="loading"
+                        >
+                            Loading...
+                        </p>
+                    </div>
+
+                    <!-- All Learned State -->
+                    <div
+                        id="all-learned"
+                        class="hidden text-center glass rounded-3xl p-8 slide-up"
+                    >
+                        <div class="text-7xl mb-6">🎉</div>
+                        <h2
+                            class="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-3"
+                            data-i18n="congratulations"
+                        >
+                            Congratulations!
+                        </h2>
+                        <p
+                            class="text-slate-600 dark:text-slate-400 mb-8"
+                            data-i18n="allLearnedMessage"
+                        >
+                            You know all phrases from this set!
+                        </p>
+                        <button
+                            id="start-over-button"
+                            class="bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-lg font-semibold py-3 px-8 rounded-xl hover:opacity-90 hover:scale-105 active:scale-95 transition-all"
+                            data-i18n="startOver"
+                        >
+                            Start over
+                        </button>
+                    </div>
+
+                    <!-- Flashcard -->
+                    <div id="flashcard" class="hidden w-full h-full">
+                        <div
+                            class="glass rounded-2xl p-6 slide-up h-full flex flex-col justify-between"
+                        >
+                            <!-- Prompt -->
+                            <div class="text-center relative">
+                                <button
+                                    id="note-button"
+                                    class="absolute top-0 right-0 w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 dark:text-slate-500 hover:text-indigo-500 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+                                    data-i18n-title="note"
+                                >
+                                    <svg
+                                        id="note-icon-empty"
+                                        class="w-5 h-5"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                        />
+                                    </svg>
+                                    <svg
+                                        id="note-icon-filled"
+                                        class="w-5 h-5 hidden text-indigo-500 dark:text-indigo-400"
+                                        fill="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                                        />
+                                    </svg>
+                                </button>
+                                <p
+                                    class="text-xs font-medium text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wide"
+                                    data-i18n="translate"
+                                >
+                                    Translate
+                                </p>
+                                <h2
+                                    id="prompt"
+                                    class="text-2xl font-bold text-slate-800 dark:text-slate-100 no-select leading-relaxed"
+                                >
+                                    -
+                                </h2>
+                            </div>
+
+                            <!-- Speech Mode -->
+                            <div
+                                id="speech-mode"
+                                class="text-center flex-1 flex flex-col justify-center"
+                            >
+                                <button
+                                    id="mic-button"
+                                    class="bg-gradient-to-br from-indigo-500 to-purple-600 text-white w-24 h-24 rounded-full text-4xl hover:scale-105 active:scale-95 transition-all mic-glow flex items-center justify-center mx-auto"
+                                >
+                                    🎤
+                                </button>
+                                <p
+                                    class="text-slate-500 dark:text-slate-400 mt-4 font-medium text-sm"
+                                    data-i18n="sayAnswer"
+                                >
+                                    Say the answer
+                                </p>
+                                <p
+                                    id="transcript"
+                                    class="text-base text-slate-700 dark:text-slate-300 mt-2 min-h-[24px] font-medium"
+                                ></p>
+                                <button
+                                    id="peek-answer-button"
+                                    class="mt-3 text-slate-400 dark:text-slate-500 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors text-sm"
+                                    data-i18n="showAnswer"
+                                >
+                                    Show answer
+                                </button>
+                            </div>
+
+                            <!-- Show Answer Mode -->
+                            <div
+                                id="show-answer-mode"
+                                class="hidden text-center flex-1 flex flex-col justify-center"
+                            >
+                                <button
+                                    id="show-answer-button"
+                                    class="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-lg font-semibold py-3 rounded-xl hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                                    data-i18n="showAnswer"
+                                >
+                                    Show answer
+                                </button>
+                            </div>
+
+                            <!-- Answer (hidden until revealed) -->
+                            <div
+                                id="answer-section"
+                                class="hidden text-center pt-4 border-t border-slate-200 dark:border-slate-700"
+                            >
+                                <p
+                                    class="text-xs font-medium text-slate-500 dark:text-slate-400 mb-2 uppercase tracking-wide"
+                                    data-i18n="answer"
+                                >
+                                    Answer
+                                </p>
+                                <h2
+                                    id="answer"
+                                    class="text-2xl font-bold text-emerald-600 dark:text-emerald-400 no-select leading-relaxed"
+                                >
+                                    -
+                                </h2>
+                                <div
+                                    id="accepted-variants"
+                                    class="text-sm text-slate-500 dark:text-slate-400 mt-3"
+                                ></div>
+                                <p
+                                    id="user-said"
+                                    class="text-xs text-slate-400 dark:text-slate-500 mt-1"
+                                ></p>
+                            </div>
+
+                            <!-- Result Feedback -->
+                            <div
+                                id="result-feedback"
+                                class="hidden text-center"
+                            >
+                                <div
+                                    id="result-icon"
+                                    class="text-5xl mb-2"
+                                ></div>
+                                <p
+                                    id="result-text"
+                                    class="text-lg font-bold"
+                                ></p>
+                            </div>
+
+                            <!-- Next Button (manual mode) -->
+                            <button
+                                id="next-button"
+                                class="hidden w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-lg font-semibold py-3 rounded-xl hover:opacity-90 transition-all"
+                                data-i18n="next"
+                            >
+                                Next
+                            </button>
+
+                            <!-- Review Buttons (only for non-speech mode) -->
+                            <div
+                                id="review-buttons"
+                                class="hidden grid grid-cols-2 gap-3"
+                            >
+                                <button
+                                    id="didnt-know-button"
+                                    class="bg-red-500 dark:bg-red-600 text-white text-base font-semibold py-3 rounded-xl hover:bg-red-600 dark:hover:bg-red-500 hover:scale-[1.02] active:scale-[0.98] transition-all no-select"
+                                    data-i18n="didntKnow"
+                                >
+                                    Didn't know
+                                </button>
+                                <button
+                                    id="knew-button"
+                                    class="bg-emerald-500 dark:bg-emerald-600 text-white text-base font-semibold py-3 rounded-xl hover:bg-emerald-600 dark:hover:bg-emerald-500 hover:scale-[1.02] active:scale-[0.98] transition-all no-select"
+                                    data-i18n="knew"
+                                >
+                                    Knew
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+
+            <!-- ========== SETTINGS VIEW ========== -->
+            <div
+                data-view="settings"
+                class="hidden flex-1 flex flex-col overflow-hidden"
+            >
+                <!-- Settings Header -->
+                <header class="mb-4 fade-in flex-shrink-0">
+                    <div class="flex items-center justify-between">
+                        <button
+                            id="back-button"
+                            class="w-12 h-12 rounded-xl glass flex items-center justify-center hover:scale-105 active:scale-95 transition-transform text-slate-600 dark:text-slate-300"
+                        >
+                            <svg
+                                class="w-6 h-6"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M15 19l-7-7 7-7"
+                                />
+                            </svg>
+                        </button>
+                        <h1
+                            class="text-xl font-bold text-slate-800 dark:text-slate-100 no-select"
+                            data-i18n="settings"
+                        >
+                            Settings
+                        </h1>
+                        <div class="w-12 h-12"></div>
+                    </div>
+                </header>
+
+                <!-- Settings Content -->
+                <main class="flex-1 space-y-3 overflow-y-auto">
+                    <!-- Language Selector -->
+                    <div class="glass rounded-xl p-3 slide-up">
+                        <h3
+                            class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3"
+                            data-i18n="interfaceLanguage"
+                        >
+                            Interface language
+                        </h3>
+                        <select
+                            id="language-select"
+                            class="w-full p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-lg text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+                        >
+                            <option value="en">English</option>
+                            <option value="pl">Polski</option>
+                            <option value="de">Deutsch</option>
+                            <option value="es">Español</option>
+                            <option value="fr">Français</option>
+                        </select>
+                    </div>
+
+                    <!-- Theme Toggle -->
+                    <div class="glass rounded-xl p-3 slide-up">
+                        <h3
+                            class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3"
+                            data-i18n="appearance"
+                        >
+                            Appearance
+                        </h3>
+                        <label
+                            class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl cursor-pointer"
+                        >
+                            <div class="flex items-center space-x-3">
+                                <span class="text-2xl">🌓</span>
+                                <span
+                                    class="text-slate-800 dark:text-slate-200 font-medium"
+                                    data-i18n="darkMode"
+                                    >Dark mode</span
+                                >
+                            </div>
+                            <div class="relative">
+                                <input
+                                    type="checkbox"
+                                    id="theme-toggle"
+                                    class="sr-only peer"
+                                />
+                                <div
+                                    class="w-11 h-6 bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-indigo-500 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"
+                                ></div>
+                            </div>
+                        </label>
+                        <p
+                            class="text-sm text-slate-500 dark:text-slate-400 mt-2 ml-1"
+                            data-i18n="autoOrManual"
+                        >
+                            Automatic or manual
+                        </p>
+                    </div>
+
+                    <!-- Learning Settings -->
+                    <div class="glass rounded-xl p-3 slide-up">
+                        <h3
+                            class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3"
+                            data-i18n="learning"
+                        >
+                            Learning
+                        </h3>
+
+                        <label
+                            class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl cursor-pointer"
+                        >
+                            <div class="flex items-center space-x-3">
+                                <span class="text-2xl">🎤</span>
+                                <span
+                                    class="text-slate-800 dark:text-slate-200 font-medium"
+                                    data-i18n="speaking"
+                                    >Speaking</span
+                                >
+                            </div>
+                            <div class="relative">
+                                <input
+                                    type="checkbox"
+                                    id="speech-toggle"
+                                    class="sr-only peer"
+                                    checked
+                                />
+                                <div
+                                    class="w-11 h-6 bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-indigo-500 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"
+                                ></div>
+                            </div>
+                        </label>
+                        <p
+                            class="text-sm text-slate-500 dark:text-slate-400 mt-2 mb-4 ml-1"
+                            data-i18n="speakingDesc"
+                        >
+                            Answer with voice
+                        </p>
+
+                        <label
+                            class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl cursor-pointer"
+                        >
+                            <div class="flex items-center space-x-3">
+                                <span class="text-2xl">👆</span>
+                                <span
+                                    class="text-slate-800 dark:text-slate-200 font-medium"
+                                    data-i18n="manualNext"
+                                    >Manual next</span
+                                >
+                            </div>
+                            <div class="relative">
+                                <input
+                                    type="checkbox"
+                                    id="manual-next-toggle"
+                                    class="sr-only peer"
+                                />
+                                <div
+                                    class="w-11 h-6 bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-indigo-500 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"
+                                ></div>
+                            </div>
+                        </label>
+                        <p
+                            class="text-sm text-slate-500 dark:text-slate-400 mt-2 mb-4 ml-1"
+                            data-i18n="manualNextDesc"
+                        >
+                            Click 'Next' instead of auto-advance
+                        </p>
+
+                        <label
+                            class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl cursor-pointer"
+                        >
+                            <div class="flex items-center space-x-3">
+                                <span class="text-2xl">🎧</span>
+                                <span
+                                    class="text-slate-800 dark:text-slate-200 font-medium"
+                                    data-i18n="autoListen"
+                                    >Auto-listen</span
+                                >
+                            </div>
+                            <div class="relative">
+                                <input
+                                    type="checkbox"
+                                    id="auto-listen-toggle"
+                                    class="sr-only peer"
+                                />
+                                <div
+                                    class="w-11 h-6 bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-indigo-500 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"
+                                ></div>
+                            </div>
+                        </label>
+                        <p
+                            class="text-sm text-slate-500 dark:text-slate-400 mt-2 mb-4 ml-1"
+                            data-i18n="autoListenDesc"
+                        >
+                            Automatically listen after showing
+                        </p>
+
+                        <div
+                            class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl"
+                        >
+                            <div class="flex items-center space-x-3 mb-2">
+                                <span class="text-2xl">🎯</span>
+                                <span
+                                    class="text-slate-800 dark:text-slate-200 font-medium"
+                                    data-i18n="learningThreshold"
+                                    >Learning threshold</span
+                                >
+                            </div>
+                            <select
+                                id="required-streak-select"
+                                class="w-full p-2 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+                            >
+                                <option value="1" data-i18n="correctAnswer1">
+                                    1 correct answer
+                                </option>
+                                <option
+                                    value="2"
+                                    selected
+                                    data-i18n="correctAnswers2"
+                                >
+                                    2 correct in a row
+                                </option>
+                                <option value="3" data-i18n="correctAnswers3">
+                                    3 correct in a row
+                                </option>
+                            </select>
+                            <p
+                                class="text-sm text-slate-500 dark:text-slate-400 mt-2"
+                                data-i18n="learningThresholdDesc"
+                            >
+                                How many correct answers in a row to mark phrase
+                                as learned
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Developer Settings -->
+                    <div class="glass rounded-xl p-3 slide-up">
+                        <h3
+                            class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3"
+                            data-i18n="developer"
+                        >
+                            Developer
+                        </h3>
+
+                        <label
+                            class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl cursor-pointer"
+                        >
+                            <div class="flex items-center space-x-3">
+                                <span class="text-2xl">🛠️</span>
+                                <span
+                                    class="text-slate-800 dark:text-slate-200 font-medium"
+                                    data-i18n="devMode"
+                                    >Developer mode</span
+                                >
+                            </div>
+                            <div class="relative">
+                                <input
+                                    type="checkbox"
+                                    id="dev-mode-toggle"
+                                    class="sr-only peer"
+                                />
+                                <div
+                                    class="w-11 h-6 bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-indigo-500 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"
+                                ></div>
+                            </div>
+                        </label>
+
+                        <div
+                            id="dev-tools"
+                            class="hidden mt-4 p-4 bg-amber-50 dark:bg-amber-900/30 border border-amber-200 dark:border-amber-700 rounded-xl"
+                        >
+                            <p
+                                class="text-sm text-amber-800 dark:text-amber-200 mb-3"
+                                data-i18n="devTools"
+                            >
+                                Developer tools:
+                            </p>
+                            <button
+                                id="clear-cache-button"
+                                class="w-full bg-amber-500 text-white font-semibold py-2.5 rounded-lg hover:bg-amber-600 transition"
+                                data-i18n="clearCache"
+                            >
+                                Clear SW cache
+                            </button>
+                            <p
+                                id="cache-status"
+                                class="text-xs text-amber-700 dark:text-amber-300 mt-2"
+                            ></p>
+                        </div>
+                    </div>
+                </main>
+            </div>
+
+            <!-- ========== SHARED FOOTER ========== -->
+            <footer
+                class="mt-auto pt-2 text-center text-xs text-slate-400 dark:text-slate-600 flex-shrink-0"
+            >
+                <p data-i18n="version">Language Learning v3.0</p>
+            </footer>
+        </div>
+
+        <!-- Slide-out Menu -->
+        <div
+            id="menu-overlay"
+            class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity"
+        ></div>
+        <div
+            id="menu-panel"
+            class="fixed top-0 right-0 h-full w-72 bg-white dark:bg-slate-900 shadow-2xl z-50 transform translate-x-full transition-transform duration-300"
+        >
+            <div class="p-6">
+                <div class="flex items-center justify-between mb-8">
+                    <h2
+                        class="text-xl font-bold text-slate-800 dark:text-slate-100"
+                        data-i18n="menu"
+                    >
+                        Menu
+                    </h2>
+                    <button
+                        id="menu-close-button"
+                        class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 transition"
+                    >
+                        <svg
+                            class="w-5 h-5"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        </svg>
+                    </button>
+                </div>
+                <nav class="space-y-2">
+                    <a
+                        id="settings-link"
+                        href="#/settings"
+                        class="flex items-center space-x-4 p-4 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition group"
+                    >
+                        <span class="text-2xl">⚙️</span>
+                        <span
+                            class="text-slate-700 dark:text-slate-200 font-medium group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors"
+                            data-i18n="settings"
+                            >Settings</span
+                        >
+                    </a>
+                    <button
+                        id="export-notes-button"
+                        class="flex items-center space-x-4 p-4 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition group w-full text-left"
+                    >
+                        <span class="text-2xl">📋</span>
+                        <span
+                            class="text-slate-700 dark:text-slate-200 font-medium group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors"
+                            data-i18n="exportNotes"
+                            >Export notes</span
+                        >
+                    </button>
+                </nav>
+
+                <!-- Quick Theme Toggle in Menu -->
+                <div class="absolute bottom-8 left-6 right-6">
+                    <button
+                        id="theme-toggle-menu"
+                        class="w-full flex items-center justify-center space-x-3 p-4 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition"
+                    >
+                        <span id="theme-icon" class="text-xl">🌙</span>
+                        <span
+                            id="theme-label"
+                            class="text-slate-700 dark:text-slate-200 font-medium"
+                            >Dark mode</span
+                        >
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Note Modal -->
+        <div
+            id="note-modal"
+            class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center px-4"
+        >
+            <div
+                class="glass rounded-2xl p-6 max-w-sm w-full slide-up dark:bg-slate-800/90"
+            >
+                <h3
+                    class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-1"
+                    data-i18n="note"
+                >
+                    Note
+                </h3>
+                <p
+                    id="note-phrase-info"
+                    class="text-sm text-slate-500 dark:text-slate-400 mb-4"
+                ></p>
+                <textarea
+                    id="note-textarea"
+                    class="w-full h-32 p-3 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none resize-none"
+                    data-i18n-placeholder="yourNote"
+                    placeholder="Your note..."
+                ></textarea>
+                <div class="grid grid-cols-2 gap-3 mt-4">
+                    <button
+                        id="note-cancel-button"
+                        class="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold py-3 rounded-xl hover:bg-slate-300 dark:hover:bg-slate-600 transition"
+                        data-i18n="cancel"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        id="note-save-button"
+                        class="bg-indigo-500 text-white font-semibold py-3 rounded-xl hover:bg-indigo-600 transition"
+                        data-i18n="save"
+                    >
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reset Confirmation Modal -->
+        <div
+            id="reset-modal"
+            class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center px-4"
+        >
+            <div
+                class="glass rounded-2xl p-6 max-w-sm w-full slide-up dark:bg-slate-800/90"
+            >
+                <h3
+                    id="reset-modal-title"
+                    class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-3"
+                    data-i18n="resetProgressQuestion"
+                >
+                    Reset progress?
+                </h3>
+                <p
+                    id="reset-modal-text"
+                    class="text-slate-600 dark:text-slate-400 mb-6"
+                    data-i18n="resetProgressMessage"
+                >
+                    All phrases from this set will return to learning.
+                </p>
+                <div class="grid grid-cols-2 gap-3">
+                    <button
+                        id="reset-cancel-button"
+                        class="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold py-3 rounded-xl hover:bg-slate-300 dark:hover:bg-slate-600 transition"
+                        data-i18n="cancel"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        id="reset-confirm-button"
+                        class="bg-red-500 text-white font-semibold py-3 rounded-xl hover:bg-red-600 transition"
+                        data-i18n="reset"
+                    >
+                        Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <script src="/js/i18n.js"></script>
+        <script src="/js/sets.js"></script>
+        <script src="/js/router.js"></script>
+        <script src="/js/app.js"></script>
+        <script>
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("/sw.js");
+            }
+        </script>
+    </body>
+</html>

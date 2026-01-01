@@ -1,0 +1,31 @@
+{
+  "name": "Verbio",
+  "short_name": "Verbio",
+  "description": "Language learning flashcards with speech recognition",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#EEF2FF",
+  "theme_color": "#3B82F6",
+  "orientation": "portrait",
+  "categories": ["education"],
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/icon-512-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/icons/icon-512-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
