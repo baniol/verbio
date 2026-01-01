@@ -1,0 +1,6 @@
+# Branch-specific data - preserve local version during merge
+# See CLAUDE.md "Branch Strategy" section for details
+
+lang_data/** merge=ours
+lang_data_arch/** merge=ours
+frontend/audio/** merge=ours
