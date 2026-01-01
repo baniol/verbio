@@ -98,7 +98,15 @@ frontend/              # <- this is deployed
    - **Value:** `<your-project>.pages.dev` (from Cloudflare deployments)
    - **TTL:** 300
 
-### 3. Custom domain (Cloudflare)
+### 3. Disable preview deployments
+
+By default, Cloudflare Pages creates preview deployments for all branches. To deploy only from your production branch:
+
+1. In Cloudflare Dashboard → Your project → **Settings** → **Branch control**
+2. Under **Preview branches**, change from "All non-production branches" to **"None"**
+3. Save
+
+### 4. Custom domain (Cloudflare)
 
 **IMPORTANT:** This step is required for SSL - without it you'll get `ERR_SSL_VERSION_OR_CIPHER_MISMATCH`.
 
