@@ -141,6 +141,8 @@
       currentSetName: document.getElementById("current-set-name"),
       acceptedVariants: document.getElementById("accepted-variants"),
       userSaid: document.getElementById("user-said"),
+      userSaidLabel: document.getElementById("user-said-label"),
+      userSaidTranscript: document.getElementById("user-said-transcript"),
       nextButton: document.getElementById("next-button"),
       // Buttons for event binding
       resetButton: document.getElementById("reset-button"),
@@ -609,7 +611,9 @@
     } else {
       el.acceptedVariants.innerHTML = "";
     }
-    el.userSaid.textContent = "";
+    UI.hide(el.userSaid);
+    el.userSaidLabel.textContent = "";
+    el.userSaidTranscript.textContent = "";
 
     // Reset state
     UI.hide(el.answerSection);
@@ -739,9 +743,16 @@
     UI.show(el.resultFeedback);
 
     // Show what user said
-    el.userSaid.textContent = transcript
-      ? I18N.t("youSaid") + " " + transcript
-      : "";
+    if (transcript) {
+      el.userSaidLabel.textContent = I18N.t("youSaid");
+      el.userSaidTranscript.textContent = transcript;
+      el.userSaidTranscript.className = isCorrect
+        ? "text-lg font-semibold mt-1 text-slate-600 dark:text-slate-300"
+        : "text-lg font-semibold mt-1 text-red-600 dark:text-red-400";
+      UI.show(el.userSaid);
+    } else {
+      UI.hide(el.userSaid);
+    }
 
     if (isCorrect) {
       el.resultIcon.textContent = "✅";

@@ -522,19 +522,14 @@ const I18N = {
 
   /**
    * Initialize i18n system
-   * Detects browser language or loads saved preference
+   * Uses saved preference if available, otherwise defaults to English
    */
   init() {
     const saved = localStorage.getItem(this.STORAGE_KEY);
     if (saved && this.translations[saved]) {
       this.currentLang = saved;
-    } else {
-      // Detect browser language
-      const browserLang = navigator.language.split("-")[0];
-      if (this.translations[browserLang]) {
-        this.currentLang = browserLang;
-      }
     }
+    // Default is already 'en', no browser detection needed
     this.applyTranslations();
   },
 
