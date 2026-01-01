@@ -5,6 +5,15 @@ All notable changes to Verbio will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.5.0] - 2026-01-01
+
+### Added
+- Build-time feature flags system via deployment/config.sh
+- FEATURES.audio flag to conditionally enable audio playback in frontend
+
+### Changed
+- Build script now generates config.js with feature flags
+
 ## [0.4.0] - 2026-01-01
 
 ### Added

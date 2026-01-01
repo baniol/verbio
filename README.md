@@ -202,6 +202,78 @@ Merges code changes from current branch to main (excluding data files).
 
 ---
 
+## Audio Generation (Optional)
+
+Generate native pronunciation audio for phrases using AWS Polly.
+
+### AWS Setup
+
+1. Create an AWS account and set up an IAM user with `AmazonPollyReadOnlyAccess` policy
+
+2. Configure AWS CLI with a named profile:
+   ```bash
+   aws configure --profile verbio
+   ```
+
+3. Create `.env` file in project root:
+   ```
+   AWS_PROFILE=verbio
+   ```
+
+### Install Dependencies
+
+```bash
+pip install -r scripts/requirements.txt
+```
+
+### Generate Audio
+
+```bash
+python scripts/generate_audio.py
+```
+
+The script:
+- Reads all `lang_data/*.json` files
+- Generates MP3 audio for each phrase's answer using AWS Polly neural voices
+- Saves files to `frontend/audio/{setId}/{phraseId}.mp3`
+- Tracks changes in `frontend/audio/manifest.json` to skip unchanged phrases on re-runs
+
+### Enable Audio in Frontend
+
+Set `FEATURE_AUDIO=true` in `deployment/config.sh`:
+
+```bash
+# deployment/config.sh
+FEATURE_AUDIO=true
+```
+
+Then rebuild:
+```bash
+./deployment/cloudflare_pages/build.sh
+```
+
+When enabled, an audio play button appears next to phrase answers.
+
+### Supported Languages
+
+| Language | Voice |
+|----------|-------|
+| de-DE | Vicki |
+| en-US | Joanna |
+| en-GB | Amy |
+| es-ES | Lucia |
+| es-MX | Mia |
+| fr-FR | Lea |
+| it-IT | Bianca |
+| pl-PL | Ola |
+| pt-BR | Camila |
+| nl-NL | Laura |
+| ja-JP | Kazuha |
+| ko-KR | Seoyeon |
+| zh-CN | Zhiyu |
+
+---
+
 ## Adding New Sets Manually
 
 1. Create `lang_data/new_set.json`:

@@ -7,6 +7,14 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
+# Load configuration (can be overridden by environment variables)
+if [ -f "$PROJECT_ROOT/deployment/config.sh" ]; then
+    source "$PROJECT_ROOT/deployment/config.sh"
+fi
+
+# Allow environment variable overrides
+FEATURE_AUDIO="${FEATURE_AUDIO:-false}"
+
 echo "==> Building sets.js from lang_data..."
 
 SETS_JS="$PROJECT_ROOT/frontend/js/sets.js"
@@ -45,5 +53,14 @@ VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
 echo "// Auto-generated from git tag - do not edit manually" > "$VERSION_JS"
 echo "const APP_VERSION = \"$VERSION\";" >> "$VERSION_JS"
 echo "==> Version set to $VERSION"
+
+# Generate config.js with feature flags
+echo "==> Generating config.js with feature flags..."
+CONFIG_JS="$PROJECT_ROOT/frontend/js/config.js"
+echo "// Auto-generated from deployment/config.sh - do not edit manually" > "$CONFIG_JS"
+echo "const FEATURES = {" >> "$CONFIG_JS"
+echo "  audio: $FEATURE_AUDIO" >> "$CONFIG_JS"
+echo "};" >> "$CONFIG_JS"
+echo "==> Features: audio=$FEATURE_AUDIO"
 
 echo "==> Build complete!"
