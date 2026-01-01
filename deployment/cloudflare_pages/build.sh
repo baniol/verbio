@@ -33,4 +33,13 @@ echo "};" >> "$SETS_JS"
 
 SET_COUNT=$(ls -1 "$PROJECT_ROOT"/lang_data/*.json 2>/dev/null | wc -l | tr -d ' ')
 echo "==> Generated sets.js with $SET_COUNT set(s)"
+
+# Generate version.js from latest git tag
+echo "==> Generating version.js from git tag..."
+VERSION_JS="$PROJECT_ROOT/frontend/js/version.js"
+VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+echo "// Auto-generated from git tag - do not edit manually" > "$VERSION_JS"
+echo "const APP_VERSION = \"$VERSION\";" >> "$VERSION_JS"
+echo "==> Version set to $VERSION"
+
 echo "==> Build complete!"

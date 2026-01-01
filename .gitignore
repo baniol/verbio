@@ -16,6 +16,7 @@
 
 # Generated files
 frontend/js/sets.js
+frontend/js/version.js
 
 # Node (if used for tooling)
 node_modules/

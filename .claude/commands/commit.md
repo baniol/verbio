@@ -52,6 +52,39 @@ Create a git commit with an auto-generated message based on staged/unstaged chan
    git commit -m "<message>"
    ```
 
+7. **Determine if version tag is needed**
+
+   After committing, check if a version tag should be created.
+   
+   **Get current version:**
+   ```bash
+   git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0"
+   ```
+   
+   **Tag rules:**
+   - Only tag for CODE changes (files in `frontend/js/`, `frontend/index.html`, `deployment/`, `frontend/sw.js`, `frontend/manifest.json`)
+   - Do NOT tag for:
+     - Learning data changes (`lang_data/*.json`)
+     - Documentation changes (`*.md`, `docs/`)
+     - Config files only (`.gitignore`, etc.)
+   
+   **Version bump rules:**
+   - `minor` (v1.X.0): New features (`feat:` commits)
+   - `patch` (v1.0.X): Bug fixes, refactoring, chore (`fix:`, `refactor:`, `chore:`, `style:` commits)
+   
+   **If tag is warranted, propose:**
+   ```
+   Version tag recommended: vX.Y.Z (patch/minor)
+   Reason: <brief explanation>
+   
+   Create tag? (y/n)
+   ```
+
+8. **Create tag** (only if user confirms)
+   ```bash
+   git tag vX.Y.Z
+   ```
+
 ## Examples
 
 Single file change:
@@ -66,4 +99,21 @@ docs: update CLAUDE.md with correct paths
 - Fix deployment script paths
 - Add missing localStorage keys
 - Update project structure
+```
+
+Code change with version tag:
+```
+Proposed commit:
+─────────────────
+feat: add dark mode toggle
+─────────────────
+
+Proceed with commit? (y/n)
+
+[After commit]
+
+Version tag recommended: v1.1.0 (minor)
+Reason: New feature added to frontend code
+
+Create tag? (y/n)
 ```

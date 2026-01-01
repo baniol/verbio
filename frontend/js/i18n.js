@@ -107,7 +107,7 @@ const I18N = {
       speechNotAvailable: "Speech recognition is not available in this browser",
 
       // Footer
-      version: "Language Learning v3.0",
+      version: "Language Learning",
 
       // Cache/Developer
       noActiveServiceWorker: "No active Service Worker",
@@ -206,7 +206,7 @@ const I18N = {
         "Rozpoznawanie mowy nie jest dostępne w tej przeglądarce",
 
       // Footer
-      version: "Nauka Języków v3.0",
+      version: "Nauka Języków",
 
       // Cache/Developer
       noActiveServiceWorker: "Brak aktywnego Service Workera",
@@ -306,7 +306,7 @@ const I18N = {
         "Spracherkennung ist in diesem Browser nicht verfügbar",
 
       // Footer
-      version: "Sprachenlernen v3.0",
+      version: "Sprachenlernen",
 
       // Cache/Developer
       noActiveServiceWorker: "Kein aktiver Service Worker",
@@ -406,7 +406,7 @@ const I18N = {
         "El reconocimiento de voz no está disponible en este navegador",
 
       // Footer
-      version: "Aprendizaje de Idiomas v3.0",
+      version: "Aprendizaje de Idiomas",
 
       // Cache/Developer
       noActiveServiceWorker: "No hay Service Worker activo",
@@ -506,7 +506,7 @@ const I18N = {
         "La reconnaissance vocale n'est pas disponible dans ce navigateur",
 
       // Footer
-      version: "Apprentissage des Langues v3.0",
+      version: "Apprentissage des Langues",
 
       // Cache/Developer
       noActiveServiceWorker: "Pas de Service Worker actif",
@@ -555,10 +555,15 @@ const I18N = {
    * Get translation for a key
    */
   t(key, params = {}) {
-    const translation =
+    let translation =
       this.translations[this.currentLang]?.[key] ||
       this.translations["en"]?.[key] ||
       key;
+
+    // Append version number for version key
+    if (key === "version" && typeof APP_VERSION !== "undefined") {
+      translation = `${translation} ${APP_VERSION}`;
+    }
 
     // Replace parameters like {count}
     return translation.replace(/\{(\w+)\}/g, (_, param) => params[param] ?? "");
