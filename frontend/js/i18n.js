@@ -112,6 +112,11 @@ const I18N = {
       // Cache/Developer
       noActiveServiceWorker: "No active Service Worker",
       cacheCleared: "Cache cleared! Refresh the page.",
+
+      // Review Set
+      review: "Review",
+      addToReview: "Add to review",
+      removeFromReview: "Remove from review",
     },
 
     pl: {
@@ -211,6 +216,11 @@ const I18N = {
       // Cache/Developer
       noActiveServiceWorker: "Brak aktywnego Service Workera",
       cacheCleared: "Cache wyczyszczony! Odśwież stronę.",
+
+      // Review Set
+      review: "Powtórka",
+      addToReview: "Dodaj do powtórki",
+      removeFromReview: "Usuń z powtórki",
     },
 
     de: {
@@ -311,6 +321,11 @@ const I18N = {
       // Cache/Developer
       noActiveServiceWorker: "Kein aktiver Service Worker",
       cacheCleared: "Cache geleert! Seite neu laden.",
+
+      // Review Set
+      review: "Wiederholung",
+      addToReview: "Zur Wiederholung hinzufügen",
+      removeFromReview: "Aus Wiederholung entfernen",
     },
 
     es: {
@@ -411,6 +426,11 @@ const I18N = {
       // Cache/Developer
       noActiveServiceWorker: "No hay Service Worker activo",
       cacheCleared: "Cache limpiado! Actualiza la pagina.",
+
+      // Review Set
+      review: "Repaso",
+      addToReview: "Añadir al repaso",
+      removeFromReview: "Quitar del repaso",
     },
 
     fr: {
@@ -511,6 +531,11 @@ const I18N = {
       // Cache/Developer
       noActiveServiceWorker: "Pas de Service Worker actif",
       cacheCleared: "Cache vide! Rafraichissez la page.",
+
+      // Review Set
+      review: "Révision",
+      addToReview: "Ajouter à la révision",
+      removeFromReview: "Retirer de la révision",
     },
   },
 
