@@ -56,9 +56,9 @@ Create a git commit with an auto-generated message based on staged/unstaged chan
 
    After committing, check if a version tag should be created.
    
-   **Get current version:**
+   **Get current version (latest tag across all branches):**
    ```bash
-   git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0"
+   git tag --sort=-v:refname | head -1 || echo "v0.0.0"
    ```
    
    **Tag rules:**
