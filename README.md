@@ -91,7 +91,7 @@ Use these slash commands in Claude Code to generate phrase sets automatically:
 
 ### `/generate-b1-set` - German B1 curriculum
 
-Generates sets following the B1 curriculum in `docs/curriculum-german-b1.md`.
+Generates sets following the B1 curriculum in `docs/curriculum/curriculum-german-b1.md`.
 
 ```bash
 /generate-b1-set [topic] [source_language]
@@ -105,7 +105,7 @@ Generates sets following the B1 curriculum in `docs/curriculum-german-b1.md`.
 /generate-b1-set polish                    # auto-select, Polish prompts
 ```
 
-Creates 3 sets × 20 phrases = 60 phrases per topic. Automatically updates progress in `docs/curriculum-german-b1-progress.md`.
+Creates 3 sets × 20 phrases = 60 phrases per topic. Automatically updates progress in `docs/curriculum/curriculum-german-b1-progress.md`.
 
 ### `/generate-b2-set` - German B2 curriculum
 
@@ -122,7 +122,65 @@ Same as B1 but for B2 level curriculum.
 /generate-b2-set Health - specialist polish   # with Polish prompts
 ```
 
-Creates 3 sets × 20 phrases = 60 phrases per topic. Automatically updates progress in `docs/curriculum-german-b2-progress.md`.
+Creates 3 sets × 20 phrases = 60 phrases per topic. Automatically updates progress in `docs/curriculum/curriculum-german-b2-progress.md`.
+
+---
+
+## Claude Commands for Git and Deployment
+
+### `/commit` - Smart commit with auto-versioning
+
+Creates a git commit with auto-generated message based on changes.
+
+```bash
+/commit
+```
+
+**Features:**
+- Analyzes diff and generates conventional commit message (`feat:`, `fix:`, `docs:`, etc.)
+- Proposes version tag for code changes (minor for features, patch for fixes)
+- Auto-updates CHANGELOG.md when tag is created
+- Only tags code changes, not data or docs
+
+### `/deploy` - Deploy to production
+
+Deploys the app to Cloudflare Pages.
+
+```bash
+/deploy
+```
+
+Runs build script and deploys `frontend/` to production.
+
+### `/sync-from-main` - Sync branches with main
+
+Merges latest main into both demo and priv branches.
+
+```bash
+/sync-from-main
+```
+
+**Features:**
+- Fetches and merges `main` → `demo` and `main` → `priv`
+- Preserves branch-specific data (lang_data/, docs/curriculum/, frontend/audio/)
+- Auto-resolves conflicts in protected paths (keeps local version)
+- Pushes both branches after merge
+- Returns to original branch
+
+### `/push-to-main` - Push code changes to main
+
+Merges code changes from current branch to main (excluding data files).
+
+```bash
+/push-to-main
+```
+
+**Features:**
+- Shows commits to be merged
+- Switches to main, merges, handles conflicts
+- Keeps main's data files intact
+- Pushes to origin/main
+- Returns to original branch
 
 ---
 
