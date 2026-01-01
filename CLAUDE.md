@@ -169,6 +169,41 @@ Alternative: `git push origin main` triggers automatic deploy via Cloudflare Pag
 3. Run deploy script (generates sets.js automatically)
 4. Done - new set appears in UI
 
+## Branch Strategy
+
+Three branches with different data sets, shared application code:
+
+| Branch | Purpose | Data |
+|--------|---------|------|
+| `main` | Public/demo version | Demo sets |
+| `demo` | Demo deployment | Demo sets |
+| `priv` | Private learning | Personal sets |
+
+### Syncing code between branches
+
+`.gitattributes` with `merge=ours` strategy keeps `lang_data/` unchanged during merge:
+
+```bash
+# On demo/priv branch - pull code changes from main:
+git checkout priv
+git merge main
+# Code updates, lang_data/ stays unchanged
+```
+
+### Setup (required once per machine)
+
+```bash
+git config merge.ours.driver true
+```
+
+This must be run after cloning the repo on a new machine.
+
+### Protected paths (not merged)
+
+- `lang_data/**` - language learning sets
+- `lang_data_arch/**` - archived sets
+- `frontend/audio/**` - audio files for sets
+
 ## Coding Principles
 
 1. **Maximum simplicity** - No over-engineering

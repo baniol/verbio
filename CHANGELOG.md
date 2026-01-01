@@ -5,11 +5,13 @@ All notable changes to Verbio will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-<<<<<<< HEAD
-## [0.3.1] - 2026-01-01
+## [0.4.0] - 2026-01-01
 
-### Fixed
-- Cap phrase priority to prevent difficult phrases from locking sessions
+### Added
+- Audio playback for phrases using AWS Polly neural voices
+- Speaker button next to answers to play pronunciation
+- Python script to generate audio files from phrase sets
+- Pre-generated audio for German B1 travel sets
 
 ## [0.3.0] - 2026-01-01
 

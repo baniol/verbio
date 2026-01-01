@@ -34,6 +34,9 @@ Struggling to remember a phrase? Click the star icon next to it, and it goes to 
 ## Quick Start
 
 ```bash
+# Setup (required once after cloning)
+git config merge.ours.driver true
+
 # Local development
 cd frontend && python3 -m http.server 3000
 
