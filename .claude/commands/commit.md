@@ -85,6 +85,46 @@ Create a git commit with an auto-generated message based on staged/unstaged chan
    git tag vX.Y.Z
    ```
 
+9. **Update CHANGELOG.md** (only if tag was created)
+   
+   After creating a tag, automatically update `CHANGELOG.md`:
+   
+   **Get commits since previous tag:**
+   ```bash
+   git log <previous_tag>..<new_tag> --oneline --no-decorate
+   ```
+   
+   **Categorize commits by type:**
+   - `feat:` → Added
+   - `fix:` → Fixed
+   - `refactor:`, `chore:`, `style:` → Changed
+   - `docs:` → Documentation (only if code also changed)
+   
+   **Insert new version section after the header:**
+   
+   The CHANGELOG format is:
+   ```markdown
+   ## [X.Y.Z] - YYYY-MM-DD
+   
+   ### Added
+   - Description from feat commits
+   
+   ### Fixed
+   - Description from fix commits
+   
+   ### Changed
+   - Description from refactor/chore/style commits
+   ```
+   
+   Rules:
+   - Use today's date
+   - Only include sections that have entries
+   - Convert commit messages to user-friendly descriptions
+   - Insert right after the changelog header (before existing versions)
+   - Stage the CHANGELOG.md change: `git add CHANGELOG.md`
+   - Amend the previous commit to include CHANGELOG: `git commit --amend --no-edit`
+   - Move the tag to the amended commit: `git tag -f vX.Y.Z`
+
 ## Examples
 
 Single file change:
