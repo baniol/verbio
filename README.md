@@ -15,6 +15,7 @@ Learn languages by speaking. Verbio is a phrase learning app that checks your an
 - **Works offline** - all data stays in your browser, no internet needed
 - **No account required** - just open and start learning, progress saves automatically
 - **Smart repetition** - difficult phrases appear more often
+- **Immediate retry** - when you fail, repeat until correct ([learn more](docs/immediate-retry.md))
 
 ## Review Set
 

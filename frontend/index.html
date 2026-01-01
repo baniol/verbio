@@ -736,6 +736,34 @@
                                 as learned
                             </p>
                         </div>
+
+                        <!-- Immediate Retry Toggle -->
+                        <label
+                            class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl cursor-pointer mt-3"
+                        >
+                            <div class="flex items-center space-x-3">
+                                <span class="text-2xl">🔄</span>
+                                <div>
+                                    <span
+                                        class="text-slate-800 dark:text-slate-200 font-medium"
+                                        data-i18n="immediateRetry"
+                                        >Immediate retry</span
+                                    >
+                                    <p
+                                        class="text-sm text-slate-500 dark:text-slate-400"
+                                        data-i18n="immediateRetryDesc"
+                                    >
+                                        Repeat phrase immediately after error
+                                    </p>
+                                </div>
+                            </div>
+                            <input
+                                type="checkbox"
+                                id="immediate-retry-toggle"
+                                checked
+                                class="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 focus:ring-offset-0"
+                            />
+                        </label>
                     </div>
 
                     <!-- Developer Settings -->

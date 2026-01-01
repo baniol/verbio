@@ -120,6 +120,10 @@ const I18N = {
 
       // Audio
       playAudio: "Play audio",
+
+      // Immediate retry
+      immediateRetry: "Immediate retry",
+      immediateRetryDesc: "Repeat phrase immediately after error",
     },
 
     pl: {
@@ -227,6 +231,10 @@ const I18N = {
 
       // Audio
       playAudio: "Odtwórz audio",
+
+      // Immediate retry
+      immediateRetry: "Natychmiastowa powtórka",
+      immediateRetryDesc: "Powtórz frazę od razu po błędzie",
     },
 
     de: {
@@ -335,6 +343,10 @@ const I18N = {
 
       // Audio
       playAudio: "Audio abspielen",
+
+      // Immediate retry
+      immediateRetry: "Sofortige Wiederholung",
+      immediateRetryDesc: "Phrase sofort nach Fehler wiederholen",
     },
 
     es: {
@@ -443,6 +455,10 @@ const I18N = {
 
       // Audio
       playAudio: "Reproducir audio",
+
+      // Immediate retry
+      immediateRetry: "Repetición inmediata",
+      immediateRetryDesc: "Repetir frase inmediatamente después de error",
     },
 
     fr: {
@@ -551,6 +567,10 @@ const I18N = {
 
       // Audio
       playAudio: "Lire l'audio",
+
+      // Immediate retry
+      immediateRetry: "Répétition immédiate",
+      immediateRetryDesc: "Répéter la phrase immédiatement après une erreur",
     },
   },
 

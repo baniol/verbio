@@ -71,6 +71,13 @@
     };
   }
 
+  // Clear immediate retry state
+  function clearRetryState() {
+    retryPhrase = null;
+    retrySuccessCount = 0;
+    retryFailures = 0;
+  }
+
   // LocalStorage keys
   const STORAGE_KEYS = {
     lastSet: "langlearn_last_set",
@@ -83,6 +90,7 @@
     progress: (setId) => `langlearn_progress_${setId}`,
     notes: "langlearn_notes",
     reviewSet: (language) => `langlearn_review_set_${language}`,
+    immediateRetry: "langlearn_immediate_retry",
   };
 
   // State
@@ -97,6 +105,12 @@
   let recognition = null;
   let isListening = false; // Flag to prevent multiple recognition starts
   let currentAudio = null; // Current playing audio element
+
+  // Immediate retry state (speech mode only)
+  let immediateRetry = true; // setting on/off
+  let retryPhrase = null; // phrase for immediate retry
+  let retrySuccessCount = 0; // correct answers in retry (goal: 2)
+  let retryFailures = 0; // failures during retry (max 1 allowed)
 
   // Cached DOM Elements (populated on init)
   let el = {};
@@ -127,6 +141,7 @@
       devTools: document.getElementById("dev-tools"),
       cacheStatus: document.getElementById("cache-status"),
       requiredStreakSelect: document.getElementById("required-streak-select"),
+      immediateRetryToggle: document.getElementById("immediate-retry-toggle"),
       themeToggle: document.getElementById("theme-toggle"),
       themeIcon: document.getElementById("theme-icon"),
       themeLabel: document.getElementById("theme-label"),
@@ -221,6 +236,10 @@
       "change",
       saveRequiredStreakSetting,
     );
+    el.immediateRetryToggle?.addEventListener(
+      "change",
+      saveImmediateRetrySetting,
+    );
     el.themeToggle?.addEventListener("change", saveThemeSetting);
     el.clearCacheButton?.addEventListener("click", clearCache);
     el.backButton?.addEventListener("click", () => Router.back());
@@ -266,6 +285,8 @@
     if (el.devModeToggle) el.devModeToggle.checked = devMode;
     if (el.requiredStreakSelect)
       el.requiredStreakSelect.value = requiredStreak.toString();
+    if (el.immediateRetryToggle)
+      el.immediateRetryToggle.checked = immediateRetry;
     if (el.themeToggle) el.themeToggle.checked = isDarkMode();
     if (el.languageSelect) el.languageSelect.value = I18N.currentLang;
     updateDevToolsVisibility();
@@ -294,6 +315,12 @@
         ? parseInt(savedRequiredStreak, 10)
         : 2;
 
+      const savedImmediateRetry = localStorage.getItem(
+        STORAGE_KEYS.immediateRetry,
+      );
+      immediateRetry =
+        savedImmediateRetry === null ? true : savedImmediateRetry === "true";
+
       // Apply to UI if elements exist
       refreshSettingsUI();
     } catch (e) {
@@ -304,6 +331,7 @@
       autoListen = false;
       devMode = false;
       requiredStreak = 2;
+      immediateRetry = true;
     }
   }
 
@@ -334,6 +362,12 @@
   function saveRequiredStreakSetting() {
     requiredStreak = parseInt(el.requiredStreakSelect.value, 10);
     localStorage.setItem(STORAGE_KEYS.requiredStreak, requiredStreak);
+  }
+
+  function saveImmediateRetrySetting() {
+    immediateRetry = el.immediateRetryToggle.checked;
+    localStorage.setItem(STORAGE_KEYS.immediateRetry, immediateRetry);
+    clearRetryState();
   }
 
   function updateDevToolsVisibility() {
@@ -506,6 +540,9 @@
       recognition.lang = currentSet.metadata.speechLang;
     }
 
+    // Clear any pending retry when changing sets
+    clearRetryState();
+
     loadNextPhrase();
   }
 
@@ -624,6 +661,13 @@
   function loadNextPhrase() {
     stopAudio();
     showLoading();
+
+    // Immediate retry mode - show same phrase if in retry
+    if (immediateRetry && speechEnabled && retryPhrase) {
+      currentPhrase = retryPhrase;
+      showPhrase(currentPhrase);
+      return;
+    }
 
     const unlearnedPhrases = getUnlearnedPhrases();
     updateProgress(getStats());
@@ -911,6 +955,31 @@
     if (isSubmitting) return;
     isSubmitting = true;
 
+    // --- IMMEDIATE RETRY MODE (speech only) ---
+    if (immediateRetry && speechEnabled && retryPhrase) {
+      if (correct) {
+        retrySuccessCount++;
+        if (retrySuccessCount >= 2) {
+          // Retry completed successfully - clear and move on
+          clearRetryState();
+        }
+      } else {
+        retryFailures++;
+        if (retryFailures > 1) {
+          // Too many failures in retry - reset success count
+          retrySuccessCount = 0;
+          retryFailures = 0;
+        }
+      }
+      // Don't update progress during retry - it's just practice
+      loadNextPhrase();
+      setTimeout(() => {
+        isSubmitting = false;
+      }, CONFIG.DEBOUNCE_DELAY);
+      return;
+    }
+
+    // --- NORMAL MODE ---
     const progress = getProgress();
     const current = progress[currentPhrase.id] || {
       correctStreak: 0,
@@ -924,6 +993,12 @@
       current.successCount = (current.successCount || 0) + 1;
     } else {
       current.correctStreak = 0;
+      // Start immediate retry on wrong answer (speech mode only)
+      if (immediateRetry && speechEnabled) {
+        retryPhrase = currentPhrase;
+        retrySuccessCount = 0;
+        retryFailures = 0;
+      }
     }
     current.lastSeen = Date.now();
     progress[currentPhrase.id] = current;
