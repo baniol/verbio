@@ -4,3 +4,4 @@
 lang_data/** merge=ours
 lang_data_arch/** merge=ours
 frontend/audio/** merge=ours
+docs/curriculum/** merge=ours
