@@ -16,6 +16,9 @@ Simple phrase repetition app with speech recognition.
 ## Quick Start
 
 ```bash
+# Setup (required once after cloning)
+git config merge.ours.driver true
+
 # Local development
 cd frontend && python3 -m http.server 3000
 
