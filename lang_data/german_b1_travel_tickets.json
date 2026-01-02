@@ -12,121 +12,180 @@
       "id": 1,
       "prompt": "Chciałbym kupić bilet w jedną stronę do Berlina",
       "answer": "Ich möchte eine einfache Fahrkarte nach Berlin kaufen",
-      "accepted": ["ich möchte eine einfache fahrkarte nach berlin kaufen", "ich möchte ein einzelticket nach berlin kaufen"]
+      "accepted": [
+        "ich möchte eine einfache fahrkarte nach berlin kaufen",
+        "ich möchte ein einzelticket nach berlin kaufen"
+      ]
     },
     {
       "id": 2,
       "prompt": "Czy mógłbym prosić o bilet powrotny?",
       "answer": "Könnte ich eine Hin- und Rückfahrkarte bekommen?",
-      "accepted": ["könnte ich eine hin- und rückfahrkarte bekommen", "kann ich eine hin und rückfahrkarte haben"]
+      "accepted": [
+        "könnte ich eine hin- und rückfahrkarte bekommen",
+        "kann ich eine hin und rückfahrkarte haben"
+      ]
     },
     {
       "id": 3,
       "prompt": "Ile kosztuje bilet pierwszej klasy?",
       "answer": "Wie viel kostet eine Fahrkarte erster Klasse?",
-      "accepted": ["wie viel kostet eine fahrkarte erster klasse", "was kostet ein ticket erster klasse"]
+      "accepted": [
+        "wie viel kostet eine fahrkarte erster klasse",
+        "was kostet ein ticket erster klasse"
+      ]
     },
     {
       "id": 4,
       "prompt": "Jeśli kupię bilet online, będzie taniej?",
       "answer": "Wenn ich das Ticket online kaufe, wird es günstiger?",
-      "accepted": ["wenn ich das ticket online kaufe wird es günstiger", "ist es günstiger wenn ich das ticket online kaufe"]
+      "accepted": [
+        "wenn ich das ticket online kaufe wird es günstiger",
+        "ist es günstiger wenn ich das ticket online kaufe"
+      ]
     },
     {
       "id": 5,
       "prompt": "Chciałbym zarezerwować miejsce przy oknie",
       "answer": "Ich möchte einen Fensterplatz reservieren",
-      "accepted": ["ich möchte einen fensterplatz reservieren", "ich würde gerne einen platz am fenster reservieren"]
+      "accepted": [
+        "ich möchte einen fensterplatz reservieren",
+        "ich würde gerne einen platz am fenster reservieren"
+      ]
     },
     {
       "id": 6,
       "prompt": "Czy są zniżki dla studentów?",
       "answer": "Gibt es Ermäßigungen für Studenten?",
-      "accepted": ["gibt es ermäßigungen für studenten", "gibt es studentenrabatt", "gibt es einen studentenrabatt"]
+      "accepted": [
+        "gibt es ermäßigungen für studenten",
+        "gibt es studentenrabatt",
+        "gibt es einen studentenrabatt"
+      ]
     },
     {
       "id": 7,
       "prompt": "Pociąg będzie odjeżdżał z peronu trzeciego",
       "answer": "Der Zug wird von Gleis drei abfahren",
-      "accepted": ["der zug wird von gleis drei abfahren", "der zug fährt von gleis drei ab"]
+      "accepted": [
+        "der zug wird von gleis drei abfahren",
+        "der zug fährt von gleis drei ab"
+      ]
     },
     {
       "id": 8,
       "prompt": "Czy mógłby Pan powiedzieć mi, o której odjeżdża następny pociąg?",
       "answer": "Könnten Sie mir sagen, wann der nächste Zug abfährt?",
-      "accepted": ["könnten sie mir sagen wann der nächste zug abfährt", "können sie mir sagen wann der nächste zug fährt"]
+      "accepted": [
+        "könnten sie mir sagen wann der nächste zug abfährt",
+        "können sie mir sagen wann der nächste zug fährt"
+      ]
     },
     {
       "id": 9,
       "prompt": "Jeśli pociąg będzie opóźniony, poczekam na dworcu",
       "answer": "Wenn der Zug Verspätung hat, warte ich am Bahnhof",
-      "accepted": ["wenn der zug verspätung hat warte ich am bahnhof", "wenn der zug verspätet ist werde ich am bahnhof warten"]
+      "accepted": [
+        "wenn der zug verspätung hat warte ich am bahnhof",
+        "wenn der zug verspätet ist werde ich am bahnhof warten"
+      ]
     },
     {
       "id": 10,
-      "prompt": "Chciałabym wiedzieć, czy muszę się przesiadać",
-      "answer": "Ich möchte wissen, ob ich umsteigen muss",
-      "accepted": ["ich möchte wissen ob ich umsteigen muss", "muss ich umsteigen"]
+      "prompt": "Czy muszę się przesiadać?",
+      "answer": "Muss ich umsteigen?",
+      "accepted": ["muss ich umsteigen", "muss man umsteigen"]
     },
     {
       "id": 11,
       "prompt": "Czy mogę zapłacić kartą kredytową?",
       "answer": "Kann ich mit Kreditkarte bezahlen?",
-      "accepted": ["kann ich mit kreditkarte bezahlen", "kann ich mit kreditkarte zahlen"]
+      "accepted": [
+        "kann ich mit kreditkarte bezahlen",
+        "kann ich mit kreditkarte zahlen"
+      ]
     },
     {
       "id": 12,
       "prompt": "Czy jest bezpośrednie połączenie do Monachium?",
       "answer": "Gibt es eine direkte Verbindung nach München?",
-      "accepted": ["gibt es eine direkte verbindung nach münchen", "gibt es einen direkten zug nach münchen"]
+      "accepted": [
+        "gibt es eine direkte verbindung nach münchen",
+        "gibt es einen direkten zug nach münchen"
+      ]
     },
     {
       "id": 13,
       "prompt": "Chciałbym anulować mój bilet i otrzymać zwrot pieniędzy",
       "answer": "Ich möchte mein Ticket stornieren und eine Rückerstattung bekommen",
-      "accepted": ["ich möchte mein ticket stornieren und eine rückerstattung bekommen", "ich möchte meinen fahrschein stornieren"]
+      "accepted": [
+        "ich möchte mein ticket stornieren und eine rückerstattung bekommen",
+        "ich möchte meinen fahrschein stornieren"
+      ]
     },
     {
       "id": 14,
       "prompt": "Jeśli autobus będzie pełny, wezmę następny",
       "answer": "Wenn der Bus voll ist, nehme ich den nächsten",
-      "accepted": ["wenn der bus voll ist nehme ich den nächsten", "wenn der bus voll ist werde ich den nächsten nehmen"]
+      "accepted": [
+        "wenn der bus voll ist nehme ich den nächsten",
+        "wenn der bus voll ist werde ich den nächsten nehmen"
+      ]
     },
     {
       "id": 15,
       "prompt": "Czy mógłbym dostać rozkład jazdy?",
       "answer": "Könnte ich einen Fahrplan bekommen?",
-      "accepted": ["könnte ich einen fahrplan bekommen", "kann ich einen fahrplan haben"]
+      "accepted": [
+        "könnte ich einen fahrplan bekommen",
+        "kann ich einen fahrplan haben"
+      ]
     },
     {
       "id": 16,
       "prompt": "Gdzie mogę skasować bilet?",
       "answer": "Wo kann ich die Fahrkarte entwerten?",
-      "accepted": ["wo kann ich die fahrkarte entwerten", "wo kann ich das ticket entwerten"]
+      "accepted": [
+        "wo kann ich die fahrkarte entwerten",
+        "wo kann ich das ticket entwerten"
+      ]
     },
     {
       "id": 17,
       "prompt": "Będziemy jechać pociągiem ekspresowym",
       "answer": "Wir werden mit dem Schnellzug fahren",
-      "accepted": ["wir werden mit dem schnellzug fahren", "wir fahren mit dem schnellzug", "wir werden mit dem ice fahren"]
+      "accepted": [
+        "wir werden mit dem schnellzug fahren",
+        "wir fahren mit dem schnellzug",
+        "wir werden mit dem ice fahren"
+      ]
     },
     {
       "id": 18,
       "prompt": "Chciałbym kupić bilet miesięczny na komunikację miejską",
       "answer": "Ich möchte eine Monatskarte für den öffentlichen Nahverkehr kaufen",
-      "accepted": ["ich möchte eine monatskarte für den öffentlichen nahverkehr kaufen", "ich möchte ein monatsticket kaufen"]
+      "accepted": [
+        "ich möchte eine monatskarte für den öffentlichen nahverkehr kaufen",
+        "ich möchte ein monatsticket kaufen"
+      ]
     },
     {
       "id": 19,
       "prompt": "Czy ten bilet jest ważny na wszystkie strefy?",
       "answer": "Ist dieses Ticket für alle Zonen gültig?",
-      "accepted": ["ist dieses ticket für alle zonen gültig", "gilt dieses ticket für alle zonen"]
+      "accepted": [
+        "ist dieses ticket für alle zonen gültig",
+        "gilt dieses ticket für alle zonen"
+      ]
     },
     {
       "id": 20,
       "prompt": "Jeśli bilet będzie za drogi, pojadę autobusem",
       "answer": "Wenn das Ticket zu teuer ist, fahre ich mit dem Bus",
-      "accepted": ["wenn das ticket zu teuer ist fahre ich mit dem bus", "wenn die fahrkarte zu teuer ist nehme ich den bus"]
+      "accepted": [
+        "wenn das ticket zu teuer ist fahre ich mit dem bus",
+        "wenn die fahrkarte zu teuer ist nehme ich den bus"
+      ]
     }
   ]
 }
