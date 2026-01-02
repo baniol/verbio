@@ -1,0 +1,214 @@
+{
+  "metadata": {
+    "id": "english_phrasal_verbs",
+    "name": "English - Phrasal Verbs (Advanced)",
+    "language": "en",
+    "speechLang": "en-US",
+    "sourceLanguage": "pl",
+    "sourceSpeechLang": "pl-PL"
+  },
+  "phrases": [
+    {
+      "id": 1,
+      "prompt": "Muszę nadrobić zaległości w pracy",
+      "answer": "I need to catch up on work",
+      "accepted": [
+        "i need to catch up on work",
+        "i have to catch up on work",
+        "i must catch up on work"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Odkładałem to zbyt długo",
+      "answer": "I've been putting it off for too long",
+      "accepted": [
+        "i've been putting it off for too long",
+        "i have been putting it off for too long",
+        "i've put it off for too long"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Sprawdzę to i wrócę do ciebie",
+      "answer": "I'll look into it and get back to you",
+      "accepted": [
+        "i'll look into it and get back to you",
+        "i will look into it and get back to you"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Przeszliśmy przez trudny okres",
+      "answer": "We went through a difficult period",
+      "accepted": [
+        "we went through a difficult period",
+        "we've been through a difficult period",
+        "we went through a tough period",
+        "we went through a hard time"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Wychowywałem się na wsi",
+      "answer": "I grew up in the countryside",
+      "accepted": [
+        "i grew up in the countryside",
+        "i was brought up in the countryside",
+        "i grew up in the country"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Mogę na ciebie liczyć?",
+      "answer": "Can I count on you?",
+      "accepted": [
+        "can i count on you",
+        "can i rely on you",
+        "could i count on you"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Muszę się z tym pogodzić",
+      "answer": "I need to come to terms with it",
+      "accepted": [
+        "i need to come to terms with it",
+        "i have to come to terms with it",
+        "i must come to terms with it"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Wpadnij do mnie w weekend",
+      "answer": "Drop by my place on the weekend",
+      "accepted": [
+        "drop by my place on the weekend",
+        "drop by my place this weekend",
+        "come by my place on the weekend",
+        "stop by my place on the weekend"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Nie mogę się doczekać wakacji",
+      "answer": "I can't wait for the holidays",
+      "accepted": [
+        "i can't wait for the holidays",
+        "i cannot wait for the holidays",
+        "i'm looking forward to the holidays",
+        "i am looking forward to the holidays"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Zerwaliśmy ze sobą w zeszłym roku",
+      "answer": "We broke up last year",
+      "accepted": [
+        "we broke up last year",
+        "we split up last year"
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "On zawsze mnie zawodzi",
+      "answer": "He always lets me down",
+      "accepted": [
+        "he always lets me down",
+        "he's always letting me down"
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "Musisz się tego trzymać",
+      "answer": "You need to stick with it",
+      "accepted": [
+        "you need to stick with it",
+        "you have to stick with it",
+        "you need to stick to it",
+        "you must stick with it"
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "Pomysł wyszedł od mojego kolegi",
+      "answer": "The idea came from my colleague",
+      "accepted": [
+        "the idea came from my colleague",
+        "my colleague came up with the idea"
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "Całkowicie się z tobą zgadzam",
+      "answer": "I completely go along with you",
+      "accepted": [
+        "i completely go along with you",
+        "i totally go along with you",
+        "i completely agree with you",
+        "i fully agree with you"
+      ]
+    },
+    {
+      "id": 15,
+      "prompt": "Musimy skończyć z tymi opóźnieniami",
+      "answer": "We need to do away with these delays",
+      "accepted": [
+        "we need to do away with these delays",
+        "we have to do away with these delays",
+        "we must do away with these delays",
+        "we need to get rid of these delays"
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "Spotkanie zostało przełożone na piątek",
+      "answer": "The meeting has been put off until Friday",
+      "accepted": [
+        "the meeting has been put off until friday",
+        "the meeting was put off until friday",
+        "the meeting has been postponed until friday"
+      ]
+    },
+    {
+      "id": 17,
+      "prompt": "Będę musiał to przemyśleć",
+      "answer": "I'll have to think it over",
+      "accepted": [
+        "i'll have to think it over",
+        "i will have to think it over",
+        "i need to think it over",
+        "i'll have to think about it"
+      ]
+    },
+    {
+      "id": 18,
+      "prompt": "Ona naprawdę wyróżnia się z tłumu",
+      "answer": "She really stands out from the crowd",
+      "accepted": [
+        "she really stands out from the crowd",
+        "she really stands out"
+      ]
+    },
+    {
+      "id": 19,
+      "prompt": "Nie pozwól, żeby to cię zniechęciło",
+      "answer": "Don't let it put you off",
+      "accepted": [
+        "don't let it put you off",
+        "do not let it put you off",
+        "don't let it discourage you"
+      ]
+    },
+    {
+      "id": 20,
+      "prompt": "Wpadliśmy na siebie przypadkiem",
+      "answer": "We ran into each other by chance",
+      "accepted": [
+        "we ran into each other by chance",
+        "we bumped into each other by chance",
+        "we came across each other by chance"
+      ]
+    }
+  ]
+}
