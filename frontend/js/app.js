@@ -92,6 +92,7 @@
     generalNotes: "langlearn_general_notes",
     reviewSet: (language) => `langlearn_review_set_${language}`,
     immediateRetry: "langlearn_immediate_retry",
+    expandedFolders: "langlearn_expanded_folders",
   };
 
   // State
@@ -157,8 +158,8 @@
       reviewButton: document.getElementById("review-button"),
       reviewIconEmpty: document.getElementById("review-icon-empty"),
       reviewIconFilled: document.getElementById("review-icon-filled"),
-      setMenu: document.getElementById("set-menu"),
-      setSelect: document.getElementById("set-select"),
+      setModal: document.getElementById("set-modal"),
+      setFolders: document.getElementById("set-folders"),
       currentSetName: document.getElementById("current-set-name"),
       acceptedVariants: document.getElementById("accepted-variants"),
       userSaid: document.getElementById("user-said"),
@@ -207,8 +208,10 @@
     el.currentSetName?.addEventListener("click", toggleSetMenu);
     el.menuButton?.addEventListener("click", toggleMenu);
 
-    // Set selection
-    el.setSelect?.addEventListener("change", changeSet);
+    // Set selection modal - close on backdrop click
+    el.setModal?.addEventListener("click", (e) => {
+      if (e.target === el.setModal) hideSetModal();
+    });
 
     // Menu
     el.menuOverlay?.addEventListener("click", toggleMenu);
@@ -467,42 +470,177 @@
     applyTheme();
   }
 
-  // Set menu
-  function populateSetMenu() {
-    const select = el.setSelect;
-    select.innerHTML = "";
+  // Set menu (folder-based modal)
+  function getExpandedFolders() {
+    return Storage.get(STORAGE_KEYS.expandedFolders, []);
+  }
 
-    // Regular sets
+  function saveExpandedFolders(expanded) {
+    Storage.set(STORAGE_KEYS.expandedFolders, expanded);
+  }
+
+  function populateSetFolders() {
+    const container = el.setFolders;
+    if (!container) return;
+    container.innerHTML = "";
+
+    // Group sets by language
+    const grouped = {};
     for (const [id, set] of Object.entries(SETS)) {
-      const option = document.createElement("option");
-      option.value = id;
-      option.textContent = set.metadata.name;
-      select.appendChild(option);
+      const lang = set.metadata.language;
+      if (!grouped[lang]) grouped[lang] = [];
+      grouped[lang].push({ id, ...set });
     }
 
-    // Review sets
-    const reviewLanguages = getReviewSetLanguages();
-    if (reviewLanguages.length > 0) {
-      // Add separator
-      const separator = document.createElement("option");
-      separator.disabled = true;
-      separator.textContent = "──────────";
-      select.appendChild(separator);
+    // Get expanded state
+    const expanded = getExpandedFolders();
 
-      for (const lang of reviewLanguages) {
-        const reviewData = buildReviewSetData(lang);
-        if (reviewData) {
-          const option = document.createElement("option");
-          option.value = `review_${lang}`;
-          option.textContent = `${reviewData.metadata.name} (${reviewData.phrases.length})`;
-          select.appendChild(option);
-        }
-      }
+    // Sort languages alphabetically by display name
+    const uiLang = I18N.currentLang;
+    const sortedLangs = Object.keys(grouped).sort((a, b) => {
+      const nameA = getLanguageDisplay(a, uiLang).name;
+      const nameB = getLanguageDisplay(b, uiLang).name;
+      return nameA.localeCompare(nameB);
+    });
+
+    // Create folder for each language
+    for (const lang of sortedLangs) {
+      const sets = grouped[lang];
+      const display = getLanguageDisplay(lang, uiLang);
+      const isExpanded = expanded.includes(lang);
+
+      // Check for review set
+      const reviewData = buildReviewSetData(lang);
+
+      const folderHTML = createFolderHTML(
+        lang,
+        display,
+        sets,
+        reviewData,
+        isExpanded,
+      );
+      container.insertAdjacentHTML("beforeend", folderHTML);
     }
+
+    // Attach event listeners
+    attachFolderListeners();
+  }
+
+  function createFolderHTML(lang, display, sets, reviewData, isExpanded) {
+    const chevronRotation = isExpanded ? "rotate(180deg)" : "rotate(0deg)";
+    const contentHidden = isExpanded ? "" : "hidden";
+
+    // Build set items HTML
+    let setsHTML = sets
+      .map(
+        (set) => `
+      <button class="set-item w-full text-left p-2 pl-4 rounded-lg text-slate-600
+                     dark:text-slate-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/30
+                     hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors text-sm"
+              data-set-id="${set.id}">
+        ${set.metadata.name}
+      </button>
+    `,
+      )
+      .join("");
+
+    // Add review set if exists
+    if (reviewData && reviewData.phrases.length > 0) {
+      setsHTML += `
+        <button class="set-item w-full text-left p-2 pl-4 rounded-lg text-amber-600
+                       dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/30
+                       transition-colors text-sm"
+                data-set-id="review_${lang}">
+          <span class="flex items-center gap-1">
+            <span>⭐</span>
+            <span>${I18N.t("reviewSetPrefix")} (${reviewData.phrases.length})</span>
+          </span>
+        </button>
+      `;
+    }
+
+    return `
+      <div class="language-folder mb-2">
+        <button class="folder-toggle w-full flex items-center justify-between p-3
+                       rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                data-lang="${lang}">
+          <span class="flex items-center gap-2">
+            <span class="text-xl">${display.flag}</span>
+            <span class="font-medium text-slate-800 dark:text-slate-200">${display.name}</span>
+            <span class="text-xs text-slate-400 dark:text-slate-500">(${sets.length})</span>
+          </span>
+          <svg class="w-5 h-5 text-slate-400 transition-transform duration-200"
+               style="transform: ${chevronRotation};"
+               fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="folder-content ${contentHidden} pl-4 mt-1 space-y-1">
+          ${setsHTML}
+        </div>
+      </div>
+    `;
+  }
+
+  function attachFolderListeners() {
+    if (!el.setFolders) return;
+
+    // Folder toggles
+    el.setFolders.querySelectorAll(".folder-toggle").forEach((btn) => {
+      btn.addEventListener("click", () => toggleFolder(btn.dataset.lang));
+    });
+
+    // Set items
+    el.setFolders.querySelectorAll(".set-item").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        loadSet(btn.dataset.setId);
+        hideSetModal();
+      });
+    });
+  }
+
+  function toggleFolder(lang) {
+    const folderBtn = el.setFolders.querySelector(`[data-lang="${lang}"]`);
+    if (!folderBtn) return;
+
+    const content = folderBtn.nextElementSibling;
+    const chevron = folderBtn.querySelector("svg");
+
+    const isHidden = content.classList.contains("hidden");
+    content.classList.toggle("hidden");
+    chevron.style.transform = isHidden ? "rotate(180deg)" : "rotate(0deg)";
+
+    // Save state to localStorage
+    let expanded = getExpandedFolders();
+    if (isHidden) {
+      if (!expanded.includes(lang)) expanded.push(lang);
+    } else {
+      expanded = expanded.filter((l) => l !== lang);
+    }
+    saveExpandedFolders(expanded);
+  }
+
+  function showSetModal() {
+    populateSetFolders();
+    UI.show(el.setModal);
+  }
+
+  function hideSetModal() {
+    UI.hide(el.setModal);
   }
 
   function toggleSetMenu() {
-    el.setMenu.classList.toggle("hidden");
+    if (el.setModal.classList.contains("hidden")) {
+      showSetModal();
+    } else {
+      hideSetModal();
+    }
+  }
+
+  // Keep old function name for compatibility
+  function populateSetMenu() {
+    // This is now handled by populateSetFolders, but keep for any external calls
+    populateSetFolders();
   }
 
   function loadLastSet() {
@@ -517,12 +655,6 @@
     if (setIds.length > 0) {
       loadSet(setIds[0]);
     }
-  }
-
-  function changeSet() {
-    const setId = el.setSelect.value;
-    loadSet(setId);
-    toggleSetMenu();
   }
 
   function loadSet(setId) {
@@ -547,7 +679,6 @@
     }
 
     localStorage.setItem(STORAGE_KEYS.lastSet, setId);
-    el.setSelect.value = setId;
     el.currentSetName.textContent = currentSet.metadata.name;
 
     // Update speech recognition language
@@ -1224,8 +1355,6 @@
       }
       updateReviewIcon();
       populateSetMenu();
-      // Restore selection after repopulating
-      el.setSelect.value = currentSet.id;
     }
   }
 

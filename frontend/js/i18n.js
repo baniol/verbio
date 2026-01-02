@@ -3,6 +3,121 @@
  * Provides UI translations for multiple languages
  */
 
+// Language names with flags for set grouping
+const LANGUAGE_NAMES = {
+  de: {
+    flag: "🇩🇪",
+    en: "German",
+    pl: "Niemiecki",
+    de: "Deutsch",
+    es: "Alemán",
+    fr: "Allemand",
+  },
+  en: {
+    flag: "🇬🇧",
+    en: "English",
+    pl: "Angielski",
+    de: "Englisch",
+    es: "Inglés",
+    fr: "Anglais",
+  },
+  es: {
+    flag: "🇪🇸",
+    en: "Spanish",
+    pl: "Hiszpański",
+    de: "Spanisch",
+    es: "Español",
+    fr: "Espagnol",
+  },
+  fr: {
+    flag: "🇫🇷",
+    en: "French",
+    pl: "Francuski",
+    de: "Französisch",
+    es: "Francés",
+    fr: "Français",
+  },
+  it: {
+    flag: "🇮🇹",
+    en: "Italian",
+    pl: "Włoski",
+    de: "Italienisch",
+    es: "Italiano",
+    fr: "Italien",
+  },
+  pt: {
+    flag: "🇵🇹",
+    en: "Portuguese",
+    pl: "Portugalski",
+    de: "Portugiesisch",
+    es: "Portugués",
+    fr: "Portugais",
+  },
+  nl: {
+    flag: "🇳🇱",
+    en: "Dutch",
+    pl: "Holenderski",
+    de: "Niederländisch",
+    es: "Neerlandés",
+    fr: "Néerlandais",
+  },
+  ru: {
+    flag: "🇷🇺",
+    en: "Russian",
+    pl: "Rosyjski",
+    de: "Russisch",
+    es: "Ruso",
+    fr: "Russe",
+  },
+  ja: {
+    flag: "🇯🇵",
+    en: "Japanese",
+    pl: "Japoński",
+    de: "Japanisch",
+    es: "Japonés",
+    fr: "Japonais",
+  },
+  zh: {
+    flag: "🇨🇳",
+    en: "Chinese",
+    pl: "Chiński",
+    de: "Chinesisch",
+    es: "Chino",
+    fr: "Chinois",
+  },
+  ko: {
+    flag: "🇰🇷",
+    en: "Korean",
+    pl: "Koreański",
+    de: "Koreanisch",
+    es: "Coreano",
+    fr: "Coréen",
+  },
+  pl: {
+    flag: "🇵🇱",
+    en: "Polish",
+    pl: "Polski",
+    de: "Polnisch",
+    es: "Polaco",
+    fr: "Polonais",
+  },
+};
+
+/**
+ * Get display info for a language (flag + localized name)
+ * @param {string} langCode - Language code (e.g., "de", "en")
+ * @param {string} uiLang - Current UI language for localized name
+ * @returns {{flag: string, name: string}}
+ */
+function getLanguageDisplay(langCode, uiLang) {
+  const lang = LANGUAGE_NAMES[langCode];
+  if (!lang) return { flag: "🌐", name: langCode.toUpperCase() };
+  return { flag: lang.flag, name: lang[uiLang] || lang.en };
+}
+
+// Export for use in app.js
+window.getLanguageDisplay = getLanguageDisplay;
+
 const I18N = {
   // Available languages
   languages: {
@@ -129,6 +244,9 @@ const I18N = {
       // Immediate retry
       immediateRetry: "Immediate retry",
       immediateRetryDesc: "Repeat phrase immediately after error",
+
+      // Set selection modal
+      reviewSetPrefix: "Review",
     },
 
     pl: {
@@ -245,6 +363,9 @@ const I18N = {
       // Immediate retry
       immediateRetry: "Natychmiastowa powtórka",
       immediateRetryDesc: "Powtórz frazę od razu po błędzie",
+
+      // Set selection modal
+      reviewSetPrefix: "Do powtórki",
     },
 
     de: {
@@ -362,6 +483,9 @@ const I18N = {
       // Immediate retry
       immediateRetry: "Sofortige Wiederholung",
       immediateRetryDesc: "Phrase sofort nach Fehler wiederholen",
+
+      // Set selection modal
+      reviewSetPrefix: "Wiederholung",
     },
 
     es: {
@@ -479,6 +603,9 @@ const I18N = {
       // Immediate retry
       immediateRetry: "Repetición inmediata",
       immediateRetryDesc: "Repetir frase inmediatamente después de error",
+
+      // Set selection modal
+      reviewSetPrefix: "Repaso",
     },
 
     fr: {
@@ -596,6 +723,9 @@ const I18N = {
       // Immediate retry
       immediateRetry: "Répétition immédiate",
       immediateRetryDesc: "Répéter la phrase immédiatement après une erreur",
+
+      // Set selection modal
+      reviewSetPrefix: "Révision",
     },
   },
 
