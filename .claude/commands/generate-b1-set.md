@@ -156,13 +156,41 @@ Phrases should naturally contain these constructions, e.g.:
 - More predictable situations
 - Shorter utterances
 
+### Naturalness over grammar showcase
+
+**CRITICAL:** Do NOT force grammar constructions into every phrase. Prioritize how natives actually speak.
+
+**Bad examples - forced, unnatural:**
+- "Könnte ich Sie um den Weg zur nächsten Apotheke bitten?" (nobody talks like this)
+- "Ich möchte wissen, wo die nächste Bushaltestelle ist" (overly formal)
+- "Ich möchte mich über verfügbare Ausflüge informieren" (textbook German)
+
+**Good examples - natural, direct:**
+- "Können Sie mir sagen, wo die nächste Apotheke ist?" or simply "Wo ist hier eine Apotheke?"
+- "Wo ist die nächste Bushaltestelle?"
+- "Welche Ausflüge gibt es?"
+
+**When to use Konjunktiv II (möchte, könnte, würde):**
+- Actual requests for help: "Könnten Sie mir helfen?"
+- Wishes/wants: "Ich möchte ein Zimmer reservieren"
+- Hypotheticals: "Wenn ich Zeit hätte..."
+- Softening demands: "Ich würde gerne bezahlen"
+
+**When NOT to use Konjunktiv II:**
+- Simple questions: "Wo ist...?" NOT "Ich möchte wissen, wo..."
+- Asking for information: "Gibt es...?" NOT "Könnte ich erfahren, ob..."
+- Direct inquiries: "Was kostet...?" NOT "Ich würde gerne wissen, was..."
+
+**Rule of thumb:** If you can ask directly in the source language, use direct form in German too.
+
 **Phrase content:**
 - **20 phrases per set × 3 sets = 60 phrases per topic**
 - Variety of scenarios within topic
 - Practical, used in real situations
-- Natural constructions for B1 level
+- Natural constructions that natives actually use
 - Questions, statements, requests, reactions
 - Each set should be standalone
+- Prefer shorter, direct phrases over long formal constructions
 
 **Accepted - answer variants:**
 - All grammatically correct variants

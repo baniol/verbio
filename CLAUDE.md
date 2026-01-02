@@ -170,6 +170,17 @@ Alternative: `git push origin main` triggers automatic deploy via Cloudflare Pag
 3. Run deploy script (generates sets.js automatically)
 4. Done - new set appears in UI
 
+## Audio Generation
+
+Audio files are generated using AWS Polly (`scripts/generate_audio.py`).
+
+**IMPORTANT:** When modifying `answer` field in existing sets, regenerate audio:
+```bash
+python scripts/generate_audio.py
+```
+
+The script uses hash-based change detection - only modified phrases will be regenerated.
+
 ## Branch Strategy
 
 Three branches with different data sets, shared application code:
