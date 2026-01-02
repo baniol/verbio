@@ -689,18 +689,22 @@
     el.answer.textContent = phrase.answer;
     el.transcript.textContent = "";
 
-    // Show accepted variants as list
-    const variants = phrase.accepted.filter(
-      (v) => v.toLowerCase() !== phrase.answer.toLowerCase(),
-    );
-    if (variants.length > 0) {
-      el.acceptedVariants.innerHTML =
-        '<p class="text-slate-400 dark:text-slate-500 mb-1 text-left">' +
-        I18N.t("also") +
-        "</p>" +
-        '<ul class="list-disc list-inside space-y-1 text-left">' +
-        variants.map((v) => `<li>${v}</li>`).join("") +
-        "</ul>";
+    // Show accepted variants as list (if feature enabled)
+    if (FEATURES.showAlternatives) {
+      const variants = phrase.accepted.filter(
+        (v) => v.toLowerCase() !== phrase.answer.toLowerCase(),
+      );
+      if (variants.length > 0) {
+        el.acceptedVariants.innerHTML =
+          '<p class="text-slate-400 dark:text-slate-500 mb-1 text-left">' +
+          I18N.t("also") +
+          "</p>" +
+          '<ul class="list-disc list-inside space-y-1 text-left">' +
+          variants.map((v) => `<li>${v}</li>`).join("") +
+          "</ul>";
+      } else {
+        el.acceptedVariants.innerHTML = "";
+      }
     } else {
       el.acceptedVariants.innerHTML = "";
     }
