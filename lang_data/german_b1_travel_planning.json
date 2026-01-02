@@ -146,16 +146,6 @@
       ]
     },
     {
-      "id": 16,
-      "prompt": "Czy mógłbym prosić o pokój dla niepalących?",
-      "answer": "Könnte ich ein Nichtraucherzimmer bekommen?",
-      "accepted": [
-        "könnte ich ein nichtraucherzimmer bekommen",
-        "kann ich ein nichtraucherzimmer bekommen",
-        "ich möchte ein nichtraucherzimmer"
-      ]
-    },
-    {
       "id": 17,
       "prompt": "Będziemy potrzebować transferu z lotniska",
       "answer": "Wir werden einen Flughafentransfer brauchen",
