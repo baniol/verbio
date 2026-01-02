@@ -89,6 +89,7 @@
     requiredStreak: "langlearn_required_streak",
     progress: (setId) => `langlearn_progress_${setId}`,
     notes: "langlearn_notes",
+    generalNotes: "langlearn_general_notes",
     reviewSet: (language) => `langlearn_review_set_${language}`,
     immediateRetry: "langlearn_immediate_retry",
   };
@@ -172,6 +173,16 @@
       menuPanel: document.getElementById("menu-panel"),
       settingsLink: document.getElementById("settings-link"),
       exportNotesButton: document.getElementById("export-notes-button"),
+      clearNotesButton: document.getElementById("clear-notes-button"),
+      generalNotesButton: document.getElementById("general-notes-button"),
+      generalNotesModal: document.getElementById("general-notes-modal"),
+      generalNotesTextarea: document.getElementById("general-notes-textarea"),
+      generalNotesCancelButton: document.getElementById(
+        "general-notes-cancel-button",
+      ),
+      generalNotesSaveButton: document.getElementById(
+        "general-notes-save-button",
+      ),
       themeToggleMenu: document.getElementById("theme-toggle-menu"),
       showAnswerButton: document.getElementById("show-answer-button"),
       peekAnswerButton: document.getElementById("peek-answer-button"),
@@ -204,6 +215,10 @@
     el.menuCloseButton?.addEventListener("click", toggleMenu);
     el.settingsLink?.addEventListener("click", toggleMenu);
     el.exportNotesButton?.addEventListener("click", exportNotes);
+    el.clearNotesButton?.addEventListener("click", clearNotes);
+    el.generalNotesButton?.addEventListener("click", openGeneralNotes);
+    el.generalNotesCancelButton?.addEventListener("click", closeGeneralNotes);
+    el.generalNotesSaveButton?.addEventListener("click", saveGeneralNotes);
     el.themeToggleMenu?.addEventListener("click", toggleTheme);
 
     // Flashcard actions
@@ -1314,8 +1329,9 @@
   function exportNotes() {
     const notes = getAllNotes();
     const entries = Object.values(notes);
+    const generalNotes = localStorage.getItem(STORAGE_KEYS.generalNotes) || "";
 
-    if (entries.length === 0) {
+    if (entries.length === 0 && !generalNotes) {
       alert(I18N.t("noNotesToExport"));
       return;
     }
@@ -1323,16 +1339,29 @@
     // Sort by update time (newest first)
     entries.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
 
-    // Format notes
-    const formatted = entries
+    // Format phrase notes
+    const formattedPhrases = entries
       .map((n) => `${n.prompt} → ${n.answer}\n${n.text}`)
       .join("\n\n---\n\n");
 
+    // Build final output
+    let formatted = "";
+    if (generalNotes) {
+      formatted += `=== ${I18N.t("generalNotes")} ===\n\n${generalNotes}`;
+      if (entries.length > 0) {
+        formatted += "\n\n---\n\n";
+      }
+    }
+    if (entries.length > 0) {
+      formatted += formattedPhrases;
+    }
+
     // Copy to clipboard
+    const totalCount = entries.length + (generalNotes ? 1 : 0);
     navigator.clipboard
       .writeText(formatted)
       .then(() => {
-        alert(I18N.t("notesCopied", { count: entries.length }));
+        alert(I18N.t("notesCopied", { count: totalCount }));
       })
       .catch((err) => {
         console.error("Failed to copy:", err);
@@ -1340,6 +1369,47 @@
       });
 
     toggleMenu();
+  }
+
+  function clearNotes() {
+    const notes = getAllNotes();
+    const generalNotes = localStorage.getItem(STORAGE_KEYS.generalNotes) || "";
+    const entries = Object.values(notes);
+
+    if (entries.length === 0 && !generalNotes) {
+      alert(I18N.t("noNotesToClear"));
+      toggleMenu();
+      return;
+    }
+
+    if (confirm(I18N.t("notesCleared") + "?")) {
+      localStorage.removeItem(STORAGE_KEYS.notes);
+      localStorage.removeItem(STORAGE_KEYS.generalNotes);
+      alert(I18N.t("notesCleared"));
+    }
+
+    toggleMenu();
+  }
+
+  function openGeneralNotes() {
+    toggleMenu();
+    const saved = localStorage.getItem(STORAGE_KEYS.generalNotes) || "";
+    el.generalNotesTextarea.value = saved;
+    el.generalNotesModal.classList.remove("hidden");
+  }
+
+  function closeGeneralNotes() {
+    el.generalNotesModal.classList.add("hidden");
+  }
+
+  function saveGeneralNotes() {
+    const text = el.generalNotesTextarea.value.trim();
+    if (text) {
+      localStorage.setItem(STORAGE_KEYS.generalNotes, text);
+    } else {
+      localStorage.removeItem(STORAGE_KEYS.generalNotes);
+    }
+    closeGeneralNotes();
   }
 
   // No longer exposing functions to global scope - all handlers are bound via addEventListener
