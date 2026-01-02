@@ -15,6 +15,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Localized language names (EN, PL, DE, ES, FR)
 - Review sets displayed within each language folder
 
+## [0.8.1] - 2026-01-02
+
+### Changed
+- General notes now work as append-only list (each save adds new note)
+
+## [0.8.0] - 2026-01-02
+
+### Added
+- General notes modal for freeform notes accessible from menu
+- Clear notes option to delete all notes at once
+- General notes included in export with dedicated header
+
 ## [0.7.1] - 2026-01-02
 
 ### Fixed

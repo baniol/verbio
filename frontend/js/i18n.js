@@ -170,7 +170,9 @@ const I18N = {
       // Menu
       menu: "Menu",
       settings: "Settings",
+      generalNotes: "General notes",
       exportNotes: "Export notes",
+      clearNotes: "Clear notes",
       darkMode: "Dark mode",
       lightMode: "Light mode",
 
@@ -207,11 +209,14 @@ const I18N = {
 
       // Notes
       note: "Note",
+      addNote: "Add note",
       yourNote: "Your note...",
       save: "Save",
       noNotesToExport: "No notes to export",
       notesCopied: "Copied {count} notes to clipboard",
       failedToCopy: "Failed to copy to clipboard",
+      notesCleared: "All notes cleared",
+      noNotesToClear: "No notes to clear",
 
       // Set selection
       selectSetLabel: "Select set:",
@@ -284,7 +289,9 @@ const I18N = {
       // Menu
       menu: "Menu",
       settings: "Ustawienia",
+      generalNotes: "Notatki ogólne",
       exportNotes: "Eksportuj notatki",
+      clearNotes: "Wyczyść notatki",
       darkMode: "Tryb ciemny",
       lightMode: "Tryb jasny",
 
@@ -320,11 +327,14 @@ const I18N = {
 
       // Notes
       note: "Notatka",
+      addNote: "Dodaj notatkę",
       yourNote: "Twoja notatka...",
       save: "Zapisz",
       noNotesToExport: "Brak notatek do wyeksportowania",
       notesCopied: "Skopiowano {count} notatek do schowka",
       failedToCopy: "Nie udało się skopiować do schowka",
+      notesCleared: "Wszystkie notatki zostały usunięte",
+      noNotesToClear: "Brak notatek do usunięcia",
 
       // Set selection
       selectSetLabel: "Wybierz zestaw:",
@@ -398,7 +408,9 @@ const I18N = {
       // Menu
       menu: "Menü",
       settings: "Einstellungen",
+      generalNotes: "Allgemeine Notizen",
       exportNotes: "Notizen exportieren",
+      clearNotes: "Notizen löschen",
       darkMode: "Dunkelmodus",
       lightMode: "Hellmodus",
 
@@ -435,11 +447,14 @@ const I18N = {
 
       // Notes
       note: "Notiz",
+      addNote: "Notiz hinzufügen",
       yourNote: "Deine Notiz...",
       save: "Speichern",
       noNotesToExport: "Keine Notizen zum Exportieren",
       notesCopied: "{count} Notizen in die Zwischenablage kopiert",
       failedToCopy: "Kopieren in die Zwischenablage fehlgeschlagen",
+      notesCleared: "Alle Notizen gelöscht",
+      noNotesToClear: "Keine Notizen zum Löschen",
 
       // Set selection
       selectSetLabel: "Set auswählen:",
@@ -513,7 +528,9 @@ const I18N = {
       // Menu
       menu: "Menú",
       settings: "Ajustes",
+      generalNotes: "Notas generales",
       exportNotes: "Exportar notas",
+      clearNotes: "Borrar notas",
       darkMode: "Modo oscuro",
       lightMode: "Modo claro",
 
@@ -550,11 +567,14 @@ const I18N = {
 
       // Notes
       note: "Nota",
+      addNote: "Añadir nota",
       yourNote: "Tu nota...",
       save: "Guardar",
       noNotesToExport: "No hay notas para exportar",
       notesCopied: "{count} notas copiadas al portapapeles",
       failedToCopy: "Error al copiar al portapapeles",
+      notesCleared: "Todas las notas borradas",
+      noNotesToClear: "No hay notas para borrar",
 
       // Set selection
       selectSetLabel: "Seleccionar conjunto:",
@@ -628,7 +648,9 @@ const I18N = {
       // Menu
       menu: "Menu",
       settings: "Paramètres",
+      generalNotes: "Notes générales",
       exportNotes: "Exporter les notes",
+      clearNotes: "Effacer les notes",
       darkMode: "Mode sombre",
       lightMode: "Mode clair",
 
@@ -665,11 +687,14 @@ const I18N = {
 
       // Notes
       note: "Note",
+      addNote: "Ajouter une note",
       yourNote: "Ta note...",
       save: "Enregistrer",
       noNotesToExport: "Aucune note à exporter",
       notesCopied: "{count} notes copiées dans le presse-papiers",
       failedToCopy: "Échec de la copie dans le presse-papiers",
+      notesCleared: "Toutes les notes effacées",
+      noNotesToClear: "Aucune note à effacer",
 
       // Set selection
       selectSetLabel: "Sélectionner un ensemble:",
