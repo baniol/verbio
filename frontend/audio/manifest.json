@@ -902,5 +902,127 @@
       "hash": "94c724d3785d027d63a542ffecf74278",
       "file": "30.mp3"
     }
+  },
+  "german_daily_life": {
+    "1": {
+      "hash": "0266c2432ada3023f89c918ae1db8054",
+      "file": "1.mp3"
+    },
+    "2": {
+      "hash": "8abee492ac2afda62fa3bdc804c7eef2",
+      "file": "2.mp3"
+    },
+    "3": {
+      "hash": "c06a8a0ff16842ff6d5e8c70fa7c5135",
+      "file": "3.mp3"
+    },
+    "4": {
+      "hash": "34d3259c858f6fa40ec55114da62eff5",
+      "file": "4.mp3"
+    },
+    "5": {
+      "hash": "5446e5fd95a4df9e7c23fa36ce520a6d",
+      "file": "5.mp3"
+    },
+    "6": {
+      "hash": "d8c4d58164ec72181f52fb45d7963cbd",
+      "file": "6.mp3"
+    },
+    "7": {
+      "hash": "ef7dd8612b591da5a0d5da3bc4c5d8e5",
+      "file": "7.mp3"
+    },
+    "8": {
+      "hash": "de30e5bde5637e1b7723b947566d8732",
+      "file": "8.mp3"
+    },
+    "9": {
+      "hash": "140081c70eda184f4627b6d114058877",
+      "file": "9.mp3"
+    },
+    "10": {
+      "hash": "dcb16be3bd4bb299af07541d205345e9",
+      "file": "10.mp3"
+    },
+    "11": {
+      "hash": "df49afd5479356701c831d8a49e0f770",
+      "file": "11.mp3"
+    },
+    "12": {
+      "hash": "e66e406a09a8b014b1d5b234141d5793",
+      "file": "12.mp3"
+    },
+    "13": {
+      "hash": "955ab53316ff224af1facc1eb550b773",
+      "file": "13.mp3"
+    },
+    "14": {
+      "hash": "f3da04b96e80ed22e070050bec8a6c0d",
+      "file": "14.mp3"
+    },
+    "15": {
+      "hash": "3918124c30e8c6eb96d4ce4a66aefe75",
+      "file": "15.mp3"
+    },
+    "16": {
+      "hash": "9ed3496a88e7fd53b4490db019ce060e",
+      "file": "16.mp3"
+    },
+    "17": {
+      "hash": "a78a4584b483d41ec09ac4847aecf96b",
+      "file": "17.mp3"
+    },
+    "18": {
+      "hash": "f594a515d8c27e4c9e1a53db28e0956f",
+      "file": "18.mp3"
+    },
+    "19": {
+      "hash": "3ec52e9d66870d60bc226215202d7a05",
+      "file": "19.mp3"
+    },
+    "20": {
+      "hash": "0d3f48da88ccebf054a2fa8f43e23d2f",
+      "file": "20.mp3"
+    },
+    "21": {
+      "hash": "b283ae6d59d9fada36f24dcf52111a8a",
+      "file": "21.mp3"
+    },
+    "22": {
+      "hash": "ce982b04666b18834b9d051e95f56489",
+      "file": "22.mp3"
+    },
+    "23": {
+      "hash": "92ce9160b9e182c2d6939b8a2d614b8b",
+      "file": "23.mp3"
+    },
+    "24": {
+      "hash": "9d7b9162ba5a0d7bbea733919d149ec7",
+      "file": "24.mp3"
+    },
+    "25": {
+      "hash": "ab1810d05111f81713242061c40bca2b",
+      "file": "25.mp3"
+    },
+    "26": {
+      "hash": "2fde4ada36c23707a8516b91e17d135c",
+      "file": "26.mp3"
+    },
+    "27": {
+      "hash": "b68ba1aefb4fcf2c1db75cb0bcc2cc2b",
+      "file": "27.mp3"
+    },
+    "28": {
+      "hash": "28c1e4d979b49b02abfd8493900888cb",
+      "file": "28.mp3"
+    },
+    "29": {
+      "hash": "764c6aefb4ade3cb5ee17f32ffdeccf7",
+      "file": "29.mp3"
+    },
+    "30": {
+      "hash": "f13d087f4bc82aa198670efad8b19bd2",
+      "file": "30.mp3"
+    }
   }
 }
