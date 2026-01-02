@@ -412,5 +412,251 @@
       "hash": "4b88f8ee1bfdec5f1e415f88a42813a4",
       "file": "21.mp3"
     }
+  },
+  "english_phrasal_verbs": {
+    "1": {
+      "hash": "58570556d57493b743be9746ddbd1d21",
+      "file": "1.mp3"
+    },
+    "2": {
+      "hash": "112cf2a43fcb6c9475dd449acd7cbabe",
+      "file": "2.mp3"
+    },
+    "3": {
+      "hash": "a58709e81e6806ceaf92cd34585691c5",
+      "file": "3.mp3"
+    },
+    "4": {
+      "hash": "b04c5b6d18646707cc079b5e5d09870d",
+      "file": "4.mp3"
+    },
+    "5": {
+      "hash": "d570f3bd2ded1f590fd14dc7b56a41b9",
+      "file": "5.mp3"
+    },
+    "6": {
+      "hash": "d158be19bba4be15cf4e1f7c6d61298e",
+      "file": "6.mp3"
+    },
+    "7": {
+      "hash": "3dc5269e31875eb798ba871ee712d0d1",
+      "file": "7.mp3"
+    },
+    "8": {
+      "hash": "bfdce68125aa041aee2866aa3ccaeeef",
+      "file": "8.mp3"
+    },
+    "9": {
+      "hash": "5237f7248045e20edd89cd36b9438ce3",
+      "file": "9.mp3"
+    },
+    "10": {
+      "hash": "5a81e08dfab0444d832475684edac187",
+      "file": "10.mp3"
+    },
+    "11": {
+      "hash": "b01bba57026e10e32280b5ad4c2c215e",
+      "file": "11.mp3"
+    },
+    "12": {
+      "hash": "9eb90152ee3e1c3d00a64c6a85e86895",
+      "file": "12.mp3"
+    },
+    "13": {
+      "hash": "9e2d82156e9f87cbc126ea8f420b0de6",
+      "file": "13.mp3"
+    },
+    "14": {
+      "hash": "a2f35010b1cc715a40fc1fcfa4cc1758",
+      "file": "14.mp3"
+    },
+    "15": {
+      "hash": "3a28daa56e6407e4385a98f928cafba7",
+      "file": "15.mp3"
+    },
+    "16": {
+      "hash": "565c063f4ee7dbf319ebd51b37b18c48",
+      "file": "16.mp3"
+    },
+    "17": {
+      "hash": "62c8a1b19141fef45be13d3e15d61a81",
+      "file": "17.mp3"
+    },
+    "18": {
+      "hash": "ecf693816101fa3d35365bfd51b6a7da",
+      "file": "18.mp3"
+    },
+    "19": {
+      "hash": "dad14002c58a9cde4bafcc9ce3505946",
+      "file": "19.mp3"
+    },
+    "20": {
+      "hash": "874c2ba50c7712160186cd1ea29e21b5",
+      "file": "20.mp3"
+    }
+  },
+  "english_phrasal_verbs_advanced": {
+    "1": {
+      "hash": "a35b71c22cf4ca72903b30c56f33d1bd",
+      "file": "1.mp3"
+    },
+    "2": {
+      "hash": "6037c05182d10f75e65a43d0fa61f0b5",
+      "file": "2.mp3"
+    },
+    "3": {
+      "hash": "9471fb81272539bc32b147056a6dd81e",
+      "file": "3.mp3"
+    },
+    "4": {
+      "hash": "0de35a7f8a6f710c09e0ba6294585899",
+      "file": "4.mp3"
+    },
+    "5": {
+      "hash": "61ff3cbe220c5b590be6527df1ff1914",
+      "file": "5.mp3"
+    },
+    "6": {
+      "hash": "8e09c52e41fa4da186f7b85c1714c19c",
+      "file": "6.mp3"
+    },
+    "7": {
+      "hash": "26e7d7fdd87fadb045decb05122deadd",
+      "file": "7.mp3"
+    },
+    "8": {
+      "hash": "408430231fe3da8d710b5637b4b4a4fb",
+      "file": "8.mp3"
+    },
+    "9": {
+      "hash": "f289f9d8479974fccad12ac3467fb5dd",
+      "file": "9.mp3"
+    },
+    "10": {
+      "hash": "cd126f2af0a87c130e080109249b532b",
+      "file": "10.mp3"
+    },
+    "11": {
+      "hash": "9d3245db5746d04209a61a7e3bde038d",
+      "file": "11.mp3"
+    },
+    "12": {
+      "hash": "c3546c6a9f2c61dbb61f0772ded9f0b6",
+      "file": "12.mp3"
+    },
+    "13": {
+      "hash": "fc977f16afb010ac7496e924f1d13190",
+      "file": "13.mp3"
+    },
+    "14": {
+      "hash": "1b2940dc8ea6734795e84b7ff0efbde4",
+      "file": "14.mp3"
+    },
+    "15": {
+      "hash": "d12d62216ae000c6df5fe7ec93d01d75",
+      "file": "15.mp3"
+    },
+    "16": {
+      "hash": "79cc95cbe39f389f22246026227d24a0",
+      "file": "16.mp3"
+    },
+    "17": {
+      "hash": "3133cf3d869b451eb0c759ead126a4fd",
+      "file": "17.mp3"
+    },
+    "18": {
+      "hash": "88bee3039a1437e2283e238b7c8b5341",
+      "file": "18.mp3"
+    },
+    "19": {
+      "hash": "a44ef75bbde84351c87131a866f1a190",
+      "file": "19.mp3"
+    },
+    "20": {
+      "hash": "29fc4f5ba3226ecce72b16d3639b903c",
+      "file": "20.mp3"
+    }
+  },
+  "french_spatial_relations": {
+    "1": {
+      "hash": "e74cc963bca629394c439cb7371f1ee9",
+      "file": "1.mp3"
+    },
+    "2": {
+      "hash": "54bb9209dc57c5bd772430a995d523e3",
+      "file": "2.mp3"
+    },
+    "3": {
+      "hash": "a40ad27ad248b71070a979f1a8e53d5c",
+      "file": "3.mp3"
+    },
+    "4": {
+      "hash": "de1f83d1fbcb6cd0f2c4364ee7d02a3a",
+      "file": "4.mp3"
+    },
+    "5": {
+      "hash": "0b535f636404f8c703c7eee54f803996",
+      "file": "5.mp3"
+    },
+    "6": {
+      "hash": "07f6995b07debb808d7283208677d091",
+      "file": "6.mp3"
+    },
+    "7": {
+      "hash": "ffbe0419a4bae93e89f051bb3bc26a73",
+      "file": "7.mp3"
+    },
+    "8": {
+      "hash": "49e21cf8c9daf7b1ec67633682bd8e1b",
+      "file": "8.mp3"
+    },
+    "9": {
+      "hash": "90e9f4b75787cb2c146f7e74c8afc16a",
+      "file": "9.mp3"
+    },
+    "10": {
+      "hash": "4103bc29aa96b87ee0d4ed81d5bb3489",
+      "file": "10.mp3"
+    },
+    "11": {
+      "hash": "ad65f3b1715b3818ffdc28fb691018d6",
+      "file": "11.mp3"
+    },
+    "12": {
+      "hash": "88f39082cb22c92a4d7e28a01978863a",
+      "file": "12.mp3"
+    },
+    "13": {
+      "hash": "4fc1b4e7dec71fbd8b2621e08faf4201",
+      "file": "13.mp3"
+    },
+    "14": {
+      "hash": "640eb3424ea5d7b9d2f1733714533f3b",
+      "file": "14.mp3"
+    },
+    "15": {
+      "hash": "aa0d879bfd8322dc2b1c9b0f445689fb",
+      "file": "15.mp3"
+    },
+    "16": {
+      "hash": "2b0bad7f032769c556748f6e2ef195bc",
+      "file": "16.mp3"
+    },
+    "17": {
+      "hash": "7d93c4e9ce5d08a91e8a317edb8e8550",
+      "file": "17.mp3"
+    },
+    "18": {
+      "hash": "4ae31480de1786504fe3bbdb5c5d5ea0",
+      "file": "18.mp3"
+    },
+    "19": {
+      "hash": "bb928aa5bc010ef3c847f5fb90da62ef",
+      "file": "19.mp3"
+    },
+    "20": {
+      "hash": "bcb32aeef7dd097cb1204550b0d63eb2",
+      "file": "20.mp3"
+    }
   }
 }
