@@ -14,6 +14,7 @@ fi
 
 # Allow environment variable overrides
 FEATURE_AUDIO="${FEATURE_AUDIO:-false}"
+FEATURE_SHOW_ALTERNATIVES="${FEATURE_SHOW_ALTERNATIVES:-true}"
 
 echo "==> Building sets.js from lang_data..."
 
@@ -59,8 +60,9 @@ echo "==> Generating config.js with feature flags..."
 CONFIG_JS="$PROJECT_ROOT/frontend/js/config.js"
 echo "// Auto-generated from deployment/config.sh - do not edit manually" > "$CONFIG_JS"
 echo "const FEATURES = {" >> "$CONFIG_JS"
-echo "  audio: $FEATURE_AUDIO" >> "$CONFIG_JS"
+echo "  audio: $FEATURE_AUDIO," >> "$CONFIG_JS"
+echo "  showAlternatives: $FEATURE_SHOW_ALTERNATIVES" >> "$CONFIG_JS"
 echo "};" >> "$CONFIG_JS"
-echo "==> Features: audio=$FEATURE_AUDIO"
+echo "==> Features: audio=$FEATURE_AUDIO, showAlternatives=$FEATURE_SHOW_ALTERNATIVES"
 
 echo "==> Build complete!"

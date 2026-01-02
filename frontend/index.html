@@ -184,23 +184,6 @@
                         </button>
                     </div>
 
-                    <!-- Set Selection Menu -->
-                    <div
-                        id="set-menu"
-                        class="hidden glass rounded-2xl p-4 mb-4 slide-up"
-                    >
-                        <label
-                            class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-2"
-                            data-i18n="selectSetLabel"
-                        >
-                            Select set:
-                        </label>
-                        <select
-                            id="set-select"
-                            class="w-full p-3 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-lg text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
-                        ></select>
-                    </div>
-
                     <!-- Progress Bar -->
                     <div class="glass rounded-xl p-3">
                         <div class="flex justify-between items-center mb-1.5">
@@ -991,6 +974,26 @@
                     >
                         Reset
                     </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Set Selection Modal -->
+        <div
+            id="set-modal"
+            class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center px-4"
+        >
+            <div
+                class="glass rounded-2xl p-4 w-full max-w-sm max-h-[70vh] overflow-y-auto slide-up dark:bg-slate-800/90"
+            >
+                <h3
+                    class="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-3"
+                    data-i18n="selectSetLabel"
+                >
+                    Select set:
+                </h3>
+                <div id="set-folders">
+                    <!-- Generated dynamically by JS -->
                 </div>
             </div>
         </div>
