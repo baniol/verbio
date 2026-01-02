@@ -1329,25 +1329,31 @@
   function exportNotes() {
     const notes = getAllNotes();
     const entries = Object.values(notes);
-    const generalNotes = localStorage.getItem(STORAGE_KEYS.generalNotes) || "";
+    const generalNotes = getGeneralNotes();
 
-    if (entries.length === 0 && !generalNotes) {
+    if (entries.length === 0 && generalNotes.length === 0) {
       alert(I18N.t("noNotesToExport"));
       return;
     }
 
     // Sort by update time (newest first)
     entries.sort((a, b) => (b.updatedAt || 0) - (a.updatedAt || 0));
+    generalNotes.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
 
     // Format phrase notes
     const formattedPhrases = entries
       .map((n) => `${n.prompt} → ${n.answer}\n${n.text}`)
       .join("\n\n---\n\n");
 
+    // Format general notes
+    const formattedGeneral = generalNotes
+      .map((n) => n.text)
+      .join("\n\n---\n\n");
+
     // Build final output
     let formatted = "";
-    if (generalNotes) {
-      formatted += `=== ${I18N.t("generalNotes")} ===\n\n${generalNotes}`;
+    if (generalNotes.length > 0) {
+      formatted += `=== ${I18N.t("generalNotes")} ===\n\n${formattedGeneral}`;
       if (entries.length > 0) {
         formatted += "\n\n---\n\n";
       }
@@ -1357,7 +1363,7 @@
     }
 
     // Copy to clipboard
-    const totalCount = entries.length + (generalNotes ? 1 : 0);
+    const totalCount = entries.length + generalNotes.length;
     navigator.clipboard
       .writeText(formatted)
       .then(() => {
@@ -1373,10 +1379,10 @@
 
   function clearNotes() {
     const notes = getAllNotes();
-    const generalNotes = localStorage.getItem(STORAGE_KEYS.generalNotes) || "";
+    const generalNotes = getGeneralNotes();
     const entries = Object.values(notes);
 
-    if (entries.length === 0 && !generalNotes) {
+    if (entries.length === 0 && generalNotes.length === 0) {
       alert(I18N.t("noNotesToClear"));
       toggleMenu();
       return;
@@ -1391,10 +1397,17 @@
     toggleMenu();
   }
 
+  function getGeneralNotes() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEYS.generalNotes)) || [];
+    } catch {
+      return [];
+    }
+  }
+
   function openGeneralNotes() {
     toggleMenu();
-    const saved = localStorage.getItem(STORAGE_KEYS.generalNotes) || "";
-    el.generalNotesTextarea.value = saved;
+    el.generalNotesTextarea.value = "";
     el.generalNotesModal.classList.remove("hidden");
   }
 
@@ -1405,9 +1418,12 @@
   function saveGeneralNotes() {
     const text = el.generalNotesTextarea.value.trim();
     if (text) {
-      localStorage.setItem(STORAGE_KEYS.generalNotes, text);
-    } else {
-      localStorage.removeItem(STORAGE_KEYS.generalNotes);
+      const notes = getGeneralNotes();
+      notes.push({
+        text,
+        createdAt: Date.now(),
+      });
+      localStorage.setItem(STORAGE_KEYS.generalNotes, JSON.stringify(notes));
     }
     closeGeneralNotes();
   }

@@ -94,6 +94,7 @@ const I18N = {
 
       // Notes
       note: "Note",
+      addNote: "Add note",
       yourNote: "Your note...",
       save: "Save",
       noNotesToExport: "No notes to export",
@@ -208,6 +209,7 @@ const I18N = {
 
       // Notes
       note: "Notatka",
+      addNote: "Dodaj notatkę",
       yourNote: "Twoja notatka...",
       save: "Zapisz",
       noNotesToExport: "Brak notatek do wyeksportowania",
@@ -324,6 +326,7 @@ const I18N = {
 
       // Notes
       note: "Notiz",
+      addNote: "Notiz hinzufügen",
       yourNote: "Deine Notiz...",
       save: "Speichern",
       noNotesToExport: "Keine Notizen zum Exportieren",
@@ -440,6 +443,7 @@ const I18N = {
 
       // Notes
       note: "Nota",
+      addNote: "Añadir nota",
       yourNote: "Tu nota...",
       save: "Guardar",
       noNotesToExport: "No hay notas para exportar",
@@ -556,6 +560,7 @@ const I18N = {
 
       // Notes
       note: "Note",
+      addNote: "Ajouter une note",
       yourNote: "Ta note...",
       save: "Enregistrer",
       noNotesToExport: "Aucune note à exporter",
