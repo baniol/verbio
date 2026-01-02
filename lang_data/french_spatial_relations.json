@@ -1,0 +1,209 @@
+{
+  "metadata": {
+    "id": "french_spatial_relations",
+    "name": "French - Spatial Relations (Advanced)",
+    "language": "fr",
+    "speechLang": "fr-FR",
+    "sourceLanguage": "en",
+    "sourceSpeechLang": "en-US"
+  },
+  "phrases": [
+    {
+      "id": 1,
+      "prompt": "The keys are on the table, next to the lamp",
+      "answer": "Les clés sont sur la table, à côté de la lampe",
+      "accepted": [
+        "les clés sont sur la table à côté de la lampe",
+        "les clefs sont sur la table à côté de la lampe"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Put the box underneath the desk",
+      "answer": "Mets la boîte sous le bureau",
+      "accepted": [
+        "mets la boîte sous le bureau",
+        "mettez la boîte sous le bureau",
+        "pose la boîte sous le bureau"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The pharmacy is between the bakery and the bank",
+      "answer": "La pharmacie est entre la boulangerie et la banque",
+      "accepted": [
+        "la pharmacie est entre la boulangerie et la banque",
+        "la pharmacie se trouve entre la boulangerie et la banque"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I left my bag behind the door",
+      "answer": "J'ai laissé mon sac derrière la porte",
+      "accepted": [
+        "j'ai laissé mon sac derrière la porte",
+        "j'ai posé mon sac derrière la porte"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "The cat is hiding under the bed",
+      "answer": "Le chat se cache sous le lit",
+      "accepted": [
+        "le chat se cache sous le lit",
+        "le chat est caché sous le lit"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Hang the painting above the fireplace",
+      "answer": "Accroche le tableau au-dessus de la cheminée",
+      "accepted": [
+        "accroche le tableau au-dessus de la cheminée",
+        "accrochez le tableau au-dessus de la cheminée",
+        "mets le tableau au-dessus de la cheminée"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "The supermarket is right across from the train station",
+      "answer": "Le supermarché est juste en face de la gare",
+      "accepted": [
+        "le supermarché est juste en face de la gare",
+        "le supermarché se trouve juste en face de la gare",
+        "le supermarché est en face de la gare"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "There's a park at the end of the street",
+      "answer": "Il y a un parc au bout de la rue",
+      "accepted": [
+        "il y a un parc au bout de la rue",
+        "il y a un parc à la fin de la rue",
+        "il y a un parc au fond de la rue"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "The restaurant is on the corner of the avenue",
+      "answer": "Le restaurant est au coin de l'avenue",
+      "accepted": [
+        "le restaurant est au coin de l'avenue",
+        "le restaurant se trouve au coin de l'avenue",
+        "le restaurant est à l'angle de l'avenue"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "She's standing in front of the mirror",
+      "answer": "Elle est debout devant le miroir",
+      "accepted": [
+        "elle est debout devant le miroir",
+        "elle se tient devant le miroir",
+        "elle est devant le miroir"
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "Put the glasses inside the cupboard",
+      "answer": "Mets les verres dans le placard",
+      "accepted": [
+        "mets les verres dans le placard",
+        "mettez les verres dans le placard",
+        "range les verres dans le placard"
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "The hotel is located along the river",
+      "answer": "L'hôtel est situé le long de la rivière",
+      "accepted": [
+        "l'hôtel est situé le long de la rivière",
+        "l'hôtel se trouve le long de la rivière",
+        "l'hôtel est le long de la rivière"
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "Walk around the building to find the entrance",
+      "answer": "Fais le tour du bâtiment pour trouver l'entrée",
+      "accepted": [
+        "fais le tour du bâtiment pour trouver l'entrée",
+        "faites le tour du bâtiment pour trouver l'entrée",
+        "contourne le bâtiment pour trouver l'entrée"
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "The metro station is below street level",
+      "answer": "La station de métro est en dessous du niveau de la rue",
+      "accepted": [
+        "la station de métro est en dessous du niveau de la rue",
+        "la station de métro est sous le niveau de la rue",
+        "la station de métro se trouve en dessous du niveau de la rue"
+      ]
+    },
+    {
+      "id": 15,
+      "prompt": "I parked my car in front of your house",
+      "answer": "J'ai garé ma voiture devant ta maison",
+      "accepted": [
+        "j'ai garé ma voiture devant ta maison",
+        "j'ai garé ma voiture devant votre maison",
+        "j'ai stationné ma voiture devant ta maison"
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "The document is at the bottom of the pile",
+      "answer": "Le document est au fond de la pile",
+      "accepted": [
+        "le document est au fond de la pile",
+        "le document se trouve au fond de la pile",
+        "le document est en bas de la pile"
+      ]
+    },
+    {
+      "id": 17,
+      "prompt": "Place the flowers in the middle of the table",
+      "answer": "Place les fleurs au milieu de la table",
+      "accepted": [
+        "place les fleurs au milieu de la table",
+        "placez les fleurs au milieu de la table",
+        "mets les fleurs au milieu de la table",
+        "mettez les fleurs au centre de la table"
+      ]
+    },
+    {
+      "id": 18,
+      "prompt": "The airport is outside the city",
+      "answer": "L'aéroport est en dehors de la ville",
+      "accepted": [
+        "l'aéroport est en dehors de la ville",
+        "l'aéroport se trouve en dehors de la ville",
+        "l'aéroport est à l'extérieur de la ville"
+      ]
+    },
+    {
+      "id": 19,
+      "prompt": "We sat near the window throughout the dinner",
+      "answer": "Nous étions assis près de la fenêtre pendant tout le dîner",
+      "accepted": [
+        "nous étions assis près de la fenêtre pendant tout le dîner",
+        "on était assis près de la fenêtre pendant tout le dîner",
+        "nous nous sommes assis près de la fenêtre pendant le dîner"
+      ]
+    },
+    {
+      "id": 20,
+      "prompt": "The children are playing beyond the fence",
+      "answer": "Les enfants jouent au-delà de la clôture",
+      "accepted": [
+        "les enfants jouent au-delà de la clôture",
+        "les enfants jouent de l'autre côté de la clôture",
+        "les enfants jouent au-delà de la barrière"
+      ]
+    }
+  ]
+}
