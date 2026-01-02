@@ -874,19 +874,20 @@
   // Validate speech
   function validateSpeech(transcript) {
     const normalized = transcript.toLowerCase().trim();
-    const noSpaces = normalized.replace(/\s+/g, "");
+    const noSpecial = normalized.replace(/[\s\-]+/g, "");
     const phrase = currentPhrase;
 
     // Check against answer and accepted alternatives
-    // Also compare without spaces to handle speech API splitting compound words
+    // Also compare without spaces/hyphens to handle speech API variations
     // (e.g., "entlanggehen" recognized as "entlang gehen")
+    // (e.g., "check-out" recognized as "checkout")
     const correct =
       phrase.answer.toLowerCase() === normalized ||
       phrase.accepted.some((a) => {
         const acceptedLower = a.toLowerCase();
         return (
           acceptedLower === normalized ||
-          acceptedLower.replace(/\s+/g, "") === noSpaces
+          acceptedLower.replace(/[\s\-]+/g, "") === noSpecial
         );
       });
 
