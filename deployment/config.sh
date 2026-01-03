@@ -3,6 +3,7 @@
 
 # Feature flags
 FEATURE_AUDIO=true              # Enable audio playback support for phrases
+FEATURE_IMAGES=true             # Enable image display for phrases
 FEATURE_SHOW_ALTERNATIVES=false # Show alternative accepted answers after revealing answer
 
 # Build options

@@ -29,34 +29,8 @@
         />
         <link rel="manifest" href="/manifest.json" />
         <title>Language Learning</title>
+        <link rel="stylesheet" href="/css/styles.css">
 
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script>
-            tailwind.config = {
-                darkMode: "class",
-                theme: {
-                    extend: {
-                        animation: {
-                            "pulse-slow":
-                                "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-                            glow: "glow 2s ease-in-out infinite alternate",
-                        },
-                        keyframes: {
-                            glow: {
-                                "0%": {
-                                    boxShadow:
-                                        "0 0 20px rgba(99, 102, 241, 0.3)",
-                                },
-                                "100%": {
-                                    boxShadow:
-                                        "0 0 30px rgba(99, 102, 241, 0.6)",
-                                },
-                            },
-                        },
-                    },
-                },
-            };
-        </script>
 
         <style>
             @keyframes fadeIn {
@@ -339,6 +313,13 @@
                                     -
                                 </h2>
                             </div>
+
+                            <!-- Phrase Image -->
+                            <img
+                                id="phrase-image"
+                                class="hidden w-full max-w-xs mx-auto rounded-xl shadow-md my-4"
+                                alt=""
+                            />
 
                             <!-- Speech Mode -->
                             <div

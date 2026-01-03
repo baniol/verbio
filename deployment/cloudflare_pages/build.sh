@@ -62,9 +62,10 @@ CONFIG_JS="$PROJECT_ROOT/frontend/js/config.js"
 echo "// Auto-generated from deployment/config.sh - do not edit manually" > "$CONFIG_JS"
 echo "const FEATURES = {" >> "$CONFIG_JS"
 echo "  audio: $FEATURE_AUDIO," >> "$CONFIG_JS"
+echo "  images: $FEATURE_IMAGES," >> "$CONFIG_JS"
 echo "  showAlternatives: $FEATURE_SHOW_ALTERNATIVES" >> "$CONFIG_JS"
 echo "};" >> "$CONFIG_JS"
-echo "==> Features: audio=$FEATURE_AUDIO, showAlternatives=$FEATURE_SHOW_ALTERNATIVES"
+echo "==> Features: audio=$FEATURE_AUDIO, images=$FEATURE_IMAGES, showAlternatives=$FEATURE_SHOW_ALTERNATIVES"
 
 # Build Tailwind CSS if enabled
 if [ "$BUILD_TAILWIND" = "true" ]; then

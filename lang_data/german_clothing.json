@@ -5,7 +5,8 @@
     "language": "de",
     "speechLang": "de-DE",
     "sourceLanguage": "pl",
-    "sourceSpeechLang": "pl-PL"
+    "sourceSpeechLang": "pl-PL",
+    "imageStyle": "Watercolor illustration on textured paper. Warm tones, simple composition. Delicate brush contours with color washes that gently overrun the lines, creating a handmade artistic feel. Soft, inviting atmosphere. No text or letters in the image."
   },
   "phrases": [
     {
@@ -15,7 +16,8 @@
       "accepted": [
         "ich suche eine winterjacke",
         "ich bin auf der suche nach einer winterjacke"
-      ]
+      ],
+      "imageDescription": "A person in a cozy clothing store, browsing through winter jackets on a wooden rack, hand touching a puffy jacket"
     },
     {
       "id": 2,
@@ -71,11 +73,7 @@
       "id": 7,
       "prompt": "Noszę rozmiar M",
       "answer": "Ich trage Größe M",
-      "accepted": [
-        "ich trage größe m",
-        "ich habe größe m",
-        "meine größe ist m"
-      ]
+      "accepted": ["ich trage größe m", "ich habe größe m", "meine größe ist m"]
     },
     {
       "id": 8,
@@ -91,10 +89,7 @@
       "id": 9,
       "prompt": "Muszę kupić nowe buty",
       "answer": "Ich muss neue Schuhe kaufen",
-      "accepted": [
-        "ich muss neue schuhe kaufen",
-        "ich brauche neue schuhe"
-      ]
+      "accepted": ["ich muss neue schuhe kaufen", "ich brauche neue schuhe"]
     },
     {
       "id": 10,
@@ -264,26 +259,19 @@
       "id": 27,
       "prompt": "Rękawy są za krótkie",
       "answer": "Die Ärmel sind zu kurz",
-      "accepted": [
-        "die ärmel sind zu kurz"
-      ]
+      "accepted": ["die ärmel sind zu kurz"]
     },
     {
       "id": 28,
       "prompt": "Czy ten szalik jest z wełny?",
       "answer": "Ist dieser Schal aus Wolle?",
-      "accepted": [
-        "ist dieser schal aus wolle",
-        "ist der schal aus wolle"
-      ]
+      "accepted": ["ist dieser schal aus wolle", "ist der schal aus wolle"]
     },
     {
       "id": 29,
       "prompt": "Moja siostra zawsze nosi sukienki",
       "answer": "Meine Schwester trägt immer Kleider",
-      "accepted": [
-        "meine schwester trägt immer kleider"
-      ]
+      "accepted": ["meine schwester trägt immer kleider"]
     },
     {
       "id": 30,

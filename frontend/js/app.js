@@ -198,6 +198,7 @@
       clearCacheButton: document.getElementById("clear-cache-button"),
       backButton: document.getElementById("back-button"),
       answerAudioButton: document.getElementById("answer-audio-button"),
+      phraseImage: document.getElementById("phrase-image"),
     };
   }
 
@@ -868,6 +869,9 @@
     // Check if audio exists for this phrase (async)
     updateAudioButton();
 
+    // Check if image exists for this phrase (async)
+    updatePhraseImage();
+
     if (speechEnabled) {
       UI.show(el.speechMode);
       UI.hide(el.showAnswerMode);
@@ -887,6 +891,38 @@
   // Audio playback
   function getAudioPath(setId, phraseId) {
     return `/audio/${setId}/${phraseId}.mp3`;
+  }
+
+  // Image display
+  function getImagePath(setId, phraseId) {
+    return `/images/${setId}/${phraseId}.webp`;
+  }
+
+  function checkImageExists(setId, phraseId) {
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.onload = () => resolve(true);
+      img.onerror = () => resolve(false);
+      img.src = getImagePath(setId, phraseId);
+    });
+  }
+
+  async function updatePhraseImage() {
+    if (!currentPhrase || !el.phraseImage) return;
+
+    // Hide image by default
+    UI.hide(el.phraseImage);
+
+    // Check if images feature is enabled
+    if (!FEATURES.images) return;
+
+    const setId = currentPhrase._sourceSetId || currentSet.id;
+    const hasImage = await checkImageExists(setId, currentPhrase.id);
+
+    if (hasImage) {
+      el.phraseImage.src = getImagePath(setId, currentPhrase.id);
+      UI.show(el.phraseImage);
+    }
   }
 
   function checkAudioExists(setId, phraseId) {
