@@ -726,27 +726,30 @@
                         >
                             <div class="flex items-center space-x-3">
                                 <span class="text-2xl">🔄</span>
-                                <div>
-                                    <span
-                                        class="text-slate-800 dark:text-slate-200 font-medium"
-                                        data-i18n="immediateRetry"
-                                        >Immediate retry</span
-                                    >
-                                    <p
-                                        class="text-sm text-slate-500 dark:text-slate-400"
-                                        data-i18n="immediateRetryDesc"
-                                    >
-                                        Repeat phrase immediately after error
-                                    </p>
-                                </div>
+                                <span
+                                    class="text-slate-800 dark:text-slate-200 font-medium"
+                                    data-i18n="immediateRetry"
+                                    >Immediate retry</span
+                                >
                             </div>
-                            <input
-                                type="checkbox"
-                                id="immediate-retry-toggle"
-                                checked
-                                class="w-5 h-5 text-indigo-600 rounded focus:ring-indigo-500 focus:ring-offset-0"
-                            />
+                            <div class="relative">
+                                <input
+                                    type="checkbox"
+                                    id="immediate-retry-toggle"
+                                    class="sr-only peer"
+                                    checked
+                                />
+                                <div
+                                    class="w-11 h-6 bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-indigo-500 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"
+                                ></div>
+                            </div>
                         </label>
+                        <p
+                            class="text-sm text-slate-500 dark:text-slate-400 mt-2 ml-1"
+                            data-i18n="immediateRetryDesc"
+                        >
+                            Repeat phrase immediately after error
+                        </p>
                     </div>
 
                     <!-- Developer Settings -->
