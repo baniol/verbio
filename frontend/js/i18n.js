@@ -207,6 +207,10 @@ const I18N = {
       cancel: "Cancel",
       reset: "Reset",
 
+      // Role selection modal
+      selectRole: "Select Role",
+      practiceAs: "Practice as:",
+
       // Notes
       note: "Note",
       addNote: "Add note",
@@ -321,6 +325,10 @@ const I18N = {
       resetProgressMessage: "Wszystkie frazy z tego zestawu wrócą do nauki.",
       cancel: "Anuluj",
       reset: "Resetuj",
+
+      // Role selection modal
+      selectRole: "Wybierz rolę",
+      practiceAs: "Ćwicz jako:",
 
       // Notes
       note: "Notatka",
@@ -439,6 +447,10 @@ const I18N = {
       cancel: "Abbrechen",
       reset: "Zurücksetzen",
 
+      // Role selection modal
+      selectRole: "Rolle auswählen",
+      practiceAs: "Üben als:",
+
       // Notes
       note: "Notiz",
       addNote: "Notiz hinzufügen",
@@ -556,6 +568,10 @@ const I18N = {
       cancel: "Cancelar",
       reset: "Restablecer",
 
+      // Role selection modal
+      selectRole: "Seleccionar rol",
+      practiceAs: "Practicar como:",
+
       // Notes
       note: "Nota",
       addNote: "Añadir nota",
@@ -672,6 +688,10 @@ const I18N = {
         "Toutes les phrases de cet ensemble reviendront à l'apprentissage.",
       cancel: "Annuler",
       reset: "Réinitialiser",
+
+      // Role selection modal
+      selectRole: "Choisir un rôle",
+      practiceAs: "Pratiquer en tant que:",
 
       // Notes
       note: "Note",

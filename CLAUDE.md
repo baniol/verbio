@@ -119,52 +119,52 @@ cd frontend && python3 -m http.server 3000
 - `answer` - correct answer (displayed after, in target language)
 - `accepted` - array of accepted answers (lowercase, for validation)
 
-## Dialogue Set Format
+## Dialogue Set Format (Roleplay Mode)
 
-Dialogue sets are sequential conversation-based learning sets. Use `/generate-dialogue-set` to create them.
+Dialogue sets use roleplay mode - user picks a role and practices responding to the other person. Use `/generate-dialogue-set` to create them.
 
-`lang_data/german_dialogue_ordering_coffee.json`:
+`lang_data/german_dialogue_hotel_checkin.json`:
 ```json
 {
   "metadata": {
-    "id": "german_dialogue_ordering_coffee",
-    "name": "German - Ordering Coffee",
+    "id": "german_dialogue_hotel_checkin",
+    "name": "German - Hotel Check-in",
     "language": "de",
     "speechLang": "de-DE",
-    "sourceLanguage": "en",
-    "sourceSpeechLang": "en-US",
+    "sourceLanguage": "pl",
+    "sourceSpeechLang": "pl-PL",
     "type": "dialogue",
-    "situation": "Ordering coffee at a cafe",
-    "participants": ["customer", "barista"]
+    "situation": "Zameldowanie w hotelu",
+    "participants": ["gość", "recepcjonista"],
+    "defaultRole": "gość"
   },
   "phrases": [
     {
       "id": 1,
-      "prompt": "Hello, what can I get you?",
-      "answer": "Hallo, was darf es sein?",
-      "accepted": ["hallo was darf es sein", "hallo was kann ich ihnen bringen"],
-      "speaker": "barista",
-      "context": "greeting customer at counter"
-    },
-    {
-      "id": 2,
-      "prompt": "I'd like a coffee, please",
-      "answer": "Ich hätte gerne einen Kaffee, bitte",
-      "accepted": ["ich hätte gerne einen kaffee bitte", "ich möchte einen kaffee bitte"],
-      "speaker": "customer"
+      "prompt": "Dzień dobry, mam rezerwację na nazwisko Kowalski",
+      "answer": "Guten Tag, ich habe eine Reservierung auf den Namen Kowalski",
+      "accepted": ["guten tag ich habe eine reservierung auf den namen kowalski"],
+      "speaker": "gość",
+      "contextLine": "Guten Tag, wie kann ich Ihnen helfen?",
+      "contextSpeaker": "recepcjonista"
     }
   ]
 }
 ```
 
-### Additional metadata fields (dialogue):
-- `type` - "dialogue" (distinguishes from regular sets)
+### Metadata fields (dialogue):
+- `type` - "dialogue" (enables roleplay mode)
 - `situation` - description of the scenario
 - `participants` - array of two role names
+- `defaultRole` - which role the learner practices by default
 
-### Additional phrase fields (dialogue):
-- `speaker` - which participant says this line
-- `context` - (optional) stage direction or context note
+### Phrase fields (dialogue):
+- `prompt` - what user needs to translate (source language)
+- `answer` - correct translation (target language)
+- `accepted` - lowercase variants for validation
+- `speaker` - who gives this response (for role filtering)
+- `contextLine` - what the other person said (target language, shown as context)
+- `contextSpeaker` - who says the context line
 
 ## Internationalization (i18n)
 

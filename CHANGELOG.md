@@ -5,6 +5,19 @@ All notable changes to Verbio will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-01-03
+
+### Added
+- Dialogue roleplay mode for conversation-based learning
+- Role selection modal for dialogue sets
+- Context line display showing conversation partner's speech
+- Filter phrases by selected role (guest/receptionist)
+- i18n translations for role selection (en, pl, de, es, fr)
+
+### Changed
+- Reset role selection on "Start Over" for dialogue sets
+- Updated generate-dialogue-set command format
+
 ## [0.10.0] - 2026-01-03
 
 ### Added

@@ -93,6 +93,7 @@
     reviewSet: (language) => `langlearn_review_set_${language}`,
     immediateRetry: "langlearn_immediate_retry",
     expandedFolders: "langlearn_expanded_folders",
+    dialogueRole: (setId) => `langlearn_dialogue_role_${setId}`,
   };
 
   // State
@@ -123,6 +124,7 @@
       loading: document.getElementById("loading"),
       allLearned: document.getElementById("all-learned"),
       flashcard: document.getElementById("flashcard"),
+      speakerInfo: document.getElementById("speaker-info"),
       prompt: document.getElementById("prompt"),
       answer: document.getElementById("answer"),
       speechMode: document.getElementById("speech-mode"),
@@ -150,6 +152,8 @@
       resetModal: document.getElementById("reset-modal"),
       resetModalTitle: document.getElementById("reset-modal-title"),
       resetModalText: document.getElementById("reset-modal-text"),
+      roleModal: document.getElementById("role-modal"),
+      roleButtons: document.getElementById("role-buttons"),
       noteModal: document.getElementById("note-modal"),
       noteTextarea: document.getElementById("note-textarea"),
       notePhraseInfo: document.getElementById("note-phrase-info"),
@@ -688,7 +692,55 @@
     // Clear any pending retry when changing sets
     clearRetryState();
 
+    // For dialogue sets, show role selection if no role saved
+    if (
+      isDialogueSet() &&
+      !localStorage.getItem(STORAGE_KEYS.dialogueRole(currentSet.id))
+    ) {
+      showRoleModal();
+      return;
+    }
+
     loadNextPhrase();
+  }
+
+  function showRoleModal() {
+    const participants = currentSet.metadata.participants || [];
+    el.roleButtons.innerHTML = participants
+      .map(
+        (role) =>
+          `<button class="bg-indigo-500 text-white font-semibold py-3 px-4 rounded-xl hover:bg-indigo-600 transition" data-role="${role}">${role}</button>`,
+      )
+      .join("");
+
+    el.roleButtons.querySelectorAll("button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        setDialogueRole(btn.dataset.role);
+        UI.hide(el.roleModal);
+        loadNextPhrase();
+      });
+    });
+
+    UI.show(el.roleModal);
+  }
+
+  // Check if current set is a dialogue
+  function isDialogueSet() {
+    return currentSet?.metadata?.type === "dialogue";
+  }
+
+  // Get selected role for dialogue set
+  function getDialogueRole() {
+    if (!isDialogueSet()) return null;
+    const saved = localStorage.getItem(
+      STORAGE_KEYS.dialogueRole(currentSet.id),
+    );
+    return saved || currentSet.metadata.defaultRole;
+  }
+
+  // Set role for dialogue set
+  function setDialogueRole(role) {
+    localStorage.setItem(STORAGE_KEYS.dialogueRole(currentSet.id), role);
   }
 
   // Progress management
@@ -733,11 +785,19 @@
   }
 
   function getStats() {
-    const total = currentSet.phrases.length;
+    let phrases = currentSet.phrases;
+
+    // For dialogue sets, filter by selected role
+    if (isDialogueSet()) {
+      const role = getDialogueRole();
+      phrases = phrases.filter((p) => p.speaker === role);
+    }
+
+    const total = phrases.length;
     const progress = getProgress();
     let learned = 0;
 
-    for (const phrase of currentSet.phrases) {
+    for (const phrase of phrases) {
       const prog = progress[phrase.id];
       if (prog && prog.correctStreak >= requiredStreak) {
         learned++;
@@ -749,7 +809,15 @@
 
   function getUnlearnedPhrases() {
     const progress = getProgress();
-    return currentSet.phrases.filter((phrase) => {
+    let phrases = currentSet.phrases;
+
+    // For dialogue sets, filter by selected role
+    if (isDialogueSet()) {
+      const role = getDialogueRole();
+      phrases = phrases.filter((p) => p.speaker === role);
+    }
+
+    return phrases.filter((phrase) => {
       const prog = progress[phrase.id];
       return !prog || prog.correctStreak < requiredStreak;
     });
@@ -829,6 +897,15 @@
   function showPhrase(phrase) {
     hideAll();
     UI.show(el.flashcard);
+
+    // Show context line for dialogue sets (what the other person said)
+    if (isDialogueSet() && phrase.contextLine) {
+      el.speakerInfo.textContent = `${phrase.contextSpeaker}: "${phrase.contextLine}"`;
+      UI.show(el.speakerInfo);
+    } else {
+      UI.hide(el.speakerInfo);
+    }
+
     el.prompt.textContent = phrase.prompt;
     el.answer.textContent = phrase.answer;
     el.transcript.textContent = "";
@@ -1206,6 +1283,10 @@
   function resetProgress() {
     closeResetModal();
     localStorage.removeItem(STORAGE_KEYS.progress(currentSet.id));
+    // For dialogue sets, also reset role selection
+    if (isDialogueSet()) {
+      localStorage.removeItem(STORAGE_KEYS.dialogueRole(currentSet.id));
+    }
     loadNextPhrase();
   }
 

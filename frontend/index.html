@@ -29,34 +29,8 @@
         />
         <link rel="manifest" href="/manifest.json" />
         <title>Language Learning</title>
+        <link rel="stylesheet" href="/css/styles.css">
 
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script>
-            tailwind.config = {
-                darkMode: "class",
-                theme: {
-                    extend: {
-                        animation: {
-                            "pulse-slow":
-                                "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-                            glow: "glow 2s ease-in-out infinite alternate",
-                        },
-                        keyframes: {
-                            glow: {
-                                "0%": {
-                                    boxShadow:
-                                        "0 0 20px rgba(99, 102, 241, 0.3)",
-                                },
-                                "100%": {
-                                    boxShadow:
-                                        "0 0 30px rgba(99, 102, 241, 0.6)",
-                                },
-                            },
-                        },
-                    },
-                },
-            };
-        </script>
 
         <style>
             @keyframes fadeIn {
@@ -332,6 +306,10 @@
                                 >
                                     Translate
                                 </p>
+                                <p
+                                    id="speaker-info"
+                                    class="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1 hidden"
+                                ></p>
                                 <h2
                                     id="prompt"
                                     class="text-2xl font-bold text-slate-800 dark:text-slate-100 no-select leading-relaxed"
@@ -997,6 +975,32 @@
                     >
                         Save
                     </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Role Selection Modal (for dialogue sets) -->
+        <div
+            id="role-modal"
+            class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center px-4"
+        >
+            <div
+                class="glass rounded-2xl p-6 max-w-sm w-full slide-up dark:bg-slate-800/90"
+            >
+                <h3
+                    class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-2"
+                    data-i18n="selectRole"
+                >
+                    Select Role
+                </h3>
+                <p
+                    class="text-slate-600 dark:text-slate-400 mb-4"
+                    data-i18n="practiceAs"
+                >
+                    Practice as:
+                </p>
+                <div id="role-buttons" class="flex flex-col gap-3">
+                    <!-- Role buttons will be generated dynamically -->
                 </div>
             </div>
         </div>

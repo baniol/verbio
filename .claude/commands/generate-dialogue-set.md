@@ -1,4 +1,4 @@
-Generate a dialogue-based language learning set around a specific situation.
+Generate a roleplay dialogue set - user picks a role and practices their lines.
 
 Arguments: $ARGUMENTS
 
@@ -37,19 +37,28 @@ Read all `lang_data/*.json` to:
 - Maintain consistent style
 - Reference learned vocabulary naturally
 
-## Step 3: Design the dialogue
+## Step 3: Design the dialogue as Q&A pairs
 
-Create a realistic conversation for the situation. Consider:
-- **Who**: Define 2 participants (e.g., customer & waiter, patient & doctor, tourist & local)
-- **Where**: Specific location context
-- **Flow**: Natural conversation progression with beginning, middle, end
-- **Length**: 12-20 exchanges (turns), creating 12-20 phrases
+Create pairs where user hears what the other person says and must respond.
 
-### Dialogue structure:
-1. **Opening** - greeting, initiating contact
-2. **Core exchange** - main purpose of interaction (2-4 back-and-forth exchanges)
-3. **Complications/details** - follow-up questions, clarifications, variations
-4. **Closing** - thanks, goodbye, next steps
+**Key concept:** Each phrase is a response to something the other person said.
+
+### Participants:
+- Define 2 participants (e.g., customer & waiter, patient & doctor, guest & receptionist)
+- First participant is `defaultRole` (the learner's typical role)
+
+### Phrase structure:
+Each phrase represents ONE exchange:
+- `contextLine` - what the other person says (in target language) - displayed as context
+- `prompt` - what the other person says (in source language) - what user sees to understand
+- `answer` - user's response (in source language) - shown after answering
+- `targetAnswer` - user's response (in target language) - what user must say
+- `speaker` - who is responding (for role filtering)
+
+### Dialogue coverage:
+- 10-15 pairs per role (20-30 total phrases)
+- Cover the full conversation flow
+- Each role should have meaningful responses
 
 ## Step 4: Generate the file
 
@@ -66,29 +75,36 @@ Filename: `lang_data/{target_language}_dialogue_{situation_snake_case}.json`
     "sourceSpeechLang": "{source_speech_lang_code}",
     "type": "dialogue",
     "situation": "{situation description}",
-    "participants": ["{role1}", "{role2}"]
+    "participants": ["{role1}", "{role2}"],
+    "defaultRole": "{role1}"
   },
   "phrases": [
     {
       "id": 1,
-      "prompt": "Source language phrase",
-      "answer": "Target language phrase",
-      "accepted": ["lowercase variants"],
-      "speaker": "{role1|role2}",
-      "context": "Optional stage direction or context note"
+      "prompt": "I'd like a coffee please",
+      "answer": "Ich hätte gerne einen Kaffee bitte",
+      "accepted": ["ich hätte gerne einen kaffee bitte", "ich möchte einen kaffee bitte"],
+      "speaker": "customer",
+      "contextLine": "Hallo, was darf es sein?",
+      "contextSpeaker": "waiter"
     }
   ]
 }
 ```
 
-### New metadata fields:
-- `type`: "dialogue" (distinguishes from regular phrase sets)
+### Metadata fields:
+- `type`: "dialogue" (enables roleplay mode)
 - `situation`: Description of the scenario
 - `participants`: Array of two role names
+- `defaultRole`: Which role the learner practices by default
 
-### New phrase fields:
-- `speaker`: Which participant says this line
-- `context`: (optional) Stage direction like "pointing at menu", "looking confused"
+### Phrase fields:
+- `prompt` - what user needs to translate (source language)
+- `answer` - correct translation (target language)
+- `accepted` - lowercase variants of answer for validation
+- `speaker` - who is giving this response (for role filtering)
+- `contextLine` - what the other person said (target language) - shown as context
+- `contextSpeaker` - who says the context line
 
 Language codes:
 | Language | ISO | Speech |
@@ -103,46 +119,40 @@ Language codes:
 ## Step 5: Dialogue quality guidelines
 
 ### Natural conversation flow:
-- Each line responds to or builds on the previous
-- Include realistic hesitations, confirmations, clarifications
+- Each response logically follows the context
+- Include realistic reactions, confirmations, follow-up questions
 - Mix questions and statements
-- Vary sentence length (some short responses, some longer explanations)
+- Vary sentence length
 
 ### Practical learning value:
 - Focus on phrases the learner would actually need to say
-- Include common responses they'd hear (to understand)
-- Cover likely variations and follow-ups
-- Build vocabulary progressively within the dialogue
+- Cover common scenarios within the situation
+- Include polite forms where appropriate
+- Build vocabulary progressively
 
-### Realism over textbook:
-- Use contractions and informal speech where natives would
-- Include filler words appropriately (well, so, actually)
-- Avoid overly polite forms unless situation requires
-- Match register to context (cafe vs. formal office)
-
-### Speaker balance:
-- Learner's role should have substantial speaking parts
-- Include both initiating and responding
-- Cover asking AND answering questions
+### Role balance:
+- Each role should have 10-15 meaningful phrases
+- Cover both initiating and responding
+- Include asking AND answering questions for each role
 
 ### What to AVOID:
-- Stilted, unnatural exchanges
-- Every line being a complete formal sentence
-- Ignoring what the other person just said
-- Unrealistic scenarios within the situation
+- One-word responses (unless natural)
+- Overly complex sentences
+- Phrases that don't make sense without visual context
+- Redundant/similar phrases
 
 ### Accepted alternatives:
 Include all valid ways to say the same thing:
-- Formal/informal variants
-- Synonymous expressions
-- Different word orders if grammatically correct
-- Common contractions
+- `möchte` / `hätte gerne` / `würde gerne`
+- `kann ich` / `könnte ich` / `darf ich`
+- Formal/informal variants where both are acceptable
+- Common synonyms
 
 ## Step 6: Summary
 
 Display:
 - Created file path
-- Situation and participants
-- Number of exchanges
+- Situation and participants (with default role)
+- Number of phrases per role
 - Source → Target language
-- Brief dialogue overview (first/last lines)
+- Example phrase (first one)
