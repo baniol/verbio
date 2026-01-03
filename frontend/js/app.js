@@ -276,7 +276,7 @@
     cacheElements();
     bindEventListeners();
     loadSettings();
-    populateSetMenu();
+    populateSetFolders();
     loadLastSet();
     initSpeechRecognition();
     initRouter();
@@ -642,12 +642,6 @@
     }
   }
 
-  // Keep old function name for compatibility
-  function populateSetMenu() {
-    // This is now handled by populateSetFolders, but keep for any external calls
-    populateSetFolders();
-  }
-
   function loadLastSet() {
     const lastSetId = localStorage.getItem(STORAGE_KEYS.lastSet);
     const setIds = Object.keys(SETS);
@@ -714,8 +708,7 @@
       for (const phraseId of Object.keys(parsed)) {
         const prog = parsed[phraseId];
         if (prog && prog.totalAttempts === undefined) {
-          prog.totalAttempts =
-            (prog.correctStreak || 0) + (prog.wrongCount || 0);
+          prog.totalAttempts = prog.correctStreak || 0;
           prog.successCount = prog.correctStreak || 0;
           needsSave = true;
         }
@@ -1306,30 +1299,12 @@
       metadata: {
         ...metadata,
         id: `review_${language}`,
-        name: `⭐ ${I18N.t("review")}: ${getLanguageDisplayName(language)}`,
+        name: `⭐ ${I18N.t("review")}: ${getLanguageDisplay(language, I18N.currentLang).name}`,
         isReviewSet: true,
         reviewLanguage: language,
       },
       phrases,
     };
-  }
-
-  function getLanguageDisplayName(langCode) {
-    const names = {
-      de: "German",
-      en: "English",
-      es: "Spanish",
-      fr: "French",
-      pl: "Polish",
-      it: "Italian",
-      pt: "Portuguese",
-      nl: "Dutch",
-      ru: "Russian",
-      ja: "Japanese",
-      zh: "Chinese",
-      ko: "Korean",
-    };
-    return names[langCode] || langCode.toUpperCase();
   }
 
   function toggleReview() {
@@ -1341,7 +1316,7 @@
       const language = currentSet.metadata.reviewLanguage;
       removeFromReviewSet(sourceSetId, currentPhrase.id, language);
       updateReviewIcon();
-      populateSetMenu();
+      populateSetFolders();
       // Rebuild current set data to reflect removal
       const reviewData = buildReviewSetData(language);
       if (reviewData) {
@@ -1359,7 +1334,7 @@
         addToReviewSet(currentSet.id, currentPhrase.id, language);
       }
       updateReviewIcon();
-      populateSetMenu();
+      populateSetFolders();
     }
   }
 

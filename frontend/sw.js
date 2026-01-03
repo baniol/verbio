@@ -3,7 +3,7 @@
  * Cache-first strategy with dev mode support
  */
 
-const CACHE_NAME = "langlearn-v3";
+const CACHE_NAME = "langlearn-v1.0";
 const ASSETS = [
   "/",
   "/index.html",

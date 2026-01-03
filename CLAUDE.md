@@ -33,7 +33,8 @@ Deploy:   Cloudflare Pages (static hosting)
 2. User speaks answer (Web Speech API with target language from set)
 3. System validates automatically
 4. Shows result (correct/wrong) + answer
-5. Auto-advances after 2 seconds
+5. User clicks "Next" (or auto-advances if manual next is off)
+6. If wrong + immediate retry enabled: repeat until 2x correct
 
 **With speech disabled:**
 1. Show prompt
@@ -140,14 +141,18 @@ The app UI supports multiple languages:
 
 - `langlearn_last_set` - ID of last selected set
 - `langlearn_speech_enabled` - speech mode on/off
-- `langlearn_manual_next` - manual next button mode on/off
+- `langlearn_manual_next` - manual next button mode on/off (default: on)
 - `langlearn_auto_listen` - auto-start listening on/off
+- `langlearn_immediate_retry` - repeat wrong phrases until 2x correct (default: on)
 - `langlearn_dev_mode` - developer mode on/off
 - `langlearn_theme` - UI theme (light/dark/system)
 - `langlearn_required_streak` - number of correct answers to mark as learned (1/2/3)
 - `langlearn_ui_language` - UI language preference
 - `langlearn_progress_{setId}` - learned phrase IDs per set
 - `langlearn_notes` - user notes for phrases
+- `langlearn_general_notes` - general notes (not phrase-specific)
+- `langlearn_review_set_{language}` - starred phrases for review per language
+- `langlearn_expanded_folders` - UI state for set folder expansion
 
 ## Deployment
 
