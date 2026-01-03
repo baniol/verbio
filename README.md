@@ -25,10 +25,15 @@ Struggling to remember a phrase? Click the star icon next to it, and it goes to 
 
 ## Features
 
-- **Multiple language sets** - different languages and topics
+- **Multiple language sets** - different languages and topics, grouped by language
 - **Speech recognition** - speak answers using Web Speech API
 - **Progress tracking** - stored in browser localStorage
-- **Offline-capable** - all data bundled, no backend needed
+- **Offline-capable** - PWA with Service Worker, works without internet
+- **Dark/Light mode** - follows system preference or manual toggle
+- **Learning threshold** - configure how many correct answers mark a phrase as learned (1/2/3)
+- **Notes** - add notes to phrases and export them
+- **Audio playback** - hear native pronunciation (optional, requires AWS Polly setup)
+- **Multi-language UI** - English, Polish, German, Spanish, French
 
 ---
 
@@ -333,7 +338,7 @@ For detailed deployment setup (Cloudflare Pages, custom domains, troubleshooting
 
 ## Tech Stack
 
-- HTML + Vanilla JS + Tailwind CDN
+- HTML + Vanilla JS + Tailwind CSS (built locally, no CDN)
 - Web Speech API
 - localStorage
 - Cloudflare Pages (static hosting)

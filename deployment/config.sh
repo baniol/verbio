@@ -3,4 +3,7 @@
 
 # Feature flags
 FEATURE_AUDIO=true              # Enable audio playback support for phrases
-FEATURE_SHOW_ALTERNATIVES=false  # Show alternative accepted answers after revealing answer
+FEATURE_SHOW_ALTERNATIVES=false # Show alternative accepted answers after revealing answer
+
+# Build options
+BUILD_TAILWIND=true             # Build local Tailwind CSS (false = use CDN)

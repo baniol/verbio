@@ -5,6 +5,30 @@ All notable changes to Verbio will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.10.0] - 2026-01-03
+
+### Added
+- Local Tailwind CSS build option (BUILD_TAILWIND flag)
+- Auto-download of Tailwind CLI standalone binary
+- Optimized CSS output (~32KB vs ~300KB CDN)
+
+### Changed
+- Build script now generates styles.css when BUILD_TAILWIND=true
+- Updated documentation with build configuration details
+
+## [0.9.3] - 2026-01-03
+
+### Changed
+- Remove dead code (unused functions and fields)
+- Use localized language names in review sets
+- Update Service Worker cache versioning for 1.0.0
+- Update documentation with complete feature list and localStorage keys
+
+## [0.9.2] - 2026-01-03
+
+### Changed
+- Replace app name in footer with static "verbio" (remove i18n translations)
+
 ## [0.9.1] - 2026-01-03
 
 ### Added

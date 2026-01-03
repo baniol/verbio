@@ -226,9 +226,6 @@ const I18N = {
       noSpeech: "No speech... try again",
       speechNotAvailable: "Speech recognition is not available in this browser",
 
-      // Footer
-      version: "Language Learning",
-
       // Cache/Developer
       noActiveServiceWorker: "No active Service Worker",
       cacheCleared: "Cache cleared! Refresh the page.",
@@ -344,9 +341,6 @@ const I18N = {
       noSpeech: "Nie słyszę... spróbuj jeszcze raz",
       speechNotAvailable:
         "Rozpoznawanie mowy nie jest dostępne w tej przeglądarce",
-
-      // Footer
-      version: "Nauka Języków",
 
       // Cache/Developer
       noActiveServiceWorker: "Brak aktywnego Service Workera",
@@ -465,9 +459,6 @@ const I18N = {
       speechNotAvailable:
         "Spracherkennung ist in diesem Browser nicht verfügbar",
 
-      // Footer
-      version: "Sprachenlernen",
-
       // Cache/Developer
       noActiveServiceWorker: "Kein aktiver Service Worker",
       cacheCleared: "Cache geleert! Seite neu laden.",
@@ -584,9 +575,6 @@ const I18N = {
       noSpeech: "Sin voz... inténtalo de nuevo",
       speechNotAvailable:
         "El reconocimiento de voz no está disponible en este navegador",
-
-      // Footer
-      version: "Aprendizaje de Idiomas",
 
       // Cache/Developer
       noActiveServiceWorker: "No hay Service Worker activo",
@@ -705,9 +693,6 @@ const I18N = {
       speechNotAvailable:
         "La reconnaissance vocale n'est pas disponible dans ce navigateur",
 
-      // Footer
-      version: "Apprentissage des Langues",
-
       // Cache/Developer
       noActiveServiceWorker: "Pas de Service Worker actif",
       cacheCleared: "Cache vide! Rafraichissez la page.",
@@ -769,11 +754,6 @@ const I18N = {
       this.translations[this.currentLang]?.[key] ||
       this.translations["en"]?.[key] ||
       key;
-
-    // Append version number for version key
-    if (key === "version" && typeof APP_VERSION !== "undefined") {
-      translation = `${translation} ${APP_VERSION}`;
-    }
 
     // Replace parameters like {count}
     return translation.replace(/\{(\w+)\}/g, (_, param) => params[param] ?? "");
