@@ -1,0 +1,247 @@
+{
+  "metadata": {
+    "id": "german_dialogue_hotel_checkin",
+    "name": "German - Hotel Check-in",
+    "language": "de",
+    "speechLang": "de-DE",
+    "sourceLanguage": "pl",
+    "sourceSpeechLang": "pl-PL",
+    "type": "dialogue",
+    "situation": "Zameldowanie w hotelu - rozmowa z recepcjonistą",
+    "participants": ["gość", "recepcjonista"]
+  },
+  "phrases": [
+    {
+      "id": 1,
+      "prompt": "Dzień dobry, w czym mogę pomóc?",
+      "answer": "Guten Tag, wie kann ich Ihnen helfen?",
+      "accepted": [
+        "guten tag wie kann ich ihnen helfen",
+        "guten tag was kann ich für sie tun"
+      ],
+      "speaker": "recepcjonista",
+      "context": "powitanie gościa przy recepcji"
+    },
+    {
+      "id": 2,
+      "prompt": "Dzień dobry, mam rezerwację na nazwisko Kowalski",
+      "answer": "Guten Tag, ich habe eine Reservierung auf den Namen Kowalski",
+      "accepted": [
+        "guten tag ich habe eine reservierung auf den namen kowalski",
+        "guten tag ich habe eine reservierung für kowalski"
+      ],
+      "speaker": "gość"
+    },
+    {
+      "id": 3,
+      "prompt": "Moment, sprawdzę. Na ile nocy?",
+      "answer": "Einen Moment, ich schaue nach. Für wie viele Nächte?",
+      "accepted": [
+        "einen moment ich schaue nach für wie viele nächte",
+        "moment ich schaue nach für wie viele nächte"
+      ],
+      "speaker": "recepcjonista"
+    },
+    {
+      "id": 4,
+      "prompt": "Na trzy noce, od dzisiaj do piątku",
+      "answer": "Für drei Nächte, von heute bis Freitag",
+      "accepted": [
+        "für drei nächte von heute bis freitag",
+        "drei nächte von heute bis freitag"
+      ],
+      "speaker": "gość"
+    },
+    {
+      "id": 5,
+      "prompt": "Tak, widzę rezerwację, którą pan zrobił online. Pokój dwuosobowy z łazienką",
+      "answer": "Ja, ich sehe die Reservierung, die Sie online gemacht haben. Ein Doppelzimmer mit Bad",
+      "accepted": [
+        "ja ich sehe die reservierung die sie online gemacht haben ein doppelzimmer mit bad",
+        "ja ich habe die reservierung die sie online gemacht haben ein doppelzimmer mit bad"
+      ],
+      "speaker": "recepcjonista"
+    },
+    {
+      "id": 6,
+      "prompt": "Zgadza się. Czy śniadanie jest wliczone?",
+      "answer": "Das stimmt. Ist das Frühstück inklusive?",
+      "accepted": [
+        "das stimmt ist das frühstück inklusive",
+        "genau ist das frühstück inklusive",
+        "richtig ist frühstück inklusive"
+      ],
+      "speaker": "gość"
+    },
+    {
+      "id": 7,
+      "prompt": "Tak, śniadanie jest od siódmej do dziesiątej w restauracji na parterze",
+      "answer": "Ja, das Frühstück ist von sieben bis zehn Uhr im Restaurant im Erdgeschoss",
+      "accepted": [
+        "ja das frühstück ist von sieben bis zehn uhr im restaurant im erdgeschoss",
+        "ja frühstück ist von sieben bis zehn im restaurant im erdgeschoss"
+      ],
+      "speaker": "recepcjonista"
+    },
+    {
+      "id": 8,
+      "prompt": "Świetnie. Czy mogę prosić o pokój z widokiem na miasto?",
+      "answer": "Wunderbar. Könnte ich ein Zimmer mit Blick auf die Stadt haben?",
+      "accepted": [
+        "wunderbar könnte ich ein zimmer mit blick auf die stadt haben",
+        "super kann ich ein zimmer mit stadtblick haben",
+        "toll könnte ich ein zimmer mit blick auf die stadt bekommen"
+      ],
+      "speaker": "gość"
+    },
+    {
+      "id": 9,
+      "prompt": "Zobaczę, co mamy wolne. Tak, pokój 405, który ma balkon, jest dostępny",
+      "answer": "Ich schaue, was wir frei haben. Ja, Zimmer 405, das einen Balkon hat, ist verfügbar",
+      "accepted": [
+        "ich schaue was wir frei haben ja zimmer 405 das einen balkon hat ist verfügbar",
+        "ich schaue mal ja zimmer 405 das einen balkon hat ist frei"
+      ],
+      "speaker": "recepcjonista"
+    },
+    {
+      "id": 10,
+      "prompt": "Poproszę ten pokój",
+      "answer": "Ich nehme dieses Zimmer",
+      "accepted": [
+        "ich nehme dieses zimmer",
+        "dieses zimmer bitte",
+        "ich möchte dieses zimmer"
+      ],
+      "speaker": "gość"
+    },
+    {
+      "id": 11,
+      "prompt": "Poproszę pański dowód osobisty lub paszport",
+      "answer": "Ihren Personalausweis oder Reisepass, bitte",
+      "accepted": [
+        "ihren personalausweis oder reisepass bitte",
+        "kann ich ihren ausweis oder pass sehen",
+        "ihren ausweis oder pass bitte"
+      ],
+      "speaker": "recepcjonista"
+    },
+    {
+      "id": 12,
+      "prompt": "Proszę, tutaj jest mój paszport",
+      "answer": "Bitte, hier ist mein Reisepass",
+      "accepted": [
+        "bitte hier ist mein reisepass",
+        "hier mein reisepass",
+        "hier bitte mein pass"
+      ],
+      "speaker": "gość"
+    },
+    {
+      "id": 13,
+      "prompt": "Dziękuję. Jak chciałby pan zapłacić?",
+      "answer": "Danke. Wie möchten Sie bezahlen?",
+      "accepted": [
+        "danke wie möchten sie bezahlen",
+        "danke wie wollen sie zahlen"
+      ],
+      "speaker": "recepcjonista"
+    },
+    {
+      "id": 14,
+      "prompt": "Kartą, jeśli można",
+      "answer": "Mit Karte, wenn es geht",
+      "accepted": [
+        "mit karte wenn es geht",
+        "mit karte bitte",
+        "mit kreditkarte bitte"
+      ],
+      "speaker": "gość"
+    },
+    {
+      "id": 15,
+      "prompt": "Oczywiście. Proszę włożyć kartę do terminala, żeby potwierdzić płatność",
+      "answer": "Natürlich. Bitte stecken Sie die Karte in das Terminal, um die Zahlung zu bestätigen",
+      "accepted": [
+        "natürlich bitte stecken sie die karte in das terminal um die zahlung zu bestätigen",
+        "klar bitte karte ins terminal stecken um die zahlung zu bestätigen"
+      ],
+      "speaker": "recepcjonista"
+    },
+    {
+      "id": 16,
+      "prompt": "Gotowe. Czy jest tu WiFi?",
+      "answer": "Fertig. Gibt es hier WLAN?",
+      "accepted": [
+        "fertig gibt es hier wlan",
+        "erledigt gibt es wlan",
+        "okay gibt es hier wifi"
+      ],
+      "speaker": "gość"
+    },
+    {
+      "id": 17,
+      "prompt": "Tak, hasło jest na kartce w pokoju, żeby mógł się pan połączyć. Sieć nazywa się Hotel-Guest",
+      "answer": "Ja, das Passwort steht auf der Karte im Zimmer, damit Sie sich verbinden können. Das Netzwerk heißt Hotel-Guest",
+      "accepted": [
+        "ja das passwort steht auf der karte im zimmer damit sie sich verbinden können das netzwerk heißt hotel guest",
+        "ja das passwort ist im zimmer damit sie sich verbinden können das netzwerk heißt hotel guest"
+      ],
+      "speaker": "recepcjonista"
+    },
+    {
+      "id": 18,
+      "prompt": "O której jest wymeldowanie?",
+      "answer": "Um wie viel Uhr ist der Check-out?",
+      "accepted": [
+        "um wie viel uhr ist der check out",
+        "wann ist check out",
+        "wann muss ich auschecken",
+        "bis wann muss ich das zimmer verlassen"
+      ],
+      "speaker": "gość"
+    },
+    {
+      "id": 19,
+      "prompt": "Wymeldowanie jest do jedenastej. Oto pański klucz, pokój 405, czwarte piętro",
+      "answer": "Der Check-out ist bis elf Uhr. Hier ist Ihr Schlüssel, Zimmer 405, vierte Etage",
+      "accepted": [
+        "der check out ist bis elf uhr hier ist ihr schlüssel zimmer 405 vierte etage",
+        "check out ist bis elf hier ihr schlüssel zimmer 405 vierter stock"
+      ],
+      "speaker": "recepcjonista"
+    },
+    {
+      "id": 20,
+      "prompt": "Dziękuję bardzo. Gdzie jest winda?",
+      "answer": "Vielen Dank. Wo ist der Aufzug?",
+      "accepted": [
+        "vielen dank wo ist der aufzug",
+        "danke schön wo ist der lift",
+        "danke wo finde ich den aufzug"
+      ],
+      "speaker": "gość"
+    },
+    {
+      "id": 21,
+      "prompt": "Na końcu korytarza po prawej stronie. Miłego pobytu!",
+      "answer": "Am Ende des Flurs auf der rechten Seite. Einen schönen Aufenthalt!",
+      "accepted": [
+        "am ende des flurs auf der rechten seite einen schönen aufenthalt",
+        "am ende vom flur rechts schönen aufenthalt"
+      ],
+      "speaker": "recepcjonista"
+    },
+    {
+      "id": 22,
+      "prompt": "Dziękuję, do widzenia",
+      "answer": "Danke, auf Wiedersehen",
+      "accepted": [
+        "danke auf wiedersehen",
+        "danke schön auf wiedersehen",
+        "vielen dank auf wiedersehen"
+      ],
+      "speaker": "gość"
+    }
+  ]
+}
