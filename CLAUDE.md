@@ -119,6 +119,53 @@ cd frontend && python3 -m http.server 3000
 - `answer` - correct answer (displayed after, in target language)
 - `accepted` - array of accepted answers (lowercase, for validation)
 
+## Dialogue Set Format
+
+Dialogue sets are sequential conversation-based learning sets. Use `/generate-dialogue-set` to create them.
+
+`lang_data/german_dialogue_ordering_coffee.json`:
+```json
+{
+  "metadata": {
+    "id": "german_dialogue_ordering_coffee",
+    "name": "German - Ordering Coffee",
+    "language": "de",
+    "speechLang": "de-DE",
+    "sourceLanguage": "en",
+    "sourceSpeechLang": "en-US",
+    "type": "dialogue",
+    "situation": "Ordering coffee at a cafe",
+    "participants": ["customer", "barista"]
+  },
+  "phrases": [
+    {
+      "id": 1,
+      "prompt": "Hello, what can I get you?",
+      "answer": "Hallo, was darf es sein?",
+      "accepted": ["hallo was darf es sein", "hallo was kann ich ihnen bringen"],
+      "speaker": "barista",
+      "context": "greeting customer at counter"
+    },
+    {
+      "id": 2,
+      "prompt": "I'd like a coffee, please",
+      "answer": "Ich hätte gerne einen Kaffee, bitte",
+      "accepted": ["ich hätte gerne einen kaffee bitte", "ich möchte einen kaffee bitte"],
+      "speaker": "customer"
+    }
+  ]
+}
+```
+
+### Additional metadata fields (dialogue):
+- `type` - "dialogue" (distinguishes from regular sets)
+- `situation` - description of the scenario
+- `participants` - array of two role names
+
+### Additional phrase fields (dialogue):
+- `speaker` - which participant says this line
+- `context` - (optional) stage direction or context note
+
 ## Internationalization (i18n)
 
 The app UI supports multiple languages:
