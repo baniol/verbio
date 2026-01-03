@@ -16,198 +16,312 @@
       "id": 1,
       "prompt": "Dzień dobry, mam rezerwację na nazwisko Kowalski",
       "answer": "Guten Tag, ich habe eine Reservierung auf den Namen Kowalski",
-      "accepted": ["guten tag ich habe eine reservierung auf den namen kowalski", "guten tag ich habe eine reservierung für kowalski"],
+      "accepted": [
+        "guten tag ich habe eine reservierung auf den namen kowalski",
+        "guten tag ich habe eine reservierung für kowalski",
+        "hallo ich habe eine reservierung auf den namen kowalski"
+      ],
       "speaker": "gość",
       "contextLine": "Guten Tag, wie kann ich Ihnen helfen?",
       "contextSpeaker": "recepcjonista"
     },
     {
       "id": 2,
-      "prompt": "Na trzy noce, od dzisiaj do piątku",
-      "answer": "Für drei Nächte, von heute bis Freitag",
-      "accepted": ["für drei nächte von heute bis freitag", "drei nächte von heute bis freitag"],
+      "prompt": "Tak, na nazwisko Müller, na dwie noce",
+      "answer": "Ja, auf den Namen Müller, für zwei Nächte",
+      "accepted": [
+        "ja auf den namen müller für zwei nächte",
+        "ja reservierung auf müller zwei nächte",
+        "ja für müller zwei nächte"
+      ],
       "speaker": "gość",
-      "contextLine": "Einen Moment, ich schaue nach. Für wie viele Nächte?",
+      "contextLine": "Haben Sie eine Reservierung?",
       "contextSpeaker": "recepcjonista"
     },
     {
       "id": 3,
-      "prompt": "Tak, zgadza się. Czy śniadanie jest wliczone?",
-      "answer": "Ja, das stimmt. Ist das Frühstück inklusive?",
-      "accepted": ["ja das stimmt ist das frühstück inklusive", "ja genau ist das frühstück inklusive", "ja richtig ist frühstück inklusive"],
+      "prompt": "Poproszę pokój dwuosobowy z łazienką",
+      "answer": "Ein Doppelzimmer mit Bad, bitte",
+      "accepted": [
+        "ein doppelzimmer mit bad bitte",
+        "ich hätte gerne ein doppelzimmer mit bad",
+        "ich möchte ein doppelzimmer mit bad"
+      ],
       "speaker": "gość",
-      "contextLine": "Ja, ich sehe die Reservierung. Ein Doppelzimmer mit Bad. Stimmt das?",
+      "contextLine": "Was für ein Zimmer möchten Sie?",
       "contextSpeaker": "recepcjonista"
     },
     {
       "id": 4,
-      "prompt": "Świetnie. Czy mogę prosić o pokój z widokiem na miasto?",
-      "answer": "Wunderbar. Könnte ich ein Zimmer mit Blick auf die Stadt haben?",
-      "accepted": ["wunderbar könnte ich ein zimmer mit blick auf die stadt haben", "super kann ich ein zimmer mit stadtblick haben", "toll könnte ich ein zimmer mit blick auf die stadt bekommen"],
+      "prompt": "Tak, poproszę z widokiem na miasto",
+      "answer": "Ja, mit Blick auf die Stadt, bitte",
+      "accepted": [
+        "ja mit blick auf die stadt bitte",
+        "ja ich hätte gerne einen stadtblick",
+        "ja mit stadtblick bitte"
+      ],
       "speaker": "gość",
-      "contextLine": "Ja, das Frühstück ist von sieben bis zehn Uhr im Restaurant im Erdgeschoss.",
+      "contextLine": "Möchten Sie ein Zimmer mit Aussicht?",
       "contextSpeaker": "recepcjonista"
     },
     {
       "id": 5,
-      "prompt": "Poproszę ten pokój",
-      "answer": "Ich nehme dieses Zimmer",
-      "accepted": ["ich nehme dieses zimmer", "dieses zimmer bitte", "ich möchte dieses zimmer"],
+      "prompt": "Trzy noce, od dzisiaj do czwartku",
+      "answer": "Drei Nächte, von heute bis Donnerstag",
+      "accepted": [
+        "drei nächte von heute bis donnerstag",
+        "für drei nächte von heute bis donnerstag",
+        "drei nächte bis donnerstag"
+      ],
       "speaker": "gość",
-      "contextLine": "Ja, Zimmer 405, das einen Balkon hat, ist verfügbar.",
+      "contextLine": "Wie lange bleiben Sie?",
       "contextSpeaker": "recepcjonista"
     },
     {
       "id": 6,
-      "prompt": "Proszę, tutaj jest mój paszport",
-      "answer": "Bitte, hier ist mein Reisepass",
-      "accepted": ["bitte hier ist mein reisepass", "hier mein reisepass", "hier bitte mein pass"],
+      "prompt": "Tak, poproszę ze śniadaniem",
+      "answer": "Ja, mit Frühstück, bitte",
+      "accepted": [
+        "ja mit frühstück bitte",
+        "ja ich möchte mit frühstück",
+        "ja ich hätte gerne frühstück dabei"
+      ],
       "speaker": "gość",
-      "contextLine": "Ihren Personalausweis oder Reisepass, bitte.",
+      "contextLine": "Möchten Sie Frühstück dazu?",
       "contextSpeaker": "recepcjonista"
     },
     {
       "id": 7,
-      "prompt": "Kartą, jeśli można",
-      "answer": "Mit Karte, wenn es geht",
-      "accepted": ["mit karte wenn es geht", "mit karte bitte", "mit kreditkarte bitte"],
+      "prompt": "Kartą, proszę",
+      "answer": "Mit Karte, bitte",
+      "accepted": [
+        "mit karte bitte",
+        "mit kreditkarte bitte",
+        "ich zahle mit karte"
+      ],
       "speaker": "gość",
-      "contextLine": "Danke. Wie möchten Sie bezahlen?",
+      "contextLine": "Wie möchten Sie bezahlen?",
       "contextSpeaker": "recepcjonista"
     },
     {
       "id": 8,
-      "prompt": "Gotowe. Czy jest tu WiFi?",
-      "answer": "Fertig. Gibt es hier WLAN?",
-      "accepted": ["fertig gibt es hier wlan", "erledigt gibt es wlan", "okay gibt es hier wifi"],
+      "prompt": "Proszę bardzo, oto mój paszport",
+      "answer": "Bitte sehr, hier ist mein Reisepass",
+      "accepted": [
+        "bitte sehr hier ist mein reisepass",
+        "hier mein reisepass bitte",
+        "hier bitte mein pass"
+      ],
       "speaker": "gość",
-      "contextLine": "Natürlich. Bitte stecken Sie die Karte in das Terminal.",
+      "contextLine": "Ihren Ausweis, bitte",
       "contextSpeaker": "recepcjonista"
     },
     {
       "id": 9,
-      "prompt": "O której jest wymeldowanie?",
-      "answer": "Um wie viel Uhr ist der Check-out?",
-      "accepted": ["um wie viel uhr ist der check out", "wann ist check out", "wann muss ich auschecken", "bis wann muss ich das zimmer verlassen"],
+      "prompt": "Tak, poproszę, mam ciężką walizkę",
+      "answer": "Ja, bitte, mein Koffer ist sehr schwer",
+      "accepted": [
+        "ja bitte mein koffer ist sehr schwer",
+        "ja gerne mein koffer ist schwer",
+        "ja bitte der koffer ist schwer"
+      ],
       "speaker": "gość",
-      "contextLine": "Ja, das Passwort steht auf der Karte im Zimmer. Das Netzwerk heißt Hotel-Guest.",
+      "contextLine": "Brauchen Sie Hilfe mit dem Gepäck?",
       "contextSpeaker": "recepcjonista"
     },
     {
       "id": 10,
-      "prompt": "Dziękuję bardzo. Gdzie jest winda?",
-      "answer": "Vielen Dank. Wo ist der Aufzug?",
-      "accepted": ["vielen dank wo ist der aufzug", "danke schön wo ist der lift", "danke wo finde ich den aufzug"],
+      "prompt": "A o której jest śniadanie?",
+      "answer": "Und um wie viel Uhr ist das Frühstück?",
+      "accepted": [
+        "und um wie viel uhr ist das frühstück",
+        "wann gibt es frühstück",
+        "wann ist frühstück"
+      ],
       "speaker": "gość",
-      "contextLine": "Der Check-out ist bis elf Uhr. Hier ist Ihr Schlüssel, Zimmer 405, vierte Etage.",
+      "contextLine": "Der Check-out ist bis elf Uhr",
       "contextSpeaker": "recepcjonista"
     },
     {
       "id": 11,
-      "prompt": "Dziękuję, do widzenia",
-      "answer": "Danke, auf Wiedersehen",
-      "accepted": ["danke auf wiedersehen", "danke schön auf wiedersehen", "vielen dank auf wiedersehen"],
+      "prompt": "Dziękuję, a gdzie jest winda?",
+      "answer": "Danke schön, und wo ist der Aufzug?",
+      "accepted": [
+        "danke schön und wo ist der aufzug",
+        "danke wo ist der aufzug",
+        "vielen dank wo finde ich den aufzug"
+      ],
       "speaker": "gość",
-      "contextLine": "Am Ende des Flurs auf der rechten Seite. Einen schönen Aufenthalt!",
+      "contextLine": "Das WLAN-Passwort steht auf der Karte im Zimmer",
       "contextSpeaker": "recepcjonista"
     },
     {
       "id": 12,
+      "prompt": "Dziękuję bardzo, do widzenia",
+      "answer": "Vielen Dank, auf Wiedersehen",
+      "accepted": [
+        "vielen dank auf wiedersehen",
+        "danke schön auf wiedersehen",
+        "danke tschüss"
+      ],
+      "speaker": "gość",
+      "contextLine": "Hier ist Ihr Schlüssel, Zimmer 305",
+      "contextSpeaker": "recepcjonista"
+    },
+    {
+      "id": 13,
       "prompt": "Dzień dobry, w czym mogę pomóc?",
       "answer": "Guten Tag, wie kann ich Ihnen helfen?",
-      "accepted": ["guten tag wie kann ich ihnen helfen", "guten tag was kann ich für sie tun"],
+      "accepted": [
+        "guten tag wie kann ich ihnen helfen",
+        "guten tag was kann ich für sie tun",
+        "hallo wie kann ich helfen"
+      ],
       "speaker": "recepcjonista",
       "contextLine": "Guten Tag!",
       "contextSpeaker": "gość"
     },
     {
-      "id": 13,
-      "prompt": "Moment, sprawdzę. Na ile nocy?",
-      "answer": "Einen Moment, ich schaue nach. Für wie viele Nächte?",
-      "accepted": ["einen moment ich schaue nach für wie viele nächte", "moment ich schaue nach für wie viele nächte"],
-      "speaker": "recepcjonista",
-      "contextLine": "Ich habe eine Reservierung auf den Namen Kowalski.",
-      "contextSpeaker": "gość"
-    },
-    {
       "id": 14,
-      "prompt": "Tak, widzę rezerwację. Pokój dwuosobowy z łazienką",
-      "answer": "Ja, ich sehe die Reservierung. Ein Doppelzimmer mit Bad",
-      "accepted": ["ja ich sehe die reservierung ein doppelzimmer mit bad", "ja ich habe die reservierung ein doppelzimmer mit bad"],
+      "prompt": "Moment, sprawdzę w systemie",
+      "answer": "Einen Moment, ich schaue im System nach",
+      "accepted": [
+        "einen moment ich schaue im system nach",
+        "moment ich prüfe das",
+        "ich schaue nach einen moment bitte"
+      ],
       "speaker": "recepcjonista",
-      "contextLine": "Für drei Nächte, von heute bis Freitag.",
+      "contextLine": "Ich habe eine Reservierung auf den Namen Schmidt",
       "contextSpeaker": "gość"
     },
     {
       "id": 15,
-      "prompt": "Tak, śniadanie jest od siódmej do dziesiątej w restauracji na parterze",
-      "answer": "Ja, das Frühstück ist von sieben bis zehn Uhr im Restaurant im Erdgeschoss",
-      "accepted": ["ja das frühstück ist von sieben bis zehn uhr im restaurant im erdgeschoss", "ja frühstück ist von sieben bis zehn im restaurant im erdgeschoss"],
+      "prompt": "Tak, mamy jeszcze wolne pokoje jednoosobowe",
+      "answer": "Ja, wir haben noch Einzelzimmer frei",
+      "accepted": [
+        "ja wir haben noch einzelzimmer frei",
+        "ja es sind noch einzelzimmer verfügbar",
+        "ja wir haben freie einzelzimmer"
+      ],
+      "speaker": "recepcjonista",
+      "contextLine": "Haben Sie freie Zimmer?",
+      "contextSpeaker": "gość"
+    },
+    {
+      "id": 16,
+      "prompt": "Pokój dwuosobowy kosztuje 120 euro za noc",
+      "answer": "Das Doppelzimmer kostet 120 Euro pro Nacht",
+      "accepted": [
+        "das doppelzimmer kostet 120 euro pro nacht",
+        "ein doppelzimmer kostet 120 euro die nacht",
+        "120 euro pro nacht für ein doppelzimmer"
+      ],
+      "speaker": "recepcjonista",
+      "contextLine": "Was kostet ein Zimmer pro Nacht?",
+      "contextSpeaker": "gość"
+    },
+    {
+      "id": 17,
+      "prompt": "Tak, śniadanie jest od siódmej do dziesiątej",
+      "answer": "Ja, das Frühstück ist von sieben bis zehn Uhr",
+      "accepted": [
+        "ja das frühstück ist von sieben bis zehn uhr",
+        "ja frühstück ist von 7 bis 10 uhr",
+        "ja frühstück von sieben bis zehn"
+      ],
       "speaker": "recepcjonista",
       "contextLine": "Ist das Frühstück inklusive?",
       "contextSpeaker": "gość"
     },
     {
-      "id": 16,
-      "prompt": "Zobaczę, co mamy wolne. Tak, pokój 405 z balkonem jest dostępny",
-      "answer": "Ich schaue, was wir frei haben. Ja, Zimmer 405, das einen Balkon hat, ist verfügbar",
-      "accepted": ["ich schaue was wir frei haben ja zimmer 405 das einen balkon hat ist verfügbar", "ich schaue mal ja zimmer 405 das einen balkon hat ist frei"],
-      "speaker": "recepcjonista",
-      "contextLine": "Könnte ich ein Zimmer mit Blick auf die Stadt haben?",
-      "contextSpeaker": "gość"
-    },
-    {
-      "id": 17,
-      "prompt": "Poproszę pański dowód osobisty lub paszport",
-      "answer": "Ihren Personalausweis oder Reisepass, bitte",
-      "accepted": ["ihren personalausweis oder reisepass bitte", "kann ich ihren ausweis oder pass sehen"],
-      "speaker": "recepcjonista",
-      "contextLine": "Ich nehme dieses Zimmer.",
-      "contextSpeaker": "gość"
-    },
-    {
       "id": 18,
-      "prompt": "Dziękuję. Jak chciałby pan zapłacić?",
-      "answer": "Danke. Wie möchten Sie bezahlen?",
-      "accepted": ["danke wie möchten sie bezahlen", "danke wie wollen sie zahlen"],
+      "prompt": "Parking jest za hotelem, wjazd z prawej strony",
+      "answer": "Der Parkplatz ist hinter dem Hotel, Einfahrt rechts",
+      "accepted": [
+        "der parkplatz ist hinter dem hotel einfahrt rechts",
+        "parken können sie hinter dem hotel",
+        "der parkplatz ist hinterm hotel einfahrt von rechts"
+      ],
       "speaker": "recepcjonista",
-      "contextLine": "Bitte, hier ist mein Reisepass.",
+      "contextLine": "Wo kann ich mein Auto parken?",
       "contextSpeaker": "gość"
     },
     {
       "id": 19,
-      "prompt": "Oczywiście. Proszę włożyć kartę do terminala",
-      "answer": "Natürlich. Bitte stecken Sie die Karte in das Terminal",
-      "accepted": ["natürlich bitte stecken sie die karte in das terminal", "klar bitte karte ins terminal stecken"],
+      "prompt": "Śniadanie jest od siódmej do dziesiątej w restauracji na parterze",
+      "answer": "Das Frühstück ist von sieben bis zehn im Restaurant im Erdgeschoss",
+      "accepted": [
+        "das frühstück ist von sieben bis zehn im restaurant im erdgeschoss",
+        "frühstück ist von 7 bis 10 im erdgeschoss",
+        "frühstück von sieben bis zehn unten im restaurant"
+      ],
       "speaker": "recepcjonista",
-      "contextLine": "Mit Karte, wenn es geht.",
+      "contextLine": "Um wie viel Uhr gibt es Frühstück?",
       "contextSpeaker": "gość"
     },
     {
       "id": 20,
-      "prompt": "Tak, hasło jest na kartce w pokoju. Sieć nazywa się Hotel-Guest",
-      "answer": "Ja, das Passwort steht auf der Karte im Zimmer. Das Netzwerk heißt Hotel-Guest",
-      "accepted": ["ja das passwort steht auf der karte im zimmer das netzwerk heißt hotel guest", "ja das passwort ist im zimmer das netzwerk heißt hotel guest"],
+      "prompt": "Proszę bardzo, oto pana klucz, pokój 305, trzecie piętro",
+      "answer": "Bitte sehr, hier ist Ihr Schlüssel, Zimmer 305, dritte Etage",
+      "accepted": [
+        "bitte sehr hier ist ihr schlüssel zimmer 305 dritte etage",
+        "hier ihr schlüssel zimmer 305 im dritten stock",
+        "bitte sehr zimmer 305 dritter stock"
+      ],
       "speaker": "recepcjonista",
-      "contextLine": "Gibt es hier WLAN?",
+      "contextLine": "Kann ich den Zimmerschlüssel haben?",
       "contextSpeaker": "gość"
     },
     {
       "id": 21,
-      "prompt": "Wymeldowanie jest do jedenastej. Oto pański klucz, pokój 405, czwarte piętro",
-      "answer": "Der Check-out ist bis elf Uhr. Hier ist Ihr Schlüssel, Zimmer 405, vierte Etage",
-      "accepted": ["der check out ist bis elf uhr hier ist ihr schlüssel zimmer 405 vierte etage", "check out ist bis elf hier ihr schlüssel zimmer 405 vierter stock"],
+      "prompt": "Oczywiście, nie ma problemu",
+      "answer": "Natürlich, kein Problem",
+      "accepted": [
+        "natürlich kein problem",
+        "ja selbstverständlich",
+        "kein problem das geht"
+      ],
       "speaker": "recepcjonista",
-      "contextLine": "Um wie viel Uhr ist der Check-out?",
+      "contextLine": "Kann ich meinen Aufenthalt um eine Nacht verlängern?",
       "contextSpeaker": "gość"
     },
     {
       "id": 22,
-      "prompt": "Na końcu korytarza po prawej stronie. Miłego pobytu!",
-      "answer": "Am Ende des Flurs auf der rechten Seite. Einen schönen Aufenthalt!",
-      "accepted": ["am ende des flurs auf der rechten seite einen schönen aufenthalt", "am ende vom flur rechts schönen aufenthalt"],
+      "prompt": "Restauracja jest na parterze, po lewej od recepcji",
+      "answer": "Das Restaurant ist im Erdgeschoss, links von der Rezeption",
+      "accepted": [
+        "das restaurant ist im erdgeschoss links von der rezeption",
+        "im erdgeschoss links neben der rezeption",
+        "unten links von der rezeption"
+      ],
       "speaker": "recepcjonista",
-      "contextLine": "Wo ist der Aufzug?",
+      "contextLine": "Wo ist das Hotelrestaurant?",
+      "contextSpeaker": "gość"
+    },
+    {
+      "id": 23,
+      "prompt": "Oczywiście, na którą godzinę?",
+      "answer": "Natürlich, für welche Uhrzeit?",
+      "accepted": [
+        "natürlich für welche uhrzeit",
+        "ja sicher für wann",
+        "klar um wie viel uhr"
+      ],
+      "speaker": "recepcjonista",
+      "contextLine": "Können Sie mir ein Taxi bestellen?",
+      "contextSpeaker": "gość"
+    },
+    {
+      "id": 24,
+      "prompt": "Oczywiście, proszę zostawić klucz tutaj",
+      "answer": "Natürlich, bitte lassen Sie den Schlüssel hier",
+      "accepted": [
+        "natürlich bitte lassen sie den schlüssel hier",
+        "kein problem legen sie den schlüssel bitte hier ab",
+        "ja bitte den schlüssel hier lassen"
+      ],
+      "speaker": "recepcjonista",
+      "contextLine": "Ich möchte auschecken",
       "contextSpeaker": "gość"
     }
   ]
