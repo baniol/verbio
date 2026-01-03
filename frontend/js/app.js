@@ -268,6 +268,11 @@
   document.addEventListener("DOMContentLoaded", () => {
     I18N.init();
     initTheme();
+    // Set version in footer
+    const versionEl = document.querySelector("[data-version]");
+    if (versionEl && typeof APP_VERSION !== "undefined") {
+      versionEl.textContent = APP_VERSION;
+    }
     cacheElements();
     bindEventListeners();
     loadSettings();
