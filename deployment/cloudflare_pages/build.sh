@@ -15,6 +15,7 @@ fi
 # Allow environment variable overrides
 FEATURE_AUDIO="${FEATURE_AUDIO:-false}"
 FEATURE_SHOW_ALTERNATIVES="${FEATURE_SHOW_ALTERNATIVES:-true}"
+BUILD_TAILWIND="${BUILD_TAILWIND:-false}"
 
 echo "==> Building sets.js from lang_data..."
 
@@ -64,5 +65,50 @@ echo "  audio: $FEATURE_AUDIO," >> "$CONFIG_JS"
 echo "  showAlternatives: $FEATURE_SHOW_ALTERNATIVES" >> "$CONFIG_JS"
 echo "};" >> "$CONFIG_JS"
 echo "==> Features: audio=$FEATURE_AUDIO, showAlternatives=$FEATURE_SHOW_ALTERNATIVES"
+
+# Build Tailwind CSS if enabled
+if [ "$BUILD_TAILWIND" = "true" ]; then
+    echo "==> Building Tailwind CSS..."
+
+    TAILWIND_BIN="$PROJECT_ROOT/bin/tailwindcss"
+    INPUT_CSS="$PROJECT_ROOT/frontend/css/input.css"
+    OUTPUT_CSS="$PROJECT_ROOT/frontend/css/styles.css"
+
+    if [ ! -f "$TAILWIND_BIN" ]; then
+        echo "    Downloading Tailwind CLI..."
+        mkdir -p "$PROJECT_ROOT/bin"
+
+        # Detect platform
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            if [[ $(uname -m) == "arm64" ]]; then
+                TAILWIND_URL="https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-macos-arm64"
+            else
+                TAILWIND_URL="https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-macos-x64"
+            fi
+        else
+            TAILWIND_URL="https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-linux-x64"
+        fi
+
+        curl -sL "$TAILWIND_URL" -o "$TAILWIND_BIN"
+        chmod +x "$TAILWIND_BIN"
+    fi
+
+    "$TAILWIND_BIN" -i "$INPUT_CSS" -o "$OUTPUT_CSS" --minify 2>/dev/null
+    CSS_SIZE=$(wc -c < "$OUTPUT_CSS" | tr -d ' ')
+    echo "==> Generated styles.css (${CSS_SIZE} bytes)"
+
+    # Update index.html to use local CSS instead of CDN
+    INDEX_HTML="$PROJECT_ROOT/frontend/index.html"
+    if grep -q "cdn.tailwindcss.com" "$INDEX_HTML"; then
+        # Remove CDN script and tailwind.config block, add local CSS link
+        sed -i.bak '/<script src="https:\/\/cdn.tailwindcss.com"><\/script>/,/<\/script>/d' "$INDEX_HTML"
+        # Add CSS link after <title>
+        sed -i.bak 's|</title>|</title>\n        <link rel="stylesheet" href="/css/styles.css">|' "$INDEX_HTML"
+        rm -f "$INDEX_HTML.bak"
+        echo "==> Updated index.html to use local CSS"
+    fi
+else
+    echo "==> Skipping Tailwind build (BUILD_TAILWIND=false)"
+fi
 
 echo "==> Build complete!"

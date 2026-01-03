@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@source "../index.html";
+@source "../js/app.js";
+
+@theme {
+    --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    --animate-glow: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    }
+    100% {
+        box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
+    }
+}
+
+@utility animate-pulse-slow {
+    animation: var(--animate-pulse-slow);
+}
+
+@utility animate-glow {
+    animation: var(--animate-glow);
+}
+
+/* Dark mode support */
+@custom-variant dark (&:where(.dark, .dark *));
