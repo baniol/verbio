@@ -13,7 +13,7 @@
 ## Tech Stack
 
 ```
-Frontend: HTML + Vanilla JS + Tailwind CDN
+Frontend: HTML + Vanilla JS + Tailwind CSS
 Data:     JSON files in lang_data/
 Deploy:   Cloudflare Pages (static hosting)
 ```
@@ -59,10 +59,13 @@ frontend/
     └── sets.js              # Auto-generated from lang_data/
 
 deployment/
-├── config.sh                # Build configuration (feature flags)
+├── config.sh                # Build configuration (feature flags, build options)
 └── cloudflare_pages/
-    ├── build.sh             # Generates sets.js, config.js, version.js
+    ├── build.sh             # Generates sets.js, config.js, version.js, styles.css
     └── deploy.sh            # Deploy via Wrangler CLI
+
+bin/                         # Build tools (auto-downloaded, gitignored)
+└── tailwindcss              # Tailwind CLI standalone binary
 ```
 
 ## Quick Commands
@@ -153,6 +156,31 @@ The app UI supports multiple languages:
 - `langlearn_general_notes` - general notes (not phrase-specific)
 - `langlearn_review_set_{language}` - starred phrases for review per language
 - `langlearn_expanded_folders` - UI state for set folder expansion
+
+## Build Configuration
+
+Build options in `deployment/config.sh`:
+
+```bash
+# Feature flags
+FEATURE_AUDIO=true              # Enable audio playback support
+FEATURE_SHOW_ALTERNATIVES=false # Show alternative accepted answers
+
+# Build options
+BUILD_TAILWIND=true             # Build local Tailwind CSS (false = use CDN)
+```
+
+### Tailwind CSS Build
+
+When `BUILD_TAILWIND=true`:
+- Downloads Tailwind CLI standalone binary (auto, first build only)
+- Generates optimized `frontend/css/styles.css` (~32KB)
+- Updates `index.html` to use local CSS instead of CDN
+- No npm/node required
+
+When `BUILD_TAILWIND=false`:
+- Uses Tailwind CDN (~300KB, shows console warning)
+- Good for quick local development
 
 ## Deployment
 

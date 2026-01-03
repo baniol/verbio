@@ -338,7 +338,7 @@ For detailed deployment setup (Cloudflare Pages, custom domains, troubleshooting
 
 ## Tech Stack
 
-- HTML + Vanilla JS + Tailwind CDN
+- HTML + Vanilla JS + Tailwind CSS (built locally, no CDN)
 - Web Speech API
 - localStorage
 - Cloudflare Pages (static hosting)
