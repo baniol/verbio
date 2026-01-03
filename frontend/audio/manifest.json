@@ -1024,5 +1024,183 @@
       "hash": "f13d087f4bc82aa198670efad8b19bd2",
       "file": "30.mp3"
     }
+  },
+  "german_dialogue_hotel_checkin": {
+    "1": {
+      "hash": "8ac5dc0577108eaf6fca6cc813b1b88f",
+      "file": "1.mp3"
+    },
+    "1_context": {
+      "hash": "89a347a65490fc07e752ee35785de3a2",
+      "file": "1_context.mp3"
+    },
+    "2": {
+      "hash": "2df373ae51401c101c31ec2ebd3c14be",
+      "file": "2.mp3"
+    },
+    "2_context": {
+      "hash": "dc4c873010e538bc2945db2e6f36dccf",
+      "file": "2_context.mp3"
+    },
+    "3": {
+      "hash": "bb9decf01dd4bcf2ca4df8bdfa95c856",
+      "file": "3.mp3"
+    },
+    "3_context": {
+      "hash": "3ce9b3353ccf3c9b27da49c05efe2649",
+      "file": "3_context.mp3"
+    },
+    "4": {
+      "hash": "549f31f24bd2933d80cdddfe3644b91c",
+      "file": "4.mp3"
+    },
+    "4_context": {
+      "hash": "8484d980cc7f8d6204f80e690550720f",
+      "file": "4_context.mp3"
+    },
+    "5": {
+      "hash": "77aed09f39e8a09db27169b3bd5a59cc",
+      "file": "5.mp3"
+    },
+    "5_context": {
+      "hash": "03c2e739a914d0a52f282271acfb9cbe",
+      "file": "5_context.mp3"
+    },
+    "6": {
+      "hash": "6d0f2f0ba1a078a96dfcab9dec8db9fa",
+      "file": "6.mp3"
+    },
+    "6_context": {
+      "hash": "5367d836c9c5d889f33a7b1c9225387f",
+      "file": "6_context.mp3"
+    },
+    "7": {
+      "hash": "51c95229e77bec8aeb44bb64865127bf",
+      "file": "7.mp3"
+    },
+    "7_context": {
+      "hash": "68d2035f9710ffadd77abc3c52539a3a",
+      "file": "7_context.mp3"
+    },
+    "8": {
+      "hash": "673e439854e4f8fcd483c7bf7bbcac4d",
+      "file": "8.mp3"
+    },
+    "8_context": {
+      "hash": "43a32d0f17a11cd21e33aea97286e28d",
+      "file": "8_context.mp3"
+    },
+    "9": {
+      "hash": "e542ed5326dbcd0d4d2fd61e3ef2e327",
+      "file": "9.mp3"
+    },
+    "9_context": {
+      "hash": "048f25d3c8b66c5cfa94544dcefe300c",
+      "file": "9_context.mp3"
+    },
+    "10": {
+      "hash": "ae68e6084ad8e84d317956321f2e5306",
+      "file": "10.mp3"
+    },
+    "10_context": {
+      "hash": "50112fb5d51d58bd3e79a8d7d12ef5e9",
+      "file": "10_context.mp3"
+    },
+    "11": {
+      "hash": "9ac2e5a1ae14a3fc625655240f17a51c",
+      "file": "11.mp3"
+    },
+    "11_context": {
+      "hash": "472cf6e2b6ba94cab748fe7f1e56eb39",
+      "file": "11_context.mp3"
+    },
+    "12": {
+      "hash": "89a347a65490fc07e752ee35785de3a2",
+      "file": "12.mp3"
+    },
+    "12_context": {
+      "hash": "3c1e1a69cb0b16647995786d23cc2c6c",
+      "file": "12_context.mp3"
+    },
+    "13": {
+      "hash": "dc4c873010e538bc2945db2e6f36dccf",
+      "file": "13.mp3"
+    },
+    "13_context": {
+      "hash": "3b48c397e1f7085395b21a0b03b7309a",
+      "file": "13_context.mp3"
+    },
+    "14": {
+      "hash": "066232d523dcf810ef9227e9ac817cae",
+      "file": "14.mp3"
+    },
+    "14_context": {
+      "hash": "9f85bf71d2a48d45b7369a2b6571de0b",
+      "file": "14_context.mp3"
+    },
+    "15": {
+      "hash": "daab3f9a532c543ce40ec02b1a931d83",
+      "file": "15.mp3"
+    },
+    "15_context": {
+      "hash": "798f820768b24c90898318b771ee9606",
+      "file": "15_context.mp3"
+    },
+    "16": {
+      "hash": "8ac04577f84c68c7ad918ae0f36eb6a7",
+      "file": "16.mp3"
+    },
+    "16_context": {
+      "hash": "d659905db8519bdb3458063055e5ce05",
+      "file": "16_context.mp3"
+    },
+    "17": {
+      "hash": "8815d6a25b62d5802c40e54e018d5e34",
+      "file": "17.mp3"
+    },
+    "17_context": {
+      "hash": "4a0bcbb042f85a9b3f784ba7f4eff319",
+      "file": "17_context.mp3"
+    },
+    "18": {
+      "hash": "68d2035f9710ffadd77abc3c52539a3a",
+      "file": "18.mp3"
+    },
+    "18_context": {
+      "hash": "3875a50f50690171dfeb01d3d2e93252",
+      "file": "18_context.mp3"
+    },
+    "19": {
+      "hash": "91915c07f0006a91dff8ba756d93a54a",
+      "file": "19.mp3"
+    },
+    "19_context": {
+      "hash": "6025a551d732504c26958c8c2ad1823d",
+      "file": "19_context.mp3"
+    },
+    "20": {
+      "hash": "c72c5d382003d287f76886be38e8a993",
+      "file": "20.mp3"
+    },
+    "20_context": {
+      "hash": "bf9f1d2c08691b0efee71107f9a4e74a",
+      "file": "20_context.mp3"
+    },
+    "21": {
+      "hash": "5ffcb07d0cd84967cfaff57d8b715355",
+      "file": "21.mp3"
+    },
+    "21_context": {
+      "hash": "e542ed5326dbcd0d4d2fd61e3ef2e327",
+      "file": "21_context.mp3"
+    },
+    "22": {
+      "hash": "472cf6e2b6ba94cab748fe7f1e56eb39",
+      "file": "22.mp3"
+    },
+    "22_context": {
+      "hash": "1aa83b4f360fa55a23ecda22416fada0",
+      "file": "22_context.mp3"
+    }
   }
 }

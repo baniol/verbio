@@ -94,6 +94,7 @@
     immediateRetry: "langlearn_immediate_retry",
     expandedFolders: "langlearn_expanded_folders",
     dialogueRole: (setId) => `langlearn_dialogue_role_${setId}`,
+    autoPlayContext: "langlearn_auto_play_context",
   };
 
   // State
@@ -102,6 +103,7 @@
   let speechEnabled = true;
   let manualNext = false;
   let autoListen = false;
+  let autoPlayContext = false; // auto-play context audio in dialogue mode
   let devMode = false;
   let theme = "system"; // "light", "dark", or "system"
   let requiredStreak = 2; // how many correct answers in a row to mark as learned
@@ -124,7 +126,9 @@
       loading: document.getElementById("loading"),
       allLearned: document.getElementById("all-learned"),
       flashcard: document.getElementById("flashcard"),
+      speakerInfoContainer: document.getElementById("speaker-info-container"),
       speakerInfo: document.getElementById("speaker-info"),
+      contextAudioButton: document.getElementById("context-audio-button"),
       prompt: document.getElementById("prompt"),
       answer: document.getElementById("answer"),
       speechMode: document.getElementById("speech-mode"),
@@ -141,6 +145,9 @@
       speechToggle: document.getElementById("speech-toggle"),
       manualNextToggle: document.getElementById("manual-next-toggle"),
       autoListenToggle: document.getElementById("auto-listen-toggle"),
+      autoPlayContextToggle: document.getElementById(
+        "auto-play-context-toggle",
+      ),
       devModeToggle: document.getElementById("dev-mode-toggle"),
       devTools: document.getElementById("dev-tools"),
       cacheStatus: document.getElementById("cache-status"),
@@ -253,6 +260,10 @@
     el.speechToggle?.addEventListener("change", saveSpeechSetting);
     el.manualNextToggle?.addEventListener("change", saveManualNextSetting);
     el.autoListenToggle?.addEventListener("change", saveAutoListenSetting);
+    el.autoPlayContextToggle?.addEventListener(
+      "change",
+      saveAutoPlayContextSetting,
+    );
     el.devModeToggle?.addEventListener("change", saveDevModeSetting);
     el.requiredStreakSelect?.addEventListener(
       "change",
@@ -266,6 +277,7 @@
     el.clearCacheButton?.addEventListener("click", clearCache);
     el.backButton?.addEventListener("click", () => Router.back());
     el.answerAudioButton?.addEventListener("click", playAnswerAudio);
+    el.contextAudioButton?.addEventListener("click", playContextAudio);
   }
 
   // Initialize
@@ -309,6 +321,8 @@
     if (el.speechToggle) el.speechToggle.checked = speechEnabled;
     if (el.manualNextToggle) el.manualNextToggle.checked = manualNext;
     if (el.autoListenToggle) el.autoListenToggle.checked = autoListen;
+    if (el.autoPlayContextToggle)
+      el.autoPlayContextToggle.checked = autoPlayContext;
     if (el.devModeToggle) el.devModeToggle.checked = devMode;
     if (el.requiredStreakSelect)
       el.requiredStreakSelect.value = requiredStreak.toString();
@@ -331,6 +345,11 @@
 
       const savedAutoListen = localStorage.getItem(STORAGE_KEYS.autoListen);
       autoListen = savedAutoListen === "true";
+
+      const savedAutoPlayContext = localStorage.getItem(
+        STORAGE_KEYS.autoPlayContext,
+      );
+      autoPlayContext = savedAutoPlayContext === "true";
 
       const savedDevMode = localStorage.getItem(STORAGE_KEYS.devMode);
       devMode = savedDevMode === "true";
@@ -356,6 +375,7 @@
       speechEnabled = true;
       manualNext = false;
       autoListen = false;
+      autoPlayContext = false;
       devMode = false;
       requiredStreak = 2;
       immediateRetry = true;
@@ -395,6 +415,11 @@
     immediateRetry = el.immediateRetryToggle.checked;
     localStorage.setItem(STORAGE_KEYS.immediateRetry, immediateRetry);
     clearRetryState();
+  }
+
+  function saveAutoPlayContextSetting() {
+    autoPlayContext = el.autoPlayContextToggle.checked;
+    localStorage.setItem(STORAGE_KEYS.autoPlayContext, autoPlayContext);
   }
 
   function updateDevToolsVisibility() {
@@ -901,9 +926,14 @@
     // Show context line for dialogue sets (what the other person said)
     if (isDialogueSet() && phrase.contextLine) {
       el.speakerInfo.textContent = `${phrase.contextSpeaker}: "${phrase.contextLine}"`;
-      UI.show(el.speakerInfo);
+      UI.show(el.speakerInfoContainer);
+      updateContextAudioButton();
+      // Auto-play context audio if enabled
+      if (autoPlayContext) {
+        playContextAudio();
+      }
     } else {
-      UI.hide(el.speakerInfo);
+      UI.hide(el.speakerInfoContainer);
     }
 
     el.prompt.textContent = phrase.prompt;
@@ -962,8 +992,9 @@
   }
 
   // Audio playback
-  function getAudioPath(setId, phraseId) {
-    return `/audio/${setId}/${phraseId}.mp3`;
+  function getAudioPath(setId, phraseId, isContext = false) {
+    const suffix = isContext ? "_context" : "";
+    return `/audio/${setId}/${phraseId}${suffix}.mp3`;
   }
 
   function checkAudioExists(setId, phraseId) {
@@ -986,6 +1017,21 @@
 
     currentAudio = new Audio(audioPath);
     currentAudio.play().catch((err) => {
+      console.error("Audio playback error:", err);
+    });
+  }
+
+  function playContextAudio() {
+    if (!currentPhrase || !currentSet || !isDialogueSet()) return;
+
+    // Stop any currently playing audio
+    stopAudio();
+
+    const setId = currentPhrase._sourceSetId || currentSet.id;
+    const audioPath = getAudioPath(setId, currentPhrase.id, true);
+
+    currentAudio = new Audio(audioPath);
+    currentAudio.play().catch((err) => {
       console.error("Failed to play audio:", err);
     });
   }
@@ -1005,6 +1051,18 @@
     const hasAudio = await checkAudioExists(setId, currentPhrase.id);
 
     UI.toggle(el.answerAudioButton, hasAudio);
+  }
+
+  async function updateContextAudioButton() {
+    if (!currentPhrase || !el.contextAudioButton || !isDialogueSet()) return;
+
+    const setId = currentPhrase._sourceSetId || currentSet.id;
+    const hasAudio = await checkAudioExists(
+      setId,
+      `${currentPhrase.id}_context`,
+    );
+
+    UI.toggle(el.contextAudioButton, hasAudio);
   }
 
   // Speech recognition

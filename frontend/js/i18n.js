@@ -186,6 +186,8 @@ const I18N = {
       manualNextDesc: "Click 'Next' instead of auto-advance",
       autoListen: "Auto-listen",
       autoListenDesc: "Automatically listen after showing",
+      autoPlayContext: "Auto-play context",
+      autoPlayContextDesc: "Auto-play partner's line in dialogues",
       learningThreshold: "Learning threshold",
       learningThresholdDesc:
         "How many correct answers in a row to mark phrase as learned",
@@ -306,6 +308,9 @@ const I18N = {
       manualNextDesc: "Kliknij 'Dalej' zamiast auto-przejścia",
       autoListen: "Auto-nasłuchiwanie",
       autoListenDesc: "Automatycznie słuchaj po wyświetleniu",
+      autoPlayContext: "Auto-odtwarzanie kontekstu",
+      autoPlayContextDesc:
+        "Automatycznie odtwarzaj kwestię rozmówcy w dialogach",
       learningThreshold: "Próg nauczenia",
       learningThresholdDesc:
         "Ile razy musisz odpowiedzieć poprawnie, żeby fraza była uznana za nauczoną",
@@ -426,6 +431,9 @@ const I18N = {
       manualNextDesc: "'Weiter' klicken statt automatisch",
       autoListen: "Auto-Zuhören",
       autoListenDesc: "Automatisch nach Anzeige zuhören",
+      autoPlayContext: "Kontext abspielen",
+      autoPlayContextDesc:
+        "Automatisch die Zeile des Partners in Dialogen abspielen",
       learningThreshold: "Lernschwelle",
       learningThresholdDesc:
         "Wie viele richtige Antworten hintereinander, um als gelernt zu gelten",
@@ -547,6 +555,9 @@ const I18N = {
       manualNextDesc: "Clic en 'Siguiente' en vez de avanzar automáticamente",
       autoListen: "Auto-escuchar",
       autoListenDesc: "Escuchar automáticamente después de mostrar",
+      autoPlayContext: "Reproducir contexto",
+      autoPlayContextDesc:
+        "Reproducir automáticamente la línea del compañero en diálogos",
       learningThreshold: "Umbral de aprendizaje",
       learningThresholdDesc:
         "Cuántas respuestas correctas seguidas para marcar como aprendida",
@@ -668,6 +679,9 @@ const I18N = {
       manualNextDesc: "Cliquer sur 'Suivant' au lieu d'avancer automatiquement",
       autoListen: "Écoute automatique",
       autoListenDesc: "Écouter automatiquement après affichage",
+      autoPlayContext: "Lecture auto du contexte",
+      autoPlayContextDesc:
+        "Lire automatiquement la réplique du partenaire dans les dialogues",
       learningThreshold: "Seuil d'apprentissage",
       learningThresholdDesc:
         "Combien de bonnes réponses consécutives pour marquer comme apprise",

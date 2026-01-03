@@ -5,6 +5,14 @@ All notable changes to Verbio will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-01-03
+
+### Added
+- Context audio button to play conversation partner's line
+- Auto-play context setting for dialogue mode
+- Audio generation for context lines in dialogue sets
+- i18n translations for auto-play context setting (5 languages)
+
 ## [1.1.0] - 2026-01-03
 
 ### Added

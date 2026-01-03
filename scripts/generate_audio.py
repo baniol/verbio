@@ -15,8 +15,8 @@ Requires:
     - pip install boto3 python-dotenv
 """
 
-import json
 import hashlib
+import json
 import os
 from pathlib import Path
 
@@ -95,7 +95,9 @@ def generate_audio(polly_client, text: str, voice_id: str, output_path: Path) ->
         f.write(response["AudioStream"].read())
 
 
-def process_language_set(polly_client, json_path: Path, manifest: dict) -> tuple[int, int]:
+def process_language_set(
+    polly_client, json_path: Path, manifest: dict
+) -> tuple[int, int]:
     """
     Process a single language set JSON file.
 
@@ -107,6 +109,7 @@ def process_language_set(polly_client, json_path: Path, manifest: dict) -> tuple
 
     set_id = data["metadata"]["id"]
     speech_lang = data["metadata"]["speechLang"]
+    is_dialogue = data["metadata"].get("type") == "dialogue"
 
     # Get voice for this language
     voice_id = VOICE_MAP.get(speech_lang)
@@ -130,21 +133,45 @@ def process_language_set(polly_client, json_path: Path, manifest: dict) -> tuple
         existing = manifest[set_id].get(phrase_id)
         if existing and existing.get("hash") == text_hash:
             skipped += 1
-            continue
+        else:
+            # Generate audio for answer
+            output_path = AUDIO_DIR / set_id / f"{phrase_id}.mp3"
+            print(f"  Generating: {set_id}/{phrase_id}.mp3 - '{answer_text[:30]}...'")
 
-        # Generate audio
-        output_path = AUDIO_DIR / set_id / f"{phrase_id}.mp3"
-        print(f"  Generating: {set_id}/{phrase_id}.mp3 - '{answer_text[:30]}...'")
+            try:
+                generate_audio(polly_client, answer_text, voice_id, output_path)
+                manifest[set_id][phrase_id] = {
+                    "hash": text_hash,
+                    "file": f"{phrase_id}.mp3",
+                }
+                generated += 1
+            except Exception as e:
+                print(f"    Error: {e}")
 
-        try:
-            generate_audio(polly_client, answer_text, voice_id, output_path)
-            manifest[set_id][phrase_id] = {
-                "hash": text_hash,
-                "file": f"{phrase_id}.mp3"
-            }
-            generated += 1
-        except Exception as e:
-            print(f"    Error: {e}")
+        # For dialogue sets, also generate audio for contextLine
+        if is_dialogue and phrase.get("contextLine"):
+            context_key = f"{phrase_id}_context"
+            context_text = phrase["contextLine"]
+            context_hash = get_text_hash(context_text)
+
+            existing_context = manifest[set_id].get(context_key)
+            if existing_context and existing_context.get("hash") == context_hash:
+                skipped += 1
+            else:
+                output_path = AUDIO_DIR / set_id / f"{phrase_id}_context.mp3"
+                print(
+                    f"  Generating: {set_id}/{phrase_id}_context.mp3 - '{context_text[:30]}...'"
+                )
+
+                try:
+                    generate_audio(polly_client, context_text, voice_id, output_path)
+                    manifest[set_id][context_key] = {
+                        "hash": context_hash,
+                        "file": f"{phrase_id}_context.mp3",
+                    }
+                    generated += 1
+                except Exception as e:
+                    print(f"    Error: {e}")
 
     return generated, skipped
 

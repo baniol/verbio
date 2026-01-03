@@ -29,8 +29,7 @@
         />
         <link rel="manifest" href="/manifest.json" />
         <title>Language Learning</title>
-        <link rel="stylesheet" href="/css/styles.css">
-
+        <link rel="stylesheet" href="/css/styles.css" />
 
         <style>
             @keyframes fadeIn {
@@ -306,10 +305,33 @@
                                 >
                                     Translate
                                 </p>
-                                <p
-                                    id="speaker-info"
-                                    class="text-sm font-medium text-indigo-600 dark:text-indigo-400 mb-1 hidden"
-                                ></p>
+                                <div
+                                    id="speaker-info-container"
+                                    class="hidden flex items-center justify-center gap-2 mb-1"
+                                >
+                                    <button
+                                        id="context-audio-button"
+                                        class="hidden text-indigo-500 dark:text-indigo-400 hover:text-indigo-600 dark:hover:text-indigo-300 p-1"
+                                        title="Play context audio"
+                                    >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            class="h-5 w-5"
+                                            viewBox="0 0 20 20"
+                                            fill="currentColor"
+                                        >
+                                            <path
+                                                fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                                                clip-rule="evenodd"
+                                            />
+                                        </svg>
+                                    </button>
+                                    <p
+                                        id="speaker-info"
+                                        class="text-sm font-medium text-indigo-600 dark:text-indigo-400"
+                                    ></p>
+                                </div>
                                 <h2
                                     id="prompt"
                                     class="text-2xl font-bold text-slate-800 dark:text-slate-100 no-select leading-relaxed"
@@ -658,6 +680,35 @@
                             data-i18n="autoListenDesc"
                         >
                             Automatically listen after showing
+                        </p>
+
+                        <label
+                            class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl cursor-pointer"
+                        >
+                            <div class="flex items-center space-x-3">
+                                <span class="text-2xl">💬</span>
+                                <span
+                                    class="text-slate-800 dark:text-slate-200 font-medium"
+                                    data-i18n="autoPlayContext"
+                                    >Auto-play context</span
+                                >
+                            </div>
+                            <div class="relative">
+                                <input
+                                    type="checkbox"
+                                    id="auto-play-context-toggle"
+                                    class="sr-only peer"
+                                />
+                                <div
+                                    class="w-11 h-6 bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-indigo-500 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"
+                                ></div>
+                            </div>
+                        </label>
+                        <p
+                            class="text-sm text-slate-500 dark:text-slate-400 mt-2 mb-4 ml-1"
+                            data-i18n="autoPlayContextDesc"
+                        >
+                            Auto-play partner's line in dialogues
                         </p>
 
                         <div
