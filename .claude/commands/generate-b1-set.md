@@ -177,6 +177,7 @@ Key vocabulary must appear in 2-3 different phrases across the 2 sets to create 
 **Accepted variants:**
 - All grammatically correct variants (möchte/würde gerne/will, kann/könnte/darf)
 - Different pronouns, synonyms
+- Numbers: ALWAYS include both word and digit forms (e.g., "achtzehn uhr" AND "18 uhr") - Google Speech API often transcribes numbers as digits
 
 **Format:**
 - Prompt: SOURCE language (proper characters)
