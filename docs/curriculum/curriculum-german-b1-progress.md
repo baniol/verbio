@@ -31,7 +31,7 @@ These provide the "glue" for natural conversation and should be learned early.
 
 | Topic | Status | Sets | Date | Extended |
 |-------|--------|------|------|----------|
-| Travel - planning and reservations | [ ] | | | [ ] |
+| Travel - planning and reservations | [x] | german_b1_travel_booking, german_b1_travel_info | 2026-01-04 | [ ] |
 | Travel - transport and connections | [ ] | | | [ ] |
 | Travel - problems and delays | [ ] | | | [ ] |
 | Accommodation - hotel and check-in | [ ] | | | [ ] |
@@ -151,7 +151,7 @@ These provide the "glue" for natural conversation and should be learned early.
 | Category | Completed | Total | Extended |
 |----------|-----------|-------|----------|
 | **Conversational Foundation** | 0 | 12 | 0 |
-| Travel and Leisure | 0 | 6 | 0 |
+| Travel and Leisure | 1 | 6 | 0 |
 | Work and Career | 0 | 4 | 0 |
 | Health and Body | 0 | 4 | 0 |
 | Home and Housing | 0 | 3 | 0 |
@@ -164,6 +164,6 @@ These provide the "glue" for natural conversation and should be learned early.
 | Culture and Arts | 0 | 2 | 0 |
 | Plans and Dreams | 0 | 2 | 0 |
 | Communication Situations | 0 | 8 | 0 |
-| **TOTAL** | **0** | **59** | **0** |
+| **TOTAL** | **1** | **59** | **0** |
 
 > **Note:** Grammar is integrated with topics, not as separate sets. Conversational Foundation should be prioritized. Extended sets provide additional 60 phrases per topic.
