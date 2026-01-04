@@ -1,0 +1,6 @@
+bucket         = "your-terraform-state-bucket"
+key            = "verbio/terraform.tfstate"
+region         = "eu-central-1"
+dynamodb_table = "your-terraform-state-bucket-lock"
+encrypt        = true
+profile        = "your-aws-profile"
