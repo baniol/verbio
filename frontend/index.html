@@ -29,34 +29,8 @@
         />
         <link rel="manifest" href="/manifest.json" />
         <title>Language Learning</title>
+        <link rel="stylesheet" href="/css/styles.css">
 
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script>
-            tailwind.config = {
-                darkMode: "class",
-                theme: {
-                    extend: {
-                        animation: {
-                            "pulse-slow":
-                                "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-                            glow: "glow 2s ease-in-out infinite alternate",
-                        },
-                        keyframes: {
-                            glow: {
-                                "0%": {
-                                    boxShadow:
-                                        "0 0 20px rgba(99, 102, 241, 0.3)",
-                                },
-                                "100%": {
-                                    boxShadow:
-                                        "0 0 30px rgba(99, 102, 241, 0.6)",
-                                },
-                            },
-                        },
-                    },
-                },
-            };
-        </script>
 
         <style>
             @keyframes fadeIn {
@@ -338,6 +312,10 @@
                                 >
                                     -
                                 </h2>
+                                <p
+                                    id="source-set-info"
+                                    class="hidden text-xs text-slate-400 dark:text-slate-500 mt-1"
+                                ></p>
                             </div>
 
                             <!-- Speech Mode -->
@@ -749,6 +727,36 @@
                             data-i18n="immediateRetryDesc"
                         >
                             Repeat phrase immediately after error
+                        </p>
+
+                        <!-- Reverse Mode Toggle -->
+                        <label
+                            class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl cursor-pointer mt-3"
+                        >
+                            <div class="flex items-center space-x-3">
+                                <span class="text-2xl">🔄</span>
+                                <span
+                                    class="text-slate-800 dark:text-slate-200 font-medium"
+                                    data-i18n="reverseMode"
+                                    >Reverse mode</span
+                                >
+                            </div>
+                            <div class="relative">
+                                <input
+                                    type="checkbox"
+                                    id="reverse-mode-toggle"
+                                    class="sr-only peer"
+                                />
+                                <div
+                                    class="w-11 h-6 bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-indigo-500 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"
+                                ></div>
+                            </div>
+                        </label>
+                        <p
+                            class="text-sm text-slate-500 dark:text-slate-400 mt-2 ml-1"
+                            data-i18n="reverseModeDesc"
+                        >
+                            Translate from target to source language
                         </p>
                     </div>
 

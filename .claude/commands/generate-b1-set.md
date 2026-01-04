@@ -67,21 +67,20 @@ Before generating, read all files in `lang_data/*.json` to:
 - Maintain consistent style
 - Build on existing vocabulary
 
-## Step 5: Generate 3 sets of 20 phrases each (60 phrases total)
+## Step 5: Generate 2 sets of 30 phrases each (60 phrases total)
 
-Each curriculum topic requires **3 sets** for comprehensive coverage:
+Each curriculum topic requires **2 sets** for comprehensive coverage:
 
-1. **Main set** - `german_b1_{topic}` - core phrases and situations
-2. **Detail set A** - `german_b1_{topic}_{aspect1}` - deeper coverage of one aspect
-3. **Detail set B** - `german_b1_{topic}_{aspect2}` - deeper coverage of another aspect
+1. **Set A** - `german_b1_{topic}_{aspect1}` - one aspect/situation of the topic
+2. **Set B** - `german_b1_{topic}_{aspect2}` - another aspect/situation of the topic
 
 ### Topic split examples:
 
-| Topic | Main set | Set A | Set B |
-|-------|----------|-------|-------|
-| Travel - planning | `_travel_planning` (reservations) | `_travel_directions` (asking directions) | `_travel_problems` (travel issues) |
-| At the doctor | `_doctor` (visit) | `_doctor_symptoms` (describing symptoms) | `_doctor_instructions` (understanding advice) |
-| Job interview | `_interview` (process) | `_interview_experience` (describing CV) | `_interview_questions` (questions for employer) |
+| Topic | Set A | Set B |
+|-------|-------|-------|
+| Travel - planning | `_travel_booking` (reservations, tickets) | `_travel_info` (directions, schedules, problems) |
+| At the doctor | `_doctor_symptoms` (describing problems) | `_doctor_treatment` (advice, prescriptions, follow-up) |
+| Job interview | `_interview_process` (questions, answers) | `_interview_experience` (CV, qualifications, expectations) |
 
 ### File naming:
 
@@ -116,11 +115,34 @@ Filename: `lang_data/german_b1_{topic_snake_case}[_{lang_code}].json`
       "id": 1,
       "prompt": "Source language text",
       "answer": "German answer",
-      "accepted": ["variant 1", "variant 2"]
+      "accepted": ["variant 1", "variant 2"],
+      "vocabulary": [
+        {"word": "Zimmer", "base": "Zimmer", "type": "noun"},
+        {"word": "reservieren", "base": "reservieren", "type": "verb"}
+      ]
     }
   ]
 }
 ```
+
+### Vocabulary field (required for vocabulary mastery tracking):
+
+Each phrase MUST include a `vocabulary` array with key words:
+
+```json
+"vocabulary": [
+  {"word": "möchte", "base": "mögen", "type": "modal"},
+  {"word": "Zimmer", "base": "Zimmer", "type": "noun"},
+  {"word": "reservieren", "base": "reservieren", "type": "verb"}
+]
+```
+
+Fields:
+- `word` - the exact word form as it appears in the answer
+- `base` - the base/infinitive form (for verbs: infinitive, for nouns: nominative singular)
+- `type` - word type: `verb`, `noun`, `adjective`, `adverb`, `modal`, `preposition`
+
+Include 2-4 key vocabulary items per phrase (focus on content words, skip articles/pronouns).
 
 ### Grammar integration with topic
 
@@ -138,6 +160,31 @@ Phrases should naturally contain these constructions, e.g.:
 - "I would like to book a room" → "Ich möchte ein Zimmer reservieren" (Konjunktiv II)
 - "I've had headaches for three days" → "Ich habe seit drei Tagen Kopfschmerzen" (seit)
 - "The product was damaged" → "Das Produkt wurde beschädigt" (Passiv)
+
+### Vocabulary Repetition Rule (Multi-Context Exposure)
+
+**CRITICAL for retention:** Key vocabulary must appear in 2-3 different phrases within the 60-phrase topic to create multiple memory routes.
+
+For each important vocabulary item (verbs, nouns, adjectives):
+- Must appear in at least 2-3 different phrases across the 3 sets
+- Vary sentence structure: question, statement, request, passive, Perfekt
+- Vary situation: formal/informal, different speakers, different scenarios
+
+**Example for "reservieren" in Travel topic:**
+1. Set A: "Ich möchte ein Zimmer reservieren" (polite request, hotel)
+2. Set A: "Haben Sie den Tisch reserviert?" (question, Perfekt, restaurant)
+3. Set B: "Die Reservierung wurde bestätigt" (passive, confirmation email)
+
+**Example for "empfehlen" in Restaurant topic:**
+1. Set A: "Können Sie mir etwas empfehlen?" (question to waiter)
+2. Set A: "Ich kann den Fisch empfehlen" (waiter's statement)
+3. Set B: "Das Restaurant wurde mir empfohlen" (passive, explaining choice)
+
+**How to apply:**
+1. Before generating phrases, identify 8-10 key vocabulary items for the topic
+2. Plan their distribution across the 2 sets
+3. Ensure each key word appears in at least 2 different contexts
+4. Vary grammatical structures (active/passive, tenses, sentence types)
 
 ### Quality guidelines for B1:
 
@@ -184,7 +231,7 @@ Phrases should naturally contain these constructions, e.g.:
 **Rule of thumb:** If you can ask directly in the source language, use direct form in German too.
 
 **Phrase content:**
-- **20 phrases per set × 3 sets = 60 phrases per topic**
+- **30 phrases per set × 2 sets = 60 phrases per topic**
 - Variety of scenarios within topic
 - Practical, used in real situations
 - Natural constructions that natives actually use
@@ -206,11 +253,11 @@ Phrases should naturally contain these constructions, e.g.:
 
 ## Step 6: Update checklist
 
-After saving all 3 sets, edit `docs/curriculum/curriculum-german-b1-progress.md`:
+After saving both sets, edit `docs/curriculum/curriculum-german-b1-progress.md`:
 
 1. Find the topic row
 2. Change `[ ]` to `[x]`
-3. Add names of all 3 sets (comma-separated)
+3. Add names of both sets (comma-separated)
 4. Add today's date
 
 Example change:
@@ -219,7 +266,7 @@ Example change:
 ```
 to:
 ```
-| Travel - planning and reservations | [x] | german_b1_travel_planning, german_b1_travel_directions, german_b1_travel_problems | 2025-12-31 |
+| Travel - planning and reservations | [x] | german_b1_travel_booking, german_b1_travel_info | 2025-12-31 |
 ```
 
 5. Update "Summary" table - increment completed counter
@@ -227,8 +274,8 @@ to:
 ## Step 7: Summary
 
 Display:
-- Created files (3 sets)
+- Created files (2 sets)
 - Total phrase count (60)
 - Source language used
 - Grammar constructions used (from mapping)
-- Updated progress (X/47 completed)
+- Updated progress (X/57 completed)

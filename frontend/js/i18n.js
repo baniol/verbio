@@ -244,6 +244,15 @@ const I18N = {
 
       // Set selection modal
       reviewSetPrefix: "Review",
+
+      // Mixed practice
+      mixedPractice: "Mixed Practice",
+      mixedPracticeDesc: "Practice phrases from all sets",
+      fromSet: "from:",
+
+      // Reverse mode
+      reverseMode: "Reverse mode",
+      reverseModeDesc: "Translate from target to source language",
     },
 
     pl: {
@@ -360,6 +369,15 @@ const I18N = {
 
       // Set selection modal
       reviewSetPrefix: "Do powtórki",
+
+      // Mixed practice
+      mixedPractice: "Tryb mieszany",
+      mixedPracticeDesc: "Ćwicz frazy ze wszystkich zestawów",
+      fromSet: "z:",
+
+      // Reverse mode
+      reverseMode: "Tryb odwrócony",
+      reverseModeDesc: "Tłumacz z języka docelowego na źródłowy",
     },
 
     de: {
@@ -477,6 +495,15 @@ const I18N = {
 
       // Set selection modal
       reviewSetPrefix: "Wiederholung",
+
+      // Mixed practice
+      mixedPractice: "Gemischtes Training",
+      mixedPracticeDesc: "Übe Phrasen aus allen Sets",
+      fromSet: "aus:",
+
+      // Reverse mode
+      reverseMode: "Umgekehrter Modus",
+      reverseModeDesc: "Übersetze von Ziel- in Ausgangssprache",
     },
 
     es: {
@@ -594,6 +621,15 @@ const I18N = {
 
       // Set selection modal
       reviewSetPrefix: "Repaso",
+
+      // Mixed practice
+      mixedPractice: "Práctica mixta",
+      mixedPracticeDesc: "Practica frases de todos los conjuntos",
+      fromSet: "de:",
+
+      // Reverse mode
+      reverseMode: "Modo inverso",
+      reverseModeDesc: "Traduce del idioma destino al origen",
     },
 
     fr: {
@@ -711,6 +747,15 @@ const I18N = {
 
       // Set selection modal
       reviewSetPrefix: "Révision",
+
+      // Mixed practice
+      mixedPractice: "Pratique mixte",
+      mixedPracticeDesc: "Pratique les phrases de tous les ensembles",
+      fromSet: "de:",
+
+      // Reverse mode
+      reverseMode: "Mode inversé",
+      reverseModeDesc: "Traduire de la langue cible vers la langue source",
     },
   },
 

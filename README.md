@@ -14,7 +14,8 @@ Learn languages by speaking. Verbio is a phrase learning app that checks your an
 - **Speak, don't type** - practice pronunciation and natural communication
 - **Works offline** - all data stays in your browser, no internet needed
 - **No account required** - just open and start learning, progress saves automatically
-- **Smart repetition** - difficult phrases appear more often
+- **Spaced repetition (SM-2)** - optimal review scheduling based on your performance
+- **Global reminders** - 20% of practice includes overdue phrases from other sets
 - **Immediate retry** - when you fail, repeat until correct ([learn more](docs/immediate-retry.md))
 
 ## Review Set
@@ -27,10 +28,13 @@ Struggling to remember a phrase? Click the star icon next to it, and it goes to 
 
 - **Multiple language sets** - different languages and topics, grouped by language
 - **Speech recognition** - speak answers using Web Speech API
-- **Progress tracking** - stored in browser localStorage
+- **Progress tracking** - stored in browser localStorage with SRS data
 - **Offline-capable** - PWA with Service Worker, works without internet
 - **Dark/Light mode** - follows system preference or manual toggle
 - **Learning threshold** - configure how many correct answers mark a phrase as learned (1/2/3)
+- **Mixed Practice** - combine all sets of a language for cross-topic review
+- **Reverse mode** - practice in reverse direction (answer → prompt)
+- **Vocabulary tracking** - tracks mastery of individual words across all contexts
 - **Notes** - add notes to phrases and export them
 - **Audio playback** - hear native pronunciation (optional, requires AWS Polly setup)
 - **Multi-language UI** - English, Polish, German, Spanish, French
@@ -129,7 +133,7 @@ Generates sets following the B1 curriculum in `docs/curriculum/curriculum-german
 /generate-b1-set polish                    # auto-select, Polish prompts
 ```
 
-Creates 3 sets × 20 phrases = 60 phrases per topic. Automatically updates progress in `docs/curriculum/curriculum-german-b1-progress.md`.
+Creates 2 sets × 30 phrases = 60 phrases per topic. Each key vocabulary item appears in 2-3 different contexts for better retention. Automatically updates progress in `docs/curriculum/curriculum-german-b1-progress.md`.
 
 ### `/generate-b2-set` - German B2 curriculum
 

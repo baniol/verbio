@@ -4,13 +4,32 @@ Checklist to track phrase set creation according to B1 curriculum.
 
 ---
 
+## Conversational Foundation (Priority 0 - Learn First!)
+
+These provide the "glue" for natural conversation and should be learned early.
+
+| Topic | Status | Sets | Date |
+|-------|--------|------|------|
+| Core Functional Vocabulary - verbs | [ ] | | |
+| Core Functional Vocabulary - pronouns & prepositions | [ ] | | |
+| Core Functional Vocabulary - time & connectors | [ ] | | |
+| Small Talk - starting & ending conversations | [ ] | | |
+| Small Talk - keeping conversation going | [ ] | | |
+| Opinions & Argumentation - expressing opinions | [ ] | | |
+| Opinions & Argumentation - agreeing & disagreeing | [ ] | | |
+| Discourse Markers & Fillers | [ ] | | |
+| Reactions & Backchannels | [ ] | | |
+| Frequency, Quantity & Comparison | [ ] | | |
+
+---
+
 ## Topic Areas
 
 ### Travel and Leisure
 
 | Topic | Status | Sets | Date |
 |-------|--------|------|------|
-| Travel - planning and reservations | [ ] | | |
+| Travel - planning and reservations | [x] | german_b1_travel_planning, german_b1_travel_tickets, german_b1_travel_information | 2026-01-04 |
 | Travel - transport and connections | [ ] | | |
 | Travel - problems and delays | [ ] | | |
 | Accommodation - hotel and check-in | [ ] | | |
@@ -129,7 +148,8 @@ Checklist to track phrase set creation according to B1 curriculum.
 
 | Category | Completed | Total |
 |----------|-----------|-------|
-| Travel and Leisure | 0 | 6 |
+| **Conversational Foundation** | 0 | 10 |
+| Travel and Leisure | 1 | 6 |
 | Work and Career | 0 | 4 |
 | Health and Body | 0 | 4 |
 | Home and Housing | 0 | 3 |
@@ -142,6 +162,6 @@ Checklist to track phrase set creation according to B1 curriculum.
 | Culture and Arts | 0 | 2 |
 | Plans and Dreams | 0 | 2 |
 | Communication Situations | 0 | 8 |
-| **TOTAL** | **0** | **47** |
+| **TOTAL** | **1** | **57** |
 
-> **Note:** Grammar (10 topics) is integrated with the above topics, not as separate sets.
+> **Note:** Grammar is integrated with topics, not as separate sets. Conversational Foundation should be prioritized.

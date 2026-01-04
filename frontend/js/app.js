@@ -93,6 +93,8 @@
     reviewSet: (language) => `langlearn_review_set_${language}`,
     immediateRetry: "langlearn_immediate_retry",
     expandedFolders: "langlearn_expanded_folders",
+    reverseMode: "langlearn_reverse_mode",
+    vocabMastery: "langlearn_vocab_mastery",
   };
 
   // State
@@ -113,6 +115,9 @@
   let retryPhrase = null; // phrase for immediate retry
   let retrySuccessCount = 0; // correct answers in retry (goal: 2)
   let retryFailures = 0; // failures during retry (max 1 allowed)
+
+  // Reverse mode - translate from target to source language
+  let reverseMode = false;
 
   // Cached DOM Elements (populated on init)
   let el = {};
@@ -144,6 +149,7 @@
       cacheStatus: document.getElementById("cache-status"),
       requiredStreakSelect: document.getElementById("required-streak-select"),
       immediateRetryToggle: document.getElementById("immediate-retry-toggle"),
+      reverseModeToggle: document.getElementById("reverse-mode-toggle"),
       themeToggle: document.getElementById("theme-toggle"),
       themeIcon: document.getElementById("theme-icon"),
       themeLabel: document.getElementById("theme-label"),
@@ -166,6 +172,7 @@
       userSaidLabel: document.getElementById("user-said-label"),
       userSaidTranscript: document.getElementById("user-said-transcript"),
       nextButton: document.getElementById("next-button"),
+      sourceSetInfo: document.getElementById("source-set-info"),
       // Buttons for event binding
       resetButton: document.getElementById("reset-button"),
       menuButton: document.getElementById("menu-button"),
@@ -258,6 +265,7 @@
       "change",
       saveImmediateRetrySetting,
     );
+    el.reverseModeToggle?.addEventListener("change", saveReverseModeSetting);
     el.themeToggle?.addEventListener("change", saveThemeSetting);
     el.clearCacheButton?.addEventListener("click", clearCache);
     el.backButton?.addEventListener("click", () => Router.back());
@@ -310,6 +318,7 @@
       el.requiredStreakSelect.value = requiredStreak.toString();
     if (el.immediateRetryToggle)
       el.immediateRetryToggle.checked = immediateRetry;
+    if (el.reverseModeToggle) el.reverseModeToggle.checked = reverseMode;
     if (el.themeToggle) el.themeToggle.checked = isDarkMode();
     if (el.languageSelect) el.languageSelect.value = I18N.currentLang;
     updateDevToolsVisibility();
@@ -343,6 +352,9 @@
       );
       immediateRetry =
         savedImmediateRetry === null ? true : savedImmediateRetry === "true";
+
+      const savedReverseMode = localStorage.getItem(STORAGE_KEYS.reverseMode);
+      reverseMode = savedReverseMode === "true";
 
       // Apply to UI if elements exist
       refreshSettingsUI();
@@ -391,6 +403,20 @@
     immediateRetry = el.immediateRetryToggle.checked;
     localStorage.setItem(STORAGE_KEYS.immediateRetry, immediateRetry);
     clearRetryState();
+  }
+
+  function saveReverseModeSetting() {
+    reverseMode = el.reverseModeToggle.checked;
+    localStorage.setItem(STORAGE_KEYS.reverseMode, reverseMode);
+    // Update speech recognition language for reverse mode
+    if (recognition && currentSet) {
+      recognition.lang = reverseMode
+        ? currentSet.metadata.sourceSpeechLang
+        : currentSet.metadata.speechLang;
+    }
+    if (currentPhrase) {
+      showPhrase(currentPhrase);
+    }
   }
 
   function updateDevToolsVisibility() {
@@ -549,6 +575,24 @@
       )
       .join("");
 
+    // Add mixed practice button if there are multiple sets
+    if (sets.length > 1) {
+      const mixedData = buildMixedPracticeData(lang);
+      if (mixedData && mixedData.phrases.length > 0) {
+        setsHTML += `
+          <button class="set-item w-full text-left p-2 pl-4 rounded-lg text-indigo-600
+                         dark:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/30
+                         transition-colors text-sm"
+                  data-set-id="mixed_${lang}">
+            <span class="flex items-center gap-1">
+              <span>🔀</span>
+              <span>${I18N.t("mixedPractice")} (${mixedData.phrases.length})</span>
+            </span>
+          </button>
+        `;
+      }
+    }
+
     // Add review set if exists
     if (reviewData && reviewData.phrases.length > 0) {
       setsHTML += `
@@ -672,6 +716,21 @@
       }
 
       currentSet = { id: setId, ...reviewData };
+    } else if (setId.startsWith("mixed_")) {
+      // Mixed practice mode
+      const language = setId.replace("mixed_", "");
+      const mixedData = buildMixedPracticeData(language);
+
+      if (!mixedData) {
+        // No phrases available for mixed practice
+        const firstSetId = Object.keys(SETS)[0];
+        if (firstSetId) {
+          loadSet(firstSetId);
+        }
+        return;
+      }
+
+      currentSet = { id: setId, ...mixedData };
     } else {
       const baseSet = SETS[setId];
       currentSet = { id: setId, ...baseSet };
@@ -680,9 +739,11 @@
     localStorage.setItem(STORAGE_KEYS.lastSet, setId);
     el.currentSetName.textContent = currentSet.metadata.name;
 
-    // Update speech recognition language
+    // Update speech recognition language (use source language in reverse mode)
     if (recognition) {
-      recognition.lang = currentSet.metadata.speechLang;
+      recognition.lang = reverseMode
+        ? currentSet.metadata.sourceSpeechLang
+        : currentSet.metadata.speechLang;
     }
 
     // Clear any pending retry when changing sets
@@ -703,14 +764,34 @@
       if (firstValue === true || firstValue === false) {
         return {};
       }
-      // Migrate old progress format to include totalAttempts and successCount
+      // Migrate old progress format
       let needsSave = false;
       for (const phraseId of Object.keys(parsed)) {
         const prog = parsed[phraseId];
-        if (prog && prog.totalAttempts === undefined) {
-          prog.totalAttempts = prog.correctStreak || 0;
-          prog.successCount = prog.correctStreak || 0;
-          needsSave = true;
+        if (prog) {
+          // Migrate to include totalAttempts and successCount
+          if (prog.totalAttempts === undefined) {
+            prog.totalAttempts = prog.correctStreak || 0;
+            prog.successCount = prog.correctStreak || 0;
+            needsSave = true;
+          }
+          // Migrate to include SRS fields (interval, easeFactor, nextReviewDate)
+          if (prog.interval === undefined) {
+            // Initialize SRS fields based on existing progress
+            if (prog.correctStreak >= requiredStreak) {
+              // Already learned - set reasonable interval
+              prog.interval = 6;
+              prog.easeFactor = 2.5;
+              prog.nextReviewDate =
+                (prog.lastSeen || Date.now()) + 6 * 24 * 60 * 60 * 1000;
+            } else {
+              // Not yet learned - start fresh
+              prog.interval = 1;
+              prog.easeFactor = 2.5;
+              prog.nextReviewDate = null;
+            }
+            needsSave = true;
+          }
         }
       }
       if (needsSave) {
@@ -755,28 +836,185 @@
     });
   }
 
-  // Priority algorithm for phrase selection
-  function calculatePriority(phrase, progress) {
-    const prog = progress[phrase.id];
-    if (!prog || !prog.totalAttempts) {
-      return CONFIG.NEW_PHRASE_PRIORITY; // New phrases get highest priority
+  // SM-2 Spaced Repetition Algorithm
+  // Quality ratings: 0-2 (fail), 3 (hard), 4 (good), 5 (easy)
+  function updateSRS(phraseId, quality) {
+    const progress = getProgress();
+    const prog = progress[phraseId] || {
+      correctStreak: 0,
+      totalAttempts: 0,
+      successCount: 0,
+      interval: 1,
+      easeFactor: 2.5,
+      nextReviewDate: null,
+    };
+
+    if (quality < 3) {
+      // Failed - reset interval to 1 day
+      prog.interval = 1;
+    } else {
+      // Success - increase interval
+      if (prog.interval === 1) {
+        prog.interval = 6; // First success: 6 days
+      } else {
+        prog.interval = Math.round(prog.interval * prog.easeFactor);
+      }
     }
 
-    const successRate = prog.successCount / prog.totalAttempts;
-    const hoursSinceLastSeen =
-      (Date.now() - (prog.lastSeen || 0)) / (1000 * 60 * 60);
+    // Update ease factor (minimum 1.3)
+    // SM-2 formula: EF' = EF + (0.1 - (5-q) * (0.08 + (5-q) * 0.02))
+    prog.easeFactor = Math.max(
+      1.3,
+      prog.easeFactor + (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)),
+    );
 
-    // Higher priority = lower success rate + not seen recently
-    return (1 - successRate) * Math.log(hoursSinceLastSeen + 1);
+    // Set next review date
+    prog.nextReviewDate = Date.now() + prog.interval * 24 * 60 * 60 * 1000;
+
+    progress[phraseId] = prog;
+    saveProgress(progress);
   }
+
+  // Convert boolean correct to SM-2 quality rating
+  function getQualityRating(correct) {
+    // Simple mapping: correct = 4 (good), wrong = 1 (fail)
+    // Could be extended with "hard" button (3) or "easy" button (5)
+    return correct ? 4 : 1;
+  }
+
+  // Calculate priority for overdue phrases (shared logic)
+  function calculateOverduePriority(nextReviewDate) {
+    const overdueDays = (Date.now() - nextReviewDate) / (24 * 60 * 60 * 1000);
+    return 500 + Math.min(overdueDays * 10, 500);
+  }
+
+  // Cache for global overdue phrases (performance optimization)
+  let globalOverdueCache = null;
+  let globalOverdueCacheTime = 0;
+  const GLOBAL_OVERDUE_CACHE_TTL = 30000; // 30 seconds
+
+  // Get overdue phrases from all sets of the same target language (for global reminders)
+  function getGlobalOverduePhrases(currentLanguage, excludeSetId) {
+    const now = Date.now();
+
+    // Return cached result if valid
+    if (
+      globalOverdueCache &&
+      globalOverdueCache.language === currentLanguage &&
+      now - globalOverdueCacheTime < GLOBAL_OVERDUE_CACHE_TTL
+    ) {
+      // Filter out current set from cached results
+      return globalOverdueCache.phrases.filter(
+        (p) => p._sourceSetId !== excludeSetId,
+      );
+    }
+
+    const overduePhrases = [];
+
+    for (const [setId, set] of Object.entries(SETS)) {
+      // Skip mixed practice sets and review sets
+      if (set.metadata?.isMixedPractice || set.metadata?.isReviewSet) continue;
+      // Only same target language
+      if (set.metadata?.language !== currentLanguage) continue;
+
+      const progress = getProgress(setId);
+
+      for (const phrase of set.phrases) {
+        const prog = progress[phrase.id];
+        if (prog?.nextReviewDate && now >= prog.nextReviewDate) {
+          overduePhrases.push({
+            ...phrase,
+            _sourceSetId: setId,
+            _sourceSetName: set.metadata?.name || setId,
+            _overduePriority: calculateOverduePriority(prog.nextReviewDate),
+          });
+        }
+      }
+    }
+
+    // Sort by priority (most overdue first)
+    overduePhrases.sort((a, b) => b._overduePriority - a._overduePriority);
+
+    // Cache results (without excludeSetId filter - applied on read)
+    globalOverdueCache = { language: currentLanguage, phrases: overduePhrases };
+    globalOverdueCacheTime = now;
+
+    return overduePhrases.filter((p) => p._sourceSetId !== excludeSetId);
+  }
+
+  // Priority algorithm for phrase selection (SM-2 based)
+  function calculatePriority(phrase, progress) {
+    const prog = progress[phrase.id];
+
+    // New phrases get highest priority
+    if (!prog || !prog.totalAttempts) {
+      return CONFIG.NEW_PHRASE_PRIORITY;
+    }
+
+    // If no nextReviewDate, use legacy algorithm for backwards compatibility
+    if (!prog.nextReviewDate) {
+      const successRate = prog.successCount / prog.totalAttempts;
+      const hoursSinceLastSeen =
+        (Date.now() - (prog.lastSeen || 0)) / (1000 * 60 * 60);
+      return (1 - successRate) * Math.log(hoursSinceLastSeen + 1);
+    }
+
+    const now = Date.now();
+
+    // Overdue phrases get high priority based on how overdue they are
+    if (now >= prog.nextReviewDate) {
+      return calculateOverduePriority(prog.nextReviewDate);
+    }
+
+    // Not yet due - low priority (but not zero, to allow practice)
+    const daysUntilDue = (prog.nextReviewDate - now) / (24 * 60 * 60 * 1000);
+    return Math.max(0.1, 10 - daysUntilDue);
+  }
+
+  // Global reminder ratio - 20% chance to show overdue phrase from other sets
+  const GLOBAL_REMINDER_RATIO = 0.2;
 
   function selectNextPhrase(phrases) {
     if (phrases.length === 0) return null;
 
-    const progress = getProgress();
+    // For mixed practice mode, we need to get progress from source sets
+    const isMixedOrReview =
+      currentSet?.metadata?.isMixedPractice ||
+      currentSet?.metadata?.isReviewSet;
 
-    // Calculate priorities
+    // Global reminders: 20% chance to show overdue phrase from other sets (same language)
+    // Only for regular sets, not mixed practice or review sets
+    const currentLanguage = currentSet?.metadata?.language;
+    const currentSetId = currentSet?.metadata?.id;
+    if (!isMixedOrReview && currentLanguage && currentSetId) {
+      const globalOverdue = getGlobalOverduePhrases(
+        currentLanguage,
+        currentSetId,
+      );
+
+      if (globalOverdue.length > 0 && Math.random() < GLOBAL_REMINDER_RATIO) {
+        // Pick from top overdue phrases (weighted by priority)
+        const topOverdue = globalOverdue.slice(0, 10);
+        const totalPriority = topOverdue.reduce(
+          (sum, p) => sum + p._overduePriority,
+          0,
+        );
+        let random = Math.random() * totalPriority;
+
+        for (const phrase of topOverdue) {
+          random -= phrase._overduePriority;
+          if (random <= 0) return phrase;
+        }
+        return topOverdue[0];
+      }
+    }
+
+    // Calculate priorities for current set phrases
     const withPriority = phrases.map((p) => {
+      const progress =
+        isMixedOrReview && p._sourceSetId
+          ? getProgress(p._sourceSetId)
+          : getProgress();
       return { phrase: p, priority: calculatePriority(p, progress) };
     });
 
@@ -829,9 +1067,24 @@
   function showPhrase(phrase) {
     hideAll();
     UI.show(el.flashcard);
-    el.prompt.textContent = phrase.prompt;
-    el.answer.textContent = phrase.answer;
+
+    // In reverse mode, swap prompt and answer
+    const displayPrompt = reverseMode ? phrase.answer : phrase.prompt;
+    const displayAnswer = reverseMode ? phrase.prompt : phrase.answer;
+
+    el.prompt.textContent = displayPrompt;
+    el.answer.textContent = displayAnswer;
     el.transcript.textContent = "";
+
+    // Show source set name for mixed practice mode or global reminders
+    if (el.sourceSetInfo) {
+      if (phrase._sourceSetName) {
+        el.sourceSetInfo.textContent = `${I18N.t("fromSet")} ${phrase._sourceSetName}`;
+        UI.show(el.sourceSetInfo);
+      } else {
+        UI.hide(el.sourceSetInfo);
+      }
+    }
 
     // Show accepted variants as list (if feature enabled)
     if (FEATURES.showAlternatives) {
@@ -997,8 +1250,10 @@
       return;
     }
 
-    // Ensure correct language
-    recognition.lang = currentSet.metadata.speechLang;
+    // Ensure correct language (use source language in reverse mode)
+    recognition.lang = reverseMode
+      ? currentSet.metadata.sourceSpeechLang
+      : currentSet.metadata.speechLang;
 
     el.transcript.textContent = I18N.t("listening");
     el.micButton.textContent = "🔴";
@@ -1021,19 +1276,30 @@
     const noSpecial = normalized.replace(/[\s\-]+/g, "");
     const phrase = currentPhrase;
 
-    // Check against answer and accepted alternatives
-    // Also compare without spaces/hyphens to handle speech API variations
-    // (e.g., "entlanggehen" recognized as "entlang gehen")
-    // (e.g., "check-out" recognized as "checkout")
-    const correct =
-      phrase.answer.toLowerCase() === normalized ||
-      phrase.accepted.some((a) => {
-        const acceptedLower = a.toLowerCase();
-        return (
-          acceptedLower === normalized ||
-          acceptedLower.replace(/[\s\-]+/g, "") === noSpecial
-        );
-      });
+    let correct;
+
+    if (reverseMode) {
+      // In reverse mode, user speaks the source language (prompt)
+      // Compare against the original prompt
+      const promptLower = phrase.prompt.toLowerCase();
+      correct =
+        promptLower === normalized ||
+        promptLower.replace(/[\s\-]+/g, "") === noSpecial;
+    } else {
+      // Normal mode - check against answer and accepted alternatives
+      // Also compare without spaces/hyphens to handle speech API variations
+      // (e.g., "entlanggehen" recognized as "entlang gehen")
+      // (e.g., "check-out" recognized as "checkout")
+      correct =
+        phrase.answer.toLowerCase() === normalized ||
+        phrase.accepted.some((a) => {
+          const acceptedLower = a.toLowerCase();
+          return (
+            acceptedLower === normalized ||
+            acceptedLower.replace(/[\s\-]+/g, "") === noSpecial
+          );
+        });
+    }
 
     showSpeechResult(correct, transcript);
   }
@@ -1138,11 +1404,23 @@
     }
 
     // --- NORMAL MODE ---
-    const progress = getProgress();
+    // For mixed practice / review sets / global reminders, save progress to source set
+    const isMixedOrReview =
+      currentSet?.metadata?.isMixedPractice ||
+      currentSet?.metadata?.isReviewSet;
+    // Use source set ID for mixed/review sets OR for global reminder phrases
+    const progressSetId = currentPhrase._sourceSetId
+      ? currentPhrase._sourceSetId
+      : null;
+
+    const progress = getProgress(progressSetId);
     const current = progress[currentPhrase.id] || {
       correctStreak: 0,
       totalAttempts: 0,
       successCount: 0,
+      interval: 1,
+      easeFactor: 2.5,
+      nextReviewDate: null,
     };
 
     current.totalAttempts = (current.totalAttempts || 0) + 1;
@@ -1159,8 +1437,38 @@
       }
     }
     current.lastSeen = Date.now();
+
+    // Update SRS fields
+    const quality = getQualityRating(correct);
+    if (quality < 3) {
+      // Failed - reset interval
+      current.interval = 1;
+    } else {
+      // Success - increase interval
+      if (!current.interval || current.interval === 1) {
+        current.interval = 6;
+      } else {
+        current.interval = Math.round(
+          current.interval * (current.easeFactor || 2.5),
+        );
+      }
+    }
+    // Update ease factor
+    current.easeFactor = Math.max(
+      1.3,
+      (current.easeFactor || 2.5) +
+        (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02)),
+    );
+    // Set next review date
+    current.nextReviewDate =
+      Date.now() + current.interval * 24 * 60 * 60 * 1000;
+
     progress[currentPhrase.id] = current;
-    saveProgress(progress);
+    saveProgress(progress, progressSetId);
+
+    // Update vocabulary mastery if phrase has vocabulary data
+    const vocabSetId = progressSetId || currentSet.id;
+    updateVocabMastery(currentPhrase, correct, vocabSetId);
 
     loadNextPhrase();
 
@@ -1302,6 +1610,57 @@
         name: `⭐ ${I18N.t("review")}: ${getLanguageDisplay(language, I18N.currentLang).name}`,
         isReviewSet: true,
         reviewLanguage: language,
+      },
+      phrases,
+    };
+  }
+
+  // Mixed Practice Mode - interleaved learning across all sets of same language
+  function buildMixedPracticeData(language) {
+    const allSets = Object.entries(SETS).filter(
+      ([, set]) =>
+        set.metadata.language === language && !set.metadata.isReviewSet,
+    );
+
+    if (allSets.length === 0) return null;
+
+    const phrases = [];
+    let metadata = null;
+
+    for (const [setId, set] of allSets) {
+      const progress = getProgress(setId);
+
+      for (const phrase of set.phrases) {
+        const prog = progress[phrase.id];
+        // Include unlearned phrases or phrases due for review
+        const isUnlearned = !prog || prog.correctStreak < requiredStreak;
+        const isDueForReview =
+          prog?.nextReviewDate && Date.now() >= prog.nextReviewDate;
+
+        if (isUnlearned || isDueForReview) {
+          phrases.push({
+            ...phrase,
+            _sourceSetId: setId,
+            _sourceSetName: set.metadata.name,
+          });
+        }
+      }
+
+      if (!metadata) {
+        metadata = { ...set.metadata };
+      }
+    }
+
+    if (phrases.length === 0 || !metadata) return null;
+
+    const display = getLanguageDisplay(language, I18N.currentLang);
+    return {
+      metadata: {
+        ...metadata,
+        id: `mixed_${language}`,
+        name: `🔀 ${I18N.t("mixedPractice")}: ${display.name}`,
+        isMixedPractice: true,
+        mixedLanguage: language,
       },
       phrases,
     };
@@ -1535,6 +1894,110 @@
       localStorage.setItem(STORAGE_KEYS.generalNotes, JSON.stringify(notes));
     }
     closeGeneralNotes();
+  }
+
+  // ========== VOCABULARY MASTERY TRACKING ==========
+  // Tracks mastery at vocabulary level across multiple contexts
+
+  function getVocabMastery() {
+    return Storage.get(STORAGE_KEYS.vocabMastery, {});
+  }
+
+  function saveVocabMastery(mastery) {
+    Storage.set(STORAGE_KEYS.vocabMastery, mastery);
+  }
+
+  // Update vocabulary mastery when a phrase is answered
+  // Only works if phrase has vocabulary field
+  function updateVocabMastery(phrase, correct, setId) {
+    if (!phrase.vocabulary || !Array.isArray(phrase.vocabulary)) {
+      return; // Skip if no vocabulary data
+    }
+
+    const mastery = getVocabMastery();
+
+    for (const vocab of phrase.vocabulary) {
+      const baseWord = vocab.base || vocab.word;
+      if (!baseWord) continue;
+
+      const key = baseWord.toLowerCase();
+
+      if (!mastery[key]) {
+        mastery[key] = {
+          word: baseWord,
+          type: vocab.type,
+          contexts: [],
+          totalCorrect: 0,
+          totalAttempts: 0,
+        };
+      }
+
+      // Update context-specific mastery
+      const contextKey = `${setId}__${phrase.id}`;
+      let context = mastery[key].contexts.find((c) => c.key === contextKey);
+
+      if (!context) {
+        context = {
+          key: contextKey,
+          setId: setId,
+          phraseId: phrase.id,
+          correct: 0,
+          attempts: 0,
+          mastered: false,
+        };
+        mastery[key].contexts.push(context);
+      }
+
+      context.attempts++;
+      mastery[key].totalAttempts++;
+
+      if (correct) {
+        context.correct++;
+        mastery[key].totalCorrect++;
+
+        // Mark as mastered in this context if 2+ correct
+        if (context.correct >= 2) {
+          context.mastered = true;
+        }
+      } else {
+        // Reset mastery on wrong answer
+        context.mastered = false;
+        context.correct = 0;
+      }
+
+      // Calculate overall mastery percentage
+      const masteredContexts = mastery[key].contexts.filter(
+        (c) => c.mastered,
+      ).length;
+      mastery[key].overallMastery =
+        mastery[key].contexts.length > 0
+          ? masteredContexts / mastery[key].contexts.length
+          : 0;
+    }
+
+    saveVocabMastery(mastery);
+  }
+
+  // Get vocabulary items that need more practice (low mastery)
+  function getWeakVocabulary(minContexts = 2) {
+    const mastery = getVocabMastery();
+    const weak = [];
+
+    for (const [key, data] of Object.entries(mastery)) {
+      // Only include words with multiple contexts but low mastery
+      if (data.contexts.length >= minContexts && data.overallMastery < 0.5) {
+        weak.push({
+          word: data.word,
+          type: data.type,
+          mastery: data.overallMastery,
+          contexts: data.contexts.length,
+          masteredContexts: data.contexts.filter((c) => c.mastered).length,
+        });
+      }
+    }
+
+    // Sort by mastery (lowest first)
+    return weak.sort((a, b) => a.mastery - b.mastery);
   }
 
   // No longer exposing functions to global scope - all handlers are bound via addEventListener

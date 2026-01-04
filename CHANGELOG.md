@@ -5,6 +5,20 @@ All notable changes to Verbio will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-01-04
+
+### Added
+- SM-2 spaced repetition algorithm for optimal phrase scheduling
+- Global reminders (20% of practice includes overdue phrases from other sets)
+- Mixed Practice mode for cross-topic learning within same language
+- Reverse Translation mode (practice target → source language)
+- Vocabulary mastery tracking per word across all contexts
+- Expanded B1 curriculum with conversational topics (Small Talk, Opinions, Discourse Markers)
+
+### Changed
+- Set generation structure from 20×3 to 30×2 phrases per topic
+- Multi-context vocabulary exposure (each word appears in 2-3 phrases)
+
 ## [0.10.0] - 2026-01-03
 
 ### Added

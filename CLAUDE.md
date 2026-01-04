@@ -118,6 +118,7 @@ cd frontend && python3 -m http.server 3000
 - `prompt` - what user sees (question in source language)
 - `answer` - correct answer (displayed after, in target language)
 - `accepted` - array of accepted answers (lowercase, for validation)
+- `vocabulary` - (optional) key words for mastery tracking: `[{"word": "möchte", "base": "mögen", "type": "verb"}]`
 
 ## Internationalization (i18n)
 
@@ -151,7 +152,9 @@ The app UI supports multiple languages:
 - `langlearn_theme` - UI theme (light/dark/system)
 - `langlearn_required_streak` - number of correct answers to mark as learned (1/2/3)
 - `langlearn_ui_language` - UI language preference
-- `langlearn_progress_{setId}` - learned phrase IDs per set
+- `langlearn_reverse_mode` - reverse translation mode on/off
+- `langlearn_progress_{setId}` - phrase progress per set (includes SRS fields)
+- `langlearn_vocab_mastery` - per-word mastery tracking across contexts
 - `langlearn_notes` - user notes for phrases
 - `langlearn_general_notes` - general notes (not phrase-specific)
 - `langlearn_review_set_{language}` - starred phrases for review per language
