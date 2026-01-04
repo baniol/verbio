@@ -362,6 +362,99 @@ These topics provide the "glue" for natural conversation - without them, speech 
 - Preference (lieber, am liebsten, Ich bevorzuge)
 - Similarity (ähnlich wie, so wie, wie)
 
+### 17. Adjectives & Adverbs - Opposites (Antonyms)
+
+Essential opposite pairs for describing people, things, and situations.
+
+**Size & Dimensions**
+- groß/klein (big/small)
+- lang/kurz (long/short)
+- breit/schmal (wide/narrow)
+- dick/dünn (thick/thin, fat/thin)
+- hoch/niedrig (high/low)
+- tief/flach (deep/shallow)
+
+**Weight & Strength**
+- schwer/leicht (heavy/light, difficult/easy)
+- stark/schwach (strong/weak)
+- hart/weich (hard/soft)
+
+**Age & Condition**
+- alt/neu (old/new - for things)
+- alt/jung (old/young - for people)
+- frisch/alt (fresh/stale - for food)
+- modern/altmodisch (modern/old-fashioned)
+
+**Temperature & Weather**
+- heiß/kalt (hot/cold)
+- warm/kühl (warm/cool)
+- nass/trocken (wet/dry)
+- sonnig/bewölkt (sunny/cloudy)
+
+**Speed & Time**
+- schnell/langsam (fast/slow)
+- früh/spät (early/late)
+- kurz/lang (short/long - duration)
+
+**Quality & State**
+- gut/schlecht (good/bad)
+- richtig/falsch (right/wrong)
+- sauber/schmutzig (clean/dirty)
+- ordentlich/unordentlich (tidy/messy)
+- kaputt/ganz (broken/intact)
+
+**Open & Closed States**
+- offen/geschlossen (open/closed)
+- voll/leer (full/empty)
+- an/aus (on/off)
+- frei/besetzt (free/occupied)
+
+**Light & Sound**
+- hell/dunkel (bright/dark)
+- laut/leise (loud/quiet)
+
+**Position & Direction**
+- oben/unten (above/below, up/down)
+- vorne/hinten (front/back)
+- links/rechts (left/right)
+- innen/außen (inside/outside)
+- nah/weit (near/far)
+
+**Price & Value**
+- teuer/billig (expensive/cheap)
+- günstig/ungünstig (favorable/unfavorable)
+- wertvoll/wertlos (valuable/worthless)
+
+**Character & Behavior**
+- freundlich/unfreundlich (friendly/unfriendly)
+- höflich/unhöflich (polite/impolite)
+- nett/gemein (nice/mean)
+- ehrlich/unehrlich (honest/dishonest)
+- fleißig/faul (hardworking/lazy)
+- mutig/feige (brave/cowardly)
+- geduldig/ungeduldig (patient/impatient)
+
+**Emotions & Feelings**
+- glücklich/traurig (happy/sad)
+- fröhlich/traurig (cheerful/sad)
+- ruhig/nervös (calm/nervous)
+- entspannt/gestresst (relaxed/stressed)
+- zufrieden/unzufrieden (satisfied/dissatisfied)
+- optimistisch/pessimistisch (optimistic/pessimistic)
+
+**Difficulty & Complexity**
+- einfach/schwierig (easy/difficult)
+- leicht/schwer (easy/hard)
+- kompliziert/unkompliziert (complicated/uncomplicated)
+
+**Other Essential Pairs**
+- möglich/unmöglich (possible/impossible)
+- wichtig/unwichtig (important/unimportant)
+- interessant/langweilig (interesting/boring)
+- gleich/verschieden (same/different)
+- typisch/untypisch (typical/atypical)
+- normal/ungewöhnlich (normal/unusual)
+
 ---
 
 ## Core Functional Vocabulary (NEW - Foundation for all topics)
@@ -667,6 +760,7 @@ Grammar is integrated with topics - each set contains phrases using specific gra
 | **Opinions & Argumentation** | weil/da (reasons), obwohl (contrast), dass-Sätze (indirect speech), Konjunktiv II (hedging) |
 | **Discourse Markers & Fillers** | All tenses (context-dependent), modal particles (doch, halt, eben, ja) |
 | **Frequency, Quantity & Comparison** | Comparative/Superlative, als/wie (comparison), Präsens (habits) |
+| **Adjectives & Adverbs - Opposites** | Adjective declension (all types), Comparative/Superlative, als/wie |
 | **Core Functional Vocabulary** | All basic structures - foundation for everything else |
 
 ---
