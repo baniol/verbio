@@ -1,0 +1,434 @@
+{
+  "metadata": {
+    "id": "german_b1_travel_booking",
+    "name": "German B1 - Travel: Booking",
+    "language": "de",
+    "speechLang": "de-DE",
+    "sourceLanguage": "pl",
+    "sourceSpeechLang": "pl-PL"
+  },
+  "phrases": [
+    {
+      "id": 1,
+      "prompt": "Chciałbym zarezerwować pokój dwuosobowy",
+      "answer": "Ich möchte ein Doppelzimmer reservieren",
+      "accepted": [
+        "ich möchte ein doppelzimmer reservieren",
+        "ich würde gerne ein doppelzimmer reservieren"
+      ],
+      "vocabulary": [
+        { "word": "möchte", "base": "mögen", "type": "verb" },
+        { "word": "reservieren", "base": "reservieren", "type": "verb" },
+        { "word": "Doppelzimmer", "base": "Doppelzimmer", "type": "noun" }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Czy macie wolne pokoje na weekend?",
+      "answer": "Haben Sie freie Zimmer für das Wochenende?",
+      "accepted": [
+        "haben sie freie zimmer für das wochenende",
+        "haben sie freie zimmer fürs wochenende",
+        "haben sie noch freie zimmer für das wochenende"
+      ],
+      "vocabulary": [
+        { "word": "frei", "base": "frei", "type": "adjective" },
+        { "word": "Zimmer", "base": "Zimmer", "type": "noun" },
+        { "word": "Wochenende", "base": "Wochenende", "type": "noun" }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Ile kosztuje noc?",
+      "answer": "Wie viel kostet eine Übernachtung?",
+      "accepted": [
+        "wie viel kostet eine übernachtung",
+        "was kostet eine übernachtung",
+        "wie viel kostet die übernachtung"
+      ],
+      "vocabulary": [
+        { "word": "kosten", "base": "kosten", "type": "verb" },
+        { "word": "Übernachtung", "base": "Übernachtung", "type": "noun" }
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Czy śniadanie jest wliczone w cenę?",
+      "answer": "Ist das Frühstück im Preis inbegriffen?",
+      "accepted": [
+        "ist das frühstück im preis inbegriffen",
+        "ist frühstück im preis inbegriffen",
+        "ist das frühstück inklusive"
+      ],
+      "vocabulary": [
+        { "word": "Frühstück", "base": "Frühstück", "type": "noun" },
+        { "word": "Preis", "base": "Preis", "type": "noun" },
+        { "word": "inbegriffen", "base": "inbegriffen", "type": "adjective" }
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Chciałbym zameldować się wcześniej",
+      "answer": "Ich würde gerne früher einchecken",
+      "accepted": [
+        "ich würde gerne früher einchecken",
+        "ich möchte gerne früher einchecken",
+        "ich möchte früher einchecken"
+      ],
+      "vocabulary": [
+        { "word": "früher", "base": "früh", "type": "adverb" },
+        { "word": "einchecken", "base": "einchecken", "type": "verb" }
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Czy mogę przedłużyć rezerwację o jedną noc?",
+      "answer": "Kann ich die Reservierung um eine Nacht verlängern?",
+      "accepted": [
+        "kann ich die reservierung um eine nacht verlängern",
+        "könnte ich die reservierung um eine nacht verlängern"
+      ],
+      "vocabulary": [
+        { "word": "Reservierung", "base": "Reservierung", "type": "noun" },
+        { "word": "verlängern", "base": "verlängern", "type": "verb" },
+        { "word": "Nacht", "base": "Nacht", "type": "noun" }
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Potrzebuję pokoju z widokiem na morze",
+      "answer": "Ich brauche ein Zimmer mit Meerblick",
+      "accepted": [
+        "ich brauche ein zimmer mit meerblick",
+        "ich benötige ein zimmer mit meerblick"
+      ],
+      "vocabulary": [
+        { "word": "brauchen", "base": "brauchen", "type": "verb" },
+        { "word": "Meerblick", "base": "Meerblick", "type": "noun" }
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Czy można zapłacić kartą?",
+      "answer": "Kann man mit Karte bezahlen?",
+      "accepted": [
+        "kann man mit karte bezahlen",
+        "kann ich mit karte bezahlen",
+        "kann man mit karte zahlen"
+      ],
+      "vocabulary": [
+        { "word": "bezahlen", "base": "bezahlen", "type": "verb" },
+        { "word": "Karte", "base": "Karte", "type": "noun" }
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Chciałbym zarezerwować stolik na cztery osoby",
+      "answer": "Ich möchte einen Tisch für vier Personen reservieren",
+      "accepted": [
+        "ich möchte einen tisch für vier personen reservieren",
+        "ich würde gerne einen tisch für vier personen reservieren"
+      ],
+      "vocabulary": [
+        { "word": "Tisch", "base": "Tisch", "type": "noun" },
+        { "word": "Person", "base": "Person", "type": "noun" }
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Kiedy jest wymeldowanie?",
+      "answer": "Wann ist der Check-out?",
+      "accepted": [
+        "wann ist der check-out",
+        "wann ist check-out",
+        "wann muss ich auschecken",
+        "bis wann muss ich auschecken"
+      ],
+      "vocabulary": [
+        { "word": "Check-out", "base": "Check-out", "type": "noun" }
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "Czy jest WiFi w hotelu?",
+      "answer": "Gibt es WLAN im Hotel?",
+      "accepted": [
+        "gibt es wlan im hotel",
+        "haben sie wlan im hotel",
+        "gibt es wifi im hotel"
+      ],
+      "vocabulary": [
+        { "word": "WLAN", "base": "WLAN", "type": "noun" },
+        { "word": "Hotel", "base": "Hotel", "type": "noun" }
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "Muszę anulować rezerwację",
+      "answer": "Ich muss die Reservierung stornieren",
+      "accepted": [
+        "ich muss die reservierung stornieren",
+        "ich muss meine reservierung stornieren",
+        "ich möchte die reservierung stornieren"
+      ],
+      "vocabulary": [
+        { "word": "stornieren", "base": "stornieren", "type": "verb" },
+        { "word": "Reservierung", "base": "Reservierung", "type": "noun" }
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "Czy mogę zobaczyć pokój przed rezerwacją?",
+      "answer": "Kann ich das Zimmer vor der Buchung sehen?",
+      "accepted": [
+        "kann ich das zimmer vor der buchung sehen",
+        "könnte ich das zimmer vor der buchung sehen",
+        "kann ich mir das zimmer ansehen bevor ich buche"
+      ],
+      "vocabulary": [
+        { "word": "Buchung", "base": "Buchung", "type": "noun" },
+        { "word": "sehen", "base": "sehen", "type": "verb" }
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "Rezerwacja jest na nazwisko Kowalski",
+      "answer": "Die Reservierung ist auf den Namen Kowalski",
+      "accepted": [
+        "die reservierung ist auf den namen kowalski",
+        "die reservierung läuft auf den namen kowalski"
+      ],
+      "vocabulary": [{ "word": "Name", "base": "Name", "type": "noun" }]
+    },
+    {
+      "id": 15,
+      "prompt": "Chciałbym pokój dla niepalących",
+      "answer": "Ich möchte ein Nichtraucherzimmer",
+      "accepted": [
+        "ich möchte ein nichtraucherzimmer",
+        "ich hätte gerne ein nichtraucherzimmer",
+        "ich würde gerne ein nichtraucherzimmer haben"
+      ],
+      "vocabulary": [
+        {
+          "word": "Nichtraucherzimmer",
+          "base": "Nichtraucherzimmer",
+          "type": "noun"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "Czy można zabrać psa do hotelu?",
+      "answer": "Darf man einen Hund ins Hotel mitbringen?",
+      "accepted": [
+        "darf man einen hund ins hotel mitbringen",
+        "kann man einen hund ins hotel mitbringen",
+        "sind hunde im hotel erlaubt"
+      ],
+      "vocabulary": [
+        { "word": "Hund", "base": "Hund", "type": "noun" },
+        { "word": "mitbringen", "base": "mitbringen", "type": "verb" }
+      ]
+    },
+    {
+      "id": 17,
+      "prompt": "Przyjadę około osiemnastej",
+      "answer": "Ich werde gegen achtzehn Uhr ankommen",
+      "accepted": [
+        "ich werde gegen achtzehn uhr ankommen",
+        "ich werde gegen 18 uhr ankommen",
+        "ich komme gegen achtzehn uhr an",
+        "ich komme gegen 18 uhr an"
+      ],
+      "vocabulary": [
+        { "word": "ankommen", "base": "ankommen", "type": "verb" },
+        { "word": "gegen", "base": "gegen", "type": "preposition" }
+      ]
+    },
+    {
+      "id": 18,
+      "prompt": "Czy parking jest bezpłatny?",
+      "answer": "Ist der Parkplatz kostenlos?",
+      "accepted": [
+        "ist der parkplatz kostenlos",
+        "ist das parken kostenlos",
+        "ist parken kostenlos"
+      ],
+      "vocabulary": [
+        { "word": "Parkplatz", "base": "Parkplatz", "type": "noun" },
+        { "word": "kostenlos", "base": "kostenlos", "type": "adjective" }
+      ]
+    },
+    {
+      "id": 19,
+      "prompt": "Czy jest dostępny pokój jednoosobowy?",
+      "answer": "Ist ein Einzelzimmer verfügbar?",
+      "accepted": [
+        "ist ein einzelzimmer verfügbar",
+        "haben sie ein einzelzimmer frei",
+        "gibt es ein einzelzimmer"
+      ],
+      "vocabulary": [
+        { "word": "Einzelzimmer", "base": "Einzelzimmer", "type": "noun" },
+        { "word": "verfügbar", "base": "verfügbar", "type": "adjective" }
+      ]
+    },
+    {
+      "id": 20,
+      "prompt": "Potrzebuję potwierdzenia rezerwacji",
+      "answer": "Ich brauche eine Buchungsbestätigung",
+      "accepted": [
+        "ich brauche eine buchungsbestätigung",
+        "ich benötige eine buchungsbestätigung",
+        "ich brauche eine reservierungsbestätigung"
+      ],
+      "vocabulary": [
+        {
+          "word": "Buchungsbestätigung",
+          "base": "Buchungsbestätigung",
+          "type": "noun"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "prompt": "Chciałbym kupić bilet w jedną stronę",
+      "answer": "Ich möchte eine einfache Fahrt kaufen",
+      "accepted": [
+        "ich möchte eine einfache fahrt kaufen",
+        "ich hätte gerne eine einfache fahrt",
+        "ich möchte ein ticket für eine einfache fahrt"
+      ],
+      "vocabulary": [
+        { "word": "einfache Fahrt", "base": "einfache Fahrt", "type": "noun" },
+        { "word": "kaufen", "base": "kaufen", "type": "verb" }
+      ]
+    },
+    {
+      "id": 22,
+      "prompt": "Ile kosztuje bilet powrotny?",
+      "answer": "Wie viel kostet eine Hin- und Rückfahrt?",
+      "accepted": [
+        "wie viel kostet eine hin- und rückfahrt",
+        "was kostet eine hin- und rückfahrt",
+        "wie viel kostet die hin- und rückfahrt"
+      ],
+      "vocabulary": [
+        {
+          "word": "Hin- und Rückfahrt",
+          "base": "Hin- und Rückfahrt",
+          "type": "noun"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "prompt": "Czy mogę zmienić datę lotu?",
+      "answer": "Kann ich das Flugdatum ändern?",
+      "accepted": [
+        "kann ich das flugdatum ändern",
+        "könnte ich das flugdatum ändern",
+        "kann ich den flug umbuchen"
+      ],
+      "vocabulary": [
+        { "word": "Flugdatum", "base": "Flugdatum", "type": "noun" },
+        { "word": "ändern", "base": "ändern", "type": "verb" }
+      ]
+    },
+    {
+      "id": 24,
+      "prompt": "Proszę o miejsce przy oknie",
+      "answer": "Ich hätte gerne einen Fensterplatz",
+      "accepted": [
+        "ich hätte gerne einen fensterplatz",
+        "ich möchte einen fensterplatz",
+        "ich würde gerne am fenster sitzen"
+      ],
+      "vocabulary": [
+        { "word": "Fensterplatz", "base": "Fensterplatz", "type": "noun" }
+      ]
+    },
+    {
+      "id": 25,
+      "prompt": "Czy są zniżki dla studentów?",
+      "answer": "Gibt es Ermäßigungen für Studenten?",
+      "accepted": [
+        "gibt es ermäßigungen für studenten",
+        "gibt es studentenrabatt",
+        "haben sie ermäßigungen für studenten"
+      ],
+      "vocabulary": [
+        { "word": "Ermäßigung", "base": "Ermäßigung", "type": "noun" },
+        { "word": "Student", "base": "Student", "type": "noun" }
+      ]
+    },
+    {
+      "id": 26,
+      "prompt": "Chciałbym wypożyczyć samochód na tydzień",
+      "answer": "Ich möchte ein Auto für eine Woche mieten",
+      "accepted": [
+        "ich möchte ein auto für eine woche mieten",
+        "ich würde gerne ein auto für eine woche mieten"
+      ],
+      "vocabulary": [
+        { "word": "mieten", "base": "mieten", "type": "verb" },
+        { "word": "Auto", "base": "Auto", "type": "noun" },
+        { "word": "Woche", "base": "Woche", "type": "noun" }
+      ]
+    },
+    {
+      "id": 27,
+      "prompt": "Czy ubezpieczenie jest wliczone?",
+      "answer": "Ist die Versicherung inklusive?",
+      "accepted": [
+        "ist die versicherung inklusive",
+        "ist die versicherung inbegriffen",
+        "ist versicherung inklusive"
+      ],
+      "vocabulary": [
+        { "word": "Versicherung", "base": "Versicherung", "type": "noun" },
+        { "word": "inklusive", "base": "inklusive", "type": "adjective" }
+      ]
+    },
+    {
+      "id": 28,
+      "prompt": "Jeśli mają państwo wolne pokoje, poproszę o rezerwację",
+      "answer": "Wenn Sie freie Zimmer haben, möchte ich gerne reservieren",
+      "accepted": [
+        "wenn sie freie zimmer haben möchte ich gerne reservieren",
+        "wenn sie freie zimmer haben würde ich gerne reservieren"
+      ],
+      "vocabulary": [{ "word": "wenn", "base": "wenn", "type": "conjunction" }]
+    },
+    {
+      "id": 29,
+      "prompt": "Zamierzam przyjechać w przyszły piątek",
+      "answer": "Ich werde nächsten Freitag ankommen",
+      "accepted": [
+        "ich werde nächsten freitag ankommen",
+        "ich komme nächsten freitag an",
+        "ich plane nächsten freitag anzukommen"
+      ],
+      "vocabulary": [
+        { "word": "nächsten", "base": "nächster", "type": "adjective" },
+        { "word": "Freitag", "base": "Freitag", "type": "noun" }
+      ]
+    },
+    {
+      "id": 30,
+      "prompt": "Czy mogliby państwo przesłać mi ofertę mailem?",
+      "answer": "Könnten Sie mir das Angebot per E-Mail schicken?",
+      "accepted": [
+        "könnten sie mir das angebot per e-mail schicken",
+        "könnten sie mir das angebot per mail schicken",
+        "können sie mir das angebot per e-mail schicken"
+      ],
+      "vocabulary": [
+        { "word": "Angebot", "base": "Angebot", "type": "noun" },
+        { "word": "schicken", "base": "schicken", "type": "verb" },
+        { "word": "E-Mail", "base": "E-Mail", "type": "noun" }
+      ]
+    }
+  ]
+}

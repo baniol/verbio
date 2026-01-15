@@ -1,0 +1,365 @@
+{
+  "metadata": {
+    "id": "german_b2_random_expressions",
+    "name": "German B2 - Random Expressions",
+    "language": "de",
+    "speechLang": "de-DE",
+    "sourceLanguage": "pl",
+    "sourceSpeechLang": "pl-PL"
+  },
+  "phrases": [
+    {
+      "id": 1,
+      "prompt": "lubię stolarstwo, robić drewniane skrzynki, półki, szafki i tym podobne",
+      "answer": "Ich mag Tischlerei, Holzkisten, Regale, Schränke und Ähnliches zu machen",
+      "accepted": [
+        "ich mag tischlerei holzkisten regale schränke und ähnliches zu machen",
+        "ich mag es zu tischlern holzkisten regale schränke und ähnliches zu bauen"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Dziś rano chciałem jak zwykle włączyć radio. Ale ono już nie działa. Pewnie coś jest zepsute.",
+      "answer": "Heute Morgen wollte ich wie immer mein Radio einschalten. Aber es geht nicht mehr. Da ist wohl irgendwas kaputt.",
+      "accepted": [
+        "heute morgen wollte ich wie immer mein radio einschalten aber es geht nicht mehr da ist wohl irgendwas kaputt"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Tutaj naprawia się prawie wszystko. Próbujemy uratować wiele urządzeń. Najczęściej się to udaje.",
+      "answer": "Hier wird fast alles repariert. Wir versuchen, viele Geräte zu retten. Meistens klappt das auch.",
+      "accepted": [
+        "hier wird fast alles repariert wir versuchen viele geräte zu retten meistens klappt das auch"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Czy wydrukował pan i wypełnił kartę obiegową?",
+      "answer": "Haben Sie den Laufzettel ausgedruckt und ausgefüllt?",
+      "accepted": [
+        "haben sie den laufzettel ausgedruckt und ausgefüllt",
+        "haben sie das laufzettel ausgedruckt und ausgefüllt"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "obróć sanki, będzie łatwiej ciągnąć",
+      "answer": "Dreh den Schlitten um, dann ist es einfacher zu ziehen",
+      "accepted": [
+        "dreh den schlitten um dann ist es einfacher zu ziehen",
+        "drehe den schlitten um dann ist es leichter zu ziehen"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Masz już plany na nowy rok?",
+      "answer": "Hast du schon Pläne fürs neue Jahr?",
+      "accepted": [
+        "hast du schon pläne fürs neue jahr",
+        "hast du schon pläne für das neue jahr"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Nie mam planów. Dam się zaskoczyć.",
+      "answer": "Ich habe keine Pläne. Ich lass' mich überraschen.",
+      "accepted": [
+        "ich habe keine pläne ich lass mich überraschen",
+        "ich habe keine pläne ich lasse mich überraschen"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Plik jest zapisany na twoim komputerze.",
+      "answer": "Die Datei ist auf Ihrem Computer gespeichert.",
+      "accepted": [
+        "die datei ist auf ihrem computer gespeichert",
+        "die datei ist auf deinem computer gespeichert"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "korytarz (w mieszkaniu)",
+      "answer": "der Flur",
+      "accepted": ["der flur", "flur"]
+    },
+    {
+      "id": 10,
+      "prompt": "Za mną są drzwi wejściowe",
+      "answer": "Hinter mir ist die Eingangstür",
+      "accepted": [
+        "hinter mir ist die eingangstür",
+        "hinter mir sind die eingangstür"
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "właśnie wszedłeś przez drzwi wejściowe",
+      "answer": "Durch die Eingangstür bist du gerade reingekommen",
+      "accepted": [
+        "durch die eingangstür bist du gerade reingekommen",
+        "du bist gerade durch die eingangstür reingekommen"
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "i już jedno mogę wam teraz obiecać: ...",
+      "answer": "und eins kann ich euch schon mal versprechen: ...",
+      "accepted": [
+        "und eins kann ich euch schon mal versprechen",
+        "und eines kann ich euch schon mal versprechen"
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "to zależy od roli ...",
+      "answer": "Es hängt von der Rolle ab...",
+      "accepted": [
+        "es hängt von der rolle ab",
+        "das hängt von der rolle ab"
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "kiedy zacząłeś uczyć się niemieckiego?",
+      "answer": "Wann hast du angefangen Deutsch zu lernen?",
+      "accepted": [
+        "wann hast du angefangen deutsch zu lernen",
+        "wann hast du begonnen deutsch zu lernen"
+      ]
+    },
+    {
+      "id": 15,
+      "prompt": "Czy wcześniej znałeś już niemiecki?",
+      "answer": "Hast du vorher schon Deutsch gekannt?",
+      "accepted": [
+        "hast du vorher schon deutsch gekannt",
+        "hast du vorher schon deutsch gekonnt",
+        "konntest du vorher schon deutsch"
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "ogólnie rzecz biorąc ...",
+      "answer": "im Großen und Ganzen ...",
+      "accepted": [
+        "im großen und ganzen",
+        "im grossen und ganzen"
+      ]
+    },
+    {
+      "id": 17,
+      "prompt": "... są tu oferowane ...",
+      "answer": "... werden hier angeboten ...",
+      "accepted": ["werden hier angeboten"]
+    },
+    {
+      "id": 18,
+      "prompt": "nauczać, uczyć (kogoś)",
+      "answer": "unterrichten",
+      "accepted": ["unterrichten"]
+    },
+    {
+      "id": 19,
+      "prompt": "Czy można się uczyć języka w każdym wieku?",
+      "answer": "Kann man in jedem Alter eine Sprache lernen?",
+      "accepted": [
+        "kann man in jedem alter eine sprache lernen",
+        "kann man eine sprache in jedem alter lernen"
+      ]
+    },
+    {
+      "id": 20,
+      "prompt": "Pewne umiejętności zanikają z wiekiem",
+      "answer": "Gewisse Fertigkeiten schwinden mit zunehmendem Alter",
+      "accepted": [
+        "gewisse fertigkeiten schwinden mit zunehmendem alter",
+        "bestimmte fertigkeiten schwinden mit zunehmendem alter"
+      ]
+    },
+    {
+      "id": 21,
+      "prompt": "pamięć krótkotrwała",
+      "answer": "das Kurzzeitgedächtnis",
+      "accepted": ["das kurzzeitgedächtnis", "kurzzeitgedächtnis"]
+    },
+    {
+      "id": 22,
+      "prompt": "zaangażowanie",
+      "answer": "der Einsatz",
+      "accepted": ["der einsatz", "einsatz"]
+    },
+    {
+      "id": 23,
+      "prompt": "absolutnie wykonalne",
+      "answer": "absolut machbar",
+      "accepted": ["absolut machbar"]
+    },
+    {
+      "id": 24,
+      "prompt": "podsumowując, każdy może nauczyć się niemieckiego",
+      "answer": "also unterm Strich kann jeder Deutsch lernen",
+      "accepted": [
+        "also unterm strich kann jeder deutsch lernen",
+        "unterm strich kann jeder deutsch lernen"
+      ]
+    },
+    {
+      "id": 25,
+      "prompt": "kiedy zaczynacie, kiedy kończycie?",
+      "answer": "Wann fangt ihr an, wann hört ihr auf?",
+      "accepted": [
+        "wann fangt ihr an wann hört ihr auf",
+        "wann fängt ihr an wann hört ihr auf"
+      ]
+    },
+    {
+      "id": 26,
+      "prompt": "To brzmi męcząco",
+      "answer": "Das klingt anstrengend",
+      "accepted": ["das klingt anstrengend"]
+    },
+    {
+      "id": 27,
+      "prompt": "mieć określony cel przed oczami",
+      "answer": "ein bestimmtes Ziel vor Augen zu haben",
+      "accepted": [
+        "ein bestimmtes ziel vor augen zu haben",
+        "ein bestimmtes ziel vor augen haben"
+      ]
+    },
+    {
+      "id": 28,
+      "prompt": "im konkretniej, tym lepiej, tym bardziej jesteśmy skuteczni",
+      "answer": "je konkreter, desto besser, desto erfolgreicher ist man",
+      "accepted": [
+        "je konkreter desto besser desto erfolgreicher ist man"
+      ]
+    },
+    {
+      "id": 29,
+      "prompt": "o czym myślicie, gdy myślicie o czasach szkolnych?",
+      "answer": "Woran denkt ihr, wenn ihr an eure Schulzeit denkt?",
+      "accepted": [
+        "woran denkt ihr wenn ihr an eure schulzeit denkt"
+      ]
+    },
+    {
+      "id": 30,
+      "prompt": "wyobraź sobie ...",
+      "answer": "Stell dir vor ...",
+      "accepted": ["stell dir vor", "stellen sie sich vor"]
+    },
+    {
+      "id": 31,
+      "prompt": "Wybieram sobie książkę.",
+      "answer": "Ich suche mir ein Buch heraus.",
+      "accepted": [
+        "ich suche mir ein buch heraus",
+        "ich suche mir ein buch aus"
+      ]
+    },
+    {
+      "id": 32,
+      "prompt": "Czy możesz proszę wybrać najlepsze zdjęcia?",
+      "answer": "Kannst du bitte die besten Fotos heraussuchen?",
+      "accepted": [
+        "kannst du bitte die besten fotos heraussuchen",
+        "kannst du bitte die besten fotos aussuchen"
+      ]
+    },
+    {
+      "id": 33,
+      "prompt": "Ona wybrała najważniejsze informacje.",
+      "answer": "Sie hat die wichtigsten Informationen herausgesucht.",
+      "accepted": [
+        "sie hat die wichtigsten informationen herausgesucht",
+        "sie hat die wichtigsten informationen ausgesucht"
+      ]
+    },
+    {
+      "id": 34,
+      "prompt": "Wybierz sobie kolor!",
+      "answer": "Such dir eine Farbe heraus!",
+      "accepted": [
+        "such dir eine farbe heraus",
+        "such dir eine farbe aus",
+        "suche dir eine farbe heraus"
+      ]
+    },
+    {
+      "id": 35,
+      "prompt": "Musimy wybrać odpowiednie przykłady.",
+      "answer": "Wir müssen die passenden Beispiele heraussuchen.",
+      "accepted": [
+        "wir müssen die passenden beispiele heraussuchen",
+        "wir müssen die passenden beispiele aussuchen"
+      ]
+    },
+    {
+      "id": 36,
+      "prompt": "On zawsze wybiera sobie najtrudniejsze zadania.",
+      "answer": "Er sucht sich immer die schwierigsten Aufgaben heraus.",
+      "accepted": [
+        "er sucht sich immer die schwierigsten aufgaben heraus",
+        "er sucht sich immer die schwierigsten aufgaben aus"
+      ]
+    },
+    {
+      "id": 37,
+      "prompt": "Wybrałeś już hotel?",
+      "answer": "Hast du schon ein Hotel herausgesucht?",
+      "accepted": [
+        "hast du schon ein hotel herausgesucht",
+        "hast du schon ein hotel ausgesucht"
+      ]
+    },
+    {
+      "id": 38,
+      "prompt": "Właśnie wybieram składniki do przepisu.",
+      "answer": "Ich suche gerade die Zutaten für das Rezept heraus.",
+      "accepted": [
+        "ich suche gerade die zutaten für das rezept heraus",
+        "ich suche gerade die zutaten fürs rezept heraus"
+      ]
+    },
+    {
+      "id": 39,
+      "prompt": "On upadł / przewrócił się.",
+      "answer": "Er ist gestürzt.",
+      "accepted": [
+        "er ist gestürzt",
+        "er ist hingefallen"
+      ]
+    },
+    {
+      "id": 40,
+      "prompt": "Ona spadła ze schodów.",
+      "answer": "Sie stürzte von der Treppe.",
+      "accepted": [
+        "sie stürzte von der treppe",
+        "sie ist von der treppe gestürzt"
+      ]
+    },
+    {
+      "id": 41,
+      "prompt": "Uważaj, żebyś nie upadł!",
+      "answer": "Pass auf, dass du nicht stürzt!",
+      "accepted": [
+        "pass auf dass du nicht stürzt",
+        "pass auf dass du nicht hinfällst"
+      ]
+    },
+    {
+      "id": 42,
+      "prompt": "Zrobiłeś sobie krzywdę, kiedy się przewróciłeś?",
+      "answer": "Hast du dir wehgetan, als du gestürzt bist?",
+      "accepted": [
+        "hast du dir wehgetan als du gestürzt bist",
+        "hast du dir weh getan als du gestürzt bist",
+        "hast du dir wehgetan als du hingefallen bist"
+      ]
+    }
+  ]
+}

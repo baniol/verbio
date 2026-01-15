@@ -1,0 +1,302 @@
+{
+  "metadata": {
+    "id": "german_b1_travel_info",
+    "name": "German B1 - Travel: Information",
+    "language": "de",
+    "speechLang": "de-DE",
+    "sourceLanguage": "pl",
+    "sourceSpeechLang": "pl-PL"
+  },
+  "phrases": [
+    {
+      "id": 1,
+      "prompt": "Gdzie jest informacja turystyczna?",
+      "answer": "Wo ist die Touristeninformation?",
+      "accepted": ["wo ist die touristeninformation", "wo ist die touristeninfo", "wo finde ich die touristeninformation"],
+      "vocabulary": [
+        {"word": "Touristeninformation", "base": "Touristeninformation", "type": "noun"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Czy ma pan mapę miasta?",
+      "answer": "Haben Sie einen Stadtplan?",
+      "accepted": ["haben sie einen stadtplan", "haben sie eine stadtkarte", "gibt es einen stadtplan"],
+      "vocabulary": [
+        {"word": "Stadtplan", "base": "Stadtplan", "type": "noun"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Jak dojść do centrum?",
+      "answer": "Wie komme ich ins Zentrum?",
+      "accepted": ["wie komme ich ins zentrum", "wie kommt man ins zentrum", "wie komme ich in die stadtmitte"],
+      "vocabulary": [
+        {"word": "Zentrum", "base": "Zentrum", "type": "noun"},
+        {"word": "kommen", "base": "kommen", "type": "verb"}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Czy można tu gdzieś wymienić pieniądze?",
+      "answer": "Kann man hier irgendwo Geld wechseln?",
+      "accepted": ["kann man hier irgendwo geld wechseln", "kann ich hier geld wechseln", "wo kann man hier geld wechseln"],
+      "vocabulary": [
+        {"word": "wechseln", "base": "wechseln", "type": "verb"},
+        {"word": "Geld", "base": "Geld", "type": "noun"}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "O której godzinie otwiera się muzeum?",
+      "answer": "Um wie viel Uhr öffnet das Museum?",
+      "accepted": ["um wie viel uhr öffnet das museum", "wann öffnet das museum", "um wieviel uhr macht das museum auf"],
+      "vocabulary": [
+        {"word": "öffnen", "base": "öffnen", "type": "verb"},
+        {"word": "Museum", "base": "Museum", "type": "noun"}
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Czy jest bilet łączony na wszystkie atrakcje?",
+      "answer": "Gibt es ein Kombiticket für alle Sehenswürdigkeiten?",
+      "accepted": ["gibt es ein kombiticket für alle sehenswürdigkeiten", "gibt es ein kombiniertes ticket für alle attraktionen"],
+      "vocabulary": [
+        {"word": "Kombiticket", "base": "Kombiticket", "type": "noun"},
+        {"word": "Sehenswürdigkeit", "base": "Sehenswürdigkeit", "type": "noun"}
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Jak daleko stąd jest plaża?",
+      "answer": "Wie weit ist der Strand von hier?",
+      "accepted": ["wie weit ist der strand von hier", "wie weit ist es bis zum strand", "ist der strand weit von hier"],
+      "vocabulary": [
+        {"word": "Strand", "base": "Strand", "type": "noun"},
+        {"word": "weit", "base": "weit", "type": "adjective"}
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Gdzie mogę kupić bilety na autobus?",
+      "answer": "Wo kann ich Busfahrkarten kaufen?",
+      "accepted": ["wo kann ich busfahrkarten kaufen", "wo kann ich bustickets kaufen", "wo bekomme ich bustickets"],
+      "vocabulary": [
+        {"word": "Busfahrkarte", "base": "Busfahrkarte", "type": "noun"}
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Czy są wycieczki z przewodnikiem?",
+      "answer": "Gibt es geführte Touren?",
+      "accepted": ["gibt es geführte touren", "gibt es führungen", "gibt es stadtführungen"],
+      "vocabulary": [
+        {"word": "geführt", "base": "geführt", "type": "adjective"},
+        {"word": "Tour", "base": "Tour", "type": "noun"}
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Ile trwa zwiedzanie?",
+      "answer": "Wie lange dauert die Besichtigung?",
+      "accepted": ["wie lange dauert die besichtigung", "wie lange dauert die führung", "wie lange dauert die tour"],
+      "vocabulary": [
+        {"word": "dauern", "base": "dauern", "type": "verb"},
+        {"word": "Besichtigung", "base": "Besichtigung", "type": "noun"}
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "Który autobus jedzie na lotnisko?",
+      "answer": "Welcher Bus fährt zum Flughafen?",
+      "accepted": ["welcher bus fährt zum flughafen", "welche buslinie fährt zum flughafen"],
+      "vocabulary": [
+        {"word": "Bus", "base": "Bus", "type": "noun"},
+        {"word": "Flughafen", "base": "Flughafen", "type": "noun"},
+        {"word": "fahren", "base": "fahren", "type": "verb"}
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "O której odjeżdża ostatni pociąg?",
+      "answer": "Wann fährt der letzte Zug ab?",
+      "accepted": ["wann fährt der letzte zug ab", "um wie viel uhr fährt der letzte zug", "wann geht der letzte zug"],
+      "vocabulary": [
+        {"word": "abfahren", "base": "abfahren", "type": "verb"},
+        {"word": "Zug", "base": "Zug", "type": "noun"},
+        {"word": "letzter", "base": "letzter", "type": "adjective"}
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "Czy ten pociąg jedzie do Berlina?",
+      "answer": "Fährt dieser Zug nach Berlin?",
+      "accepted": ["fährt dieser zug nach berlin", "geht dieser zug nach berlin", "ist das der zug nach berlin"],
+      "vocabulary": [
+        {"word": "dieser", "base": "dieser", "type": "pronoun"}
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "Gdzie jest najbliższy przystanek metra?",
+      "answer": "Wo ist die nächste U-Bahn-Station?",
+      "accepted": ["wo ist die nächste u-bahn-station", "wo ist die nächste u-bahn-haltestelle", "wo finde ich die nächste u-bahn"],
+      "vocabulary": [
+        {"word": "U-Bahn-Station", "base": "U-Bahn-Station", "type": "noun"},
+        {"word": "nächste", "base": "nächster", "type": "adjective"}
+      ]
+    },
+    {
+      "id": 15,
+      "prompt": "Czy powinienem się przesiąść?",
+      "answer": "Muss ich umsteigen?",
+      "accepted": ["muss ich umsteigen", "soll ich umsteigen"],
+      "vocabulary": [
+        {"word": "umsteigen", "base": "umsteigen", "type": "verb"}
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "Na którym peronie jest pociąg do Monachium?",
+      "answer": "Auf welchem Gleis fährt der Zug nach München?",
+      "accepted": ["auf welchem gleis fährt der zug nach münchen", "von welchem gleis fährt der zug nach münchen", "welches gleis fährt der zug nach münchen"],
+      "vocabulary": [
+        {"word": "Gleis", "base": "Gleis", "type": "noun"}
+      ]
+    },
+    {
+      "id": 17,
+      "prompt": "Czy mogę prosić o rozkład jazdy?",
+      "answer": "Könnte ich einen Fahrplan bekommen?",
+      "accepted": ["könnte ich einen fahrplan bekommen", "kann ich einen fahrplan haben", "haben sie einen fahrplan"],
+      "vocabulary": [
+        {"word": "Fahrplan", "base": "Fahrplan", "type": "noun"},
+        {"word": "bekommen", "base": "bekommen", "type": "verb"}
+      ]
+    },
+    {
+      "id": 18,
+      "prompt": "Jak długo trwa podróż?",
+      "answer": "Wie lange dauert die Fahrt?",
+      "accepted": ["wie lange dauert die fahrt", "wie lange dauert die reise", "wie lang ist die fahrt"],
+      "vocabulary": [
+        {"word": "Fahrt", "base": "Fahrt", "type": "noun"}
+      ]
+    },
+    {
+      "id": 19,
+      "prompt": "Czy będziemy na czas?",
+      "answer": "Werden wir pünktlich ankommen?",
+      "accepted": ["werden wir pünktlich ankommen", "kommen wir pünktlich an", "sind wir pünktlich"],
+      "vocabulary": [
+        {"word": "pünktlich", "base": "pünktlich", "type": "adjective"}
+      ]
+    },
+    {
+      "id": 20,
+      "prompt": "Gdzie jest postój taksówek?",
+      "answer": "Wo ist der Taxistand?",
+      "accepted": ["wo ist der taxistand", "wo finde ich ein taxi", "wo sind die taxis"],
+      "vocabulary": [
+        {"word": "Taxistand", "base": "Taxistand", "type": "noun"}
+      ]
+    },
+    {
+      "id": 21,
+      "prompt": "Czy można kupić bilet w pociągu?",
+      "answer": "Kann man das Ticket im Zug kaufen?",
+      "accepted": ["kann man das ticket im zug kaufen", "kann ich die fahrkarte im zug kaufen", "kann man im zug ein ticket kaufen"],
+      "vocabulary": [
+        {"word": "Ticket", "base": "Ticket", "type": "noun"}
+      ]
+    },
+    {
+      "id": 22,
+      "prompt": "Gdzie jest przechowalnia bagażu?",
+      "answer": "Wo ist die Gepäckaufbewahrung?",
+      "accepted": ["wo ist die gepäckaufbewahrung", "wo kann ich mein gepäck aufbewahren", "gibt es hier schließfächer"],
+      "vocabulary": [
+        {"word": "Gepäckaufbewahrung", "base": "Gepäckaufbewahrung", "type": "noun"},
+        {"word": "Gepäck", "base": "Gepäck", "type": "noun"}
+      ]
+    },
+    {
+      "id": 23,
+      "prompt": "Czy ta trasa jest malownicza?",
+      "answer": "Ist diese Strecke landschaftlich schön?",
+      "accepted": ["ist diese strecke landschaftlich schön", "ist die strecke schön", "ist die route landschaftlich schön"],
+      "vocabulary": [
+        {"word": "Strecke", "base": "Strecke", "type": "noun"},
+        {"word": "landschaftlich", "base": "landschaftlich", "type": "adjective"}
+      ]
+    },
+    {
+      "id": 24,
+      "prompt": "Proszę mi powiedzieć, kiedy wysiadać",
+      "answer": "Sagen Sie mir bitte, wann ich aussteigen soll",
+      "accepted": ["sagen sie mir bitte wann ich aussteigen soll", "können sie mir sagen wann ich aussteigen muss", "bitte sagen sie mir wann ich aussteigen soll"],
+      "vocabulary": [
+        {"word": "aussteigen", "base": "aussteigen", "type": "verb"},
+        {"word": "sagen", "base": "sagen", "type": "verb"}
+      ]
+    },
+    {
+      "id": 25,
+      "prompt": "Gdzie mogę zostawić walizkę?",
+      "answer": "Wo kann ich meinen Koffer lassen?",
+      "accepted": ["wo kann ich meinen koffer lassen", "wo kann ich den koffer abstellen", "wo kann ich meinen koffer abstellen"],
+      "vocabulary": [
+        {"word": "Koffer", "base": "Koffer", "type": "noun"},
+        {"word": "lassen", "base": "lassen", "type": "verb"}
+      ]
+    },
+    {
+      "id": 26,
+      "prompt": "Czy są tu w pobliżu dobre restauracje?",
+      "answer": "Gibt es hier in der Nähe gute Restaurants?",
+      "accepted": ["gibt es hier in der nähe gute restaurants", "gibt es gute restaurants in der nähe", "können sie ein gutes restaurant empfehlen"],
+      "vocabulary": [
+        {"word": "Nähe", "base": "Nähe", "type": "noun"},
+        {"word": "Restaurant", "base": "Restaurant", "type": "noun"}
+      ]
+    },
+    {
+      "id": 27,
+      "prompt": "Potrzebuję informacji o połączeniach autobusowych",
+      "answer": "Ich brauche Informationen über Busverbindungen",
+      "accepted": ["ich brauche informationen über busverbindungen", "ich benötige informationen zu den busverbindungen"],
+      "vocabulary": [
+        {"word": "Information", "base": "Information", "type": "noun"},
+        {"word": "Busverbindung", "base": "Busverbindung", "type": "noun"}
+      ]
+    },
+    {
+      "id": 28,
+      "prompt": "Jeśli pociąg ma opóźnienie, co mam robić?",
+      "answer": "Wenn der Zug Verspätung hat, was soll ich tun?",
+      "accepted": ["wenn der zug verspätung hat was soll ich tun", "was mache ich wenn der zug verspätung hat"],
+      "vocabulary": [
+        {"word": "Verspätung", "base": "Verspätung", "type": "noun"},
+        {"word": "wenn", "base": "wenn", "type": "conjunction"}
+      ]
+    },
+    {
+      "id": 29,
+      "prompt": "Jak najlepiej dostać się do centrum?",
+      "answer": "Wie kommt man am besten ins Zentrum?",
+      "accepted": ["wie kommt man am besten ins zentrum", "was ist der beste weg ins zentrum", "wie komme ich am besten ins zentrum"],
+      "vocabulary": [
+        {"word": "am besten", "base": "am besten", "type": "adverb"}
+      ]
+    },
+    {
+      "id": 30,
+      "prompt": "Czy polecacie jakieś atrakcje turystyczne?",
+      "answer": "Können Sie Sehenswürdigkeiten empfehlen?",
+      "accepted": ["können sie sehenswürdigkeiten empfehlen", "welche sehenswürdigkeiten empfehlen sie", "was können sie empfehlen"],
+      "vocabulary": [
+        {"word": "empfehlen", "base": "empfehlen", "type": "verb"}
+      ]
+    }
+  ]
+}
