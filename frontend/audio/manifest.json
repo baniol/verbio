@@ -658,5 +658,419 @@
       "hash": "bcb32aeef7dd097cb1204550b0d63eb2",
       "file": "20.mp3"
     }
+  },
+  "german_b1_travel_booking": {
+    "1": {
+      "hash": "3c2f890625b898716ff111aba8904165",
+      "file": "1.mp3"
+    },
+    "2": {
+      "hash": "4b5c2c1c294555a69ae822f38c620bfb",
+      "file": "2.mp3"
+    },
+    "3": {
+      "hash": "63c0eddccad47b2e789fa84d49c50f7f",
+      "file": "3.mp3"
+    },
+    "4": {
+      "hash": "6cd9d0691170093fce8348aa31a6c7fa",
+      "file": "4.mp3"
+    },
+    "5": {
+      "hash": "d21cfb8649e4d680dc4531a9a8d55bc5",
+      "file": "5.mp3"
+    },
+    "6": {
+      "hash": "23b18875d61d8144a6b180408c135a1b",
+      "file": "6.mp3"
+    },
+    "7": {
+      "hash": "8723565dcd534d5de1df07ec9fa85c9d",
+      "file": "7.mp3"
+    },
+    "8": {
+      "hash": "2c3bc7960ea56dea042efe2810a976a3",
+      "file": "8.mp3"
+    },
+    "9": {
+      "hash": "18d7f7ec4be3972139915a7ea8ca5ca6",
+      "file": "9.mp3"
+    },
+    "10": {
+      "hash": "36c0d2dce9e900a84838d1d30695a121",
+      "file": "10.mp3"
+    },
+    "11": {
+      "hash": "b96b3d61e76393150a69f479669d6924",
+      "file": "11.mp3"
+    },
+    "12": {
+      "hash": "2dd660d4c9b7a12de257287a16ba4a04",
+      "file": "12.mp3"
+    },
+    "13": {
+      "hash": "78ba85037693ce4fb819159cc7751815",
+      "file": "13.mp3"
+    },
+    "14": {
+      "hash": "25b598f5025e12aab22f01f0b7fe01f6",
+      "file": "14.mp3"
+    },
+    "15": {
+      "hash": "66c9ae5fe17d286fa3326e6d582da2ee",
+      "file": "15.mp3"
+    },
+    "16": {
+      "hash": "46cec8110d25a318e8914fae8da6fb61",
+      "file": "16.mp3"
+    },
+    "17": {
+      "hash": "8462ab6a4e3df5fa3a5860255eaa3cc2",
+      "file": "17.mp3"
+    },
+    "18": {
+      "hash": "4a95e5e9b05ae8d73dc19ea0528889e0",
+      "file": "18.mp3"
+    },
+    "19": {
+      "hash": "69c4b5aeccc1a9aeea5170597ba08661",
+      "file": "19.mp3"
+    },
+    "20": {
+      "hash": "330378006e8f8d7f56c7c7cc42094b05",
+      "file": "20.mp3"
+    },
+    "21": {
+      "hash": "79850043d8b73799852ff9f5492e659d",
+      "file": "21.mp3"
+    },
+    "22": {
+      "hash": "d1e3149bc0ca891bc8ba74599d9b6053",
+      "file": "22.mp3"
+    },
+    "23": {
+      "hash": "85c3b0423f0ec2b0a22d73bf889ab5bb",
+      "file": "23.mp3"
+    },
+    "24": {
+      "hash": "3c1e8646cc5315bc83e5d951f7bee8b3",
+      "file": "24.mp3"
+    },
+    "25": {
+      "hash": "3bf0b7d5d6800f32bee8e14d6c5834b5",
+      "file": "25.mp3"
+    },
+    "26": {
+      "hash": "b4d04e823c65a9b0b6c9a925348c0307",
+      "file": "26.mp3"
+    },
+    "27": {
+      "hash": "db3ce6028bea98a606611cf861662510",
+      "file": "27.mp3"
+    },
+    "28": {
+      "hash": "384fb02d590e7a5672c3fd7016b1683f",
+      "file": "28.mp3"
+    },
+    "29": {
+      "hash": "fa32d0a604dd73ad1b3ac7f860b9bf5a",
+      "file": "29.mp3"
+    },
+    "30": {
+      "hash": "76311b7118ef31ca4487af6a1c6dcdbb",
+      "file": "30.mp3"
+    }
+  },
+  "german_b1_travel_info": {
+    "1": {
+      "hash": "1797110dba08fc0e582076af4a5007c6",
+      "file": "1.mp3"
+    },
+    "2": {
+      "hash": "9ff8e20f3fde3aff69713d0544f63c68",
+      "file": "2.mp3"
+    },
+    "3": {
+      "hash": "1c56229aa86e889804d9f55a2057d7d8",
+      "file": "3.mp3"
+    },
+    "4": {
+      "hash": "f1b0dc364389a35c5ff8e079b27b998b",
+      "file": "4.mp3"
+    },
+    "5": {
+      "hash": "e9a575bd730de45b6c7e51a723fd743f",
+      "file": "5.mp3"
+    },
+    "6": {
+      "hash": "0272040b8b748180144230e9f26c3fe7",
+      "file": "6.mp3"
+    },
+    "7": {
+      "hash": "b4c4b0a79de53b3cd3022c3ee22b8592",
+      "file": "7.mp3"
+    },
+    "8": {
+      "hash": "b9d103b84f9eb95f7a3c9446afad6cc2",
+      "file": "8.mp3"
+    },
+    "9": {
+      "hash": "0ca1addb8d4be9a3098f60a1b2e4945a",
+      "file": "9.mp3"
+    },
+    "10": {
+      "hash": "31d195ba6de12b61db35fedb661d2666",
+      "file": "10.mp3"
+    },
+    "11": {
+      "hash": "319a0b25de0487ce95f004e1dc158a54",
+      "file": "11.mp3"
+    },
+    "12": {
+      "hash": "b92dc7763b1d12b21743a25c10e8fa21",
+      "file": "12.mp3"
+    },
+    "13": {
+      "hash": "0cb6ff7acdef9f8835421b8bcb8baa50",
+      "file": "13.mp3"
+    },
+    "14": {
+      "hash": "39ab271a41808c2fac2b64dda46fa912",
+      "file": "14.mp3"
+    },
+    "15": {
+      "hash": "5423c1c061a9e1985c133c8985910828",
+      "file": "15.mp3"
+    },
+    "16": {
+      "hash": "5dc1caa698941182904ed62b10440394",
+      "file": "16.mp3"
+    },
+    "17": {
+      "hash": "8f0d05a7e84206813b99f11750c99032",
+      "file": "17.mp3"
+    },
+    "18": {
+      "hash": "db8bc5c8ca6e7e41484fcb9d56349da3",
+      "file": "18.mp3"
+    },
+    "19": {
+      "hash": "0d165a05f16d750c0c61685c2cc72168",
+      "file": "19.mp3"
+    },
+    "20": {
+      "hash": "3f0d8adc42c59ec55adb24ddd8f69944",
+      "file": "20.mp3"
+    },
+    "21": {
+      "hash": "c7520beb4a3b6f8ff7147a7a6f511286",
+      "file": "21.mp3"
+    },
+    "22": {
+      "hash": "5f025973564c18aa3ead90280594abcc",
+      "file": "22.mp3"
+    },
+    "23": {
+      "hash": "1cd42b6c44403b3fb2644a22c0ca42fb",
+      "file": "23.mp3"
+    },
+    "24": {
+      "hash": "517cbe88157e35752d6c7ec1be9152f2",
+      "file": "24.mp3"
+    },
+    "25": {
+      "hash": "7372573f1753a4ac6c65c916af01e973",
+      "file": "25.mp3"
+    },
+    "26": {
+      "hash": "157ac5fdd6ea78565722b0071ce6b866",
+      "file": "26.mp3"
+    },
+    "27": {
+      "hash": "30e87a170885d860776d5d1fec47fb00",
+      "file": "27.mp3"
+    },
+    "28": {
+      "hash": "56d1e63df54476f2a580601626d51b28",
+      "file": "28.mp3"
+    },
+    "29": {
+      "hash": "83e9e47a92dcef75cdaad5a39a1a6175",
+      "file": "29.mp3"
+    },
+    "30": {
+      "hash": "76fd40770d724b13640a53f8a839a8ba",
+      "file": "30.mp3"
+    }
+  },
+  "german_b2_random_expressions": {
+    "1": {
+      "hash": "3f7e35343998eab5f7c07f05375403aa",
+      "file": "1.mp3"
+    },
+    "2": {
+      "hash": "dc4d73992aeaabded0e95badf48c5adf",
+      "file": "2.mp3"
+    },
+    "3": {
+      "hash": "24f0b0d58766e333e4256e5198b23a18",
+      "file": "3.mp3"
+    },
+    "4": {
+      "hash": "d1b6118fbed47c537fde41b36754a6e5",
+      "file": "4.mp3"
+    },
+    "5": {
+      "hash": "a0d5dd80e94da7cac86411979db52137",
+      "file": "5.mp3"
+    },
+    "6": {
+      "hash": "1af0f6fecf2429ad801375269cc18c97",
+      "file": "6.mp3"
+    },
+    "7": {
+      "hash": "f84ad0f50bc717ed774371ca9660ee17",
+      "file": "7.mp3"
+    },
+    "8": {
+      "hash": "92fc669fd703e6932835c72042c9b39b",
+      "file": "8.mp3"
+    },
+    "9": {
+      "hash": "9ef5885ac7d8ffc4ebf2560c68027f2d",
+      "file": "9.mp3"
+    },
+    "10": {
+      "hash": "8bba998a4fefde42d10e3d274ef8859d",
+      "file": "10.mp3"
+    },
+    "11": {
+      "hash": "c1b1c8e2e761a164cf3e0331ec5b932c",
+      "file": "11.mp3"
+    },
+    "12": {
+      "hash": "540c4e008f04b41c4ffd88783a7087a8",
+      "file": "12.mp3"
+    },
+    "13": {
+      "hash": "5594ae5688aa8cba259beb35098384b3",
+      "file": "13.mp3"
+    },
+    "14": {
+      "hash": "06b696d81a00654cd728aedaa6a77154",
+      "file": "14.mp3"
+    },
+    "15": {
+      "hash": "5c030b13656f4cff68692350633c6d22",
+      "file": "15.mp3"
+    },
+    "16": {
+      "hash": "22419c051357ebaac26c63b50b828c97",
+      "file": "16.mp3"
+    },
+    "17": {
+      "hash": "910a082773bb970c5ffef0d87fea7c65",
+      "file": "17.mp3"
+    },
+    "18": {
+      "hash": "38dc1a86235fb41155392c0c3d709199",
+      "file": "18.mp3"
+    },
+    "19": {
+      "hash": "392f1ef47ace5664444a33667b1a4866",
+      "file": "19.mp3"
+    },
+    "20": {
+      "hash": "a00387a59c68f519e0f3ae4570a44549",
+      "file": "20.mp3"
+    },
+    "21": {
+      "hash": "cb80d658a9d36b1f7eef928d445fc6ce",
+      "file": "21.mp3"
+    },
+    "22": {
+      "hash": "cf772ff9e26e5ce8cf99d243e8ef1d15",
+      "file": "22.mp3"
+    },
+    "23": {
+      "hash": "5661130eb22e5a9afed9e2b9fb9cf12a",
+      "file": "23.mp3"
+    },
+    "24": {
+      "hash": "e959a83fbc53bbe59b1230bd975af6c7",
+      "file": "24.mp3"
+    },
+    "25": {
+      "hash": "d6bd1228bb4d2e1e153b0a9e6aaeac06",
+      "file": "25.mp3"
+    },
+    "26": {
+      "hash": "ce2d9a18e418b7a3d73158ede96bb637",
+      "file": "26.mp3"
+    },
+    "27": {
+      "hash": "33df9ef1b0371e21adf25f5654b81c33",
+      "file": "27.mp3"
+    },
+    "28": {
+      "hash": "f99b024d26aadcd24bc0d2254c0a403a",
+      "file": "28.mp3"
+    },
+    "29": {
+      "hash": "3871aaf79c07498c43de6c693ba06b79",
+      "file": "29.mp3"
+    },
+    "30": {
+      "hash": "1944c5a96408de3778e40fc5a9195199",
+      "file": "30.mp3"
+    },
+    "31": {
+      "hash": "21b8faac475cbcc426e780fb2015fbbb",
+      "file": "31.mp3"
+    },
+    "32": {
+      "hash": "a06f593b770992eb01aab586b480b0b9",
+      "file": "32.mp3"
+    },
+    "33": {
+      "hash": "c2a3162dafca548b6e33569b9f076e63",
+      "file": "33.mp3"
+    },
+    "34": {
+      "hash": "0ceb5c3f0fd7e440f14642279638f045",
+      "file": "34.mp3"
+    },
+    "35": {
+      "hash": "49f786380a0bfb7a6c4d39aa3b11a367",
+      "file": "35.mp3"
+    },
+    "36": {
+      "hash": "3dee3c54be23ffbdee6a6046137d05df",
+      "file": "36.mp3"
+    },
+    "37": {
+      "hash": "dd59fa46ee3d35e8528347c89860a3a7",
+      "file": "37.mp3"
+    },
+    "38": {
+      "hash": "a153d22e46f390503867aef3709b4f9d",
+      "file": "38.mp3"
+    },
+    "39": {
+      "hash": "b2846d7e37eeb35694f5a86aea486802",
+      "file": "39.mp3"
+    },
+    "40": {
+      "hash": "389cf04a392a1ba4012752dc68453200",
+      "file": "40.mp3"
+    },
+    "41": {
+      "hash": "7521b4feeae4642fe84415f883e87803",
+      "file": "41.mp3"
+    },
+    "42": {
+      "hash": "9eb97cbe9add23d5f6bdeb97be621034",
+      "file": "42.mp3"
+    }
   }
 }
