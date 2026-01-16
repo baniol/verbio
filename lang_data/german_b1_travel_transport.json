@@ -94,7 +94,9 @@
       "answer": "Die U-Bahn fährt alle zehn Minuten.",
       "accepted": [
         "die u-bahn fährt alle zehn minuten",
-        "die u-bahn kommt alle zehn minuten"
+        "die u-bahn fährt alle 10 minuten",
+        "die u-bahn kommt alle zehn minuten",
+        "die u-bahn kommt alle 10 minuten"
       ]
     },
     {
@@ -149,8 +151,9 @@
       "answer": "Der nächste Zug fährt in fünfzehn Minuten.",
       "accepted": [
         "der nächste zug fährt in fünfzehn minuten",
+        "der nächste zug fährt in 15 minuten",
         "der nächste zug geht in fünfzehn minuten",
-        "der nächste zug fährt in 15 minuten"
+        "der nächste zug geht in 15 minuten"
       ]
     },
     {

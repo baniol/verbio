@@ -167,6 +167,7 @@ Phrases should naturally contain these constructions, e.g.:
 - Formal `Sie` and informal `du` (if context allows)
 - Verb synonyms
 - Variants with different pronouns
+- **Numbers: ALWAYS include both word and digit forms** (e.g., "zwanzig" AND "20", "drei" AND "3") - speech recognition often returns digits
 
 **Format:**
 - Prompt in SOURCE language (with proper characters)

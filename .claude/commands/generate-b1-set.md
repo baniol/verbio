@@ -198,6 +198,7 @@ Phrases should naturally contain these constructions, e.g.:
 - `kann ich` / `könnte ich` / `darf ich`
 - Variants with different personal pronouns
 - Synonyms of basic verbs
+- **Numbers: ALWAYS include both word and digit forms** (e.g., "zwanzig" AND "20", "drei" AND "3") - speech recognition often returns digits
 
 **Format:**
 - Prompt in SOURCE language (with proper characters)

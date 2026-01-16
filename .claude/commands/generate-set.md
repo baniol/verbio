@@ -131,6 +131,7 @@ The `accepted` array must include ALL grammatically correct variations that a le
 - Polite variations (can I / could I / may I)
 - Word order variations if grammatically correct
 - Contractions vs full forms
+- **Numbers: ALWAYS include both word and digit forms** (e.g., "zwanzig" AND "20", "three" AND "3") - speech recognition often returns digits
 
 When in doubt, include the alternative - it's better to accept a correct answer than reject it.
 
