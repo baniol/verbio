@@ -4,13 +4,13 @@
     "name": "German B1 - Travel: Transport",
     "language": "de",
     "speechLang": "de-DE",
-    "sourceLanguage": "en",
-    "sourceSpeechLang": "en-US"
+    "sourceLanguage": "pl",
+    "sourceSpeechLang": "pl-PL"
   },
   "phrases": [
     {
       "id": 1,
-      "prompt": "Where can I buy a ticket?",
+      "prompt": "Gdzie mogę kupić bilet?",
       "answer": "Wo kann ich eine Fahrkarte kaufen?",
       "accepted": [
         "wo kann ich eine fahrkarte kaufen",
@@ -20,7 +20,7 @@
     },
     {
       "id": 2,
-      "prompt": "I need a day ticket.",
+      "prompt": "Potrzebuję bilet dzienny.",
       "answer": "Ich brauche eine Tageskarte.",
       "accepted": [
         "ich brauche eine tageskarte",
@@ -30,7 +30,7 @@
     },
     {
       "id": 3,
-      "prompt": "Does this bus go to the main station?",
+      "prompt": "Czy ten autobus jedzie na dworzec główny?",
       "answer": "Fährt dieser Bus zum Hauptbahnhof?",
       "accepted": [
         "fährt dieser bus zum hauptbahnhof",
@@ -39,25 +39,19 @@
     },
     {
       "id": 4,
-      "prompt": "Where is the next stop?",
+      "prompt": "Gdzie jest następny przystanek?",
       "answer": "Wo ist die nächste Haltestelle?",
-      "accepted": [
-        "wo ist die nächste haltestelle",
-        "wo ist der nächste halt"
-      ]
+      "accepted": ["wo ist die nächste haltestelle", "wo ist der nächste halt"]
     },
     {
       "id": 5,
-      "prompt": "I'm waiting for the tram.",
+      "prompt": "Czekam na tramwaj.",
       "answer": "Ich warte auf die Straßenbahn.",
-      "accepted": [
-        "ich warte auf die straßenbahn",
-        "ich warte auf die tram"
-      ]
+      "accepted": ["ich warte auf die straßenbahn", "ich warte auf die tram"]
     },
     {
       "id": 6,
-      "prompt": "The train arrives at platform 3.",
+      "prompt": "Pociąg przyjeżdża na peron 3.",
       "answer": "Der Zug kommt auf Gleis 3 an.",
       "accepted": [
         "der zug kommt auf gleis 3 an",
@@ -67,7 +61,7 @@
     },
     {
       "id": 7,
-      "prompt": "You have to validate your ticket before boarding.",
+      "prompt": "Musisz skasować bilet przed wejściem.",
       "answer": "Du musst dein Ticket entwerten, bevor du einsteigst.",
       "accepted": [
         "du musst dein ticket entwerten bevor du einsteigst",
@@ -77,7 +71,7 @@
     },
     {
       "id": 8,
-      "prompt": "Is there a ticket machine here?",
+      "prompt": "Czy jest tu automat biletowy?",
       "answer": "Gibt es hier einen Fahrkartenautomaten?",
       "accepted": [
         "gibt es hier einen fahrkartenautomaten",
@@ -86,7 +80,7 @@
     },
     {
       "id": 9,
-      "prompt": "I'd like a weekly pass.",
+      "prompt": "Poproszę bilet tygodniowy.",
       "answer": "Ich hätte gerne eine Wochenkarte.",
       "accepted": [
         "ich hätte gerne eine wochenkarte",
@@ -96,7 +90,7 @@
     },
     {
       "id": 10,
-      "prompt": "The subway runs every ten minutes.",
+      "prompt": "Metro kursuje co dziesięć minut.",
       "answer": "Die U-Bahn fährt alle zehn Minuten.",
       "accepted": [
         "die u-bahn fährt alle zehn minuten",
@@ -105,7 +99,7 @@
     },
     {
       "id": 11,
-      "prompt": "Which line goes to the airport?",
+      "prompt": "Która linia jedzie na lotnisko?",
       "answer": "Welche Linie fährt zum Flughafen?",
       "accepted": [
         "welche linie fährt zum flughafen",
@@ -114,7 +108,7 @@
     },
     {
       "id": 12,
-      "prompt": "I got on the wrong bus.",
+      "prompt": "Wsiadłem do złego autobusu.",
       "answer": "Ich bin in den falschen Bus eingestiegen.",
       "accepted": [
         "ich bin in den falschen bus eingestiegen",
@@ -123,16 +117,13 @@
     },
     {
       "id": 13,
-      "prompt": "The train was cancelled.",
+      "prompt": "Pociąg został odwołany.",
       "answer": "Der Zug ist ausgefallen.",
-      "accepted": [
-        "der zug ist ausgefallen",
-        "der zug wurde gestrichen"
-      ]
+      "accepted": ["der zug ist ausgefallen", "der zug wurde gestrichen"]
     },
     {
       "id": 14,
-      "prompt": "Is the ticket valid for all zones?",
+      "prompt": "Czy bilet jest ważny na wszystkie strefy?",
       "answer": "Gilt die Fahrkarte für alle Zonen?",
       "accepted": [
         "gilt die fahrkarte für alle zonen",
@@ -142,25 +133,19 @@
     },
     {
       "id": 15,
-      "prompt": "I'm looking for the bus stop.",
+      "prompt": "Szukam przystanku autobusowego.",
       "answer": "Ich suche die Bushaltestelle.",
-      "accepted": [
-        "ich suche die bushaltestelle",
-        "ich suche den busbahnhof"
-      ]
+      "accepted": ["ich suche die bushaltestelle", "ich suche den busbahnhof"]
     },
     {
       "id": 16,
-      "prompt": "Do I have to change trains?",
+      "prompt": "Czy muszę się przesiadać?",
       "answer": "Muss ich umsteigen?",
-      "accepted": [
-        "muss ich umsteigen",
-        "muss ich den zug wechseln"
-      ]
+      "accepted": ["muss ich umsteigen", "muss ich den zug wechseln"]
     },
     {
       "id": 17,
-      "prompt": "The next train leaves in fifteen minutes.",
+      "prompt": "Następny pociąg odjeżdża za piętnaście minut.",
       "answer": "Der nächste Zug fährt in fünfzehn Minuten.",
       "accepted": [
         "der nächste zug fährt in fünfzehn minuten",
@@ -170,7 +155,7 @@
     },
     {
       "id": 18,
-      "prompt": "I missed my connection.",
+      "prompt": "Spóźniłem się na przesiadkę.",
       "answer": "Ich habe meinen Anschluss verpasst.",
       "accepted": [
         "ich habe meinen anschluss verpasst",
@@ -179,7 +164,7 @@
     },
     {
       "id": 19,
-      "prompt": "How much is a single ticket?",
+      "prompt": "Ile kosztuje bilet jednorazowy?",
       "answer": "Was kostet eine Einzelfahrkarte?",
       "accepted": [
         "was kostet eine einzelfahrkarte",
@@ -189,7 +174,7 @@
     },
     {
       "id": 20,
-      "prompt": "Can I pay by card?",
+      "prompt": "Czy mogę zapłacić kartą?",
       "answer": "Kann ich mit Karte bezahlen?",
       "accepted": [
         "kann ich mit karte bezahlen",

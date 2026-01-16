@@ -4,13 +4,13 @@
     "name": "German B1 - Travel: Schedules",
     "language": "de",
     "speechLang": "de-DE",
-    "sourceLanguage": "en",
-    "sourceSpeechLang": "en-US"
+    "sourceLanguage": "pl",
+    "sourceSpeechLang": "pl-PL"
   },
   "phrases": [
     {
       "id": 1,
-      "prompt": "When does the next bus leave?",
+      "prompt": "Kiedy odjeżdża następny autobus?",
       "answer": "Wann fährt der nächste Bus ab?",
       "accepted": [
         "wann fährt der nächste bus ab",
@@ -20,16 +20,13 @@
     },
     {
       "id": 2,
-      "prompt": "What time does the train arrive?",
+      "prompt": "O której przyjeżdża pociąg?",
       "answer": "Um wie viel Uhr kommt der Zug an?",
-      "accepted": [
-        "um wie viel uhr kommt der zug an",
-        "wann kommt der zug an"
-      ]
+      "accepted": ["um wie viel uhr kommt der zug an", "wann kommt der zug an"]
     },
     {
       "id": 3,
-      "prompt": "Is there a direct connection?",
+      "prompt": "Czy jest bezpośrednie połączenie?",
       "answer": "Gibt es eine direkte Verbindung?",
       "accepted": [
         "gibt es eine direkte verbindung",
@@ -39,25 +36,19 @@
     },
     {
       "id": 4,
-      "prompt": "The train departs at half past eight.",
+      "prompt": "Pociąg odjeżdża o wpół do dziewiątej.",
       "answer": "Der Zug fährt um halb neun ab.",
-      "accepted": [
-        "der zug fährt um halb neun ab",
-        "der zug fährt um 8:30 ab"
-      ]
+      "accepted": ["der zug fährt um halb neun ab", "der zug fährt um 8:30 ab"]
     },
     {
       "id": 5,
-      "prompt": "How often does the bus run?",
+      "prompt": "Jak często kursuje autobus?",
       "answer": "Wie oft fährt der Bus?",
-      "accepted": [
-        "wie oft fährt der bus",
-        "wie häufig fährt der bus"
-      ]
+      "accepted": ["wie oft fährt der bus", "wie häufig fährt der bus"]
     },
     {
       "id": 6,
-      "prompt": "I want to take the first train in the morning.",
+      "prompt": "Chcę wziąć pierwszy poranny pociąg.",
       "answer": "Ich möchte den ersten Zug am Morgen nehmen.",
       "accepted": [
         "ich möchte den ersten zug am morgen nehmen",
@@ -66,16 +57,13 @@
     },
     {
       "id": 7,
-      "prompt": "When is the last train?",
+      "prompt": "Kiedy jedzie ostatni pociąg?",
       "answer": "Wann fährt der letzte Zug?",
-      "accepted": [
-        "wann fährt der letzte zug",
-        "wann geht der letzte zug"
-      ]
+      "accepted": ["wann fährt der letzte zug", "wann geht der letzte zug"]
     },
     {
       "id": 8,
-      "prompt": "The connection is every twenty minutes.",
+      "prompt": "Połączenie jest co dwadzieścia minut.",
       "answer": "Die Verbindung ist alle zwanzig Minuten.",
       "accepted": [
         "die verbindung ist alle zwanzig minuten",
@@ -84,7 +72,7 @@
     },
     {
       "id": 9,
-      "prompt": "You need to change at the main station.",
+      "prompt": "Musisz się przesiąść na dworcu głównym.",
       "answer": "Du musst am Hauptbahnhof umsteigen.",
       "accepted": [
         "du musst am hauptbahnhof umsteigen",
@@ -94,7 +82,7 @@
     },
     {
       "id": 10,
-      "prompt": "The journey takes about two hours.",
+      "prompt": "Podróż trwa około dwóch godzin.",
       "answer": "Die Fahrt dauert ungefähr zwei Stunden.",
       "accepted": [
         "die fahrt dauert ungefähr zwei stunden",
@@ -104,7 +92,7 @@
     },
     {
       "id": 11,
-      "prompt": "What time should I be at the station?",
+      "prompt": "O której powinienem być na stacji?",
       "answer": "Um wie viel Uhr soll ich am Bahnhof sein?",
       "accepted": [
         "um wie viel uhr soll ich am bahnhof sein",
@@ -113,7 +101,7 @@
     },
     {
       "id": 12,
-      "prompt": "The train has a ten-minute delay.",
+      "prompt": "Pociąg ma dziesięć minut opóźnienia.",
       "answer": "Der Zug hat zehn Minuten Verspätung.",
       "accepted": [
         "der zug hat zehn minuten verspätung",
@@ -123,16 +111,13 @@
     },
     {
       "id": 13,
-      "prompt": "Are there any night buses?",
+      "prompt": "Czy są autobusy nocne?",
       "answer": "Gibt es Nachtbusse?",
-      "accepted": [
-        "gibt es nachtbusse",
-        "fahren hier nachtbusse"
-      ]
+      "accepted": ["gibt es nachtbusse", "fahren hier nachtbusse"]
     },
     {
       "id": 14,
-      "prompt": "The schedule has changed.",
+      "prompt": "Rozkład jazdy się zmienił.",
       "answer": "Der Fahrplan hat sich geändert.",
       "accepted": [
         "der fahrplan hat sich geändert",
@@ -141,7 +126,7 @@
     },
     {
       "id": 15,
-      "prompt": "Can I check the timetable online?",
+      "prompt": "Czy mogę sprawdzić rozkład jazdy online?",
       "answer": "Kann ich den Fahrplan online prüfen?",
       "accepted": [
         "kann ich den fahrplan online prüfen",
@@ -151,7 +136,7 @@
     },
     {
       "id": 16,
-      "prompt": "The bus runs every half hour on weekends.",
+      "prompt": "Autobus kursuje w weekendy co pół godziny.",
       "answer": "Der Bus fährt am Wochenende jede halbe Stunde.",
       "accepted": [
         "der bus fährt am wochenende jede halbe stunde",
@@ -160,16 +145,13 @@
     },
     {
       "id": 17,
-      "prompt": "We'll arrive before noon.",
+      "prompt": "Przyjedziemy przed południem.",
       "answer": "Wir kommen vor Mittag an.",
-      "accepted": [
-        "wir kommen vor mittag an",
-        "wir werden vor mittag ankommen"
-      ]
+      "accepted": ["wir kommen vor mittag an", "wir werden vor mittag ankommen"]
     },
     {
       "id": 18,
-      "prompt": "When does the metro start running?",
+      "prompt": "Od której zaczyna kursować metro?",
       "answer": "Wann fährt die U-Bahn das erste Mal?",
       "accepted": [
         "wann fährt die u-bahn das erste mal",
@@ -179,7 +161,7 @@
     },
     {
       "id": 19,
-      "prompt": "You have to wait for the next one.",
+      "prompt": "Musisz poczekać na następny.",
       "answer": "Du musst auf den nächsten warten.",
       "accepted": [
         "du musst auf den nächsten warten",
@@ -188,7 +170,7 @@
     },
     {
       "id": 20,
-      "prompt": "The express train is faster but more expensive.",
+      "prompt": "Pociąg ekspresowy jest szybszy, ale droższy.",
       "answer": "Der Schnellzug ist schneller, aber teurer.",
       "accepted": [
         "der schnellzug ist schneller aber teurer",

@@ -4,13 +4,13 @@
     "name": "German B1 - Travel: On Board",
     "language": "de",
     "speechLang": "de-DE",
-    "sourceLanguage": "en",
-    "sourceSpeechLang": "en-US"
+    "sourceLanguage": "pl",
+    "sourceSpeechLang": "pl-PL"
   },
   "phrases": [
     {
       "id": 1,
-      "prompt": "Excuse me, is this seat free?",
+      "prompt": "Przepraszam, czy to miejsce jest wolne?",
       "answer": "Entschuldigung, ist dieser Platz frei?",
       "accepted": [
         "entschuldigung ist dieser platz frei",
@@ -20,7 +20,7 @@
     },
     {
       "id": 2,
-      "prompt": "I reserved a seat.",
+      "prompt": "Mam zarezerwowane miejsce.",
       "answer": "Ich habe einen Platz reserviert.",
       "accepted": [
         "ich habe einen platz reserviert",
@@ -29,7 +29,7 @@
     },
     {
       "id": 3,
-      "prompt": "Could you tell me when we arrive in Munich?",
+      "prompt": "Czy mógłby mi Pan/Pani powiedzieć, kiedy przyjedziemy do Monachium?",
       "answer": "Könnten Sie mir sagen, wann wir in München ankommen?",
       "accepted": [
         "könnten sie mir sagen wann wir in münchen ankommen",
@@ -38,16 +38,13 @@
     },
     {
       "id": 4,
-      "prompt": "Where is the dining car?",
+      "prompt": "Gdzie jest wagon restauracyjny?",
       "answer": "Wo ist der Speisewagen?",
-      "accepted": [
-        "wo ist der speisewagen",
-        "wo finde ich den speisewagen"
-      ]
+      "accepted": ["wo ist der speisewagen", "wo finde ich den speisewagen"]
     },
     {
       "id": 5,
-      "prompt": "Can I put my luggage here?",
+      "prompt": "Czy mogę tu postawić swój bagaż?",
       "answer": "Kann ich mein Gepäck hier abstellen?",
       "accepted": [
         "kann ich mein gepäck hier abstellen",
@@ -56,7 +53,7 @@
     },
     {
       "id": 6,
-      "prompt": "The air conditioning is too cold.",
+      "prompt": "Klimatyzacja jest zbyt zimna.",
       "answer": "Die Klimaanlage ist zu kalt.",
       "accepted": [
         "die klimaanlage ist zu kalt",
@@ -65,7 +62,7 @@
     },
     {
       "id": 7,
-      "prompt": "Which stop is next?",
+      "prompt": "Który przystanek jest następny?",
       "answer": "Welche Haltestelle kommt als nächste?",
       "accepted": [
         "welche haltestelle kommt als nächste",
@@ -75,7 +72,7 @@
     },
     {
       "id": 8,
-      "prompt": "I'd like to sit by the window.",
+      "prompt": "Chciałbym siedzieć przy oknie.",
       "answer": "Ich möchte am Fenster sitzen.",
       "accepted": [
         "ich möchte am fenster sitzen",
@@ -84,7 +81,7 @@
     },
     {
       "id": 9,
-      "prompt": "The toilet is out of order.",
+      "prompt": "Toaleta jest nieczynna.",
       "answer": "Die Toilette ist außer Betrieb.",
       "accepted": [
         "die toilette ist außer betrieb",
@@ -93,16 +90,13 @@
     },
     {
       "id": 10,
-      "prompt": "Please let me through.",
+      "prompt": "Proszę mnie przepuścić.",
       "answer": "Lassen Sie mich bitte durch.",
-      "accepted": [
-        "lassen sie mich bitte durch",
-        "darf ich bitte durch"
-      ]
+      "accepted": ["lassen sie mich bitte durch", "darf ich bitte durch"]
     },
     {
       "id": 11,
-      "prompt": "I need to get off at the next stop.",
+      "prompt": "Muszę wysiąść na następnym przystanku.",
       "answer": "Ich muss an der nächsten Haltestelle aussteigen.",
       "accepted": [
         "ich muss an der nächsten haltestelle aussteigen",
@@ -111,7 +105,7 @@
     },
     {
       "id": 12,
-      "prompt": "Is there a quiet carriage?",
+      "prompt": "Czy jest wagon ciszy?",
       "answer": "Gibt es einen Ruhebereich?",
       "accepted": [
         "gibt es einen ruhebereich",
@@ -121,7 +115,7 @@
     },
     {
       "id": 13,
-      "prompt": "Can I open the window?",
+      "prompt": "Czy mogę otworzyć okno?",
       "answer": "Kann ich das Fenster öffnen?",
       "accepted": [
         "kann ich das fenster öffnen",
@@ -130,16 +124,13 @@
     },
     {
       "id": 14,
-      "prompt": "The train is very crowded today.",
+      "prompt": "Pociąg jest dzisiaj bardzo zatłoczony.",
       "answer": "Der Zug ist heute sehr voll.",
-      "accepted": [
-        "der zug ist heute sehr voll",
-        "der zug ist heute überfüllt"
-      ]
+      "accepted": ["der zug ist heute sehr voll", "der zug ist heute überfüllt"]
     },
     {
       "id": 15,
-      "prompt": "I left my bag on the train.",
+      "prompt": "Zostawiłem torbę w pociągu.",
       "answer": "Ich habe meine Tasche im Zug vergessen.",
       "accepted": [
         "ich habe meine tasche im zug vergessen",
@@ -148,7 +139,7 @@
     },
     {
       "id": 16,
-      "prompt": "The conductor is checking tickets.",
+      "prompt": "Konduktor sprawdza bilety.",
       "answer": "Der Schaffner kontrolliert die Fahrkarten.",
       "accepted": [
         "der schaffner kontrolliert die fahrkarten",
@@ -157,7 +148,7 @@
     },
     {
       "id": 17,
-      "prompt": "We're approaching the station.",
+      "prompt": "Zbliżamy się do stacji.",
       "answer": "Wir nähern uns dem Bahnhof.",
       "accepted": [
         "wir nähern uns dem bahnhof",
@@ -166,7 +157,7 @@
     },
     {
       "id": 18,
-      "prompt": "Is there WiFi on this train?",
+      "prompt": "Czy w tym pociągu jest WiFi?",
       "answer": "Gibt es WLAN in diesem Zug?",
       "accepted": [
         "gibt es wlan in diesem zug",
@@ -176,16 +167,13 @@
     },
     {
       "id": 19,
-      "prompt": "I'm travelling to Berlin.",
+      "prompt": "Jadę do Berlina.",
       "answer": "Ich fahre nach Berlin.",
-      "accepted": [
-        "ich fahre nach berlin",
-        "ich reise nach berlin"
-      ]
+      "accepted": ["ich fahre nach berlin", "ich reise nach berlin"]
     },
     {
       "id": 20,
-      "prompt": "The announcement said we'll be delayed.",
+      "prompt": "W komunikacie powiedzieli, że będziemy mieć opóźnienie.",
       "answer": "Die Durchsage hat gesagt, dass wir Verspätung haben werden.",
       "accepted": [
         "die durchsage hat gesagt dass wir verspätung haben werden",
