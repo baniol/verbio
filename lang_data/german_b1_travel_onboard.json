@@ -1,0 +1,196 @@
+{
+  "metadata": {
+    "id": "german_b1_travel_onboard",
+    "name": "German B1 - Travel: On Board",
+    "language": "de",
+    "speechLang": "de-DE",
+    "sourceLanguage": "en",
+    "sourceSpeechLang": "en-US"
+  },
+  "phrases": [
+    {
+      "id": 1,
+      "prompt": "Excuse me, is this seat free?",
+      "answer": "Entschuldigung, ist dieser Platz frei?",
+      "accepted": [
+        "entschuldigung ist dieser platz frei",
+        "ist dieser platz frei",
+        "ist hier noch frei"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I reserved a seat.",
+      "answer": "Ich habe einen Platz reserviert.",
+      "accepted": [
+        "ich habe einen platz reserviert",
+        "ich habe eine platzreservierung"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Could you tell me when we arrive in Munich?",
+      "answer": "Könnten Sie mir sagen, wann wir in München ankommen?",
+      "accepted": [
+        "könnten sie mir sagen wann wir in münchen ankommen",
+        "können sie mir sagen wann wir in münchen ankommen"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Where is the dining car?",
+      "answer": "Wo ist der Speisewagen?",
+      "accepted": [
+        "wo ist der speisewagen",
+        "wo finde ich den speisewagen"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Can I put my luggage here?",
+      "answer": "Kann ich mein Gepäck hier abstellen?",
+      "accepted": [
+        "kann ich mein gepäck hier abstellen",
+        "darf ich mein gepäck hier hinstellen"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "The air conditioning is too cold.",
+      "answer": "Die Klimaanlage ist zu kalt.",
+      "accepted": [
+        "die klimaanlage ist zu kalt",
+        "die klimaanlage ist mir zu kalt"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Which stop is next?",
+      "answer": "Welche Haltestelle kommt als nächste?",
+      "accepted": [
+        "welche haltestelle kommt als nächste",
+        "was ist die nächste haltestelle",
+        "welcher halt kommt als nächstes"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "I'd like to sit by the window.",
+      "answer": "Ich möchte am Fenster sitzen.",
+      "accepted": [
+        "ich möchte am fenster sitzen",
+        "ich würde gerne am fenster sitzen"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "The toilet is out of order.",
+      "answer": "Die Toilette ist außer Betrieb.",
+      "accepted": [
+        "die toilette ist außer betrieb",
+        "die toilette funktioniert nicht"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Please let me through.",
+      "answer": "Lassen Sie mich bitte durch.",
+      "accepted": [
+        "lassen sie mich bitte durch",
+        "darf ich bitte durch"
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "I need to get off at the next stop.",
+      "answer": "Ich muss an der nächsten Haltestelle aussteigen.",
+      "accepted": [
+        "ich muss an der nächsten haltestelle aussteigen",
+        "ich steige an der nächsten haltestelle aus"
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "Is there a quiet carriage?",
+      "answer": "Gibt es einen Ruhebereich?",
+      "accepted": [
+        "gibt es einen ruhebereich",
+        "gibt es ein ruheabteil",
+        "gibt es einen ruhewagen"
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "Can I open the window?",
+      "answer": "Kann ich das Fenster öffnen?",
+      "accepted": [
+        "kann ich das fenster öffnen",
+        "darf ich das fenster aufmachen"
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "The train is very crowded today.",
+      "answer": "Der Zug ist heute sehr voll.",
+      "accepted": [
+        "der zug ist heute sehr voll",
+        "der zug ist heute überfüllt"
+      ]
+    },
+    {
+      "id": 15,
+      "prompt": "I left my bag on the train.",
+      "answer": "Ich habe meine Tasche im Zug vergessen.",
+      "accepted": [
+        "ich habe meine tasche im zug vergessen",
+        "ich habe meine tasche im zug gelassen"
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "The conductor is checking tickets.",
+      "answer": "Der Schaffner kontrolliert die Fahrkarten.",
+      "accepted": [
+        "der schaffner kontrolliert die fahrkarten",
+        "der zugbegleiter kontrolliert die tickets"
+      ]
+    },
+    {
+      "id": 17,
+      "prompt": "We're approaching the station.",
+      "answer": "Wir nähern uns dem Bahnhof.",
+      "accepted": [
+        "wir nähern uns dem bahnhof",
+        "wir kommen gleich am bahnhof an"
+      ]
+    },
+    {
+      "id": 18,
+      "prompt": "Is there WiFi on this train?",
+      "answer": "Gibt es WLAN in diesem Zug?",
+      "accepted": [
+        "gibt es wlan in diesem zug",
+        "gibt es wifi im zug",
+        "hat der zug wlan"
+      ]
+    },
+    {
+      "id": 19,
+      "prompt": "I'm travelling to Berlin.",
+      "answer": "Ich fahre nach Berlin.",
+      "accepted": [
+        "ich fahre nach berlin",
+        "ich reise nach berlin"
+      ]
+    },
+    {
+      "id": 20,
+      "prompt": "The announcement said we'll be delayed.",
+      "answer": "Die Durchsage hat gesagt, dass wir Verspätung haben werden.",
+      "accepted": [
+        "die durchsage hat gesagt dass wir verspätung haben werden",
+        "laut durchsage werden wir verspätung haben"
+      ]
+    }
+  ]
+}
