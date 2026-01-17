@@ -38,7 +38,12 @@
       "id": 4,
       "prompt": "Pociąg odjeżdża o wpół do dziewiątej.",
       "answer": "Der Zug fährt um halb neun ab.",
-      "accepted": ["der zug fährt um halb neun ab", "der zug fährt um 8:30 ab"]
+      "accepted": [
+        "der zug fährt um halb neun ab",
+        "der zug fährt um 8:30 ab",
+        "der zug fährt um 8 uhr 30 ab",
+        "der zug fährt um acht uhr dreißig ab"
+      ]
     },
     {
       "id": 5,

@@ -104,16 +104,6 @@
       ]
     },
     {
-      "id": 12,
-      "prompt": "Czy jest wagon ciszy?",
-      "answer": "Gibt es einen Ruhebereich?",
-      "accepted": [
-        "gibt es einen ruhebereich",
-        "gibt es ein ruheabteil",
-        "gibt es einen ruhewagen"
-      ]
-    },
-    {
       "id": 13,
       "prompt": "Czy mogę otworzyć okno?",
       "answer": "Kann ich das Fenster öffnen?",

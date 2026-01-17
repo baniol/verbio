@@ -168,6 +168,13 @@ Phrases should naturally contain these constructions, e.g.:
 - Verb synonyms
 - Variants with different pronouns
 - **Numbers: ALWAYS include both word and digit forms** (e.g., "zwanzig" AND "20", "drei" AND "3") - speech recognition often returns digits
+- **Time expressions: ALWAYS include digital clock format** - speech recognition converts spoken time to digits:
+  - "halb neun" → also add "8:30" (halb X = X-1:30)
+  - "Viertel nach acht" → also add "8:15"
+  - "Viertel vor neun" → also add "8:45"
+  - "zehn Uhr" → also add "10:00" or "10 uhr"
+  - "zwanzig nach drei" → also add "3:20"
+  - Example: for phrase "Der Zug fährt um halb neun ab" accepted should include both "der zug fährt um halb neun ab" AND "der zug fährt um 8:30 ab"
 
 **Format:**
 - Prompt in SOURCE language (with proper characters)
