@@ -251,6 +251,10 @@ const I18N = {
       // Hide phrases
       hidePhrase: "Hide phrase",
       unhidePhrase: "Show phrase",
+      hidePhraseQuestion: "Hide phrase?",
+      hidePhraseMessage:
+        "This phrase will not appear in exercises or statistics.",
+      hide: "Hide",
     },
 
     pl: {
@@ -374,6 +378,10 @@ const I18N = {
       // Hide phrases
       hidePhrase: "Ukryj frazę",
       unhidePhrase: "Pokaż frazę",
+      hidePhraseQuestion: "Ukryć frazę?",
+      hidePhraseMessage:
+        "Ta fraza nie będzie pojawiać się w ćwiczeniach ani statystykach.",
+      hide: "Ukryj",
     },
 
     de: {
@@ -498,6 +506,10 @@ const I18N = {
       // Hide phrases
       hidePhrase: "Phrase ausblenden",
       unhidePhrase: "Phrase einblenden",
+      hidePhraseQuestion: "Phrase ausblenden?",
+      hidePhraseMessage:
+        "Diese Phrase erscheint nicht in Übungen oder Statistiken.",
+      hide: "Ausblenden",
     },
 
     es: {
@@ -622,6 +634,10 @@ const I18N = {
       // Hide phrases
       hidePhrase: "Ocultar frase",
       unhidePhrase: "Mostrar frase",
+      hidePhraseQuestion: "¿Ocultar frase?",
+      hidePhraseMessage:
+        "Esta frase no aparecerá en ejercicios ni estadísticas.",
+      hide: "Ocultar",
     },
 
     fr: {
@@ -746,6 +762,10 @@ const I18N = {
       // Hide phrases
       hidePhrase: "Masquer la phrase",
       unhidePhrase: "Afficher la phrase",
+      hidePhraseQuestion: "Masquer la phrase ?",
+      hidePhraseMessage:
+        "Cette phrase n'apparaîtra pas dans les exercices ni les statistiques.",
+      hide: "Masquer",
     },
   },
 

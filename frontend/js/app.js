@@ -202,6 +202,9 @@
       hideButton: document.getElementById("hide-button"),
       hideIconEmpty: document.getElementById("hide-icon-empty"),
       hideIconFilled: document.getElementById("hide-icon-filled"),
+      hideModal: document.getElementById("hide-modal"),
+      hideCancelButton: document.getElementById("hide-cancel-button"),
+      hideConfirmButton: document.getElementById("hide-confirm-button"),
     };
   }
 
@@ -245,7 +248,9 @@
     el.reviewButton?.addEventListener("click", toggleReview);
 
     // Hide phrase
-    el.hideButton?.addEventListener("click", toggleHidePhrase);
+    el.hideButton?.addEventListener("click", onHideButtonClick);
+    el.hideCancelButton?.addEventListener("click", closeHideModal);
+    el.hideConfirmButton?.addEventListener("click", confirmHidePhrase);
 
     // Reset modal
     el.resetCancelButton?.addEventListener("click", closeResetModal);
@@ -1430,21 +1435,34 @@
     saveHiddenPhrases(filtered, setId);
   }
 
-  function toggleHidePhrase() {
+  function onHideButtonClick() {
     if (!currentPhrase || !currentSet) return;
 
     const setId = currentPhrase._sourceSetId || currentSet.id;
     const isHidden = isPhraseHidden(currentPhrase.id, setId);
 
     if (isHidden) {
+      // Unhide immediately without confirmation
       unhidePhrase(currentPhrase.id, setId);
       updateHideIcon();
     } else {
-      hidePhrase(currentPhrase.id, setId);
-      updateHideIcon();
-      // Move to next phrase since this one is now hidden
-      loadNextPhrase();
+      // Show confirmation modal
+      UI.show(el.hideModal);
     }
+  }
+
+  function closeHideModal() {
+    UI.hide(el.hideModal);
+  }
+
+  function confirmHidePhrase() {
+    if (!currentPhrase || !currentSet) return;
+
+    const setId = currentPhrase._sourceSetId || currentSet.id;
+    hidePhrase(currentPhrase.id, setId);
+    closeHideModal();
+    // Move to next phrase since this one is now hidden
+    loadNextPhrase();
   }
 
   function updateHideIcon() {

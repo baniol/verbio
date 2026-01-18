@@ -1072,6 +1072,47 @@
             </div>
         </div>
 
+        <!-- Hide Phrase Confirmation Modal -->
+        <div
+            id="hide-modal"
+            class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center px-4"
+        >
+            <div
+                class="glass rounded-2xl p-6 max-w-sm w-full slide-up dark:bg-slate-800/90"
+            >
+                <h3
+                    id="hide-modal-title"
+                    class="text-xl font-bold text-slate-800 dark:text-slate-100 mb-3"
+                    data-i18n="hidePhraseQuestion"
+                >
+                    Hide phrase?
+                </h3>
+                <p
+                    id="hide-modal-text"
+                    class="text-slate-600 dark:text-slate-400 mb-6"
+                    data-i18n="hidePhraseMessage"
+                >
+                    This phrase will not appear in exercises or statistics.
+                </p>
+                <div class="grid grid-cols-2 gap-3">
+                    <button
+                        id="hide-cancel-button"
+                        class="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold py-3 rounded-xl hover:bg-slate-300 dark:hover:bg-slate-600 transition"
+                        data-i18n="cancel"
+                    >
+                        Cancel
+                    </button>
+                    <button
+                        id="hide-confirm-button"
+                        class="bg-red-500 text-white font-semibold py-3 rounded-xl hover:bg-red-600 transition"
+                        data-i18n="hide"
+                    >
+                        Hide
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <!-- Set Selection Modal -->
         <div
             id="set-modal"
