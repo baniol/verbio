@@ -493,7 +493,7 @@
     const grouped = {};
     const archived = [];
     for (const [id, set] of Object.entries(SETS)) {
-      if (set.metadata.archive === "true" || set.metadata.archive === true) {
+      if (set.metadata._archived) {
         archived.push({ id, ...set });
       } else {
         const lang = set.metadata.language;

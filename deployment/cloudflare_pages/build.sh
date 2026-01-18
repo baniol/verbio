@@ -25,6 +25,7 @@ echo "// Auto-generated from lang_data/*.json - do not edit manually" > "$SETS_J
 echo "const SETS = {" >> "$SETS_JS"
 
 first=true
+# Regular sets from lang_data/
 for jsonfile in "$PROJECT_ROOT"/lang_data/*.json; do
     if [ -f "$jsonfile" ]; then
         filename=$(basename "$jsonfile" .json)
@@ -38,10 +39,27 @@ for jsonfile in "$PROJECT_ROOT"/lang_data/*.json; do
     fi
 done
 
+# Archived sets from lang_data/archive/ - inject _archived flag into metadata
+for jsonfile in "$PROJECT_ROOT"/lang_data/archive/*.json; do
+    if [ -f "$jsonfile" ]; then
+        filename=$(basename "$jsonfile" .json)
+        if [ "$first" = true ]; then
+            first=false
+        else
+            echo "," >> "$SETS_JS"
+        fi
+        echo -n "  \"$filename\": " >> "$SETS_JS"
+        # Inject "_archived": true after "metadata": {
+        sed 's/"metadata": {/"metadata": { "_archived": true,/' "$jsonfile" >> "$SETS_JS"
+    fi
+done
+
 echo "" >> "$SETS_JS"
 echo "};" >> "$SETS_JS"
 
-SET_COUNT=$(ls -1 "$PROJECT_ROOT"/lang_data/*.json 2>/dev/null | wc -l | tr -d ' ')
+REGULAR_COUNT=$(ls -1 "$PROJECT_ROOT"/lang_data/*.json 2>/dev/null | wc -l | tr -d ' ')
+ARCHIVE_COUNT=$(ls -1 "$PROJECT_ROOT"/lang_data/archive/*.json 2>/dev/null | wc -l | tr -d ' ')
+SET_COUNT=$((REGULAR_COUNT + ARCHIVE_COUNT))
 echo "==> Generated sets.js with $SET_COUNT set(s)"
 
 # Generate version.js from latest git tag
