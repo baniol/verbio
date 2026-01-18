@@ -247,6 +247,10 @@ const I18N = {
 
       // Archive
       archive: "Archive",
+
+      // Hide phrases
+      hidePhrase: "Hide phrase",
+      unhidePhrase: "Show phrase",
     },
 
     pl: {
@@ -366,6 +370,10 @@ const I18N = {
 
       // Archive
       archive: "Archiwum",
+
+      // Hide phrases
+      hidePhrase: "Ukryj frazę",
+      unhidePhrase: "Pokaż frazę",
     },
 
     de: {
@@ -486,6 +494,10 @@ const I18N = {
 
       // Archive
       archive: "Archiv",
+
+      // Hide phrases
+      hidePhrase: "Phrase ausblenden",
+      unhidePhrase: "Phrase einblenden",
     },
 
     es: {
@@ -606,6 +618,10 @@ const I18N = {
 
       // Archive
       archive: "Archivo",
+
+      // Hide phrases
+      hidePhrase: "Ocultar frase",
+      unhidePhrase: "Mostrar frase",
     },
 
     fr: {
@@ -726,6 +742,10 @@ const I18N = {
 
       // Archive
       archive: "Archives",
+
+      // Hide phrases
+      hidePhrase: "Masquer la phrase",
+      unhidePhrase: "Afficher la phrase",
     },
   },
 

@@ -266,6 +266,36 @@
                                     class="absolute top-0 right-0 flex space-x-1"
                                 >
                                     <button
+                                        id="hide-button"
+                                        class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 dark:text-slate-500 hover:text-red-500 dark:hover:text-red-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+                                        data-i18n-title="hidePhrase"
+                                    >
+                                        <svg
+                                            id="hide-icon-empty"
+                                            class="w-5 h-5"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                stroke-width="2"
+                                                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
+                                            />
+                                        </svg>
+                                        <svg
+                                            id="hide-icon-filled"
+                                            class="w-5 h-5 hidden text-red-500 dark:text-red-400"
+                                            fill="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                d="M3.707 2.293a1 1 0 00-1.414 1.414l18 18a1 1 0 001.414-1.414l-18-18zM12 5c4.478 0 8.268 2.943 9.542 7a9.956 9.956 0 01-2.96 4.414l-1.435-1.435A7.966 7.966 0 0019.879 12c-1.075-2.998-4.02-5.136-7.379-5.136a7.916 7.916 0 00-2.417.375L8.585 5.74A9.9 9.9 0 0112 5zM6.464 7.879l1.53 1.53A3 3 0 0011.06 12.48l1.53 1.53A4.998 4.998 0 016.464 7.88zM12 19c-4.478 0-8.268-2.943-9.542-7a9.967 9.967 0 012.96-4.414l1.435 1.435A7.966 7.966 0 004.121 12c1.075 2.998 4.02 5.136 7.379 5.136a7.916 7.916 0 002.417-.375l1.498 1.498A9.9 9.9 0 0112 19z"
+                                            />
+                                        </svg>
+                                    </button>
+                                    <button
                                         id="review-button"
                                         class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-400 dark:text-slate-500 hover:text-amber-500 dark:hover:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
                                         data-i18n-title="addToReview"

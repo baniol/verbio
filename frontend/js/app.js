@@ -93,6 +93,7 @@
     reviewSet: (language) => `langlearn_review_set_${language}`,
     immediateRetry: "langlearn_immediate_retry",
     expandedFolders: "langlearn_expanded_folders",
+    hiddenPhrases: (setId) => `langlearn_hidden_${setId}`,
   };
 
   // State
@@ -198,6 +199,9 @@
       clearCacheButton: document.getElementById("clear-cache-button"),
       backButton: document.getElementById("back-button"),
       answerAudioButton: document.getElementById("answer-audio-button"),
+      hideButton: document.getElementById("hide-button"),
+      hideIconEmpty: document.getElementById("hide-icon-empty"),
+      hideIconFilled: document.getElementById("hide-icon-filled"),
     };
   }
 
@@ -239,6 +243,9 @@
 
     // Review
     el.reviewButton?.addEventListener("click", toggleReview);
+
+    // Hide phrase
+    el.hideButton?.addEventListener("click", toggleHidePhrase);
 
     // Reset modal
     el.resetCancelButton?.addEventListener("click", closeResetModal);
@@ -752,11 +759,16 @@
   }
 
   function getStats() {
-    const total = currentSet.phrases.length;
     const progress = getProgress();
+    let total = 0;
     let learned = 0;
 
     for (const phrase of currentSet.phrases) {
+      // Skip hidden phrases
+      const setId = phrase._sourceSetId || currentSet.id;
+      if (isPhraseHidden(phrase.id, setId)) continue;
+
+      total++;
       const prog = progress[phrase.id];
       if (prog && prog.correctStreak >= requiredStreak) {
         learned++;
@@ -769,6 +781,10 @@
   function getUnlearnedPhrases() {
     const progress = getProgress();
     return currentSet.phrases.filter((phrase) => {
+      // Skip hidden phrases
+      const setId = phrase._sourceSetId || currentSet.id;
+      if (isPhraseHidden(phrase.id, setId)) return false;
+
       const prog = progress[phrase.id];
       return !prog || prog.correctStreak < requiredStreak;
     });
@@ -883,6 +899,7 @@
     // Update note and review icons
     updateNoteIcon();
     updateReviewIcon();
+    updateHideIcon();
 
     // Check if audio exists for this phrase (async)
     updateAudioButton();
@@ -1378,6 +1395,72 @@
       el.reviewButton.title = inReview
         ? I18N.t("removeFromReview")
         : I18N.t("addToReview");
+    }
+  }
+
+  // Hidden phrases management
+  function getHiddenPhrases(setId) {
+    const id = setId || currentSet.id;
+    return Storage.get(STORAGE_KEYS.hiddenPhrases(id), []);
+  }
+
+  function saveHiddenPhrases(hidden, setId) {
+    const id = setId || currentSet.id;
+    Storage.set(STORAGE_KEYS.hiddenPhrases(id), hidden);
+  }
+
+  function isPhraseHidden(phraseId, setId) {
+    const hidden = getHiddenPhrases(setId);
+    return hidden.includes(phraseId);
+  }
+
+  function hidePhrase(phraseId, setId) {
+    const id = setId || currentSet.id;
+    const hidden = getHiddenPhrases(id);
+    if (!hidden.includes(phraseId)) {
+      hidden.push(phraseId);
+      saveHiddenPhrases(hidden, id);
+    }
+  }
+
+  function unhidePhrase(phraseId, setId) {
+    const id = setId || currentSet.id;
+    const hidden = getHiddenPhrases(id);
+    const filtered = hidden.filter((id) => id !== phraseId);
+    saveHiddenPhrases(filtered, setId);
+  }
+
+  function toggleHidePhrase() {
+    if (!currentPhrase || !currentSet) return;
+
+    const setId = currentPhrase._sourceSetId || currentSet.id;
+    const isHidden = isPhraseHidden(currentPhrase.id, setId);
+
+    if (isHidden) {
+      unhidePhrase(currentPhrase.id, setId);
+      updateHideIcon();
+    } else {
+      hidePhrase(currentPhrase.id, setId);
+      updateHideIcon();
+      // Move to next phrase since this one is now hidden
+      loadNextPhrase();
+    }
+  }
+
+  function updateHideIcon() {
+    if (!currentPhrase || !el.hideIconEmpty || !el.hideIconFilled) return;
+
+    const setId = currentPhrase._sourceSetId || currentSet.id;
+    const isHidden = isPhraseHidden(currentPhrase.id, setId);
+
+    UI.toggle(el.hideIconEmpty, !isHidden);
+    UI.toggle(el.hideIconFilled, isHidden);
+
+    // Update tooltip
+    if (el.hideButton) {
+      el.hideButton.title = isHidden
+        ? I18N.t("unhidePhrase")
+        : I18N.t("hidePhrase");
     }
   }
 
