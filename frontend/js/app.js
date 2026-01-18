@@ -205,6 +205,7 @@
       hideModal: document.getElementById("hide-modal"),
       hideCancelButton: document.getElementById("hide-cancel-button"),
       hideConfirmButton: document.getElementById("hide-confirm-button"),
+      clearHiddenButton: document.getElementById("clear-hidden-button"),
     };
   }
 
@@ -251,6 +252,7 @@
     el.hideButton?.addEventListener("click", onHideButtonClick);
     el.hideCancelButton?.addEventListener("click", closeHideModal);
     el.hideConfirmButton?.addEventListener("click", confirmHidePhrase);
+    el.clearHiddenButton?.addEventListener("click", clearAllHiddenPhrases);
 
     // Reset modal
     el.resetCancelButton?.addEventListener("click", closeResetModal);
@@ -1453,6 +1455,32 @@
 
   function closeHideModal() {
     UI.hide(el.hideModal);
+  }
+
+  function clearAllHiddenPhrases() {
+    // Find all hidden phrases keys in localStorage
+    const keysToRemove = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith("langlearn_hidden_")) {
+        keysToRemove.push(key);
+      }
+    }
+
+    if (keysToRemove.length === 0) {
+      alert(I18N.t("noHiddenPhrases"));
+      return;
+    }
+
+    // Remove all hidden phrases keys
+    keysToRemove.forEach((key) => localStorage.removeItem(key));
+    alert(I18N.t("hiddenPhrasesCleared"));
+
+    // Refresh current view
+    if (currentPhrase) {
+      updateHideIcon();
+      loadNextPhrase();
+    }
   }
 
   function confirmHidePhrase() {

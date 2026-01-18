@@ -255,6 +255,11 @@ const I18N = {
       hidePhraseMessage:
         "This phrase will not appear in exercises or statistics.",
       hide: "Hide",
+      hiddenPhrases: "Hidden phrases",
+      clearHiddenPhrases: "Show all hidden phrases",
+      clearHiddenPhrasesDesc: "Restore all hidden phrases across all sets",
+      noHiddenPhrases: "No hidden phrases",
+      hiddenPhrasesCleared: "All hidden phrases restored",
     },
 
     pl: {
@@ -382,6 +387,12 @@ const I18N = {
       hidePhraseMessage:
         "Ta fraza nie będzie pojawiać się w ćwiczeniach ani statystykach.",
       hide: "Ukryj",
+      hiddenPhrases: "Ukryte frazy",
+      clearHiddenPhrases: "Pokaż wszystkie ukryte frazy",
+      clearHiddenPhrasesDesc:
+        "Przywróć wszystkie ukryte frazy we wszystkich zestawach",
+      noHiddenPhrases: "Brak ukrytych fraz",
+      hiddenPhrasesCleared: "Wszystkie ukryte frazy przywrócone",
     },
 
     de: {
@@ -510,6 +521,12 @@ const I18N = {
       hidePhraseMessage:
         "Diese Phrase erscheint nicht in Übungen oder Statistiken.",
       hide: "Ausblenden",
+      hiddenPhrases: "Ausgeblendete Phrasen",
+      clearHiddenPhrases: "Alle ausgeblendeten Phrasen anzeigen",
+      clearHiddenPhrasesDesc:
+        "Alle ausgeblendeten Phrasen in allen Sets wiederherstellen",
+      noHiddenPhrases: "Keine ausgeblendeten Phrasen",
+      hiddenPhrasesCleared: "Alle ausgeblendeten Phrasen wiederhergestellt",
     },
 
     es: {
@@ -638,6 +655,12 @@ const I18N = {
       hidePhraseMessage:
         "Esta frase no aparecerá en ejercicios ni estadísticas.",
       hide: "Ocultar",
+      hiddenPhrases: "Frases ocultas",
+      clearHiddenPhrases: "Mostrar todas las frases ocultas",
+      clearHiddenPhrasesDesc:
+        "Restaurar todas las frases ocultas en todos los conjuntos",
+      noHiddenPhrases: "No hay frases ocultas",
+      hiddenPhrasesCleared: "Todas las frases ocultas restauradas",
     },
 
     fr: {
@@ -766,6 +789,12 @@ const I18N = {
       hidePhraseMessage:
         "Cette phrase n'apparaîtra pas dans les exercices ni les statistiques.",
       hide: "Masquer",
+      hiddenPhrases: "Phrases masquées",
+      clearHiddenPhrases: "Afficher toutes les phrases masquées",
+      clearHiddenPhrasesDesc:
+        "Restaurer toutes les phrases masquées dans tous les ensembles",
+      noHiddenPhrases: "Aucune phrase masquée",
+      hiddenPhrasesCleared: "Toutes les phrases masquées restaurées",
     },
   },
 
