@@ -5,7 +5,8 @@
     "language": "de",
     "speechLang": "de-DE",
     "sourceLanguage": "pl",
-    "sourceSpeechLang": "pl-PL"
+    "sourceSpeechLang": "pl-PL",
+    "archive": "true"
   },
   "phrases": [
     {

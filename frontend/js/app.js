@@ -489,12 +489,17 @@
     if (!container) return;
     container.innerHTML = "";
 
-    // Group sets by language
+    // Group sets by language, separating archived sets
     const grouped = {};
+    const archived = [];
     for (const [id, set] of Object.entries(SETS)) {
-      const lang = set.metadata.language;
-      if (!grouped[lang]) grouped[lang] = [];
-      grouped[lang].push({ id, ...set });
+      if (set.metadata.archive === "true" || set.metadata.archive === true) {
+        archived.push({ id, ...set });
+      } else {
+        const lang = set.metadata.language;
+        if (!grouped[lang]) grouped[lang] = [];
+        grouped[lang].push({ id, ...set });
+      }
     }
 
     // Get expanded state
@@ -525,6 +530,20 @@
         isExpanded,
       );
       container.insertAdjacentHTML("beforeend", folderHTML);
+    }
+
+    // Create Archive folder if there are archived sets
+    if (archived.length > 0) {
+      const archiveDisplay = { flag: "📦", name: I18N.t("archive") };
+      const isArchiveExpanded = expanded.includes("_archive");
+      const archiveFolderHTML = createFolderHTML(
+        "_archive",
+        archiveDisplay,
+        archived,
+        null,
+        isArchiveExpanded,
+      );
+      container.insertAdjacentHTML("beforeend", archiveFolderHTML);
     }
 
     // Attach event listeners

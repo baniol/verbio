@@ -244,6 +244,9 @@ const I18N = {
 
       // Set selection modal
       reviewSetPrefix: "Review",
+
+      // Archive
+      archive: "Archive",
     },
 
     pl: {
@@ -360,6 +363,9 @@ const I18N = {
 
       // Set selection modal
       reviewSetPrefix: "Do powtórki",
+
+      // Archive
+      archive: "Archiwum",
     },
 
     de: {
@@ -477,6 +483,9 @@ const I18N = {
 
       // Set selection modal
       reviewSetPrefix: "Wiederholung",
+
+      // Archive
+      archive: "Archiv",
     },
 
     es: {
@@ -594,6 +603,9 @@ const I18N = {
 
       // Set selection modal
       reviewSetPrefix: "Repaso",
+
+      // Archive
+      archive: "Archivo",
     },
 
     fr: {
@@ -711,6 +723,9 @@ const I18N = {
 
       // Set selection modal
       reviewSetPrefix: "Révision",
+
+      // Archive
+      archive: "Archives",
     },
   },
 
