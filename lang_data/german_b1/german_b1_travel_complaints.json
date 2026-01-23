@@ -1,0 +1,132 @@
+{
+  "metadata": {
+    "id": "german_b1_travel_complaints",
+    "name": "German B1 - Travel: Complaints",
+    "language": "de",
+    "speechLang": "de-DE",
+    "sourceLanguage": "en",
+    "sourceSpeechLang": "en-US"
+  },
+  "phrases": [
+    {
+      "id": 1,
+      "prompt": "I would like to make a complaint.",
+      "answer": "Ich möchte mich beschweren.",
+      "accepted": ["ich möchte mich beschweren", "ich würde mich gerne beschweren", "ich will mich beschweren"]
+    },
+    {
+      "id": 2,
+      "prompt": "This is unacceptable.",
+      "answer": "Das ist nicht akzeptabel.",
+      "accepted": ["das ist nicht akzeptabel", "das ist inakzeptabel", "das geht nicht"]
+    },
+    {
+      "id": 3,
+      "prompt": "I wasn't informed about the delay.",
+      "answer": "Ich wurde nicht über die Verspätung informiert.",
+      "accepted": ["ich wurde nicht über die verspätung informiert", "man hat mich nicht über die verspätung informiert"]
+    },
+    {
+      "id": 4,
+      "prompt": "Nobody helped me.",
+      "answer": "Niemand hat mir geholfen.",
+      "accepted": ["niemand hat mir geholfen", "keiner hat mir geholfen", "mir hat keiner geholfen"]
+    },
+    {
+      "id": 5,
+      "prompt": "I've been waiting for an hour.",
+      "answer": "Ich warte seit einer Stunde.",
+      "accepted": ["ich warte seit einer stunde", "ich warte seit 1 stunde", "ich warte schon eine stunde"]
+    },
+    {
+      "id": 6,
+      "prompt": "Could you call your supervisor, please?",
+      "answer": "Könnten Sie bitte Ihren Vorgesetzten rufen?",
+      "accepted": ["könnten sie bitte ihren vorgesetzten rufen", "können sie bitte ihren vorgesetzten rufen", "könnten sie ihren chef rufen"]
+    },
+    {
+      "id": 7,
+      "prompt": "I need to speak to someone in charge.",
+      "answer": "Ich muss mit einem Verantwortlichen sprechen.",
+      "accepted": ["ich muss mit einem verantwortlichen sprechen", "ich möchte mit einem verantwortlichen sprechen", "ich will mit jemandem verantwortlichen sprechen"]
+    },
+    {
+      "id": 8,
+      "prompt": "The service was very poor.",
+      "answer": "Der Service war sehr schlecht.",
+      "accepted": ["der service war sehr schlecht", "die bedienung war sehr schlecht", "der service war miserabel"]
+    },
+    {
+      "id": 9,
+      "prompt": "I paid for a seat reservation, but someone is sitting there.",
+      "answer": "Ich habe für eine Platzreservierung bezahlt, aber jemand sitzt dort.",
+      "accepted": ["ich habe für eine platzreservierung bezahlt aber jemand sitzt dort", "ich habe einen platz reserviert aber jemand sitzt dort"]
+    },
+    {
+      "id": 10,
+      "prompt": "I want to file a formal complaint.",
+      "answer": "Ich möchte eine offizielle Beschwerde einreichen.",
+      "accepted": ["ich möchte eine offizielle beschwerde einreichen", "ich will eine formelle beschwerde einreichen", "ich möchte mich offiziell beschweren"]
+    },
+    {
+      "id": 11,
+      "prompt": "Where can I get a complaint form?",
+      "answer": "Wo bekomme ich ein Beschwerdeformular?",
+      "accepted": ["wo bekomme ich ein beschwerdeformular", "wo kann ich ein beschwerdeformular bekommen", "wo gibt es ein beschwerdeformular"]
+    },
+    {
+      "id": 12,
+      "prompt": "I was treated unfairly.",
+      "answer": "Ich wurde unfair behandelt.",
+      "accepted": ["ich wurde unfair behandelt", "ich wurde ungerecht behandelt", "man hat mich unfair behandelt"]
+    },
+    {
+      "id": 13,
+      "prompt": "No one told me about the platform change.",
+      "answer": "Niemand hat mir von der Gleisänderung gesagt.",
+      "accepted": ["niemand hat mir von der gleisänderung gesagt", "keiner hat mir von der gleisänderung erzählt", "ich wurde nicht über die gleisänderung informiert"]
+    },
+    {
+      "id": 14,
+      "prompt": "I missed my flight because of the delay.",
+      "answer": "Ich habe meinen Flug wegen der Verspätung verpasst.",
+      "accepted": ["ich habe meinen flug wegen der verspätung verpasst", "wegen der verspätung habe ich meinen flug verpasst"]
+    },
+    {
+      "id": 15,
+      "prompt": "The information was wrong.",
+      "answer": "Die Information war falsch.",
+      "accepted": ["die information war falsch", "die informationen waren falsch", "die angaben waren falsch"]
+    },
+    {
+      "id": 16,
+      "prompt": "I would like to speak to the manager.",
+      "answer": "Ich möchte mit dem Leiter sprechen.",
+      "accepted": ["ich möchte mit dem leiter sprechen", "ich würde gerne mit dem manager sprechen", "kann ich mit dem leiter sprechen"]
+    },
+    {
+      "id": 17,
+      "prompt": "The announcement was unclear.",
+      "answer": "Die Durchsage war unklar.",
+      "accepted": ["die durchsage war unklar", "die durchsage war nicht verständlich", "ich habe die durchsage nicht verstanden"]
+    },
+    {
+      "id": 18,
+      "prompt": "I demand an explanation.",
+      "answer": "Ich verlange eine Erklärung.",
+      "accepted": ["ich verlange eine erklärung", "ich möchte eine erklärung", "ich will eine erklärung"]
+    },
+    {
+      "id": 19,
+      "prompt": "This happened because of your mistake.",
+      "answer": "Das ist wegen Ihres Fehlers passiert.",
+      "accepted": ["das ist wegen ihres fehlers passiert", "das passierte wegen ihres fehlers", "das ist ihr fehler"]
+    },
+    {
+      "id": 20,
+      "prompt": "I'm very disappointed with the service.",
+      "answer": "Ich bin sehr enttäuscht vom Service.",
+      "accepted": ["ich bin sehr enttäuscht vom service", "ich bin vom service sehr enttäuscht", "ich bin von der bedienung enttäuscht"]
+    }
+  ]
+}

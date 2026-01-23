@@ -1,0 +1,132 @@
+{
+  "metadata": {
+    "id": "german_b1_travel_problems",
+    "name": "German B1 - Travel: Problems",
+    "language": "de",
+    "speechLang": "de-DE",
+    "sourceLanguage": "en",
+    "sourceSpeechLang": "en-US"
+  },
+  "phrases": [
+    {
+      "id": 1,
+      "prompt": "My train has been cancelled.",
+      "answer": "Mein Zug ist ausgefallen.",
+      "accepted": ["mein zug ist ausgefallen", "mein zug wurde gestrichen"]
+    },
+    {
+      "id": 2,
+      "prompt": "The flight is delayed by two hours.",
+      "answer": "Der Flug hat zwei Stunden Verspätung.",
+      "accepted": ["der flug hat zwei stunden verspätung", "der flug hat 2 stunden verspätung", "der flug ist zwei stunden verspätet", "der flug ist 2 stunden verspätet"]
+    },
+    {
+      "id": 3,
+      "prompt": "Why was the train cancelled?",
+      "answer": "Warum ist der Zug ausgefallen?",
+      "accepted": ["warum ist der zug ausgefallen", "warum wurde der zug gestrichen"]
+    },
+    {
+      "id": 4,
+      "prompt": "The connection was cancelled because of a strike.",
+      "answer": "Die Verbindung wurde wegen eines Streiks gestrichen.",
+      "accepted": ["die verbindung wurde wegen eines streiks gestrichen", "die verbindung ist wegen eines streiks ausgefallen"]
+    },
+    {
+      "id": 5,
+      "prompt": "I missed my connection.",
+      "answer": "Ich habe meinen Anschluss verpasst.",
+      "accepted": ["ich habe meinen anschluss verpasst", "ich habe den anschluss verpasst"]
+    },
+    {
+      "id": 6,
+      "prompt": "The train is delayed because of technical problems.",
+      "answer": "Der Zug hat Verspätung wegen technischer Probleme.",
+      "accepted": ["der zug hat verspätung wegen technischer probleme", "der zug ist verspätet wegen technischer probleme"]
+    },
+    {
+      "id": 7,
+      "prompt": "How long will the delay be?",
+      "answer": "Wie lange wird die Verspätung dauern?",
+      "accepted": ["wie lange wird die verspätung dauern", "wie lange dauert die verspätung", "wie viel verspätung haben wir"]
+    },
+    {
+      "id": 8,
+      "prompt": "I lost my luggage.",
+      "answer": "Ich habe mein Gepäck verloren.",
+      "accepted": ["ich habe mein gepäck verloren", "mein gepäck ist verloren gegangen", "mein gepäck ist weg"]
+    },
+    {
+      "id": 9,
+      "prompt": "My suitcase was damaged.",
+      "answer": "Mein Koffer wurde beschädigt.",
+      "accepted": ["mein koffer wurde beschädigt", "mein koffer ist beschädigt worden", "mein koffer ist kaputt"]
+    },
+    {
+      "id": 10,
+      "prompt": "The bus didn't come.",
+      "answer": "Der Bus ist nicht gekommen.",
+      "accepted": ["der bus ist nicht gekommen", "der bus kam nicht"]
+    },
+    {
+      "id": 11,
+      "prompt": "I'm stuck at the airport.",
+      "answer": "Ich sitze am Flughafen fest.",
+      "accepted": ["ich sitze am flughafen fest", "ich hänge am flughafen fest"]
+    },
+    {
+      "id": 12,
+      "prompt": "The platform has been changed.",
+      "answer": "Das Gleis wurde geändert.",
+      "accepted": ["das gleis wurde geändert", "der bahnsteig wurde geändert", "es gab eine gleisänderung"]
+    },
+    {
+      "id": 13,
+      "prompt": "I can't find my ticket.",
+      "answer": "Ich kann mein Ticket nicht finden.",
+      "accepted": ["ich kann mein ticket nicht finden", "ich finde mein ticket nicht", "ich kann meine fahrkarte nicht finden"]
+    },
+    {
+      "id": 14,
+      "prompt": "The train is overcrowded.",
+      "answer": "Der Zug ist überfüllt.",
+      "accepted": ["der zug ist überfüllt", "der zug ist voll", "der zug ist zu voll"]
+    },
+    {
+      "id": 15,
+      "prompt": "There are no seats available.",
+      "answer": "Es gibt keine freien Plätze.",
+      "accepted": ["es gibt keine freien plätze", "es sind keine plätze frei", "keine plätze frei"]
+    },
+    {
+      "id": 16,
+      "prompt": "My reservation is not valid.",
+      "answer": "Meine Reservierung ist nicht gültig.",
+      "accepted": ["meine reservierung ist nicht gültig", "meine reservierung gilt nicht"]
+    },
+    {
+      "id": 17,
+      "prompt": "The departure gate has been changed.",
+      "answer": "Das Abfluggate wurde geändert.",
+      "accepted": ["das abfluggate wurde geändert", "das gate wurde geändert"]
+    },
+    {
+      "id": 18,
+      "prompt": "I got on the wrong train.",
+      "answer": "Ich bin in den falschen Zug eingestiegen.",
+      "accepted": ["ich bin in den falschen zug eingestiegen", "ich habe den falschen zug genommen"]
+    },
+    {
+      "id": 19,
+      "prompt": "The air conditioning is broken.",
+      "answer": "Die Klimaanlage ist kaputt.",
+      "accepted": ["die klimaanlage ist kaputt", "die klimaanlage funktioniert nicht", "die klimaanlage ist defekt"]
+    },
+    {
+      "id": 20,
+      "prompt": "I left my bag on the train.",
+      "answer": "Ich habe meine Tasche im Zug vergessen.",
+      "accepted": ["ich habe meine tasche im zug vergessen", "ich habe meine tasche im zug liegen lassen", "ich habe meine tasche im zug gelassen"]
+    }
+  ]
+}
