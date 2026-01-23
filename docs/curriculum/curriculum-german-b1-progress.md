@@ -12,7 +12,7 @@ Checklist to track phrase set creation according to B1 curriculum.
 |-------|--------|------|------|
 | Travel - planning and reservations | [x] | german_b1_travel_planning, german_b1_travel_directions, german_b1_travel_tickets | 2026-01-01 |
 | Travel - transport and connections | [x] | german_b1_travel_transport, german_b1_travel_schedules, german_b1_travel_onboard | 2026-01-16 |
-| Travel - problems and delays | [ ] | | |
+| Travel - problems and delays | [x] | german_b1_travel_problems, german_b1_travel_complaints, german_b1_travel_solutions | 2026-01-23 |
 | Accommodation - hotel and check-in | [ ] | | |
 | Accommodation - problems and complaints | [ ] | | |
 | Travel stories - describing places | [ ] | | |
@@ -129,7 +129,7 @@ Checklist to track phrase set creation according to B1 curriculum.
 
 | Category | Completed | Total |
 |----------|-----------|-------|
-| Travel and Leisure | 2 | 6 |
+| Travel and Leisure | 3 | 6 |
 | Work and Career | 0 | 4 |
 | Health and Body | 0 | 4 |
 | Home and Housing | 0 | 3 |
@@ -142,6 +142,6 @@ Checklist to track phrase set creation according to B1 curriculum.
 | Culture and Arts | 0 | 2 |
 | Plans and Dreams | 0 | 2 |
 | Communication Situations | 0 | 8 |
-| **TOTAL** | **2** | **47** |
+| **TOTAL** | **3** | **47** |
 
 > **Note:** Grammar (10 topics) is integrated with the above topics, not as separate sets.
