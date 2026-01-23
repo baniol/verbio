@@ -4,15 +4,15 @@ Arguments: $ARGUMENTS
 
 Format: `[topic] [source_language]`
 - topic (optional): specific topic from curriculum (contains " - " separator)
-- source_language (optional): prompt language (default: english)
-  Options: english, polish, spanish, french
+- source_language (optional): prompt language (default: polish)
+  Options: polish, english, spanish, french
 
 Examples:
-- `/generate-b1-set` - auto-select next topic, English prompts
-- `/generate-b1-set Travel - planning` - specific topic, English prompts  
-- `/generate-b1-set Travel - planning polish` - specific topic, Polish prompts
-- `/generate-b1-set polish` - auto-select topic, Polish prompts
+- `/generate-b1-set` - auto-select next topic, Polish prompts
+- `/generate-b1-set Travel - planning` - specific topic, Polish prompts  
+- `/generate-b1-set Travel - planning english` - specific topic, English prompts
 - `/generate-b1-set english` - auto-select topic, English prompts
+- `/generate-b1-set polish` - auto-select topic, Polish prompts
 
 ---
 
@@ -23,18 +23,18 @@ Parse $ARGUMENTS to determine topic and source_language:
 1. **Check if last word is a language**: If the last word of $ARGUMENTS is one of: `english`, `polish`, `spanish`, `french` → that's the `source_language`
 2. **Check for topic**: If remaining text (after removing language) contains " - " → that's the `topic`
 3. **Defaults**: 
-   - If no language found → `source_language` = "english"
+   - If no language found → `source_language` = "polish"
    - If no topic found → auto-select from progress
 
 **Parsing examples:**
 | Input | Topic | Source Language |
 |-------|-------|-----------------|
-| (empty) | auto-select | english |
-| `polish` | auto-select | polish |
+| (empty) | auto-select | polish |
 | `english` | auto-select | english |
-| `Travel - planning` | Travel - planning | english |
-| `Travel - planning polish` | Travel - planning | polish |
-| `At the doctor english` | At the doctor | english |
+| `polish` | auto-select | polish |
+| `Travel - planning` | Travel - planning | polish |
+| `Travel - planning english` | Travel - planning | english |
+| `At the doctor polish` | At the doctor | polish |
 
 Source language codes:
 | Language | ISO | Speech |

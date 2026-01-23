@@ -4,129 +4,189 @@
     "name": "German B1 - Travel: Solutions",
     "language": "de",
     "speechLang": "de-DE",
-    "sourceLanguage": "en",
-    "sourceSpeechLang": "en-US"
+    "sourceLanguage": "pl",
+    "sourceSpeechLang": "pl-PL"
   },
   "phrases": [
     {
       "id": 1,
-      "prompt": "Is there an alternative connection?",
+      "prompt": "Czy jest alternatywne połączenie?",
       "answer": "Gibt es eine alternative Verbindung?",
-      "accepted": ["gibt es eine alternative verbindung", "gibt es eine andere verbindung"]
+      "accepted": [
+        "gibt es eine alternative verbindung",
+        "gibt es eine andere verbindung"
+      ]
     },
     {
       "id": 2,
-      "prompt": "When does the next train leave?",
+      "prompt": "Kiedy odjeżdża następny pociąg?",
       "answer": "Wann fährt der nächste Zug?",
       "accepted": ["wann fährt der nächste zug", "wann geht der nächste zug"]
     },
     {
       "id": 3,
-      "prompt": "Can I get a refund?",
+      "prompt": "Czy mogę dostać zwrot pieniędzy?",
       "answer": "Kann ich eine Erstattung bekommen?",
-      "accepted": ["kann ich eine erstattung bekommen", "kann ich mein geld zurückbekommen", "bekomme ich mein geld zurück"]
+      "accepted": [
+        "kann ich eine erstattung bekommen",
+        "kann ich mein geld zurückbekommen",
+        "bekomme ich mein geld zurück"
+      ]
     },
     {
       "id": 4,
-      "prompt": "I need to rebook my flight.",
+      "prompt": "Muszę przebukować mój lot.",
       "answer": "Ich muss meinen Flug umbuchen.",
-      "accepted": ["ich muss meinen flug umbuchen", "ich möchte meinen flug umbuchen"]
+      "accepted": [
+        "ich muss meinen flug umbuchen",
+        "ich möchte meinen flug umbuchen"
+      ]
     },
     {
       "id": 5,
-      "prompt": "Could you help me find another route?",
+      "prompt": "Czy mógłby mi Pan pomóc znaleźć inną trasę?",
       "answer": "Könnten Sie mir helfen, eine andere Route zu finden?",
-      "accepted": ["könnten sie mir helfen eine andere route zu finden", "können sie mir helfen eine andere route zu finden", "können sie mir bei einer anderen route helfen"]
+      "accepted": [
+        "könnten sie mir helfen eine andere route zu finden",
+        "können sie mir helfen eine andere route zu finden",
+        "können sie mir bei einer anderen route helfen"
+      ]
     },
     {
       "id": 6,
-      "prompt": "Where is the lost and found office?",
+      "prompt": "Gdzie jest biuro rzeczy znalezionych?",
       "answer": "Wo ist das Fundbüro?",
       "accepted": ["wo ist das fundbüro", "wo finde ich das fundbüro"]
     },
     {
       "id": 7,
-      "prompt": "I would like to change my ticket.",
+      "prompt": "Chciałbym wymienić mój bilet.",
       "answer": "Ich möchte mein Ticket umtauschen.",
-      "accepted": ["ich möchte mein ticket umtauschen", "ich würde gerne mein ticket umtauschen", "ich möchte meine fahrkarte umtauschen"]
+      "accepted": [
+        "ich möchte mein ticket umtauschen",
+        "ich würde gerne mein ticket umtauschen",
+        "ich möchte meine fahrkarte umtauschen"
+      ]
     },
     {
       "id": 8,
-      "prompt": "Can I take the next train with this ticket?",
+      "prompt": "Czy mogę wsiąść do następnego pociągu z tym biletem?",
       "answer": "Kann ich mit diesem Ticket den nächsten Zug nehmen?",
-      "accepted": ["kann ich mit diesem ticket den nächsten zug nehmen", "kann ich mit dieser fahrkarte den nächsten zug nehmen", "gilt mein ticket für den nächsten zug"]
+      "accepted": [
+        "kann ich mit diesem ticket den nächsten zug nehmen",
+        "kann ich mit dieser fahrkarte den nächsten zug nehmen",
+        "gilt mein ticket für den nächsten zug"
+      ]
     },
     {
       "id": 9,
-      "prompt": "Where can I report lost luggage?",
+      "prompt": "Gdzie mogę zgłosić zgubiony bagaż?",
       "answer": "Wo kann ich verlorenes Gepäck melden?",
-      "accepted": ["wo kann ich verlorenes gepäck melden", "wo melde ich verlorenes gepäck"]
+      "accepted": [
+        "wo kann ich verlorenes gepäck melden",
+        "wo melde ich verlorenes gepäck"
+      ]
     },
     {
       "id": 10,
-      "prompt": "Is there a hotel nearby?",
+      "prompt": "Czy jest hotel w pobliżu?",
       "answer": "Gibt es ein Hotel in der Nähe?",
       "accepted": ["gibt es ein hotel in der nähe", "ist ein hotel in der nähe"]
     },
     {
       "id": 11,
-      "prompt": "I need a confirmation for my insurance.",
+      "prompt": "Potrzebuję potwierdzenia dla mojego ubezpieczyciela.",
       "answer": "Ich brauche eine Bestätigung für meine Versicherung.",
-      "accepted": ["ich brauche eine bestätigung für meine versicherung", "ich benötige eine bestätigung für meine versicherung"]
+      "accepted": [
+        "ich brauche eine bestätigung für meine versicherung",
+        "ich benötige eine bestätigung für meine versicherung"
+      ]
     },
     {
       "id": 12,
-      "prompt": "Can you put me on the waiting list?",
+      "prompt": "Czy może mnie Pan wpisać na listę rezerwową?",
       "answer": "Können Sie mich auf die Warteliste setzen?",
-      "accepted": ["können sie mich auf die warteliste setzen", "könnten sie mich auf die warteliste setzen"]
+      "accepted": [
+        "können sie mich auf die warteliste setzen",
+        "könnten sie mich auf die warteliste setzen"
+      ]
     },
     {
       "id": 13,
-      "prompt": "What are my options?",
+      "prompt": "Jakie mam możliwości?",
       "answer": "Was sind meine Möglichkeiten?",
-      "accepted": ["was sind meine möglichkeiten", "welche möglichkeiten habe ich", "was kann ich tun"]
+      "accepted": [
+        "was sind meine möglichkeiten",
+        "welche möglichkeiten habe ich",
+        "was kann ich tun"
+      ]
     },
     {
       "id": 14,
-      "prompt": "I need to contact my hotel.",
+      "prompt": "Muszę skontaktować się z moim hotelem.",
       "answer": "Ich muss mein Hotel kontaktieren.",
-      "accepted": ["ich muss mein hotel kontaktieren", "ich muss mein hotel anrufen", "ich muss im hotel anrufen"]
+      "accepted": [
+        "ich muss mein hotel kontaktieren",
+        "ich muss mein hotel anrufen",
+        "ich muss im hotel anrufen"
+      ]
     },
     {
       "id": 15,
-      "prompt": "Does the company pay for accommodation?",
+      "prompt": "Czy firma płaci za nocleg?",
       "answer": "Bezahlt die Firma die Unterkunft?",
-      "accepted": ["bezahlt die firma die unterkunft", "übernimmt die firma die unterkunft", "zahlt die gesellschaft das hotel"]
+      "accepted": [
+        "bezahlt die firma die unterkunft",
+        "übernimmt die firma die unterkunft",
+        "zahlt die gesellschaft das hotel"
+      ]
     },
     {
       "id": 16,
-      "prompt": "I would like to request compensation.",
+      "prompt": "Chciałbym ubiegać się o odszkodowanie.",
       "answer": "Ich möchte eine Entschädigung beantragen.",
-      "accepted": ["ich möchte eine entschädigung beantragen", "ich würde gerne eine entschädigung beantragen", "ich will eine entschädigung"]
+      "accepted": [
+        "ich möchte eine entschädigung beantragen",
+        "ich würde gerne eine entschädigung beantragen",
+        "ich will eine entschädigung"
+      ]
     },
     {
       "id": 17,
-      "prompt": "Where do I get a delay certificate?",
+      "prompt": "Gdzie dostanę zaświadczenie o opóźnieniu?",
       "answer": "Wo bekomme ich eine Verspätungsbestätigung?",
-      "accepted": ["wo bekomme ich eine verspätungsbestätigung", "wo kann ich eine verspätungsbestätigung bekommen"]
+      "accepted": [
+        "wo bekomme ich eine verspätungsbestätigung",
+        "wo kann ich eine verspätungsbestätigung bekommen"
+      ]
     },
     {
       "id": 18,
-      "prompt": "Can I use a different airline?",
+      "prompt": "Czy mogę polecieć innymi liniami lotniczymi?",
       "answer": "Kann ich eine andere Fluggesellschaft benutzen?",
-      "accepted": ["kann ich eine andere fluggesellschaft benutzen", "kann ich mit einer anderen airline fliegen", "kann ich eine andere airline nehmen"]
+      "accepted": [
+        "kann ich eine andere fluggesellschaft benutzen",
+        "kann ich mit einer anderen airline fliegen",
+        "kann ich eine andere airline nehmen"
+      ]
     },
     {
       "id": 19,
-      "prompt": "How long do I have to wait for the replacement bus?",
+      "prompt": "Jak długo muszę czekać na autobus zastępczy?",
       "answer": "Wie lange muss ich auf den Ersatzbus warten?",
-      "accepted": ["wie lange muss ich auf den ersatzbus warten", "wie lange dauert es bis der ersatzbus kommt"]
+      "accepted": [
+        "wie lange muss ich auf den ersatzbus warten",
+        "wie lange dauert es bis der ersatzbus kommt"
+      ]
     },
     {
       "id": 20,
-      "prompt": "I need to inform my employer about the delay.",
+      "prompt": "Muszę poinformować pracodawcę o opóźnieniu.",
       "answer": "Ich muss meinen Arbeitgeber über die Verspätung informieren.",
-      "accepted": ["ich muss meinen arbeitgeber über die verspätung informieren", "ich muss meinem chef bescheid sagen"]
+      "accepted": [
+        "ich muss meinen arbeitgeber über die verspätung informieren",
+        "ich muss meinem chef bescheid sagen"
+      ]
     }
   ]
 }
