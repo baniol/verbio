@@ -15,8 +15,8 @@ Requires:
     - pip install boto3 python-dotenv
 """
 
-import json
 import hashlib
+import json
 import os
 from pathlib import Path
 
@@ -95,7 +95,9 @@ def generate_audio(polly_client, text: str, voice_id: str, output_path: Path) ->
         f.write(response["AudioStream"].read())
 
 
-def process_language_set(polly_client, json_path: Path, manifest: dict) -> tuple[int, int]:
+def process_language_set(
+    polly_client, json_path: Path, manifest: dict
+) -> tuple[int, int]:
     """
     Process a single language set JSON file.
 
@@ -140,7 +142,7 @@ def process_language_set(polly_client, json_path: Path, manifest: dict) -> tuple
             generate_audio(polly_client, answer_text, voice_id, output_path)
             manifest[set_id][phrase_id] = {
                 "hash": text_hash,
-                "file": f"{phrase_id}.mp3"
+                "file": f"{phrase_id}.mp3",
             }
             generated += 1
         except Exception as e:
@@ -164,8 +166,8 @@ def main():
     # Load manifest
     manifest = load_manifest()
 
-    # Find all language set JSON files
-    json_files = sorted(LANG_DATA_DIR.glob("*.json"))
+    # Find all language set JSON files (recursively)
+    json_files = sorted(LANG_DATA_DIR.glob("**/*.json"))
     if not json_files:
         print(f"No JSON files found in {LANG_DATA_DIR}")
         return 1
