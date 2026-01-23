@@ -21,45 +21,41 @@ echo "==> Building sets.js from lang_data..."
 
 SETS_JS="$PROJECT_ROOT/frontend/js/sets.js"
 
-echo "// Auto-generated from lang_data/*.json - do not edit manually" > "$SETS_JS"
+echo "// Auto-generated from lang_data/**/*.json - do not edit manually" > "$SETS_JS"
 echo "const SETS = {" >> "$SETS_JS"
 
 first=true
-# Regular sets from lang_data/
-for jsonfile in "$PROJECT_ROOT"/lang_data/*.json; do
-    if [ -f "$jsonfile" ]; then
-        filename=$(basename "$jsonfile" .json)
-        if [ "$first" = true ]; then
-            first=false
-        else
-            echo "," >> "$SETS_JS"
-        fi
-        echo -n "  \"$filename\": " >> "$SETS_JS"
-        cat "$jsonfile" >> "$SETS_JS"
-    fi
-done
 
-# Archived sets from lang_data/archive/ - inject _archived flag into metadata
-for jsonfile in "$PROJECT_ROOT"/lang_data/archive/*.json; do
+# Process all JSON files in lang_data/ and its subdirectories (1 level deep)
+# Root level files have no folder, subdirectory files get folder name injected
+for jsonfile in "$PROJECT_ROOT"/lang_data/*.json "$PROJECT_ROOT"/lang_data/*/*.json; do
     if [ -f "$jsonfile" ]; then
         filename=$(basename "$jsonfile" .json)
+        # Get relative path from lang_data/
+        relpath="${jsonfile#$PROJECT_ROOT/lang_data/}"
+        dirname=$(dirname "$relpath")
+
         if [ "$first" = true ]; then
             first=false
         else
             echo "," >> "$SETS_JS"
         fi
         echo -n "  \"$filename\": " >> "$SETS_JS"
-        # Inject "_archived": true after "metadata": {
-        sed 's/"metadata": {/"metadata": { "_archived": true,/' "$jsonfile" >> "$SETS_JS"
+
+        if [ "$dirname" = "." ]; then
+            # Root level file - no folder
+            cat "$jsonfile" >> "$SETS_JS"
+        else
+            # Subdirectory file - inject _folder into metadata
+            sed "s/\"metadata\": {/\"metadata\": { \"_folder\": \"$dirname\",/" "$jsonfile" >> "$SETS_JS"
+        fi
     fi
 done
 
 echo "" >> "$SETS_JS"
 echo "};" >> "$SETS_JS"
 
-REGULAR_COUNT=$(ls -1 "$PROJECT_ROOT"/lang_data/*.json 2>/dev/null | wc -l | tr -d ' ')
-ARCHIVE_COUNT=$(ls -1 "$PROJECT_ROOT"/lang_data/archive/*.json 2>/dev/null | wc -l | tr -d ' ')
-SET_COUNT=$((REGULAR_COUNT + ARCHIVE_COUNT))
+SET_COUNT=$(find "$PROJECT_ROOT"/lang_data -name "*.json" -type f 2>/dev/null | wc -l | tr -d ' ')
 echo "==> Generated sets.js with $SET_COUNT set(s)"
 
 # Generate version.js from latest git tag

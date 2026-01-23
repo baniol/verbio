@@ -503,73 +503,73 @@
     if (!container) return;
     container.innerHTML = "";
 
-    // Group sets by language, separating archived sets
+    // Group sets by folder (from directory structure)
     const grouped = {};
-    const archived = [];
+    const rootSets = [];
     for (const [id, set] of Object.entries(SETS)) {
-      if (set.metadata._archived) {
-        archived.push({ id, ...set });
+      const folder = set.metadata._folder;
+      if (folder) {
+        if (!grouped[folder]) grouped[folder] = [];
+        grouped[folder].push({ id, ...set });
       } else {
-        const lang = set.metadata.language;
-        if (!grouped[lang]) grouped[lang] = [];
-        grouped[lang].push({ id, ...set });
+        // Sets without folder go to root level
+        rootSets.push({ id, ...set });
       }
     }
 
     // Get expanded state
     const expanded = getExpandedFolders();
 
-    // Sort languages alphabetically by display name
-    const uiLang = I18N.currentLang;
-    const sortedLangs = Object.keys(grouped).sort((a, b) => {
-      const nameA = getLanguageDisplay(a, uiLang).name;
-      const nameB = getLanguageDisplay(b, uiLang).name;
-      return nameA.localeCompare(nameB);
-    });
+    // Sort folders alphabetically
+    const sortedFolders = Object.keys(grouped).sort((a, b) =>
+      a.localeCompare(b),
+    );
 
-    // Create folder for each language
-    for (const lang of sortedLangs) {
-      const sets = grouped[lang];
-      const display = getLanguageDisplay(lang, uiLang);
-      const isExpanded = expanded.includes(lang);
-
-      // Check for review set
-      const reviewData = buildReviewSetData(lang);
+    // Create folder for each directory
+    for (const folder of sortedFolders) {
+      const sets = grouped[folder];
+      // Use folder name as display (replace underscores with spaces, capitalize)
+      const displayName = folder.replace(/_/g, " ");
+      const display = { flag: "📁", name: displayName };
+      const isExpanded = expanded.includes(folder);
 
       const folderHTML = createFolderHTML(
-        lang,
+        folder,
         display,
         sets,
-        reviewData,
+        null,
         isExpanded,
       );
       container.insertAdjacentHTML("beforeend", folderHTML);
     }
 
-    // Create Archive folder if there are archived sets
-    if (archived.length > 0) {
-      const archiveDisplay = { flag: "📦", name: I18N.t("archive") };
-      const isArchiveExpanded = expanded.includes("_archive");
-      const archiveFolderHTML = createFolderHTML(
-        "_archive",
-        archiveDisplay,
-        archived,
-        null,
-        isArchiveExpanded,
-      );
-      container.insertAdjacentHTML("beforeend", archiveFolderHTML);
+    // Add root-level sets without folder wrapper
+    if (rootSets.length > 0) {
+      const rootHTML = rootSets
+        .map(
+          (set) => `
+        <button class="set-item w-full text-left p-3 rounded-xl text-slate-600
+                       dark:text-slate-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/30
+                       hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                data-set-id="${set.id}">
+          ${set.metadata.name}
+        </button>
+      `,
+        )
+        .join("");
+      container.insertAdjacentHTML("beforeend", rootHTML);
     }
 
     // Attach event listeners
     attachFolderListeners();
   }
 
-  function createFolderHTML(lang, display, sets, reviewData, isExpanded) {
+  function createFolderHTML(folderId, display, sets, reviewData, isExpanded) {
     const chevronRotation = isExpanded ? "rotate(180deg)" : "rotate(0deg)";
     const contentHidden = isExpanded ? "" : "hidden";
 
     // Build set items HTML
-    let setsHTML = sets
+    const setsHTML = sets
       .map(
         (set) => `
       <button class="set-item w-full text-left p-2 pl-4 rounded-lg text-slate-600
@@ -582,26 +582,11 @@
       )
       .join("");
 
-    // Add review set if exists
-    if (reviewData && reviewData.phrases.length > 0) {
-      setsHTML += `
-        <button class="set-item w-full text-left p-2 pl-4 rounded-lg text-amber-600
-                       dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/30
-                       transition-colors text-sm"
-                data-set-id="review_${lang}">
-          <span class="flex items-center gap-1">
-            <span>⭐</span>
-            <span>${I18N.t("reviewSetPrefix")} (${reviewData.phrases.length})</span>
-          </span>
-        </button>
-      `;
-    }
-
     return `
-      <div class="language-folder mb-2">
+      <div class="folder-group mb-2">
         <button class="folder-toggle w-full flex items-center justify-between p-3
                        rounded-xl hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
-                data-lang="${lang}">
+                data-folder="${folderId}">
           <span class="flex items-center gap-2">
             <span class="text-xl">${display.flag}</span>
             <span class="font-medium text-slate-800 dark:text-slate-200">${display.name}</span>
@@ -625,7 +610,7 @@
 
     // Folder toggles
     el.setFolders.querySelectorAll(".folder-toggle").forEach((btn) => {
-      btn.addEventListener("click", () => toggleFolder(btn.dataset.lang));
+      btn.addEventListener("click", () => toggleFolder(btn.dataset.folder));
     });
 
     // Set items
@@ -637,8 +622,10 @@
     });
   }
 
-  function toggleFolder(lang) {
-    const folderBtn = el.setFolders.querySelector(`[data-lang="${lang}"]`);
+  function toggleFolder(folderId) {
+    const folderBtn = el.setFolders.querySelector(
+      `[data-folder="${folderId}"]`,
+    );
     if (!folderBtn) return;
 
     const content = folderBtn.nextElementSibling;
@@ -651,9 +638,9 @@
     // Save state to localStorage
     let expanded = getExpandedFolders();
     if (isHidden) {
-      if (!expanded.includes(lang)) expanded.push(lang);
+      if (!expanded.includes(folderId)) expanded.push(folderId);
     } else {
-      expanded = expanded.filter((l) => l !== lang);
+      expanded = expanded.filter((f) => f !== folderId);
     }
     saveExpandedFolders(expanded);
   }
@@ -1587,8 +1574,13 @@
     const notes = getAllNotes();
     const entries = Object.values(notes);
     const generalNotes = getGeneralNotes();
+    const hiddenPhrases = getAllHiddenPhrases();
 
-    if (entries.length === 0 && generalNotes.length === 0) {
+    if (
+      entries.length === 0 &&
+      generalNotes.length === 0 &&
+      hiddenPhrases.length === 0
+    ) {
       alert(I18N.t("noNotesToExport"));
       return;
     }
@@ -1607,20 +1599,26 @@
       .map((n) => n.text)
       .join("\n\n---\n\n");
 
+    // Format hidden phrases (grouped by set)
+    const formattedHidden = formatHiddenPhrases(hiddenPhrases);
+
     // Build final output
     let formatted = "";
     if (generalNotes.length > 0) {
       formatted += `=== ${I18N.t("generalNotes")} ===\n\n${formattedGeneral}`;
-      if (entries.length > 0) {
-        formatted += "\n\n---\n\n";
-      }
     }
     if (entries.length > 0) {
-      formatted += formattedPhrases;
+      if (formatted) formatted += "\n\n---\n\n";
+      formatted += `=== ${I18N.t("notes")} ===\n\n${formattedPhrases}`;
+    }
+    if (hiddenPhrases.length > 0) {
+      if (formatted) formatted += "\n\n---\n\n";
+      formatted += `=== ${I18N.t("hiddenPhrases")} ===\n\n${formattedHidden}`;
     }
 
     // Copy to clipboard
-    const totalCount = entries.length + generalNotes.length;
+    const totalCount =
+      entries.length + generalNotes.length + hiddenPhrases.length;
     navigator.clipboard
       .writeText(formatted)
       .then(() => {
@@ -1632,6 +1630,47 @@
       });
 
     toggleMenu();
+  }
+
+  function getAllHiddenPhrases() {
+    const hidden = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && key.startsWith("langlearn_hidden_")) {
+        const setId = key.replace("langlearn_hidden_", "");
+        const phraseIds = Storage.get(key, []);
+        for (const phraseId of phraseIds) {
+          hidden.push({ setId, phraseId });
+        }
+      }
+    }
+    return hidden;
+  }
+
+  function formatHiddenPhrases(hiddenList) {
+    // Group by setId
+    const bySet = {};
+    for (const { setId, phraseId } of hiddenList) {
+      if (!bySet[setId]) bySet[setId] = [];
+      bySet[setId].push(phraseId);
+    }
+
+    // Format each set
+    const lines = [];
+    for (const [setId, phraseIds] of Object.entries(bySet)) {
+      const set = SETS[setId];
+      const setName = set ? set.metadata.name : setId;
+      lines.push(`[${setName}]`);
+      for (const phraseId of phraseIds) {
+        const phrase = set?.phrases.find((p) => p.id === phraseId);
+        if (phrase) {
+          lines.push(`  id:${phraseId} - ${phrase.prompt} → ${phrase.answer}`);
+        } else {
+          lines.push(`  id:${phraseId}`);
+        }
+      }
+    }
+    return lines.join("\n");
   }
 
   function clearNotes() {
