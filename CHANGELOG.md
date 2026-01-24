@@ -5,6 +5,21 @@ All notable changes to Verbio will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-01-24
+
+### Added
+- Typing exercise mode as third exercise option (manual/speaking/typing)
+- Flexible answer validation for typing mode (ignores case, spaces, hyphens)
+- Immediate retry support for typing mode
+- Hide phrases feature to exclude unwanted phrases from exercises
+- Archive folder support for organizing phrase sets
+- Export hidden phrases in notes export
+- Reset progress button for clearing learned phrases
+
+### Changed
+- Exercise mode setting changed from toggle to dropdown with three options
+- Hidden phrases included in notes export with dedicated section
+
 ## [0.10.0] - 2026-01-03
 
 ### Added

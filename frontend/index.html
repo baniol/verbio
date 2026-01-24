@@ -374,6 +374,37 @@
                                 </button>
                             </div>
 
+                            <!-- Typing Mode -->
+                            <div
+                                id="typing-mode"
+                                class="hidden text-center flex-1 flex flex-col justify-center"
+                            >
+                                <p
+                                    class="text-slate-500 dark:text-slate-400 mb-3 font-medium text-sm"
+                                    data-i18n="typeAnswer"
+                                >
+                                    Type the answer
+                                </p>
+                                <input
+                                    type="text"
+                                    id="typing-input"
+                                    class="w-full p-3 bg-white dark:bg-slate-700 border-2 border-slate-200 dark:border-slate-600 rounded-xl text-lg text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none mb-3"
+                                    data-i18n-placeholder="yourAnswer"
+                                    placeholder="Your answer..."
+                                    autocomplete="off"
+                                    autocorrect="off"
+                                    autocapitalize="off"
+                                    spellcheck="false"
+                                />
+                                <button
+                                    id="typing-submit-button"
+                                    class="w-full bg-gradient-to-r from-indigo-500 to-purple-500 text-white text-lg font-semibold py-3 rounded-xl hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                                    data-i18n="submit"
+                                >
+                                    Submit
+                                </button>
+                            </div>
+
                             <!-- Show Answer Mode -->
                             <div
                                 id="show-answer-mode"
@@ -598,35 +629,38 @@
                             Learning
                         </h3>
 
-                        <label
-                            class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl cursor-pointer"
+                        <div
+                            class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl"
                         >
-                            <div class="flex items-center space-x-3">
-                                <span class="text-2xl">🎤</span>
+                            <div class="flex items-center space-x-3 mb-2">
+                                <span class="text-2xl">✍️</span>
                                 <span
                                     class="text-slate-800 dark:text-slate-200 font-medium"
-                                    data-i18n="speaking"
-                                    >Speaking</span
+                                    data-i18n="exerciseMode"
+                                    >Exercise mode</span
                                 >
                             </div>
-                            <div class="relative">
-                                <input
-                                    type="checkbox"
-                                    id="speech-toggle"
-                                    class="sr-only peer"
-                                    checked
-                                />
-                                <div
-                                    class="w-11 h-6 bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-indigo-500 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-500"
-                                ></div>
-                            </div>
-                        </label>
-                        <p
-                            class="text-sm text-slate-500 dark:text-slate-400 mt-2 mb-4 ml-1"
-                            data-i18n="speakingDesc"
-                        >
-                            Answer with voice
-                        </p>
+                            <select
+                                id="exercise-mode-select"
+                                class="w-full p-2 bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-lg text-slate-800 dark:text-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none"
+                            >
+                                <option value="manual" data-i18n="exerciseModeManual">
+                                    Manual (know/don't know)
+                                </option>
+                                <option value="speaking" data-i18n="exerciseModeSpeaking">
+                                    Speaking
+                                </option>
+                                <option value="typing" data-i18n="exerciseModeTyping">
+                                    Typing
+                                </option>
+                            </select>
+                            <p
+                                class="text-sm text-slate-500 dark:text-slate-400 mt-2"
+                                data-i18n="exerciseModeDesc"
+                            >
+                                How you want to answer
+                            </p>
+                        </div>
 
                         <label
                             class="flex items-center justify-between p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl cursor-pointer"

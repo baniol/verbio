@@ -81,7 +81,8 @@
   // LocalStorage keys
   const STORAGE_KEYS = {
     lastSet: "langlearn_last_set",
-    speechEnabled: "langlearn_speech_enabled",
+    speechEnabled: "langlearn_speech_enabled", // deprecated, use exerciseMode
+    exerciseMode: "langlearn_exercise_mode", // 'manual' | 'speaking' | 'typing'
     manualNext: "langlearn_manual_next",
     autoListen: "langlearn_auto_listen",
     devMode: "langlearn_dev_mode",
@@ -99,7 +100,8 @@
   // State
   let currentSet = null;
   let currentPhrase = null;
-  let speechEnabled = true;
+  let exerciseMode = "speaking"; // 'manual' | 'speaking' | 'typing'
+  let speechEnabled = true; // deprecated, computed from exerciseMode
   let manualNext = false;
   let autoListen = false;
   let devMode = false;
@@ -127,6 +129,9 @@
       prompt: document.getElementById("prompt"),
       answer: document.getElementById("answer"),
       speechMode: document.getElementById("speech-mode"),
+      typingMode: document.getElementById("typing-mode"),
+      typingInput: document.getElementById("typing-input"),
+      typingSubmitButton: document.getElementById("typing-submit-button"),
       showAnswerMode: document.getElementById("show-answer-mode"),
       answerSection: document.getElementById("answer-section"),
       reviewButtons: document.getElementById("review-buttons"),
@@ -137,6 +142,7 @@
       micButton: document.getElementById("mic-button"),
       progressBar: document.getElementById("progress-bar"),
       progressText: document.getElementById("progress-text"),
+      exerciseModeSelect: document.getElementById("exercise-mode-select"),
       speechToggle: document.getElementById("speech-toggle"),
       manualNextToggle: document.getElementById("manual-next-toggle"),
       autoListenToggle: document.getElementById("auto-listen-toggle"),
@@ -234,6 +240,12 @@
 
     // Flashcard actions
     el.micButton?.addEventListener("click", startListening);
+    el.typingSubmitButton?.addEventListener("click", submitTypingAnswer);
+    el.typingInput?.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        submitTypingAnswer();
+      }
+    });
     el.showAnswerButton?.addEventListener("click", showAnswer);
     el.peekAnswerButton?.addEventListener("click", peekAnswer);
     el.startOverButton?.addEventListener("click", resetProgress);
@@ -260,6 +272,7 @@
 
     // Settings
     el.languageSelect?.addEventListener("change", changeLanguage);
+    el.exerciseModeSelect?.addEventListener("change", saveExerciseModeSetting);
     el.speechToggle?.addEventListener("change", saveSpeechSetting);
     el.manualNextToggle?.addEventListener("change", saveManualNextSetting);
     el.autoListenToggle?.addEventListener("change", saveAutoListenSetting);
@@ -316,6 +329,7 @@
   }
 
   function refreshSettingsUI() {
+    if (el.exerciseModeSelect) el.exerciseModeSelect.value = exerciseMode;
     if (el.speechToggle) el.speechToggle.checked = speechEnabled;
     if (el.manualNextToggle) el.manualNextToggle.checked = manualNext;
     if (el.autoListenToggle) el.autoListenToggle.checked = autoListen;
@@ -333,8 +347,24 @@
   // Settings
   function loadSettings() {
     try {
-      const savedSpeech = localStorage.getItem(STORAGE_KEYS.speechEnabled);
-      speechEnabled = savedSpeech === null ? true : savedSpeech === "true";
+      // Load exercise mode (migrate from old speechEnabled if needed)
+      const savedMode = localStorage.getItem(STORAGE_KEYS.exerciseMode);
+      if (savedMode && ["manual", "speaking", "typing"].includes(savedMode)) {
+        exerciseMode = savedMode;
+      } else {
+        // Migrate from old speechEnabled setting
+        const savedSpeech = localStorage.getItem(STORAGE_KEYS.speechEnabled);
+        if (savedSpeech === "false") {
+          exerciseMode = "manual";
+        } else {
+          exerciseMode = "speaking";
+        }
+        // Save migrated value
+        localStorage.setItem(STORAGE_KEYS.exerciseMode, exerciseMode);
+      }
+
+      // Update speechEnabled for backwards compatibility
+      speechEnabled = exerciseMode === "speaking";
 
       const savedManual = localStorage.getItem(STORAGE_KEYS.manualNext);
       manualNext = savedManual === null ? true : savedManual === "true";
@@ -363,6 +393,7 @@
     } catch (e) {
       console.error("Failed to load settings:", e);
       // Use defaults
+      exerciseMode = "speaking";
       speechEnabled = true;
       manualNext = false;
       autoListen = false;
@@ -372,9 +403,23 @@
     }
   }
 
+  function saveExerciseModeSetting() {
+    const newMode = el.exerciseModeSelect?.value;
+    if (newMode && ["manual", "speaking", "typing"].includes(newMode)) {
+      exerciseMode = newMode;
+      speechEnabled = exerciseMode === "speaking"; // backwards compatibility
+      localStorage.setItem(STORAGE_KEYS.exerciseMode, exerciseMode);
+      if (currentPhrase) {
+        showPhrase(currentPhrase);
+      }
+    }
+  }
+
   function saveSpeechSetting() {
-    speechEnabled = el.speechToggle.checked;
+    speechEnabled = el.speechToggle?.checked;
+    exerciseMode = speechEnabled ? "speaking" : "manual";
     localStorage.setItem(STORAGE_KEYS.speechEnabled, speechEnabled);
+    localStorage.setItem(STORAGE_KEYS.exerciseMode, exerciseMode);
     if (currentPhrase) {
       showPhrase(currentPhrase);
     }
@@ -835,8 +880,9 @@
     stopAudio();
     showLoading();
 
-    // Immediate retry mode - show same phrase if in retry
-    if (immediateRetry && speechEnabled && retryPhrase) {
+    // Immediate retry mode - show same phrase if in retry (speaking and typing modes)
+    const isActiveMode = exerciseMode === "speaking" || exerciseMode === "typing";
+    if (immediateRetry && isActiveMode && retryPhrase) {
       currentPhrase = retryPhrase;
       showPhrase(currentPhrase);
       return;
@@ -898,8 +944,10 @@
     // Check if audio exists for this phrase (async)
     updateAudioButton();
 
-    if (speechEnabled) {
+    // Show appropriate mode UI
+    if (exerciseMode === "speaking") {
       UI.show(el.speechMode);
+      UI.hide(el.typingMode);
       UI.hide(el.showAnswerMode);
 
       // Auto-start listening if enabled
@@ -908,8 +956,20 @@
           startListening();
         }, CONFIG.AUTO_LISTEN_DELAY);
       }
-    } else {
+    } else if (exerciseMode === "typing") {
       UI.hide(el.speechMode);
+      UI.show(el.typingMode);
+      UI.hide(el.showAnswerMode);
+
+      // Clear and focus typing input
+      if (el.typingInput) {
+        el.typingInput.value = "";
+        el.typingInput.focus();
+      }
+    } else {
+      // manual mode
+      UI.hide(el.speechMode);
+      UI.hide(el.typingMode);
       UI.show(el.showAnswerMode);
     }
   }
@@ -1068,6 +1128,37 @@
     showSpeechResult(correct, transcript);
   }
 
+  // Validate typed input
+  function validateTyping(input) {
+    const normalized = input.toLowerCase().trim();
+    const noSpecial = normalized.replace(/[\s\-]+/g, "");
+    const phrase = currentPhrase;
+
+    // Check against answer and accepted alternatives (flexible matching)
+    const correct =
+      phrase.answer.toLowerCase() === normalized ||
+      phrase.accepted.some((a) => {
+        const acceptedLower = a.toLowerCase();
+        return (
+          acceptedLower === normalized ||
+          acceptedLower.replace(/[\s\-]+/g, "") === noSpecial
+        );
+      });
+
+    return correct;
+  }
+
+  // Submit typed answer
+  function submitTypingAnswer() {
+    if (!el.typingInput) return;
+
+    const userInput = el.typingInput.value.trim();
+    if (!userInput) return;
+
+    const isCorrect = validateTyping(userInput);
+    showTypingResult(isCorrect, userInput);
+  }
+
   function showSpeechResult(isCorrect, transcript) {
     UI.hide(el.speechMode);
     UI.show(el.answerSection);
@@ -1077,6 +1168,44 @@
     if (transcript) {
       el.userSaidLabel.textContent = I18N.t("youSaid");
       el.userSaidTranscript.textContent = transcript;
+      el.userSaidTranscript.className = isCorrect
+        ? "text-lg font-semibold mt-1 text-slate-600 dark:text-slate-300"
+        : "text-lg font-semibold mt-1 text-red-600 dark:text-red-400";
+      UI.show(el.userSaid);
+    } else {
+      UI.hide(el.userSaid);
+    }
+
+    if (isCorrect) {
+      el.resultIcon.textContent = "✅";
+      el.resultText.textContent = I18N.t("great");
+      el.resultText.className = "text-xl font-bold text-green-600";
+    } else {
+      el.resultIcon.textContent = "❌";
+      el.resultText.textContent = I18N.t("notThisTime");
+      el.resultText.className = "text-xl font-bold text-red-600";
+    }
+
+    if (manualNext) {
+      // Show next button
+      showNextButton(isCorrect);
+    } else {
+      // Auto-submit and move to next
+      setTimeout(() => {
+        submitAnswer(isCorrect);
+      }, CONFIG.AUTO_ADVANCE_DELAY);
+    }
+  }
+
+  function showTypingResult(isCorrect, userInput) {
+    UI.hide(el.typingMode);
+    UI.show(el.answerSection);
+    UI.show(el.resultFeedback);
+
+    // Show what user typed
+    if (userInput) {
+      el.userSaidLabel.textContent = I18N.t("youTyped");
+      el.userSaidTranscript.textContent = userInput;
       el.userSaidTranscript.className = isCorrect
         ? "text-lg font-semibold mt-1 text-slate-600 dark:text-slate-300"
         : "text-lg font-semibold mt-1 text-red-600 dark:text-red-400";
@@ -1143,8 +1272,9 @@
     if (isSubmitting) return;
     isSubmitting = true;
 
-    // --- IMMEDIATE RETRY MODE (speech only) ---
-    if (immediateRetry && speechEnabled && retryPhrase) {
+    // --- IMMEDIATE RETRY MODE (speaking and typing modes) ---
+    const isActiveMode = exerciseMode === "speaking" || exerciseMode === "typing";
+    if (immediateRetry && isActiveMode && retryPhrase) {
       if (correct) {
         retrySuccessCount++;
         if (retrySuccessCount >= 2) {
@@ -1181,8 +1311,8 @@
       current.successCount = (current.successCount || 0) + 1;
     } else {
       current.correctStreak = 0;
-      // Start immediate retry on wrong answer (speech mode only)
-      if (immediateRetry && speechEnabled) {
+      // Start immediate retry on wrong answer (speaking and typing modes)
+      if (immediateRetry && isActiveMode) {
         retryPhrase = currentPhrase;
         retrySuccessCount = 0;
         retryFailures = 0;
