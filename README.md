@@ -342,3 +342,4 @@ For detailed deployment setup (Cloudflare Pages, custom domains, troubleshooting
 - Web Speech API
 - localStorage
 - Cloudflare Pages (static hosting)
+- test test ...
