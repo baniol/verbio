@@ -1,0 +1,185 @@
+{
+  "metadata": {
+    "id": "german_b1_everyday_expressions",
+    "name": "German B1 - Everyday Expressions",
+    "language": "de",
+    "speechLang": "de-DE",
+    "sourceLanguage": "pl",
+    "sourceSpeechLang": "pl-PL"
+  },
+  "phrases": [
+    {
+      "id": 1,
+      "prompt": "Lubię jeździć na rowerze.",
+      "answer": "Ich fahre gern Rad.",
+      "accepted": [
+        "ich fahre gern rad",
+        "ich fahre gerne rad"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Lubisz jeździć na rowerze?",
+      "answer": "Fährst du gern Rad?",
+      "accepted": [
+        "fährst du gern rad",
+        "fährst du gerne rad"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Nie lubię być sam.",
+      "answer": "Ich bin nicht gern allein.",
+      "accepted": [
+        "ich bin nicht gern allein",
+        "ich bin nicht gerne allein"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Ona nie lubi jeść ryb.",
+      "answer": "Sie isst nicht gern Fisch.",
+      "accepted": [
+        "sie isst nicht gern fisch",
+        "sie isst nicht gerne fisch"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Dokąd jedziesz?",
+      "answer": "Wohin fährst du?",
+      "accepted": [
+        "wohin fährst du",
+        "wo fährst du hin"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Jutro mnie nie będzie.",
+      "answer": "Ich bin morgen fort.",
+      "accepted": [
+        "ich bin morgen fort",
+        "morgen bin ich fort",
+        "ich bin morgen weg"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "On już poszedł.",
+      "answer": "Er ist schon fort.",
+      "accepted": [
+        "er ist schon fort",
+        "er ist schon weg"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Zapraszam cię.",
+      "answer": "Ich lade dich ein.",
+      "accepted": [
+        "ich lade dich ein"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Czy mogę cię zaprosić?",
+      "answer": "Darf ich dich einladen?",
+      "accepted": [
+        "darf ich dich einladen",
+        "kann ich dich einladen"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "On mnie zaprosił.",
+      "answer": "Er hat mich eingeladen.",
+      "accepted": [
+        "er hat mich eingeladen"
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "Zapraszasz mnie na imprezę?",
+      "answer": "Lädst du mich zur Party ein?",
+      "accepted": [
+        "lädst du mich zur party ein",
+        "lädst du mich auf die party ein"
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "Jak wyglądam?",
+      "answer": "Wie sehe ich aus?",
+      "accepted": [
+        "wie sehe ich aus"
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "Wyglądasz super!",
+      "answer": "Du siehst super aus!",
+      "accepted": [
+        "du siehst super aus",
+        "du siehst toll aus",
+        "du siehst gut aus"
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "Wyglądasz na zmęczonego.",
+      "answer": "Du siehst müde aus.",
+      "accepted": [
+        "du siehst müde aus"
+      ]
+    },
+    {
+      "id": 15,
+      "prompt": "Tak, źle spałem.",
+      "answer": "Ja, ich habe schlecht geschlafen.",
+      "accepted": [
+        "ja ich habe schlecht geschlafen"
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "To nie było dla mnie jasne.",
+      "answer": "Das war mir nicht klar.",
+      "accepted": [
+        "das war mir nicht klar"
+      ]
+    },
+    {
+      "id": 17,
+      "prompt": "Nie miałem czasu.",
+      "answer": "Ich hatte keine Zeit.",
+      "accepted": [
+        "ich hatte keine zeit"
+      ]
+    },
+    {
+      "id": 18,
+      "prompt": "Tego nie wiedziałem.",
+      "answer": "Das wusste ich nicht.",
+      "accepted": [
+        "das wusste ich nicht",
+        "das habe ich nicht gewusst"
+      ]
+    },
+    {
+      "id": 19,
+      "prompt": "Przyjdziecie we dwoje?",
+      "answer": "Kommt ihr zu zweit?",
+      "accepted": [
+        "kommt ihr zu zweit"
+      ]
+    },
+    {
+      "id": 20,
+      "prompt": "Jedziemy we trójkę do Berlina.",
+      "answer": "Wir fahren zu dritt nach Berlin.",
+      "accepted": [
+        "wir fahren zu dritt nach berlin"
+      ]
+    }
+  ]
+}

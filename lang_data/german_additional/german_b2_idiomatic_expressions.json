@@ -1,0 +1,193 @@
+{
+  "metadata": {
+    "id": "german_b2_idiomatic_expressions",
+    "name": "German B2 - Idiomatic Expressions",
+    "language": "de",
+    "speechLang": "de-DE",
+    "sourceLanguage": "pl",
+    "sourceSpeechLang": "pl-PL"
+  },
+  "phrases": [
+    {
+      "id": 1,
+      "prompt": "Tak się robi!",
+      "answer": "So geht's!",
+      "accepted": [
+        "so gehts",
+        "so geht's",
+        "so geht es"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Tak się nie da.",
+      "answer": "So geht's nicht.",
+      "accepted": [
+        "so gehts nicht",
+        "so geht's nicht",
+        "so geht es nicht"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Takie jest życie.",
+      "answer": "So geht's im Leben.",
+      "accepted": [
+        "so gehts im leben",
+        "so geht's im leben",
+        "so ist das leben"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Nie bierz tego tak dosłownie!",
+      "answer": "Nimm es nicht so genau!",
+      "accepted": [
+        "nimm es nicht so genau",
+        "nimm das nicht so genau"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Ciężko mnie to dotknęło.",
+      "answer": "Es hat mich schwer getroffen.",
+      "accepted": [
+        "es hat mich schwer getroffen",
+        "das hat mich schwer getroffen"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "Co ja mam niby robić?",
+      "answer": "Was soll ich denn machen?",
+      "accepted": [
+        "was soll ich denn machen",
+        "was soll ich denn tun"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "Kto to wie?",
+      "answer": "Wer weiß denn das?",
+      "accepted": [
+        "wer weiß denn das",
+        "wer weiß das schon"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "Dochodzi jeszcze coś.",
+      "answer": "Es kommt noch etwas hinzu.",
+      "accepted": [
+        "es kommt noch etwas hinzu",
+        "es kommt noch was hinzu"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "Przyszło całkiem nagle.",
+      "answer": "Es kam ganz plötzlich.",
+      "accepted": [
+        "es kam ganz plötzlich"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "Muszę dopłacić?",
+      "answer": "Muss ich nachzahlen?",
+      "accepted": [
+        "muss ich nachzahlen"
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "Dlatego to robię.",
+      "answer": "Darum mache ich das.",
+      "accepted": [
+        "darum mache ich das",
+        "deshalb mache ich das",
+        "drum mache ich das"
+      ]
+    },
+    {
+      "id": 12,
+      "prompt": "Dlatego tu jestem.",
+      "answer": "Darum bin ich hier.",
+      "accepted": [
+        "darum bin ich hier",
+        "deshalb bin ich hier",
+        "drum bin ich hier"
+      ]
+    },
+    {
+      "id": 13,
+      "prompt": "Całkiem o tym zapomniałem.",
+      "answer": "Das hatte ich ganz vergessen.",
+      "accepted": [
+        "das hatte ich ganz vergessen",
+        "das habe ich ganz vergessen"
+      ]
+    },
+    {
+      "id": 14,
+      "prompt": "Tego właśnie potrzebowałem!",
+      "answer": "Genau das habe ich gebraucht!",
+      "accepted": [
+        "genau das habe ich gebraucht",
+        "genau das brauchte ich"
+      ]
+    },
+    {
+      "id": 15,
+      "prompt": "O czym myślisz?",
+      "answer": "Woran denkst du?",
+      "accepted": [
+        "woran denkst du",
+        "an was denkst du"
+      ]
+    },
+    {
+      "id": 16,
+      "prompt": "Właśnie myślę o tobie.",
+      "answer": "Ich denke gerade an dich.",
+      "accepted": [
+        "ich denke gerade an dich"
+      ]
+    },
+    {
+      "id": 17,
+      "prompt": "Zobaczymy, czy twój plan się uda.",
+      "answer": "Mal sehen, ob dein Plan aufgeht.",
+      "accepted": [
+        "mal sehen ob dein plan aufgeht",
+        "schauen wir mal ob dein plan aufgeht"
+      ]
+    },
+    {
+      "id": 18,
+      "prompt": "Czy twój plan się udał?",
+      "answer": "Ist dein Plan aufgegangen?",
+      "accepted": [
+        "ist dein plan aufgegangen",
+        "hat dein plan funktioniert"
+      ]
+    },
+    {
+      "id": 19,
+      "prompt": "Mam nadzieję, że wszystko się uda.",
+      "answer": "Ich hoffe, dass alles aufgeht.",
+      "accepted": [
+        "ich hoffe dass alles aufgeht",
+        "ich hoffe dass alles klappt"
+      ]
+    },
+    {
+      "id": 20,
+      "prompt": "Ufasz mi?",
+      "answer": "Vertraust du mir?",
+      "accepted": [
+        "vertraust du mir"
+      ]
+    }
+  ]
+}

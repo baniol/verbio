@@ -1564,5 +1564,169 @@
       "hash": "3c70947432188c483cb9a2d2eb0ea4dd",
       "file": "20.mp3"
     }
+  },
+  "german_b1_everyday_expressions": {
+    "1": {
+      "hash": "32ba3148bb029c1e93847630fb9825b8",
+      "file": "1.mp3"
+    },
+    "2": {
+      "hash": "99802d8fdc114416b862324e6ce98a99",
+      "file": "2.mp3"
+    },
+    "3": {
+      "hash": "b449fe28f9536675d3c1d306a8121f79",
+      "file": "3.mp3"
+    },
+    "4": {
+      "hash": "119a5fba60fc21fce46dc7c16d33ee61",
+      "file": "4.mp3"
+    },
+    "5": {
+      "hash": "dec825e25455cc18f77b18a3b874f204",
+      "file": "5.mp3"
+    },
+    "6": {
+      "hash": "89cd299c11d19171ee0f5140b2d54ad4",
+      "file": "6.mp3"
+    },
+    "7": {
+      "hash": "ec57f24e9795f9a36047a604bffdfdb3",
+      "file": "7.mp3"
+    },
+    "8": {
+      "hash": "6b95a17573ffadf31e95915e769c44b8",
+      "file": "8.mp3"
+    },
+    "9": {
+      "hash": "f56a075ddb1e35dae85babc3e96c3d20",
+      "file": "9.mp3"
+    },
+    "10": {
+      "hash": "9824e5704922db06b4f48fa54ac0381b",
+      "file": "10.mp3"
+    },
+    "11": {
+      "hash": "041fc65d65e88ca48e6b683aea40ce33",
+      "file": "11.mp3"
+    },
+    "12": {
+      "hash": "6879f730dd18b1b9ebf2b1efd8019d32",
+      "file": "12.mp3"
+    },
+    "13": {
+      "hash": "cdffe0cbc1529ce3215c7dcdd3b1e797",
+      "file": "13.mp3"
+    },
+    "14": {
+      "hash": "cd3b35cc8ca3e7a8a7e4698aa85614b8",
+      "file": "14.mp3"
+    },
+    "15": {
+      "hash": "2d0c91c6fc47722d9355afdc09f8609e",
+      "file": "15.mp3"
+    },
+    "16": {
+      "hash": "6fd784bdab2f8e003e0cab72346b5525",
+      "file": "16.mp3"
+    },
+    "17": {
+      "hash": "3f4a296b0fe50cf76e39803b3f70894d",
+      "file": "17.mp3"
+    },
+    "18": {
+      "hash": "28e68df292a557435e8e8d093693f84d",
+      "file": "18.mp3"
+    },
+    "19": {
+      "hash": "b04b0a2fa80a3947e7e7546f06a8ddb0",
+      "file": "19.mp3"
+    },
+    "20": {
+      "hash": "fc03bd2ae94d395b9bde95b9a7cd87fb",
+      "file": "20.mp3"
+    }
+  },
+  "german_b2_idiomatic_expressions": {
+    "1": {
+      "hash": "c1c2bee9f4a4d12ef51fe6e14ce1ea11",
+      "file": "1.mp3"
+    },
+    "2": {
+      "hash": "a15f33b0e3a29a21cdb19f45f06c5907",
+      "file": "2.mp3"
+    },
+    "3": {
+      "hash": "e5078cfdd4fb6de08462d7e1b2fa4c10",
+      "file": "3.mp3"
+    },
+    "4": {
+      "hash": "1841f4983ebca1d290e96341bfa183c6",
+      "file": "4.mp3"
+    },
+    "5": {
+      "hash": "0f9caef4046ae7d250fb006e67f317c4",
+      "file": "5.mp3"
+    },
+    "6": {
+      "hash": "a486419b96ac4da31f5bb400ad35cd82",
+      "file": "6.mp3"
+    },
+    "7": {
+      "hash": "0334bd4f2d08a2e2b7affbe899ff2fc4",
+      "file": "7.mp3"
+    },
+    "8": {
+      "hash": "635598e5680f7e5fee07bcb159aba6d1",
+      "file": "8.mp3"
+    },
+    "9": {
+      "hash": "5b0fa67c80c3651c811fba9bdb485ec0",
+      "file": "9.mp3"
+    },
+    "10": {
+      "hash": "18e1ef0cbae784cb734cca4d6b0f94e6",
+      "file": "10.mp3"
+    },
+    "11": {
+      "hash": "403d687a9725933b0ea840c7cec643de",
+      "file": "11.mp3"
+    },
+    "12": {
+      "hash": "117eb5ed6efea8c034b7018db9cc5c8b",
+      "file": "12.mp3"
+    },
+    "13": {
+      "hash": "e32d70996d5ad6d5739c37a8e793e5d0",
+      "file": "13.mp3"
+    },
+    "14": {
+      "hash": "5cf5e218a36b13f5d451b8a952cefdd0",
+      "file": "14.mp3"
+    },
+    "15": {
+      "hash": "e5b8520b22e86f87e599f021f56567ed",
+      "file": "15.mp3"
+    },
+    "16": {
+      "hash": "7eba2919898af2ce95d4bf40484e7d08",
+      "file": "16.mp3"
+    },
+    "17": {
+      "hash": "285855e25cfe1e6dd31fc378f4dfadac",
+      "file": "17.mp3"
+    },
+    "18": {
+      "hash": "e9149de01e7a315c81b80cb11dda4629",
+      "file": "18.mp3"
+    },
+    "19": {
+      "hash": "2d37e0d786db1df6d872919b27178c3e",
+      "file": "19.mp3"
+    },
+    "20": {
+      "hash": "7c0b5ab817c682406df25511722d5aee",
+      "file": "20.mp3"
+    }
   }
 }
