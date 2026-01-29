@@ -548,6 +548,33 @@
     if (!container) return;
     container.innerHTML = "";
 
+    // Add review sets at the top (starred phrases for each language)
+    const reviewLanguages = getReviewSetLanguages();
+    if (reviewLanguages.length > 0) {
+      const reviewHTML = reviewLanguages
+        .map((lang) => {
+          const reviewData = buildReviewSetData(lang);
+          if (!reviewData || reviewData.phrases.length === 0) return "";
+          const display = getLanguageDisplay(lang, I18N.currentLang);
+          return `
+            <button class="set-item w-full text-left p-3 rounded-xl text-amber-600
+                           dark:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/30
+                           transition-colors"
+                    data-set-id="review_${lang}">
+              <span class="flex items-center gap-2">
+                <span>⭐</span>
+                <span>${I18N.t("reviewSetPrefix")}: ${display.name} (${reviewData.phrases.length})</span>
+              </span>
+            </button>
+          `;
+        })
+        .filter((html) => html)
+        .join("");
+      if (reviewHTML) {
+        container.insertAdjacentHTML("beforeend", reviewHTML);
+      }
+    }
+
     // Group sets by folder (from directory structure)
     const grouped = {};
     const rootSets = [];
@@ -881,7 +908,8 @@
     showLoading();
 
     // Immediate retry mode - show same phrase if in retry (speaking and typing modes)
-    const isActiveMode = exerciseMode === "speaking" || exerciseMode === "typing";
+    const isActiveMode =
+      exerciseMode === "speaking" || exerciseMode === "typing";
     if (immediateRetry && isActiveMode && retryPhrase) {
       currentPhrase = retryPhrase;
       showPhrase(currentPhrase);
@@ -1273,7 +1301,8 @@
     isSubmitting = true;
 
     // --- IMMEDIATE RETRY MODE (speaking and typing modes) ---
-    const isActiveMode = exerciseMode === "speaking" || exerciseMode === "typing";
+    const isActiveMode =
+      exerciseMode === "speaking" || exerciseMode === "typing";
     if (immediateRetry && isActiveMode && retryPhrase) {
       if (correct) {
         retrySuccessCount++;
