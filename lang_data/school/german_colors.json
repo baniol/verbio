@@ -1,0 +1,126 @@
+{
+  "metadata": {
+    "id": "german_colors",
+    "name": "German - Kolory / Farben",
+    "language": "de",
+    "speechLang": "de-DE",
+    "sourceLanguage": "pl",
+    "sourceSpeechLang": "pl-PL"
+  },
+  "phrases": [
+    {
+      "id": 1,
+      "prompt": "czerwony",
+      "answer": "rot",
+      "accepted": ["rot"]
+    },
+    {
+      "id": 2,
+      "prompt": "niebieski",
+      "answer": "blau",
+      "accepted": ["blau"]
+    },
+    {
+      "id": 3,
+      "prompt": "zielony",
+      "answer": "grün",
+      "accepted": ["grün", "grun"]
+    },
+    {
+      "id": 4,
+      "prompt": "czarny",
+      "answer": "schwarz",
+      "accepted": ["schwarz"]
+    },
+    {
+      "id": 5,
+      "prompt": "żółty",
+      "answer": "gelb",
+      "accepted": ["gelb"]
+    },
+    {
+      "id": 6,
+      "prompt": "biały",
+      "answer": "weiß",
+      "accepted": ["weiß", "weiss"]
+    },
+    {
+      "id": 7,
+      "prompt": "szary",
+      "answer": "grau",
+      "accepted": ["grau"]
+    },
+    {
+      "id": 8,
+      "prompt": "różowy",
+      "answer": "rosa",
+      "accepted": ["rosa"]
+    },
+    {
+      "id": 9,
+      "prompt": "jasnofioletowy (lila)",
+      "answer": "lila",
+      "accepted": ["lila"]
+    },
+    {
+      "id": 10,
+      "prompt": "fioletowy",
+      "answer": "violett",
+      "accepted": ["violett", "lila"]
+    },
+    {
+      "id": 11,
+      "prompt": "brązowy",
+      "answer": "braun",
+      "accepted": ["braun"]
+    },
+    {
+      "id": 12,
+      "prompt": "pomarańczowy",
+      "answer": "orange",
+      "accepted": ["orange"]
+    },
+    {
+      "id": 13,
+      "prompt": "granatowy",
+      "answer": "dunkelblau",
+      "accepted": ["dunkelblau", "marineblau"]
+    },
+    {
+      "id": 14,
+      "prompt": "błękitny",
+      "answer": "hellblau",
+      "accepted": ["hellblau"]
+    },
+    {
+      "id": 15,
+      "prompt": "seledynowy",
+      "answer": "hellgrün",
+      "accepted": ["hellgrün", "hellgrun"]
+    },
+    {
+      "id": 16,
+      "prompt": "różowy (pink)",
+      "answer": "pink",
+      "accepted": ["pink"]
+    },
+    {
+      "id": 17,
+      "prompt": "beżowy",
+      "answer": "beige",
+      "accepted": ["beige"]
+    },
+    {
+      "id": 18,
+      "prompt": "Jaki jest twój ulubiony kolor?",
+      "answer": "Was ist deine Lieblingsfarbe?",
+      "accepted": ["was ist deine lieblingsfarbe", "welche farbe magst du am liebsten"]
+    },
+    {
+      "id": 19,
+      "prompt": "Mój ulubiony kolor to niebieski.",
+      "answer": "Meine Lieblingsfarbe ist blau.",
+      "accepted": ["meine lieblingsfarbe ist blau"]
+    }
+  ]
+}
